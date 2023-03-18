@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="test_db" schema="test_db" type="MySQL - 5.7.41-0ubuntu0.18.04.1">
+   <tables>
+      <table catalog="test_db" name="Basket_Items" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="basket_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Basket_Items_fk0" implied="false" onDeleteCascade="false" table="Baskets"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Basket_Items_fk1" implied="false" onDeleteCascade="false" table="Products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="quantity" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="Basket_Items_fk0" unique="false">
+            <column ascending="true" name="basket_id"/>
+         </index>
+         <index name="Basket_Items_fk1" unique="false">
+            <column ascending="true" name="product_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Baskets" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Baskets_fk0" implied="false" onDeleteCascade="false" table="Users"/>
+         </column>
+         <column autoUpdated="true" defaultValue="null" digits="0" id="1" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="test_db" column="basket_id" foreignKey="Basket_Items_fk0" implied="false" onDeleteCascade="false" table="Basket_Items"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="user_id" unique="true">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Grades" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Grades_fk0" implied="false" onDeleteCascade="false" table="Users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="product_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Grades_fk1" implied="false" onDeleteCascade="false" table="Products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="grade" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="comment" nullable="false" remarks="" size="1000" type="VARCHAR" typeCode="12"/>
+         <primaryKey column="user_id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="Grades_fk1" unique="false">
+            <column ascending="true" name="product_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Products" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="test_db" column="product_id" foreignKey="Basket_Items_fk1" implied="false" onDeleteCascade="false" table="Basket_Items"/>
+            <child catalog="test_db" column="product_id" foreignKey="Grades_fk1" implied="false" onDeleteCascade="false" table="Grades"/>
+            <child catalog="test_db" column="product_id" foreignKey="Purchase_Items_fk1" implied="false" onDeleteCascade="false" table="Purchase_Items"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="price" nullable="false" remarks="" size="12" type="FLOAT" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="bulk_price" nullable="true" remarks="" size="12" type="FLOAT" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="image" nullable="false" remarks="" size="65535" type="BLOB" typeCode="-4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="id" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Purchase_Items" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="purchase_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Purchase_Items_fk0" implied="false" onDeleteCascade="false" table="Purchases"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="product_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Purchase_Items_fk1" implied="false" onDeleteCascade="false" table="Products"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="quantity" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="Purchase_Items_fk0" unique="false">
+            <column ascending="true" name="purchase_id"/>
+         </index>
+         <index name="Purchase_Items_fk1" unique="false">
+            <column ascending="true" name="product_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Purchases" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="test_db" column="purchase_id" foreignKey="Purchase_Items_fk0" implied="false" onDeleteCascade="false" table="Purchase_Items"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Purchases_fk0" implied="false" onDeleteCascade="false" table="Users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="purchase_date" nullable="false" remarks="" size="19" type="DATETIME" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="Purchases_fk0" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Sessions" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="test_db" column="id" foreignKey="Sessions_fk0" implied="false" onDeleteCascade="false" table="Users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="0" id="2" name="start_time" nullable="false" remarks="" size="19" type="TIMESTAMP" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="id" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="user_id" unique="true">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table catalog="test_db" name="Users" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="test_db" column="user_id" foreignKey="Baskets_fk0" implied="false" onDeleteCascade="false" table="Baskets"/>
+            <child catalog="test_db" column="user_id" foreignKey="Grades_fk0" implied="false" onDeleteCascade="false" table="Grades"/>
+            <child catalog="test_db" column="user_id" foreignKey="Purchases_fk0" implied="false" onDeleteCascade="false" table="Purchases"/>
+            <child catalog="test_db" column="user_id" foreignKey="Sessions_fk0" implied="false" onDeleteCascade="false" table="Sessions"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="email" nullable="false" remarks="" size="100" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="password" nullable="false" remarks="" size="255" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="name" nullable="false" remarks="" size="50" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="admin" nullable="false" remarks="" size="0" type="BIT" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="email" unique="true">
+            <column ascending="true" name="email"/>
+         </index>
+      </table>
+   </tables>
+</database>

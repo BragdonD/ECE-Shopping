@@ -1,0 +1,8 @@
+Users
+Products
+Baskets
+Purchases
+Sessions
+Basket_Items
+Grades
+Purchase_Items

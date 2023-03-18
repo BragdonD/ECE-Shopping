@@ -77,10 +77,49 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h4><i class="icon fa fa-ban"></i> Missed Relationships!</h4>
-                        <p>No relationships were detected in the schema.</p>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Diagrams</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <h5>By default only columns that are primary keys, foreign keys or indexes are shown.</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#compactDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact</a></li>
+                                    <li class=""><a href="#largeDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="compactDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactRelationshipsDiagram" name="compactRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/Basket_Items.html" target="_top" title="Basket_Items" alt="" coords="423,456,627,632">
+<area shape="rect" id="node2" href="tables/Baskets.html" target="_top" title="Baskets" alt="" coords="199,501,357,624">
+<area shape="rect" id="node4" href="tables/Products.html" target="_top" title="Products" alt="" coords="195,366,361,484">
+<area shape="rect" id="node8" href="tables/Users.html" target="_top" title="Users" alt="" coords="5,150,144,297">
+<area shape="rect" id="node3" href="tables/Grades.html" target="_top" title="Grades" alt="" coords="449,8,600,154">
+<area shape="rect" id="node5" href="tables/Purchase_Items.html" target="_top" title="Purchase_Items" alt="" coords="412,262,637,438">
+<area shape="rect" id="node6" href="tables/Purchases.html" target="_top" title="Purchases" alt="" coords="188,202,368,349">
+<area shape="rect" id="node7" href="tables/Sessions.html" target="_top" title="Sessions" alt="" coords="195,38,361,185">
+</map>
+                                        <a name='diagram'><img id="compactDegreeImg" src="diagrams/summary/relationships.real.compact.png" usemap="#compactRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeRelationshipsDiagram" name="largeRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/Basket_Items.html" target="_top" title="Basket_Items" alt="" coords="423,526,627,708">
+<area shape="rect" id="node2" href="tables/Baskets.html" target="_top" title="Baskets" alt="" coords="199,605,357,728">
+<area shape="rect" id="node4" href="tables/Products.html" target="_top" title="Products" alt="" coords="195,377,361,588">
+<area shape="rect" id="node8" href="tables/Users.html" target="_top" title="Users" alt="" coords="5,153,144,364">
+<area shape="rect" id="node3" href="tables/Grades.html" target="_top" title="Grades" alt="" coords="449,6,600,188">
+<area shape="rect" id="node5" href="tables/Purchase_Items.html" target="_top" title="Purchase_Items" alt="" coords="412,249,637,430">
+<area shape="rect" id="node6" href="tables/Purchases.html" target="_top" title="Purchases" alt="" coords="188,208,368,360">
+<area shape="rect" id="node7" href="tables/Sessions.html" target="_top" title="Sessions" alt="" coords="195,38,361,190">
+</map>
+                                        <a name='diagram'><img id="largeDegreeImg" src="diagrams/summary/relationships.real.large.png" usemap="#largeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
                     </div>
                 </section>
             </div>
