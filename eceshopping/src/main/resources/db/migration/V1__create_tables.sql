@@ -1,4 +1,3 @@
--- migrate up
 CREATE TABLE user (
   id INT PRIMARY KEY,
   username VARCHAR(50) NOT NULL,
@@ -6,6 +5,3 @@ CREATE TABLE user (
   email VARCHAR(100) NOT NULL,
   created_at DATETIME NOT NULL
 );
-
--- migrate down
-DROP TABLE user;
