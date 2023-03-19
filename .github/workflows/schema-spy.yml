@@ -1,0 +1,61 @@
+name: Generate Schema Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DB_DATABASE: test_db
+  DB_USER: test
+  DB_PASSWORD: test
+
+jobs:
+  generate-schema:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - uses: ankane/setup-mysql@v1
+        with:
+          mysql-version: 5.7
+          database: ${{ env.DB_DATABASE }}
+          
+      - name: Creating new user
+        run: |
+          sudo mysql -e "CREATE USER '${{ env.DB_USER }}'@'localhost' IDENTIFIED BY '${{ env.DB_PASSWORD }}'"
+          sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${{ env.DB_USER }}'@'localhost'"
+          sudo mysql -e "FLUSH PRIVILEGES"
+      - name: Run migrations
+        run: mysql ${{ env.DB_DATABASE }} < eceshopping/src/main/resources/db/migration/*.sql
+      
+      - name: Display Database
+        run: mysql -e "USE test_db; SHOW TABLES;"
+        
+      - name: Install MySql Java Connector 
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y default-jdk
+            wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.6.tar.gz
+            tar xzf mysql-connector-java-5.1.6.tar.gz
+            sudo mkdir -p /mysql
+            sudo mv mysql-connector-java-5.1.6/mysql-connector-java-5.1.6-bin.jar /mysql/
+        shell: bash
+        
+      - name: Install Schemaspy
+        run: |
+          sudo apt-get update && sudo apt-get install -y graphviz
+          wget https://github.com/schemaspy/schemaspy/releases/download/v6.1.0/schemaspy-6.1.0.jar -P schemaspy/
+  
+      - name: Generate schema documentation
+        run: |
+          java -jar schemaspy/schemaspy-6.1.0.jar -t mysql -host localhost -port 3306 -db ${{ env.DB_DATABASE }} -u ${{ env.DB_USER }} -p ${{ env.DB_PASSWORD }} -schemas ${{ env.DB_DATABASE }} -o output
+      
+      - name: Deploy gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          folder: output
+          branch: gh-pages
