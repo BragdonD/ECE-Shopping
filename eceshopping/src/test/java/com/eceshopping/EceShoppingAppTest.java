@@ -5,10 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class EceShoppingApp extends Application {
+public class EceShoppingAppTest extends Application {
 
     @Override
-    public void start(Stage s) {
+    public void start(@SuppressWarnings("exports") Stage s) {
         StackPane root = new StackPane();
         Scene scene = new Scene(root, 400, 400);
         s.setTitle("My JavaFX App");
