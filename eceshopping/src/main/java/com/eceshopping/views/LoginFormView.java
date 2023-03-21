@@ -64,7 +64,7 @@ public class LoginFormView extends GridPane {
         this.actiontarget = new Text();
         this.add(actiontarget, 1, 6);
 
-        this.hyperlink = new Hyperlink("Go to Eclipse home page");
+        this.hyperlink = new Hyperlink("Not registered yet ? Click here to register !");
         this.add(hyperlink, 1, 8);
     }
 
