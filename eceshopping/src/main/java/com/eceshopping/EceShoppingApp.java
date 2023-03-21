@@ -7,11 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+/**
+ * JavaFX App class for eceshopping project 
+ */
 public class EceShoppingApp extends Application {
     private Router router;
 
     @Override
-    public void start(Stage s) {
+    public void start(@SuppressWarnings("exports") Stage s) {
         // Create the scene
         StackPane root = new StackPane();
         Scene scene = new Scene(root, 400, 400);

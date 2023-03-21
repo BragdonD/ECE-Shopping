@@ -2,6 +2,9 @@ package com.eceshopping.utils;
 
 import com.eceshopping.controllers.RouterController;
 
+/**
+ * Singleton class for the router of the application
+ */
 public class Router {
     RouterController routerController;
     private static Router instance;
