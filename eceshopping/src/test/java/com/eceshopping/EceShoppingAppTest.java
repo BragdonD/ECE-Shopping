@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class EceShoppingAppTest extends Application {
 
     @Override
-    public void start(@SuppressWarnings("exports") Stage s) {
+    public void start(Stage s) {
         StackPane root = new StackPane();
         Scene scene = new Scene(root, 400, 400);
         s.setTitle("My JavaFX App");
