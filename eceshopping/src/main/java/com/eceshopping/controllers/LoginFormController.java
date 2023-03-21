@@ -28,6 +28,9 @@ public class LoginFormController {
                 this.view.getUserTextField().setStyle(textFieldErrorStyle);
             }
         });
+        this.view.getHyperlink().setOnAction(e -> {
+            //this.view.getHostServices().showDocument("https://eclipse.org");
+        });
     }
 
 }

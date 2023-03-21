@@ -3,6 +3,7 @@ package com.eceshopping.views;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -25,6 +26,7 @@ public class LoginFormView extends GridPane {
     private Button loginButton;
     private HBox hbBtn;
     private Text actiontarget;
+    private Hyperlink hyperlink;
 
     /**
      * Default Constructor for the LoginFormView class that creates the login form
@@ -61,7 +63,26 @@ public class LoginFormView extends GridPane {
 
         this.actiontarget = new Text();
         this.add(actiontarget, 1, 6);
+
+        this.hyperlink = new Hyperlink("Go to Eclipse home page");
+        this.add(hyperlink, 1, 8);
     }
+
+    /**
+     * Get the hyperlink for the login form view to the register form view.
+     * @return the action target for the login form view
+     */
+    public Hyperlink getHyperlink() {
+        return hyperlink;
+    }
+    /**
+     * Get the action target for the hyperlink.
+     * @param hyperlink the action target for the hyperlink
+     */
+    public void setHyperlink(Hyperlink hyperlink) {
+        this.hyperlink = hyperlink;
+    }
+
 
     /**
      * gets the scenetitle for the login form view. 
@@ -266,3 +287,4 @@ public class LoginFormView extends GridPane {
     }
 
 }
+
