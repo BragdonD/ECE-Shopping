@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class EceShoppingApp extends Application {
 
     @Override
-    public void start(@SuppressWarnings("exports") Stage s) {
+    public void start(Stage s) {
         LoginFormView view = new LoginFormView();
         new LoginFormController(view);
         Scene scene = new Scene(view, 400, 400);
