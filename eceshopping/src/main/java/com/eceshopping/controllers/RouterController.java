@@ -7,14 +7,17 @@ public class RouterController {
     private Stage mainStage;
 
     public RouterController() {
-        mainStage = new Stage();
+
     }
 
     public void setMainStage(Stage stage) {
         this.mainStage = stage;
     }
 
-    public void setScene(Scene scene) {
+    public void setScene(Scene scene) throws IllegalStateException {
+        if(mainStage == null) {
+            throw new IllegalStateException("Main stage is not set");
+        }
         mainStage.setScene(scene);
     }
 
