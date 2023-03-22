@@ -3,6 +3,7 @@ package com.eceshopping.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.scene.layout.StackPane;
 
 import com.eceshopping.controllers.Controller;
 import com.eceshopping.controllers.RouterController;
@@ -17,6 +18,8 @@ public class Router {
     private ArrayList<String> routes;
     private HashMap<String, View> views;
     private HashMap<String, Controller> controllers;
+    private StackPane root;
+    private String current;
     
     /**
      * Private constructor for the router.
@@ -26,6 +29,7 @@ public class Router {
         routes = new ArrayList<String>();
         views = new HashMap<String, View>();
         controllers = new HashMap<String, Controller>();
+        root = new StackPane();
     }
 
     /**
@@ -78,7 +82,12 @@ public class Router {
         if(!routes.contains(route)) {
             throw new IllegalArgumentException("Route does not exist");
         }
-        routerController.setScene(views.get(route).getScene());
+        View view = views.get(route);
+        if(current != null) {
+            root.getChildren().remove(views.get(current).getRootNode());
+        }
+        root.getChildren().add(view.getRootNode());
+        current = route;
     }
 
     /**
@@ -87,6 +96,14 @@ public class Router {
      */
     public ArrayList<String> getRoutes() {
         return routes;
+    }
+
+    /**
+     * Get the root pane of the application.
+     * @return the root pane of the application.
+     */
+    public StackPane getRootPane() {
+        return root;
     }
 
     /**

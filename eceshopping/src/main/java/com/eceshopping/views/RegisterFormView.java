@@ -3,6 +3,8 @@ package com.eceshopping.views;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -39,7 +41,6 @@ public class RegisterFormView extends GridPane implements View{
      * view for the user.
      */
     public RegisterFormView() {
-
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(10);
@@ -255,4 +256,8 @@ public class RegisterFormView extends GridPane implements View{
         this.hyperlink = hyperlink;
     }
 
+    @Override
+    public Node getRootNode() {
+        return this;
+    }
 }

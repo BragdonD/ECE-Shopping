@@ -25,6 +25,13 @@ public class RouterController {
     }
 
     /**
+     * Show the main stage.
+     */
+    public void show() {
+        mainStage.show();
+    }
+
+    /**
      * Set the scene of the main stage.
      * @param scene the scene to set.
      * @throws IllegalStateException if the main stage is not set.

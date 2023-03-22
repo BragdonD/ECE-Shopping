@@ -1,5 +1,6 @@
 package com.eceshopping.views;
 
+import javafx.scene.Node;
 import javafx.scene.Scene;
 
 /**
@@ -7,6 +8,7 @@ import javafx.scene.Scene;
  */
 public interface View {
     public Scene getScene();
+    public Node getRootNode();
 }
 
 
