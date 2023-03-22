@@ -4,36 +4,40 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Router controller class for the application
+ * Controller for the router of the application. 
  */
 public class RouterController {
     private Stage mainStage;
 
     /**
-     * Constructor for the class RouterController
+     * Constructor for the router controller.
      */
     public RouterController() {
-        mainStage = new Stage();
+
     }
 
     /**
-     * Set the main stage of the application
-     * @param stage Stage instance
+     * Set the main stage of the application.
+     * @param stage the main stage of the application.
      */
     public void setMainStage(Stage stage) {
         this.mainStage = stage;
     }
 
     /**
-     * Get the main stage of the application
-     * @return Stage instance
+     * Set the scene of the main stage.
+     * @param scene the scene to set.
+     * @throws IllegalStateException if the main stage is not set.
      */
-    public void setScene(Scene scene) {
+    public void setScene(Scene scene) throws IllegalStateException {
+        if(mainStage == null) {
+            throw new IllegalStateException("Main stage is not set");
+        }
         mainStage.setScene(scene);
     }
 
     /**
-     * Close the main stage of the application
+     * Close the main stage.
      */
     public void close() {
         mainStage.close();

@@ -18,16 +18,18 @@ public class EceShoppingApp extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
-        RegisterFormView view = new RegisterFormView();
-        new RegisterFormController(view);
+        LoginFormView loginView = new LoginFormView();
         /*new LoginFormController(view);*/
-        Scene scene = new Scene(view, 400, 400);
+        Scene scene = new Scene(loginView, 400, 400);
         s.setTitle("My JavaFX App");
         s.setScene(scene);
         s.show();
 
         // Set the main stage inside the router controller
         this.router = Router.getInstance(); 
+        RegisterFormView registerView = new RegisterFormView();
+        this.router.addRoute("/register", registerView, new RegisterFormController(registerView));
+        this.router.addRoute("/login", loginView, new LoginFormController(loginView));
         router.getRouterController().setMainStage(s);
     }
 

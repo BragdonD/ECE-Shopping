@@ -5,12 +5,12 @@ import com.eceshopping.utils.Router;
 import com.eceshopping.views.LoginFormView;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+
 
 /**
  * This class is the controller of the login form view.
  **/
-public class LoginFormController {
+public class LoginFormController implements Controller {
     private final LoginFormView view;
     private final String textFieldErrorStyle = "-fx-border-radius: 4px; -fx-background-color: wheat; -fx-border-color: red; -fx-border-width: 2px";
 
@@ -21,7 +21,7 @@ public class LoginFormController {
      **/
     public LoginFormController(LoginFormView view) {
         this.view = view;
-        
+
         this.view.getButton().setOnAction(e -> {
             System.out.println("Congrats ! You have successfully logged in");
         });
@@ -35,9 +35,7 @@ public class LoginFormController {
         });
 
         this.view.getHyperlink().setOnAction(e -> {
-            Pane registerPane = new Pane(); // Need to be changed with the register view
-            Scene registerScene = new Scene(registerPane, 400, 400); // Need to be changed with the register controller
-            Router.getInstance().getRouterController().setScene(registerScene);
+            Router.getInstance().navigateTo("/register");
         });
     }
 

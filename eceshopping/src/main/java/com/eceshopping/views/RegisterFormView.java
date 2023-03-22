@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 /**
  * LoginFormView class that creates the login form view for the user.
  */
-public class RegisterFormView extends GridPane {
+public class RegisterFormView extends GridPane implements View{
 
     private Text scenetitle;
     private Label name;

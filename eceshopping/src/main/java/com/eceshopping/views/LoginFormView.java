@@ -2,6 +2,7 @@ package com.eceshopping.views;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -16,7 +17,7 @@ import javafx.scene.text.Text;
 /**
  * LoginFormView class that creates the login form view for the user.
  */
-public class LoginFormView extends GridPane {
+public class LoginFormView extends GridPane implements View {
 
     private Text scenetitle;
     private Label userName;
@@ -67,6 +68,9 @@ public class LoginFormView extends GridPane {
         this.hyperlink = new Hyperlink("Not registered yet ? Click here to register !");
         this.add(hyperlink, 1, 8);
     }
+
+
+
 
     /**
      * Get the hyperlink for the login form view to the register form view.
