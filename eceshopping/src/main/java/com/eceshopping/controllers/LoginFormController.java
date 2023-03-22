@@ -41,4 +41,12 @@ public class LoginFormController {
         });
     }
 
+    /**
+     * Get the scene of the login form view.
+     * 
+     * @return the scene of the login form view
+     **/
+    public Scene getScene() {
+        return this.view.getScene();
+    }
 }

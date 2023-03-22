@@ -39,7 +39,7 @@ public class LoginFormView extends GridPane {
         this.setVgap(10);
         this.setPadding(new Insets(25, 25, 25, 25));
 
-        this.scenetitle = new Text("Welcome to Ece-Shopping");
+        this.scenetitle = new Text("Welcome Back to Ece-Shopping");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         this.add(scenetitle, 0, 0, 2, 1);
 
