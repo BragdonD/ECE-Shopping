@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * UserModel class is used to create a user object that will be used to store
@@ -18,15 +20,20 @@ public class UserModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     @Column(name = "name")
     private String username;
 
+    @NotBlank
     @Column(name = "password")
     private String password;
 
-    @Column(name = "email")
+    @NotBlank
+    @Email
+    @Column(name = "email", unique = true)
     private String email;
 
+    @NotBlank
     @Column(name = "admin")
     private boolean admin;
 
@@ -209,7 +216,7 @@ public class UserModel {
      * Returns a string representation of the user object.
      * 
      * @return A string containing the user Id, username, password, email, and admin
-     *          status.
+     *         status.
      */
     @Override
     public String toString() {
