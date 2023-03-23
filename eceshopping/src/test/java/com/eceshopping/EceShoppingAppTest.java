@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class EceShoppingApp extends Application {
+public class EceShoppingAppTest extends Application {
 
     @Override
     public void start(Stage s) {
