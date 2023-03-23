@@ -146,7 +146,7 @@ public class UserDto {
     }
 
     /**
-     * Sets the id of the user. This method is used to chain 
+     * Sets the id of the user. This method is used to chain
      * the id setter method.
      * 
      * @param id The id of the user
@@ -156,9 +156,9 @@ public class UserDto {
         setId(id);
         return this;
     }
-    
+
     /**
-     * Sets the username of the user. This method is used to chain 
+     * Sets the username of the user. This method is used to chain
      * the username setter method.
      * 
      * @param username The username of the user
@@ -170,7 +170,7 @@ public class UserDto {
     }
 
     /**
-     * Sets the password of the user. This method is used to chain 
+     * Sets the password of the user. This method is used to chain
      * the password setter method.
      * 
      * @param password The password of the user
@@ -182,7 +182,7 @@ public class UserDto {
     }
 
     /**
-     * Sets the email of the user. This method is used to chain 
+     * Sets the email of the user. This method is used to chain
      * the email setter method.
      * 
      * @param email The email of the user
@@ -194,7 +194,7 @@ public class UserDto {
     }
 
     /**
-     * Sets the admin status of the user. This method is used to chain 
+     * Sets the admin status of the user. This method is used to chain
      * the admin setter method.
      * 
      * @param admin The admin status of the user
