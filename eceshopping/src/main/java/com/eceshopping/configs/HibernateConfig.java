@@ -19,13 +19,37 @@ public class HibernateConfig {
      * Default constructor for HibernateConfig class. It creates a
      * SessionFactory object that is used to create a Session object.
      */
-    private HibernateConfig() {
-        hibernateProperties = new Properties();
-        hibernateProperties.setProperty("dialect", "org.hibernate.dialect.PostgresSQL");
-        hibernateProperties.setProperty("hibernate.connection.username", "root");
-        hibernateProperties.setProperty("hibernate.connection.password", "root");
-        hibernateProperties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+    private HibernateConfig(Properties properties) {
+        hibernateProperties = properties;
         sessionFactory = new Configuration().addProperties(hibernateProperties).buildSessionFactory();
+    }
+
+    /**
+     * Gets the Hibernate properties for production environment.
+     * 
+     * @return The Hibernate properties for production environment.
+     */
+    private static Properties getProductionProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.setProperty("hibernate.connection.username", "root");
+        properties.setProperty("hibernate.connection.password", "root");
+        properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+        return properties;
+    }
+
+    /**
+     * Gets the Hibernate properties for test environment.
+     * 
+     * @return The Hibernate properties for test environment.
+     */
+    private static Properties getTestProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
+        properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
+        properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/test/resources/db/test_db.db");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        return properties;
     }
 
     /**
@@ -35,7 +59,21 @@ public class HibernateConfig {
      */
     public static HibernateConfig getInstance() {
         if (instance == null) {
-            instance = new HibernateConfig();
+            Properties properties = getProductionProperties();
+            instance = new HibernateConfig(properties);
+        }
+        return instance;
+    }
+
+    /**
+     * Gets the HibernateConfig instance for test environment.
+     * 
+     * @return Return the HibernateConfig instance for test environment.
+     */
+    public static HibernateConfig getTestInstance() {
+        if (instance == null) {
+            Properties testProperties = getTestProperties();
+            instance = new HibernateConfig(testProperties);
         }
         return instance;
     }
