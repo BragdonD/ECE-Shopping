@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -15,6 +17,11 @@ import jakarta.validation.constraints.NotBlank;
  */
 @Entity
 @Table(name = "Users")
+@NamedQueries({
+        @NamedQuery(name = "UserModel.findById", query = "SELECT * FROM UserModel WHERE id = :id"),
+        @NamedQuery(name = "UserModel.findByEmail", query = "SELECT * FROM UserModel WHERE email = :email"),
+        @NamedQuery(name = "UserModel.findAll", query = "SELECT * FROM UserModel"),
+})
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
