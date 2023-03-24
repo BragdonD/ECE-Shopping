@@ -23,7 +23,7 @@ public class LoginFormView extends GridPane implements View {
     private Label userName;
     private Label password;
     private TextField userTextField;
-    private PasswordField pwBox;
+    private PasswordField PasswordTextField;
     private Button loginButton;
     private HBox hbBtn;
     private Text actiontarget;
@@ -53,8 +53,8 @@ public class LoginFormView extends GridPane implements View {
         this.userTextField = new TextField();
         this.add(userTextField, 1, 1);
 
-        this.pwBox = new PasswordField();
-        this.add(pwBox, 1, 2);
+        this.PasswordTextField = new PasswordField();
+        this.add(PasswordTextField, 1, 2);
 
         this.loginButton = new Button("Sign in");
         this.hbBtn = new HBox(10);
@@ -156,16 +156,16 @@ public class LoginFormView extends GridPane implements View {
      * Get the password field for the login form view.
      * @return the password field for the login form view 
      */
-    public PasswordField getPwBox() {
-        return this.pwBox;
+    public PasswordField getPasswordTextField() {
+        return this.PasswordTextField;
     }
     
     /**
      * Set the password field for the login form view.
-     * @param pwBox the password field to set 
+     * @param PasswordTextField the password field to set 
      */
-    public void setPwBox(PasswordField pwBox) {
-        this.pwBox = pwBox;
+    public void setPasswordTextField(PasswordField PasswordTextField) {
+        this.PasswordTextField = PasswordTextField;
     }
 
     /**
@@ -258,11 +258,11 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the password field for the login form view.
-     * @param pwBox the password field to set
+     * @param PasswordTextField the password field to set
      * @return Password field for the login form view 
      */
-    public LoginFormView pwBox(PasswordField pwBox) {
-        setPwBox(pwBox);
+    public LoginFormView PasswordTextField(PasswordField PasswordTextFieldPasswordTextFieldPasswordTextField) {
+        setPasswordTextField(PasswordTextField);
         return this;
     }
     /**
