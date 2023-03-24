@@ -19,8 +19,15 @@ public class HibernateConfig {
      * Default constructor for HibernateConfig class. It creates a
      * SessionFactory object that is used to create a Session object.
      */
-    private HibernateConfig(Properties properties) {
-        hibernateProperties = properties;
+    private HibernateConfig() {
+        String activeProfile = System.getProperty("app.profiles.active", "dev");
+        if (activeProfile.equals("dev")) {
+            hibernateProperties = getDevelopmentProperties();
+        } else if (activeProfile.equals("test")) {
+            hibernateProperties = getTestProperties();
+        } else {
+            hibernateProperties = getProductionProperties();  
+        }
         sessionFactory = new Configuration().addProperties(hibernateProperties).buildSessionFactory();
     }
 
@@ -68,21 +75,7 @@ public class HibernateConfig {
      */
     public static HibernateConfig getInstance() {
         if (instance == null) {
-            Properties properties = getProductionProperties();
-            instance = new HibernateConfig(properties);
-        }
-        return instance;
-    }
-
-    /**
-     * Gets the HibernateConfig instance for test environment.
-     * 
-     * @return Return the HibernateConfig instance for test environment.
-     */
-    public static HibernateConfig getTestInstance() {
-        if (instance == null) {
-            Properties testProperties = getTestProperties();
-            instance = new HibernateConfig(testProperties);
+            instance = new HibernateConfig();
         }
         return instance;
     }

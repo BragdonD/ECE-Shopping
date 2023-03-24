@@ -71,28 +71,28 @@ public class LoginFormView extends GridPane implements View {
         this.add(hyperlink, 1, 8);
     }
 
-
-
-
     /**
      * Get the hyperlink for the login form view to the register form view.
+     * 
      * @return the action target for the login form view
      */
     public Hyperlink getHyperlink() {
         return hyperlink;
     }
+
     /**
      * Get the action target for the hyperlink.
+     * 
      * @param hyperlink the action target for the hyperlink
      */
     public void setHyperlink(Hyperlink hyperlink) {
         this.hyperlink = hyperlink;
     }
 
-
     /**
-     * gets the scenetitle for the login form view. 
-     * @return the scenetitle for the login form view 
+     * gets the scenetitle for the login form view.
+     * 
+     * @return the scenetitle for the login form view
      */
     public Text getScenetitle() {
         return this.scenetitle;
@@ -100,7 +100,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Sets the scenetitle for the login form view.
-     * @param scenetitle the scenetitle to set 
+     * 
+     * @param scenetitle the scenetitle to set
      */
     public void setScenetitle(Text scenetitle) {
         this.scenetitle = scenetitle;
@@ -108,7 +109,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the user name label for the login form view.
-     * @return the user name label for the login form view 
+     * 
+     * @return the user name label for the login form view
      */
     public Label getUserName() {
         return this.userName;
@@ -116,7 +118,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the user name label for the login form view.
-     * @param userName the user name label to set 
+     * 
+     * @param userName the user name label to set
      */
     public void setUserName(Label userName) {
         this.userName = userName;
@@ -124,6 +127,7 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the password label for the login form view.
+     * 
      * @return the password label for the login form view
      */
     public Label getPassword() {
@@ -132,7 +136,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the password label for the login form view.
-     * @param pw the password label to set 
+     * 
+     * @param pw the password label to set
      */
     public void setPassword(Label password) {
         this.password = password;
@@ -140,7 +145,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the user text field for the login form view.
-     * @return the user text field for the login form view 
+     * 
+     * @return the user text field for the login form view
      */
     public TextField getUserTextField() {
         return this.userTextField;
@@ -148,7 +154,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the user text field for the login form view.
-     * @param userTextField the user text field to set 
+     * 
+     * @param userTextField the user text field to set
      */
     public void setUserTextField(TextField userTextField) {
         this.userTextField = userTextField;
@@ -156,15 +163,17 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the password field for the login form view.
-     * @return the password field for the login form view 
+     * 
+     * @return the password field for the login form view
      */
     public PasswordField getPasswordTextField() {
         return this.PasswordTextField;
     }
-    
+
     /**
      * Set the password field for the login form view.
-     * @param PasswordTextField the password field to set 
+     * 
+     * @param PasswordTextField the password field to set
      */
     public void setPasswordTextField(PasswordField PasswordTextField) {
         this.PasswordTextField = PasswordTextField;
@@ -172,7 +181,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the button for the login form view.
-     * @return the button for the login form view 
+     * 
+     * @return the button for the login form view
      */
     public Button getButton() {
         return this.loginButton;
@@ -180,7 +190,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the button for the login form view.
-     * @param btn the button to set 
+     * 
+     * @param btn the button to set
      */
     public void setButton(Button loginButton) {
         this.loginButton = loginButton;
@@ -188,7 +199,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the horizontal box for the login form view.
-     * @return the horizontal box for the login form view 
+     * 
+     * @return the horizontal box for the login form view
      */
     public HBox getHbBtn() {
         return this.hbBtn;
@@ -196,7 +208,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the horizontal box for the login form view.
-     * @param hbBtn the horizontal box to set 
+     * 
+     * @param hbBtn the horizontal box to set
      */
     public void setHbBtn(HBox hbBtn) {
         this.hbBtn = hbBtn;
@@ -204,7 +217,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Get the action target for the login form view.
-     * @return the action target for the login form view 
+     * 
+     * @return the action target for the login form view
      */
     public Text getActiontarget() {
         return this.actiontarget;
@@ -212,7 +226,8 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the action target for the login form view.
-     * @param actiontarget the action target to set 
+     * 
+     * @param actiontarget the action target to set
      */
     public void setActiontarget(Text actiontarget) {
         this.actiontarget = actiontarget;
@@ -220,8 +235,9 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the scenetitle for the login form view.
+     * 
      * @param scenetitle the scenetitle to set
-     * @return Scenetitle for the login form view 
+     * @return Scenetitle for the login form view
      */
     public LoginFormView scenetitle(Text scenetitle) {
         setScenetitle(scenetitle);
@@ -230,8 +246,9 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the user name label for the login form view.
+     * 
      * @param userName the user name label to set
-     * @return User name label for the login form view 
+     * @return User name label for the login form view
      */
     public LoginFormView userName(Label userName) {
         setUserName(userName);
@@ -240,8 +257,9 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the password label for the login form view.
+     * 
      * @param pw the password label to set
-     * @return Password label for the login form view 
+     * @return Password label for the login form view
      */
     public LoginFormView password(Label password) {
         this.setPassword(password);
@@ -250,8 +268,9 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the user text field for the login form view.
+     * 
      * @param userTextField the user text field to set
-     * @return User text field for the login form view 
+     * @return User text field for the login form view
      */
     public LoginFormView userTextField(TextField userTextField) {
         setUserTextField(userTextField);
@@ -260,13 +279,15 @@ public class LoginFormView extends GridPane implements View {
 
     /**
      * Set the password field for the login form view.
+     * 
      * @param PasswordTextField the password field to set
-     * @return Password field for the login form view 
+     * @return Password field for the login form view
      */
     public LoginFormView PasswordTextField(PasswordField PasswordTextFieldPasswordTextFieldPasswordTextField) {
         setPasswordTextField(PasswordTextField);
         return this;
     }
+
     /**
      * @param btn the btn to set
      * @return button for the login form view
@@ -284,8 +305,9 @@ public class LoginFormView extends GridPane implements View {
         setHbBtn(hbBtn);
         return this;
     }
+
     /**
-     * @param actiontarget the actiontarget to set 
+     * @param actiontarget the actiontarget to set
      */
     public LoginFormView actiontarget(Text actiontarget) {
         setActiontarget(actiontarget);
@@ -297,4 +319,3 @@ public class LoginFormView extends GridPane implements View {
         return this;
     }
 }
-

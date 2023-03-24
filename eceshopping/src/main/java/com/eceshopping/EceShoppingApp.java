@@ -34,11 +34,10 @@ public class EceShoppingApp extends Application {
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();
         this.router.navigateTo("/login");
-
-        FlywayConfig.getInstance();
     }
 
     public static void main(String[] args) {
+        FlywayConfig.getInstance();
         launch(args);
     }
 
