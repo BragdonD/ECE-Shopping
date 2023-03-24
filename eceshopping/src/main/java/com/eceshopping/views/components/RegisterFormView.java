@@ -1,5 +1,7 @@
 
-package com.eceshopping.views;
+package com.eceshopping.views.components;
+
+import com.eceshopping.views.View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

@@ -5,5 +5,7 @@ module com.eceshopping {
     requires jakarta.persistence;
     requires jakarta.validation;
     requires bcrypt;
+    requires org.flywaydb.core;
     exports com.eceshopping;
+    opens db.migration;
 }

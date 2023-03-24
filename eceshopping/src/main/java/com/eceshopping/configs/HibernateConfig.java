@@ -38,6 +38,15 @@ public class HibernateConfig {
         return properties;
     }
 
+    public static Properties getDevelopmentProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
+        properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
+        properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/main/resources/db/test_db.db");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
+        return properties;
+    }
+
     /**
      * Gets the Hibernate properties for test environment.
      * 
@@ -48,7 +57,7 @@ public class HibernateConfig {
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/test/resources/db/test_db.db");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
 

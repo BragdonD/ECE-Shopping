@@ -2,7 +2,7 @@ package com.eceshopping.controllers;
 
 import com.eceshopping.utils.EmailValidator;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.RegisterFormView;
+import com.eceshopping.views.components.RegisterFormView;
 
 
 /**

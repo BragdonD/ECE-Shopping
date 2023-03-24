@@ -5,8 +5,8 @@ import com.eceshopping.utils.EmailValidator;
 import com.eceshopping.utils.PasswordValidator;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.StringSanitizer;
-import com.eceshopping.views.LoginFormView;
 import com.eceshopping.views.components.LoadingCircle;
+import com.eceshopping.views.components.LoginFormView;
 
 import javafx.concurrent.Task;
 import javafx.geometry.Pos;
@@ -17,6 +17,9 @@ import javafx.scene.layout.StackPane;
  * This class is the controller of the login form view.
  **/
 public class LoginFormController implements Controller {
+    public final static String LOADING_TEXT_STRING = "Loading...";
+    public final static String LOGIN_TEXT_STRING = "Login";
+
     private final LoginFormView view;
     private final String textFieldErrorStyle = "-fx-border-radius: 4px; -fx-background-color: wheat; -fx-border-color: red; -fx-border-width: 1px";
 
@@ -70,6 +73,9 @@ public class LoginFormController implements Controller {
 
         // Hyperlink listener to navigate to the register form
         this.view.getHyperlink().setOnAction(e -> {
+            if(isLoading) {
+                return;
+            }
             Router.getInstance().navigateTo("/register");
         });
     }
@@ -107,14 +113,14 @@ public class LoginFormController implements Controller {
         stackPane.setAlignment(Pos.CENTER);
         spinner.start();
         this.view.getButton().setMinWidth(120);
-        this.view.getButton().setText("Loading...");
+        this.view.getButton().setText(LOADING_TEXT_STRING);
         this.view.getButton().setGraphic(stackPane);
         this.view.getButton().setDisable(true);
     }
 
     private void removeLoadingAnimation() {
         this.view.getButton().setMinWidth(0);
-        this.view.getButton().setText("Sign in");
+        this.view.getButton().setText(LOGIN_TEXT_STRING);
         this.view.getButton().setGraphic(null);
         this.view.getButton().setDisable(false);
     }
