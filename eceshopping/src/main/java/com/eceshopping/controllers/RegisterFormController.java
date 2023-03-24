@@ -1,6 +1,6 @@
 package com.eceshopping.controllers;
 
-import com.eceshopping.utils.EmailValidation;
+import com.eceshopping.utils.EmailValidator;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.RegisterFormView;
 
@@ -11,6 +11,9 @@ import com.eceshopping.views.RegisterFormView;
 public class RegisterFormController implements Controller {
     private final RegisterFormView view;
     private final String textFieldErrorStyle = "-fx-border-radius: 4px; -fx-background-color: wheat; -fx-border-color: red; -fx-border-width: 2px";
+
+    private String email;
+    private String password;
 
     /**
      * Constructor of the class.
@@ -25,7 +28,7 @@ public class RegisterFormController implements Controller {
         });
 
         this.view.getEmailField().textProperty().addListener((observable, oldValue, newValue) -> {
-            if (EmailValidation.isValid(newValue)) {
+            if (EmailValidator.validate(newValue)) {
                 this.view.getEmailField().setStyle("-fx-border-color: green");
             } else {
                 this.view.getEmailField().setStyle(textFieldErrorStyle);

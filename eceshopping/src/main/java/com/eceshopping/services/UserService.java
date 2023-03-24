@@ -9,6 +9,7 @@ import com.eceshopping.utils.PasswordValidator;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import javafx.concurrent.Task;
 
 /**
  * UserService class is used to handle business logic for the UserDto and
@@ -48,13 +49,33 @@ public class UserService {
     }
 
     /**
-     * This method is used to get a user by their email.
+     * This method is used to get a user by email. It returns a Task object that can
+     * be used to get the user asynchronously.
      * 
      * @param email The email of the user
-     * @return The user with the specified email
+     * @return A Task object that can be used to get the user asynchronously
      */
-    public UserDto getUserByEmail(String email) throws EntityNotFoundException {
-        return UserConverter.convertToDto(this.userDao.getUserByEmail(email));
+    public Task<UserDto> getUserByEmailAsync(String email) {
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                return UserConverter.convertToDto(userDao.getUserByEmail(email));
+            }
+        };
+        new Thread(task).start();
+        return task;
+    }
+
+    /**
+     * This method is used to get a user by email. It returns the user
+     * synchronously.
+     * 
+     * @param email The email of the user
+     * @return The user
+     * @throws EntityNotFoundException If the user does not exist
+     */
+    public UserDto getUserByEmailSync(String email) throws EntityNotFoundException {
+        return UserConverter.convertToDto(userDao.getUserByEmail(email));
     }
 
     /**

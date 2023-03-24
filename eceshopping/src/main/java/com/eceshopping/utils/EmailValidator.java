@@ -12,7 +12,7 @@ public class EmailValidator {
      * @param email the email address to validate 
      * @return true if the email is valid. Otherwise, it returns false.
      */
-    public static boolean isValid(String email) {
+    public static boolean validate(String email) {
         return email.matches(EMAIL_REGEX);
     }
 }
