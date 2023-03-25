@@ -9,6 +9,7 @@ import com.eceshopping.utils.PasswordValidator;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import javafx.concurrent.Task;
 
 /**
  * UserService class is used to handle business logic for the UserDto and
@@ -48,34 +49,70 @@ public class UserService {
     }
 
     /**
-     * This method is used to get a user by their email.
+     * This method is used to get a user by email. It returns a Task object that can
+     * be used to get the user asynchronously.
      * 
      * @param email The email of the user
-     * @return The user with the specified email
+     * @return A Task object that can be used to get the user asynchronously
      */
-    public UserDto getUserByEmail(String email) throws EntityNotFoundException {
-        return UserConverter.convertToDto(this.userDao.getUserByEmail(email));
+    public Task<UserDto> getUserByEmailAsync(String email) {
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                return UserConverter.convertToDto(userDao.getUserByEmail(email));
+            }
+        };
+        return task;
     }
 
     /**
-     * This method is used to save a user to the database.
+     * This method is used to get a user by email. It returns the user
+     * synchronously.
+     * 
+     * @param email The email of the user
+     * @return The user
+     * @throws EntityNotFoundException If the user does not exist
+     */
+    public UserDto getUserByEmailSync(String email) throws EntityNotFoundException {
+        return UserConverter.convertToDto(userDao.getUserByEmail(email));
+    }
+
+    /**
+     * This method is used to save a user asynchronously to the database.
      * 
      * @param userDto The user to be saved.
      * @throws IllegalArgumentException If the password is not valid or the email is
      *                                  already in use.
      */
-    public void saveUser(UserDto userDto)
-            throws IllegalArgumentException {
+    public Task<UserDto> saveUserAsync(UserDto userDto) throws EntityExistsException {
         if (!PasswordValidator.validate(userDto.getPassword())) {
             throw new IllegalArgumentException("Password is not valid.");
         }
-        if (this.userDao.getUserByEmail(userDto.getEmail()) != null) {
-            throw new IllegalArgumentException("Email is already in use.");
+
+        boolean emailExists = true;
+
+        try {
+            this.userDao.getUserByEmail(userDto.getEmail());
+        } catch (EntityNotFoundException e) {
+            emailExists = false;
         }
+
+        if (emailExists) {
+            throw new EntityExistsException("Email is already in use.");
+        }
+
         String hashPassword = encryptPassword(userDto.getPassword());
         userDto.setPassword(hashPassword);
-        UserModel user = UserConverter.convertToModel(userDto);
-        this.userDao.save(user);
+
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                UserModel user = UserConverter.convertToModel(userDto);
+                userDao.save(user);
+                return UserConverter.convertToDto(user);
+            }
+        };
+        return task;
     }
 
     /**
@@ -154,7 +191,8 @@ public class UserService {
 
     /**
      * This method is used to delete a user. It checks if the user exists. If the
-     * user does not exist, an EntityNotFoundException is thrown. If the user exists,
+     * user does not exist, an EntityNotFoundException is thrown. If the user
+     * exists,
      * the user is deleted.
      * 
      * @param id The id of the user

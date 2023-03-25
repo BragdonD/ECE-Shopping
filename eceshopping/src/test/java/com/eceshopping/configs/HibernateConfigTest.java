@@ -8,7 +8,7 @@ public class HibernateConfigTest {
 
     @Test
     public void testGetSessionFactory() {
-        HibernateConfig hibernateConfig = HibernateConfig.getTestInstance();
+        HibernateConfig hibernateConfig = HibernateConfig.getInstance();
         SessionFactory sessionFactory = hibernateConfig.getSessionFactory();
         assertNotNull(sessionFactory);
     }

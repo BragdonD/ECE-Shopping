@@ -4,6 +4,8 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.UserModel;
+
 /**
  * Configuration class for Hibernate ORM framework. This class is a
  * singleton class. It is used to create a SessionFactory object that
@@ -19,9 +21,19 @@ public class HibernateConfig {
      * Default constructor for HibernateConfig class. It creates a
      * SessionFactory object that is used to create a Session object.
      */
-    private HibernateConfig(Properties properties) {
-        hibernateProperties = properties;
-        sessionFactory = new Configuration().addProperties(hibernateProperties).buildSessionFactory();
+    private HibernateConfig() {
+        String activeProfile = System.getProperty("app.profiles.active", "dev");
+        if (activeProfile.equals("dev")) {
+            hibernateProperties = getDevelopmentProperties();
+        } else if (activeProfile.equals("test")) {
+            hibernateProperties = getTestProperties();
+        } else {
+            hibernateProperties = getProductionProperties();  
+        }
+        sessionFactory = new Configuration()
+            .addProperties(hibernateProperties)
+            .addAnnotatedClass(UserModel.class)
+            .buildSessionFactory();
     }
 
     /**
@@ -34,7 +46,18 @@ public class HibernateConfig {
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.connection.username", "root");
         properties.setProperty("hibernate.connection.password", "root");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+        return properties;
+    }
+
+    public static Properties getDevelopmentProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
+        properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
+        properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/main/resources/db/test_db.db");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
 
@@ -48,7 +71,8 @@ public class HibernateConfig {
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/test/resources/db/test_db.db");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
 
@@ -59,21 +83,7 @@ public class HibernateConfig {
      */
     public static HibernateConfig getInstance() {
         if (instance == null) {
-            Properties properties = getProductionProperties();
-            instance = new HibernateConfig(properties);
-        }
-        return instance;
-    }
-
-    /**
-     * Gets the HibernateConfig instance for test environment.
-     * 
-     * @return Return the HibernateConfig instance for test environment.
-     */
-    public static HibernateConfig getTestInstance() {
-        if (instance == null) {
-            Properties testProperties = getTestProperties();
-            instance = new HibernateConfig(testProperties);
+            instance = new HibernateConfig();
         }
         return instance;
     }

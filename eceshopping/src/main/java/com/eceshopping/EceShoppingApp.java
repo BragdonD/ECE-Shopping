@@ -1,10 +1,11 @@
 package com.eceshopping;
 
+import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.LoginFormController;
 import com.eceshopping.controllers.RegisterFormController;
-import com.eceshopping.views.LoginFormView;
-import com.eceshopping.views.RegisterFormView;
 import com.eceshopping.utils.Router;
+import com.eceshopping.views.components.LoginFormView;
+import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -36,6 +37,7 @@ public class EceShoppingApp extends Application {
     }
 
     public static void main(String[] args) {
+        FlywayConfig.getInstance();
         launch(args);
     }
 
