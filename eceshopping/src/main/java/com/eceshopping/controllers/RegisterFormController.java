@@ -13,6 +13,7 @@ import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.concurrent.Task;
 import javafx.geometry.Pos;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -53,6 +54,9 @@ public class RegisterFormController implements Controller {
         setupEmailChangeListener();
         setupPasswordChangeListener();
         setupCheckPasswordChangeListener();
+        handleColorsHelpTexts();
+        setupTextFields();
+        hideErrorText();
     }
 
     /**
@@ -120,6 +124,7 @@ public class RegisterFormController implements Controller {
         // it is
         this.view.getPwField().textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
+            handleColorsHelpTexts();
             if (!PasswordValidator.validate(password)) {
                 this.view.getPwField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
                 this.view.getRegisterButton().setDisable(true);
@@ -195,23 +200,53 @@ public class RegisterFormController implements Controller {
     private void setupTextFields() {
         this.view.getEmailField().setStyle(AppStyles.TEXT_FIELD_STYLE);
         this.view.getPwField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+        this.view.getCPwField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+        this.view.getNameField().setStyle(AppStyles.TEXT_FIELD_STYLE);
     }
 
     private void resetTextFields() {
         this.view.getEmailField().setText("");
         this.view.getPwField().setText("");
+        this.view.getCPwField().setText("");
+        this.view.getNameField().setText("");
     }
 
-    // private void hideErrorText() {
-    //     this.view.getErrorText().setVisible(false);
-    // }
+    private void hideErrorText() {
+        this.view.getErrorMessageText().setVisible(false);
+    }
 
-    // private void showErrorText() {
-    //     this.view.getErrorText().setStyle("-fx-text-fill: red;");
-    //     this.view.getErrorText().setVisible(true);
-    // }
+    private void showErrorText() {
+        this.view.getErrorMessageText().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        this.view.getErrorMessageText().setVisible(true);
+    }
 
-
+    private void handleColorsHelpTexts() {
+        if(this.password.matches(".*[a-z].*")) {
+            this.view.getPasswordHelpMinLetter().setStyle(AppStyles.CORRECT_TEXT_STYLE);
+        } else {
+            this.view.getPasswordHelpMinLetter().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        }
+        if(this.password.matches(".*[A-Z].*")) {
+            this.view.getPasswordHelpMajLetter().setStyle(AppStyles.CORRECT_TEXT_STYLE);
+        } else {
+            this.view.getPasswordHelpMajLetter().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        }
+        if(this.password.matches(".*[0-9].*")) {
+            this.view.getPasswordHelpNumber().setStyle(AppStyles.CORRECT_TEXT_STYLE);
+        } else {
+            this.view.getPasswordHelpNumber().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        }
+        if(this.password.matches(".*[!@#$%^&*()].*")) {
+            this.view.getPasswordHelpSpecial().setStyle(AppStyles.CORRECT_TEXT_STYLE);
+        } else {
+            this.view.getPasswordHelpSpecial().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        }
+        if(this.password.length() >= 8) {
+            this.view.getPasswordHelpLength().setStyle(AppStyles.CORRECT_TEXT_STYLE);
+        } else {
+            this.view.getPasswordHelpLength().setStyle(AppStyles.ERROR_TEXT_STYLE);
+        }
+    }
 
     /**
      * Add the loading animation to the button and set the button to the loading
@@ -226,7 +261,7 @@ public class RegisterFormController implements Controller {
         this.view.getRegisterButton().setText(REGISTER_TEXT_STRING);
         this.view.getRegisterButton().setGraphic(stackPane);
         this.view.getRegisterButton().setDisable(true);
-        // this.deactivatedHyperlink();
+        this.deactivatedHyperlink();
         this.deactivatedTextFields();
     }
 
@@ -256,29 +291,29 @@ public class RegisterFormController implements Controller {
 
             UserDto user = UserFactory.createGuestUser(userName, email, password);
 
-            System.out.print(user);
-
-            Task<UserDto> registerTask = userService.saveUserAsync(user);
-
-            new Thread(registerTask).start();
-            this.isRegistering = true;
             addLoadingAnimation();
 
-            registerTask.setOnSucceeded(event -> {
-                System.out.println("Register succeeded");
-                // hideErrorText();
-                this.isRegistering = false;
-                removeLoadingAnimation();
-            });
+            try {
+                Task<UserDto> registerTask = userService.saveUserAsync(user);
+                new Thread(registerTask).start();
+                this.isRegistering = true;
+                
 
-            registerTask.setOnFailed(event -> {
-                Exception ex = (Exception) event.getSource().getException();
-                System.out.println(ex.getMessage());
-                System.out.println("Register failed");
-                // showErrorText();
-                this.isRegistering = false;
+                registerTask.setOnSucceeded(event -> {
+                    hideErrorText();
+                    this.isRegistering = false;
+                    removeLoadingAnimation();
+                });
+
+                registerTask.setOnFailed(event -> {
+                    showErrorText();
+                    this.isRegistering = false;
+                    removeLoadingAnimation();
+                });
+            } catch (Exception exception) {
+                showErrorText();
                 removeLoadingAnimation();
-            });
+            }
         });
     }
 

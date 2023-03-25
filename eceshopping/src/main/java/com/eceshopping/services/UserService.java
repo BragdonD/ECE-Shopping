@@ -84,7 +84,7 @@ public class UserService {
      * @throws IllegalArgumentException If the password is not valid or the email is
      *                                  already in use.
      */
-    public Task<UserDto> saveUserAsync(UserDto userDto) throws IllegalArgumentException {
+    public Task<UserDto> saveUserAsync(UserDto userDto) throws EntityExistsException {
         if (!PasswordValidator.validate(userDto.getPassword())) {
             throw new IllegalArgumentException("Password is not valid.");
         }
@@ -98,7 +98,7 @@ public class UserService {
         }
 
         if (emailExists) {
-            throw new IllegalArgumentException("Email is already in use.");
+            throw new EntityExistsException("Email is already in use.");
         }
 
         String hashPassword = encryptPassword(userDto.getPassword());

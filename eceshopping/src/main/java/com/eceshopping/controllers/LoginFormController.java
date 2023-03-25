@@ -61,11 +61,11 @@ public class LoginFormController implements Controller {
             if (!EmailValidator.validate(email)) {
                 this.view.getUserTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
 
-                this.view.getButton().setDisable(true);
+                this.view.getLoginButton().setDisable(true);
             } else {
                 this.view.getUserTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
                 if (password != null && PasswordValidator.validate(password)) {
-                    this.view.getButton().setDisable(false);
+                    this.view.getLoginButton().setDisable(false);
                 }
             }
         });
@@ -80,11 +80,11 @@ public class LoginFormController implements Controller {
             password = newValue;
             if (!PasswordValidator.validate(password)) {
                 this.view.getPasswordTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-                this.view.getButton().setDisable(true);
+                this.view.getLoginButton().setDisable(true);
             } else {
                 this.view.getPasswordTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
                 if (email != null && EmailValidator.validate(email)) {
-                    this.view.getButton().setDisable(false);
+                    this.view.getLoginButton().setDisable(false);
                 }
             }
         });
@@ -94,14 +94,14 @@ public class LoginFormController implements Controller {
      * Setup the style of the button when the mouse is hovering over it.
      */
     private void setupButtonStyleOnHover() {
-        this.view.getButton().onMouseEnteredProperty().set(e -> {
-            if (!isLoading && !this.view.getButton().isDisabled()) {
-                this.view.getButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_HOVER);
+        this.view.getLoginButton().onMouseEnteredProperty().set(e -> {
+            if (!isLoading && !this.view.getLoginButton().isDisabled()) {
+                this.view.getLoginButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_HOVER);
             }
         });
-        this.view.getButton().onMouseExitedProperty().set(e -> {
-            if (!isLoading && !this.view.getButton().isDisabled()) {
-                this.view.getButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
+        this.view.getLoginButton().onMouseExitedProperty().set(e -> {
+            if (!isLoading && !this.view.getLoginButton().isDisabled()) {
+                this.view.getLoginButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
             }
         });
 
@@ -111,14 +111,14 @@ public class LoginFormController implements Controller {
      * Setup the style of the button when the disable property is changed.
      */
     private void setupButtonStyleOnDisable() {
-        this.view.getButton().disableProperty().addListener((observable, oldValue, newValue) -> {
+        this.view.getLoginButton().disableProperty().addListener((observable, oldValue, newValue) -> {
             if (isLoading) {
                 return;
             }
             if (newValue == true) {
-                this.view.getButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_DEACTIVATED);
+                this.view.getLoginButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_DEACTIVATED);
             } else {
-                this.view.getButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
+                this.view.getLoginButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
             }
         });
     }
@@ -132,10 +132,10 @@ public class LoginFormController implements Controller {
         StackPane stackPane = new StackPane(spinner);
         stackPane.setAlignment(Pos.CENTER);
         spinner.start();
-        this.view.getButton().setMinWidth(120);
-        this.view.getButton().setText(LOADING_TEXT_STRING);
-        this.view.getButton().setGraphic(stackPane);
-        this.view.getButton().setDisable(true);
+        this.view.getLoginButton().setMinWidth(120);
+        this.view.getLoginButton().setText(LOADING_TEXT_STRING);
+        this.view.getLoginButton().setGraphic(stackPane);
+        this.view.getLoginButton().setDisable(true);
         this.deactivatedHyperlink();
         this.deactivatedTextFields();
     }
@@ -145,10 +145,10 @@ public class LoginFormController implements Controller {
      * default state.
      **/
     private void removeLoadingAnimation() {
-        this.view.getButton().setMinWidth(0);
-        this.view.getButton().setText(LOGIN_TEXT_STRING);
-        this.view.getButton().setGraphic(null);
-        this.view.getButton().setDisable(false);
+        this.view.getLoginButton().setMinWidth(0);
+        this.view.getLoginButton().setText(LOGIN_TEXT_STRING);
+        this.view.getLoginButton().setGraphic(null);
+        this.view.getLoginButton().setDisable(false);
         this.activatedHyperlink();
         this.activatedTextFields();
         this.resetTextFields();
@@ -158,7 +158,7 @@ public class LoginFormController implements Controller {
      * Setup every actions related to the button.
      */
     private void setupButtonOnAction() {
-        this.view.getButton().setOnAction(e -> {
+        this.view.getLoginButton().setOnAction(e -> {
             email = StringSanitizer.sanitize(email);
             password = StringSanitizer.sanitize(password);
 
@@ -194,7 +194,7 @@ public class LoginFormController implements Controller {
 
         // Don't change the order of the following lines or the default style will not
         // be applied
-        this.view.getButton().setDisable(true); // Disable the button until the user enters valid credentials
+        this.view.getLoginButton().setDisable(true); // Disable the button until the user enters valid credentials
     }
 
     /**
