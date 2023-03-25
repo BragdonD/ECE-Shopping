@@ -20,4 +20,9 @@ public class AppStyles {
     public static final String TEXT_FIELD_STYLE = "-fx-border-radius: 4px; -fx-background-color: white; -fx-border-color: #bfbfbf; -fx-border-width: 1px";
     public static final String TEXT_FIELD_STYLE_ERROR = "-fx-border-radius: 4px; -fx-background-color: wheat; -fx-border-color: red; -fx-border-width: 1px";
     public static final String TEXT_FIELD_STYLE_CORRECT = "-fx-border-radius: 4px; -fx-background-color: #C8E6C9; -fx-border-color: #88D498; -fx-border-width: 1px";
+
+    /**
+     * Error Text styles for the application
+     */
+    public static final String ERROR_TEXT_STYLE = "-fx-fill: red; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
 }

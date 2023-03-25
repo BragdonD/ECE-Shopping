@@ -1,5 +1,6 @@
 package com.eceshopping.views.components;
 
+import com.eceshopping.styles.AppStyles;
 import com.eceshopping.views.View;
 
 import javafx.geometry.Insets;
@@ -21,15 +22,17 @@ import javafx.scene.text.Text;
  */
 public class LoginFormView extends GridPane implements View {
 
-    private Text scenetitle;
+    
     private Label userName;
     private Label password;
     private TextField userTextField;
     private PasswordField PasswordTextField;
     private Button loginButton;
     private HBox hbBtn;
-    private Text actiontarget;
     private Hyperlink hyperlink;
+    private Text actiontarget;
+    private Text scenetitle;
+    private Text errorText;
 
     /**
      * Default Constructor for the LoginFormView class that creates the login form
@@ -66,6 +69,11 @@ public class LoginFormView extends GridPane implements View {
 
         this.actiontarget = new Text();
         this.add(actiontarget, 1, 6);
+
+        this.errorText = new Text("No user found with this credentials !");
+        this.errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);
+        this.errorText.setVisible(false);
+        this.add(errorText, 1, 5);
 
         this.hyperlink = new Hyperlink("Not registered yet ? Click here to register !");
         this.add(hyperlink, 1, 8);
@@ -234,6 +242,24 @@ public class LoginFormView extends GridPane implements View {
     }
 
     /**
+     * Get the error text for the login form view.
+     * 
+     * @return the error text for the login form view
+     */
+    public Text getErrorText() {
+        return this.errorText;
+    }
+
+    /**
+     * Set the error text for the login form view.
+     * 
+     * @param errorText the error text to set
+     */
+    public void setErrorText(Text errorText) {
+        this.errorText = errorText;
+    }
+
+    /**
      * Set the scenetitle for the login form view.
      * 
      * @param scenetitle the scenetitle to set
@@ -311,6 +337,16 @@ public class LoginFormView extends GridPane implements View {
      */
     public LoginFormView actiontarget(Text actiontarget) {
         setActiontarget(actiontarget);
+        return this;
+    }
+
+    public LoginFormView hyperlink(Hyperlink hyperlink) {
+        setHyperlink(hyperlink);
+        return this;
+    }
+
+    public LoginFormView errorText(Text errorText) {
+        setErrorText(errorText);
         return this;
     }
 

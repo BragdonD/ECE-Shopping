@@ -22,20 +22,19 @@ import javafx.scene.text.Text;
  */
 public class RegisterFormView extends GridPane implements View{
 
-    private Text scenetitle;
-    private Label name;
-    private Label password;
-    private Label cPassword;
-    private Label email;
+    private Label userNameLabel;
+    private Label passwordLabel;
+    private Label cPasswordLabel;
+    private Label emailLabel;
     private TextField nameField;
     private TextField emailField;
-    private PasswordField pwBox;
-    private PasswordField cPwBox;
+    private PasswordField pwField;
+    private PasswordField cPwField;
     private Button registerButton;
     private HBox hbBtn;
+    private Text viewTitle;
     private Text actiontarget;
-    private Hyperlink hyperlink;
-    
+    private Hyperlink hyperlink;    
 
     /**
      * Default Constructor for the LoginFormView class that creates the login form
@@ -47,33 +46,33 @@ public class RegisterFormView extends GridPane implements View{
         this.setVgap(10);
         this.setPadding(new Insets(25, 25, 25, 25));
 
-        this.scenetitle = new Text("Welcome to Ece-Shopping");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        this.add(scenetitle, 0, 0, 2, 1);
+        this.viewTitle = new Text("Welcome to Ece-Shopping");
+        viewTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        this.add(viewTitle, 0, 0, 2, 1);
 
-        this.name = new Label("User Name:");
-        this.add(name, 0, 1);
+        this.userNameLabel = new Label("User Name:");
+        this.add(userNameLabel, 0, 1);
 
         this.nameField = new TextField();
         this.add(nameField,1, 1);
 
-        this.email = new Label("Email:");
-        this.add(email, 0, 2);
+        this.emailLabel = new Label("Email:");
+        this.add(emailLabel, 0, 2);
 
         this.emailField = new TextField();
         this.add(emailField, 1, 2);
 
-        this.password = new Label("Password:");
-        this.add(password, 0, 3);
+        this.passwordLabel = new Label("Password:");
+        this.add(passwordLabel, 0, 3);
 
-        this.pwBox = new PasswordField();
-        this.add(pwBox, 1, 3);
+        this.pwField = new PasswordField();
+        this.add(pwField, 1, 3);
 
-        this.cPassword = new Label("Confirm Password:");
-        this.add(cPassword, 0, 4);
+        this.cPasswordLabel = new Label("Confirm Password:");
+        this.add(cPasswordLabel, 0, 4);
 
-        this.cPwBox = new PasswordField();
-        this.add(cPwBox, 1, 4);
+        this.cPwField = new PasswordField();
+        this.add(cPwField, 1, 4);
 
         this.registerButton = new Button("Register");
         this.hbBtn = new HBox(10);
@@ -86,44 +85,47 @@ public class RegisterFormView extends GridPane implements View{
         this.add(hyperlink, 1, 8);
     }
 
-    public Text getScenetitle() {
-        return this.scenetitle;
+    public Text getViewTitle() {
+        return this.viewTitle;
+    }
+    /**
+    * @param scenetitle the scenetitle to set
+
+     */
+    public void setViewTitle(Text scenetitle) {
+        this.viewTitle = scenetitle;
     }
 
-    public void setScenetitle(Text scenetitle) {
-        this.scenetitle = scenetitle;
+    public Label getUserNameLabel() {
+        return this.userNameLabel;
     }
 
-    public Label getName() {
-        return this.name;
+    public void setUserNameLabel(Label name) {
+        this.userNameLabel = name;
     }
 
-    public void setName(Label name) {
-        this.name = name;
+    public Label getPasswordLabel() {
+        return this.passwordLabel;
     }
 
-    public Label getPassword() {
-        return this.password;
+    public void setPasswordLabel(Label password) {
+        this.passwordLabel = password;
     }
 
-    public void setPassword(Label password) {
-        this.password = password;
+    public Label getCPasswordLabel() {
+        return this.cPasswordLabel;
     }
 
-    public Label getCPassword() {
-        return this.cPassword;
+    public void setCPasswordLabel(Label cPassword) {
+        this.cPasswordLabel = cPassword;
     }
 
-    public void setCPassword(Label cPassword) {
-        this.cPassword = cPassword;
+    public Label getEmailLabel() {
+        return this.emailLabel;
     }
 
-    public Label getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(Label email) {
-        this.email = email;
+    public void setEmailLabel(Label email) {
+        this.emailLabel = email;
     }
 
     public TextField getNameField() {
@@ -142,20 +144,20 @@ public class RegisterFormView extends GridPane implements View{
         this.emailField = emailField;
     }
 
-    public PasswordField getPwBox() {
-        return this.pwBox;
+    public PasswordField getPwField() {
+        return this.pwField;
     }
 
-    public void setPwBox(PasswordField pwBox) {
-        this.pwBox = pwBox;
+    public void setPwField(PasswordField pwBox) {
+        this.pwField = pwBox;
     }
 
-    public PasswordField getCPwBox() {
-        return this.cPwBox;
+    public PasswordField getCPwField() {
+        return this.cPwField;
     }
 
-    public void setCPwBox(PasswordField cPwBox) {
-        this.cPwBox = cPwBox;
+    public void setCPwField(PasswordField cPwBox) {
+        this.cPwField = cPwBox;
     }
 
     public Button getRegisterButton() {
@@ -182,28 +184,28 @@ public class RegisterFormView extends GridPane implements View{
         this.actiontarget = actiontarget;
     }
 
-    public RegisterFormView scenetitle(Text scenetitle) {
-        setScenetitle(scenetitle);
+    public RegisterFormView viewTitle(Text scenetitle) {
+        setViewTitle(scenetitle);
         return this;
     }
 
-    public RegisterFormView name(Label name) {
-        setName(name);
+    public RegisterFormView userNameLabel(Label name) {
+        setUserNameLabel(name);
         return this;
     }
 
-    public RegisterFormView password(Label password) {
-        setPassword(password);
+    public RegisterFormView passwordLabel(Label password) {
+        setPasswordLabel(password);
         return this;
     }
 
     public RegisterFormView cPassword(Label cPassword) {
-        setCPassword(cPassword);
+        setCPasswordLabel(cPassword);
         return this;
     }
 
     public RegisterFormView email(Label email) {
-        setEmail(email);
+        setEmailLabel(email);
         return this;
     }
 
@@ -217,13 +219,13 @@ public class RegisterFormView extends GridPane implements View{
         return this;
     }
 
-    public RegisterFormView pwBox(PasswordField pwBox) {
-        setPwBox(pwBox);
+    public RegisterFormView pwBox(PasswordField pwField) {
+        setPwField(pwField);
         return this;
     }
 
-    public RegisterFormView cPwBox(PasswordField cPwBox) {
-        setCPwBox(cPwBox);
+    public RegisterFormView cPwBox(PasswordField cPwField) {
+        setCPwField(cPwField);
         return this;
     }
 

@@ -18,9 +18,9 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 @Table(name = "Users")
 @NamedQueries({
-        @NamedQuery(name = "UserModel.findById", query = "SELECT * FROM UserModel WHERE id = :id"),
-        @NamedQuery(name = "UserModel.findByEmail", query = "SELECT * FROM UserModel WHERE email = :email"),
-        @NamedQuery(name = "UserModel.findAll", query = "SELECT * FROM UserModel"),
+        @NamedQuery(name = "UserModel.findById", query = "FROM UserModel WHERE id = :id"),
+        @NamedQuery(name = "UserModel.findByEmail", query = "FROM UserModel WHERE email = :email"),
+        @NamedQuery(name = "UserModel.findAll", query = "FROM UserModel"),
 })
 public class UserModel {
     @Id
@@ -40,7 +40,6 @@ public class UserModel {
     @Column(name = "email", unique = true)
     private String email;
 
-    @NotBlank
     @Column(name = "admin")
     private boolean admin;
 

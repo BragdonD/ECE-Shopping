@@ -42,9 +42,19 @@ public class LoginFormController implements Controller {
         this.email = "";
         this.password = "";
 
-        this.setupButton();
-        this.setupTextFields();
+        setupButton();
+        setupTextFields();
+        setupEmailChangeListener();
+        setupPasswordChangeListener();
+        setupHyperlink();
+        hideErrorText();
+    }
 
+    /**
+     * Setup the email text field listener to check if the email is valid and enable
+     * the button if it is.
+     */
+    private void setupEmailChangeListener() {
         // Email listener to check if the email is valid and enable the button if it is
         this.view.getUserTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             email = newValue.trim();
@@ -59,9 +69,13 @@ public class LoginFormController implements Controller {
                 }
             }
         });
+    }
 
-        // Password listener to check if the password is valid and enable the button if
-        // it is
+    /**
+     * Setup the password text field listener to check if the password is valid and
+     * enable the button if it is.
+     */
+    private void setupPasswordChangeListener() {
         this.view.getPasswordTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
             if (!PasswordValidator.validate(password)) {
@@ -74,8 +88,6 @@ public class LoginFormController implements Controller {
                 }
             }
         });
-
-        setupHyperlink();
     }
 
     /**
@@ -142,6 +154,9 @@ public class LoginFormController implements Controller {
         this.resetTextFields();
     }
 
+    /**
+     * Setup every actions related to the button.
+     */
     private void setupButtonOnAction() {
         this.view.getButton().setOnAction(e -> {
             email = StringSanitizer.sanitize(email);
@@ -155,13 +170,13 @@ public class LoginFormController implements Controller {
             addLoadingAnimation();
 
             loginTask.setOnSucceeded(event -> {
-                System.out.println("Successfully logged in");
+                hideErrorText();
                 this.isLoading = false;
                 removeLoadingAnimation();
             });
 
             loginTask.setOnFailed(event -> {
-                System.out.println("Failed to login");
+                showErrorText();
                 this.isLoading = false;
                 removeLoadingAnimation();
             });
@@ -205,24 +220,51 @@ public class LoginFormController implements Controller {
         this.view.getHyperlink().setDisable(false);
     }
 
+    /**
+     * Deactivate the text fields.
+     */
     private void deactivatedTextFields() {
         this.view.getUserTextField().setDisable(true);
         this.view.getPasswordTextField().setDisable(true);
     }
 
+    /**
+     * Activate the text fields.
+     */
     private void activatedTextFields() {
         this.view.getUserTextField().setDisable(false);
         this.view.getPasswordTextField().setDisable(false);
     }
 
+    /**
+     * Setup the text fields.
+     */
     private void setupTextFields() {
         this.view.getUserTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
         this.view.getPasswordTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
     }
 
+    /**
+     * Reset the text fields.
+     */
     private void resetTextFields() {
         this.view.getUserTextField().setText("");
         this.view.getPasswordTextField().setText("");
+    }
+
+    /**
+     * Hide the error text.
+     */
+    private void hideErrorText() {
+        this.view.getErrorText().setVisible(false);
+    }
+
+    /**
+     * Show the error text.
+     */
+    private void showErrorText() {
+        // this.view.getErrorText().setFill(Color.RED);
+        this.view.getErrorText().setVisible(true);
     }
 
     /**

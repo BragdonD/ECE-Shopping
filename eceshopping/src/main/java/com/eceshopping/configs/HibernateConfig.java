@@ -4,6 +4,8 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.UserModel;
+
 /**
  * Configuration class for Hibernate ORM framework. This class is a
  * singleton class. It is used to create a SessionFactory object that
@@ -28,7 +30,10 @@ public class HibernateConfig {
         } else {
             hibernateProperties = getProductionProperties();  
         }
-        sessionFactory = new Configuration().addProperties(hibernateProperties).buildSessionFactory();
+        sessionFactory = new Configuration()
+            .addProperties(hibernateProperties)
+            .addAnnotatedClass(UserModel.class)
+            .buildSessionFactory();
     }
 
     /**
@@ -41,6 +46,7 @@ public class HibernateConfig {
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.connection.username", "root");
         properties.setProperty("hibernate.connection.password", "root");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
         return properties;
     }
@@ -50,6 +56,7 @@ public class HibernateConfig {
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/main/resources/db/test_db.db");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
@@ -64,6 +71,7 @@ public class HibernateConfig {
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/test/resources/db/test_db.db");
+        properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
