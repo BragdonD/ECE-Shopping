@@ -1,19 +1,18 @@
 package com.eceshopping;
 
-import com.eceshopping.controllers.LoginFormController;
-import com.eceshopping.views.LoginFormView;
+
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class EceShoppingApp extends Application {
 
     @Override
     public void start(Stage s) {
-        LoginFormView view = new LoginFormView();
-        new LoginFormController(view);
-        Scene scene = new Scene(view, 400, 400);
+        StackPane root = new StackPane();
+        Scene scene = new Scene(root, 400, 400);
         s.setTitle("My JavaFX App");
         s.setScene(scene);
         s.show();
