@@ -1,22 +1,26 @@
 package com.eceshopping.models;
 
+import javafx.scene.image.Image;
+
 public class ArticleModel {
     private int id;
     private String name;
     private String description;
     private double price;
+    private double bulkprice;
     private int stock;
-    private String image;
+    private Image image;
     private int idCategory;
 
     public ArticleModel() {
     }
 
-    public ArticleModel(int id, String name, String description, double price, int stock, String image, int idCategory) {
+    public ArticleModel(int id, String name, String description, double price, double bulkprice, int stock, Image image, int idCategory) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.bulkprice = bulkprice;
         this.stock = stock;
         this.image = image;
         this.idCategory = idCategory;
@@ -95,14 +99,14 @@ public class ArticleModel {
  *  Get the image of the article
  * @return
  */
-    public String getImage() {
+    public Image getImage() {
         return image;
     }
 /**
  *  Set the image of the article
  * @param image
  */
-    public void setImage(String image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 /**
@@ -118,5 +122,13 @@ public class ArticleModel {
  */
     public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
+    }
+
+     public void setBulkprice(double bulkprice) {
+        this.bulkprice = bulkprice;
+     }
+
+    public double getBulkprice() {
+        return bulkprice;
     }
 }
