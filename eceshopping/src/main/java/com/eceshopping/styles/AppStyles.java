@@ -24,6 +24,9 @@ public class AppStyles {
     /**
      * Error Text styles for the application
      */
-    public static final String ERROR_TEXT_STYLE = "-fx-fill: red; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
+    public static final String ERROR_TEXT_STYLE = "-fx-text-fill: red; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
     public static final String CORRECT_TEXT_STYLE = "-fx-fill: #88D498; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
+
+
+    public static final String TRANSPARENT_BG = "-fx-background-color: rgba(0,0,0,0);";
 }

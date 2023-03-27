@@ -568,13 +568,23 @@ public class RegisterFormView extends GridPane implements View {
         return this;
     }
 
-
+    /**
+     * Set the title View the register form view.
+     * 
+     * @param viewTitle the grid pane to set
+     * @return the register form view
+     */
     public RegisterFormView viewTitle(Text viewTitle) {
         setViewTitle(viewTitle);
         return this;
     }
     
-    
+    /**
+     * Set the action target.
+     * 
+     * @param actiontarget the action target to set
+     * @return the register form view
+     */
     public RegisterFormView actiontarget(Text actiontarget) {
         setActiontarget(actiontarget);
         return this;

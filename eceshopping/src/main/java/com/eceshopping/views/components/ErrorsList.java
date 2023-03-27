@@ -1,0 +1,49 @@
+package com.eceshopping.views.components;
+
+import java.util.List;
+
+import com.eceshopping.styles.AppStyles;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+
+public class ErrorsList extends StackPane {
+    private ListView<String> errors;
+
+    public ErrorsList(List<String> errors) {
+        ObservableList<String> errorsList = FXCollections.observableArrayList(errors);
+        this.errors = new ListView<String>(errorsList);
+        this.errors.setCellFactory(param -> {
+            ListCell<String> cell = new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (!empty && item != null) {
+                        setText(item);
+                        setStyle(AppStyles.ERROR_TEXT_STYLE);
+                    } else {
+                        setText(null);
+                    }
+                }
+            };
+            return cell;
+        });
+        this.errors.setPrefHeight(errors.size() * 19);
+        // this.errors.setMouseTransparent(true); // Bad idea to enable it
+        this.errors.setStyle(AppStyles.TRANSPARENT_BG);
+        this.errors.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
+        this.getChildren().add(this.errors);
+        this.setPadding(new Insets(5));
+        this.setStyle(AppStyles.TRANSPARENT_BG);
+        this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
+    }
+}

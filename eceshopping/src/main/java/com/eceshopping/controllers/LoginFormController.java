@@ -3,10 +3,10 @@ package com.eceshopping.controllers;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
 import com.eceshopping.styles.AppStyles;
-import com.eceshopping.utils.EmailValidator;
-import com.eceshopping.utils.PasswordValidator;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.StringSanitizer;
+import com.eceshopping.utils.validator.EmailValidator;
+import com.eceshopping.utils.validator.PasswordValidator;
 import com.eceshopping.views.components.LoadingCircle;
 import com.eceshopping.views.components.LoginFormView;
 
@@ -58,13 +58,13 @@ public class LoginFormController implements Controller {
         // Email listener to check if the email is valid and enable the button if it is
         this.view.getUserTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             email = newValue.trim();
-            if (!EmailValidator.validate(email)) {
+            if (new EmailValidator().validate(email)) {
                 this.view.getUserTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
 
                 this.view.getLoginButton().setDisable(true);
             } else {
                 this.view.getUserTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
-                if (password != null && PasswordValidator.validate(password)) {
+                if (password != null && new PasswordValidator().validate(password)) {
                     this.view.getLoginButton().setDisable(false);
                 }
             }
@@ -78,12 +78,12 @@ public class LoginFormController implements Controller {
     private void setupPasswordChangeListener() {
         this.view.getPasswordTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
-            if (!PasswordValidator.validate(password)) {
+            if (new PasswordValidator().validate(password)) {
                 this.view.getPasswordTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
                 this.view.getLoginButton().setDisable(true);
             } else {
                 this.view.getPasswordTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
-                if (email != null && EmailValidator.validate(email)) {
+                if (email != null && new EmailValidator().validate(email)) {
                     this.view.getLoginButton().setDisable(false);
                 }
             }

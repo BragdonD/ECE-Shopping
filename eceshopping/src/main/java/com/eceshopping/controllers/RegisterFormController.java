@@ -4,16 +4,15 @@ import com.eceshopping.dto.UserDto;
 import com.eceshopping.factories.UserFactory;
 import com.eceshopping.services.UserService;
 import com.eceshopping.styles.AppStyles;
-import com.eceshopping.utils.EmailValidator;
-import com.eceshopping.utils.PasswordValidator;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.StringSanitizer;
+import com.eceshopping.utils.validator.EmailValidator;
+import com.eceshopping.utils.validator.PasswordValidator;
 import com.eceshopping.views.components.LoadingCircle;
 import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.concurrent.Task;
 import javafx.geometry.Pos;
-import javafx.scene.control.Tooltip;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -64,8 +63,8 @@ public class RegisterFormController implements Controller {
      * @return
      */
     private boolean canRegister() {
-        return EmailValidator.validate(email)
-                && PasswordValidator.validate(password)
+        return new EmailValidator().validate(email)
+                && new PasswordValidator().validate(password)
                 && password.equals(checkPassword)
                 && userName.length() > 0;
     }
@@ -74,7 +73,7 @@ public class RegisterFormController implements Controller {
         // Email listener to check if the email is valid and enable the button if it is
         this.view.getEmailField().textProperty().addListener((observable, oldValue, newValue) -> {
             email = newValue.trim();
-            if (!EmailValidator.validate(email)) {
+            if (new EmailValidator().validate(email)) {
                 this.view.getEmailField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
                 this.view.getRegisterButton().setDisable(true);
             } else {
@@ -125,7 +124,7 @@ public class RegisterFormController implements Controller {
         this.view.getPwField().textProperty().addListener((observable, oldValue, newValue) -> {
             password = newValue;
             handleColorsHelpTexts();
-            if (!PasswordValidator.validate(password)) {
+            if (new PasswordValidator().validate(password)) {
                 this.view.getPwField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
                 this.view.getRegisterButton().setDisable(true);
             } else {

@@ -4,7 +4,7 @@ import com.eceshopping.converter.UserConverter;
 import com.eceshopping.daos.UserDao;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.models.UserModel;
-import com.eceshopping.utils.PasswordValidator;
+import com.eceshopping.utils.validator.PasswordValidator;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.EntityExistsException;
@@ -85,7 +85,7 @@ public class UserService {
      *                                  already in use.
      */
     public Task<UserDto> saveUserAsync(UserDto userDto) throws EntityExistsException {
-        if (!PasswordValidator.validate(userDto.getPassword())) {
+        if (new PasswordValidator().validate(userDto.getPassword())) {
             throw new IllegalArgumentException("Password is not valid.");
         }
 
@@ -157,7 +157,7 @@ public class UserService {
         if (this.userDao.getById(id) == null) {
             throw new EntityNotFoundException("User does not exist.");
         }
-        if (!PasswordValidator.validate(newPassword)) {
+        if (new PasswordValidator().validate(newPassword)) {
             throw new IllegalArgumentException("Password is not valid.");
         }
 
