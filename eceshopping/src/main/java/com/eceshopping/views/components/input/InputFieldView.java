@@ -3,7 +3,9 @@ package com.eceshopping.views.components.input;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 
 public class InputFieldView extends GridPane {
     private Label labelField;
@@ -13,6 +15,14 @@ public class InputFieldView extends GridPane {
         this.labelField = new Label(label);
         initTextField(type, placeholder);
         initLayout();
+        ColumnConstraints column1 = new ColumnConstraints();
+        column1.setHgrow(Priority.ALWAYS);
+        this.getColumnConstraints().add(column1);
+
+        // set the second column width to its preferred size
+        ColumnConstraints column2 = new ColumnConstraints();
+        column2.setHgrow(Priority.NEVER);
+        this.getColumnConstraints().add(column2);
     } 
 
     private void initLayout() {
@@ -31,5 +41,9 @@ public class InputFieldView extends GridPane {
 
     public TextField getTextField() {
         return this.textField;
+    }
+
+    public Label getLabelField() {
+        return this.labelField;
     }
 }
