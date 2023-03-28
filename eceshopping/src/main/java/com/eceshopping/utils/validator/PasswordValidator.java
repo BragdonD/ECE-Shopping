@@ -5,13 +5,15 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * PasswordValidator class is used to validate a password. It uses a regular
- * expression to check if the password is valid. The password must contain at
- * least one digit, one lowercase letter, one uppercase letter, one special
- * character, and must be at least 8 characters long.
+ * PasswordValidator class is used to validate a password. 
  */
 public class PasswordValidator implements Validator {
-    private static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    public static final String PASSWORD_LENGTH_PATTERN = "^(?=\\S+$).{8,}$";
+    public static final String PASSWORD_DIGIT_PATTERN = "\\d+";
+    public static final String PASSWORD_LOWER_CASE_PATTERN = "[a-z]";
+    public static final String PASSWORD_UPPER_CASE_PATTERN = "[A-Z]";
+    public static final String PASSWORD_SPECIAL_CHARACTER_PATTERN = "[@#$%^&+=]";
 
     /**
      * This method is used to validate a password. It uses a regular expression to
@@ -30,6 +32,12 @@ public class PasswordValidator implements Validator {
         return ((String)password).matches(PASSWORD_PATTERN);
     }
 
+    /**
+     * This method is used to get the errors of a password. It uses a regular
+     * expression to check if the password is valid. The password must contain at
+     * least one digit, one lowercase letter, one uppercase letter, one special
+     * character, and must be at least 8 characters long.
+     */
     @Override
     public List<String> getErrors(Object password) throws IllegalArgumentException {
         if(password.getClass() != String.class) {
@@ -37,11 +45,11 @@ public class PasswordValidator implements Validator {
         }
         List<String> errors = new ArrayList<String>();
         if(!this.validate(password)) {
-            Pattern lengthPattern = Pattern.compile("^(?=\\S+$).{8,}$");
-            Pattern digitPattern = Pattern.compile("\\d+");
-            Pattern lowerCasePattern = Pattern.compile("[a-z]");
-            Pattern upperCasePattern = Pattern.compile("[A-Z]");
-            Pattern specialCharacterPattern = Pattern.compile("[@#$%^&+=]");
+            Pattern lengthPattern = Pattern.compile(PASSWORD_LENGTH_PATTERN);
+            Pattern digitPattern = Pattern.compile(PASSWORD_DIGIT_PATTERN);
+            Pattern lowerCasePattern = Pattern.compile(PASSWORD_LOWER_CASE_PATTERN);
+            Pattern upperCasePattern = Pattern.compile(PASSWORD_UPPER_CASE_PATTERN);
+            Pattern specialCharacterPattern = Pattern.compile(PASSWORD_SPECIAL_CHARACTER_PATTERN);
 
             if(!lengthPattern.matcher((String)password).find()) {
                 errors.add("The password must be at least 8 characters long");

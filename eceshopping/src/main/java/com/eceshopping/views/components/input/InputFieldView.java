@@ -1,13 +1,5 @@
-package com.eceshopping.views.components;
+package com.eceshopping.views.components.input;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.eceshopping.utils.validator.Validator;
-
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,7 +18,6 @@ public class InputFieldView extends GridPane {
     private void initLayout() {
         this.add(this.labelField, 0, 0);
         this.add(this.textField, 0, 1);
-        
     }
 
     private void initTextField(String type, String placeholder) {

@@ -1,11 +1,12 @@
 package com.eceshopping.controllers.components;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.validator.Validator;
 import com.eceshopping.views.components.ErrorsList;
-import com.eceshopping.views.components.InputFieldView;
+import com.eceshopping.views.components.input.InputFieldView;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,10 +15,11 @@ import javafx.scene.Node;
 
 public class InputFieldController {
     private InputFieldView view;
+    private String name;
     private Validator validator;
     private SimpleStringProperty value;
     private SimpleBooleanProperty isValid;
-    private java.util.List<ChangeListener<Boolean>> listeners;
+    private List<ChangeListener<Boolean>> listeners;
 
     public InputFieldController(InputFieldView view, Validator validator) {
         this.view = view;
@@ -87,5 +89,74 @@ public class InputFieldController {
         } else {
             this.view.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
         }
+    }
+
+    public InputFieldView getView() {
+        return this.view;
+    }
+
+    public void setView(InputFieldView view) {
+        this.view = view;
+    }
+
+    public Validator getValidator() {
+        return this.validator;
+    }
+
+    public void setValidator(Validator validator) {
+        this.validator = validator;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public SimpleStringProperty valueProperty() {
+        return this.value;
+    }
+
+    public void setValue(String value) {
+        this.value.set(value);
+    }
+
+    public SimpleBooleanProperty isValidProperty() {
+        return this.isValid;
+    }
+
+    public boolean isValid() {
+        return this.isValid.get();
+    }
+
+    public void setValid(boolean isValid) {
+        this.isValid.set(isValid);
+    }
+
+    public InputFieldController name(String name) {
+        setName(name);
+        return this;
+    }
+
+    public InputFieldController value(String value) {
+        setValue(value);
+        return this;
+    }
+
+    public InputFieldController isValid(boolean isValid) {
+        setValid(isValid);
+        return this;
+    }
+
+    public InputFieldController view(InputFieldView view) {
+        setView(view);
+        return this;
+    }
+
+    public InputFieldController validator(Validator validator) {
+        setValidator(validator);
+        return this;
     }
 }

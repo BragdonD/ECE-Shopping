@@ -16,13 +16,20 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+/**
+ * ErrorsList class is used to display a list of errors. 
+ */
 public class ErrorsList extends StackPane {
-    private ListView<String> errors;
+    private ListView<String> errors; // The list of errors to display
 
+    /**
+     * This constructor is used to create a new ErrorsList object.
+     * @param errors The list of errors to display.
+     */
     public ErrorsList(List<String> errors) {
         ObservableList<String> errorsList = FXCollections.observableArrayList(errors);
         this.errors = new ListView<String>(errorsList);
-        this.errors.setCellFactory(param -> {
+        this.errors.setCellFactory(param -> { // Set the style of the list cells
             ListCell<String> cell = new ListCell<String>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
