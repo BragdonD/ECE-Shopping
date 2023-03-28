@@ -22,6 +22,8 @@ public class FormController {
         this.inputFieldsController = inputFieldsController;
         this.isValidListeners = new ArrayList<ChangeListener<Boolean>>();
         addIsValidListener();
+        checkIsValid();
+        this.view.getSubmitButton().setDisable(!this.isValid.get());
     }
 
     public FormView getView() {
@@ -83,9 +85,10 @@ public class FormController {
     private void addIsValidListener() {
         for (InputFieldController inputField : this.inputFieldsController) {
             inputField.addIsValidChangeListener((observable, oldValue, newValue) -> {
-                Boolean isValid = true;
+                System.out.println("FormController.addIsValidListener() - " + inputField.getName() + " - " + newValue);
                 checkIsValid();
-                this.isValid.set(isValid);
+                notifyListeners();
+                this.view.getSubmitButton().setDisable(!this.isValid.get());
             });
         }
     }
@@ -118,5 +121,11 @@ public class FormController {
             values.add(input);
         }
         return values;
+    }
+
+    private void notifyListeners() {
+        for(ChangeListener<Boolean> listener : this.isValidListeners) {
+            listener.changed(this.isValid, !this.isValid.get(), this.isValid.get());
+        }
     }
 }

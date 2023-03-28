@@ -56,6 +56,12 @@ public class InputFieldController {
     }
 
     private void addValueListener() {
+        if(this.validator == null) {
+            this.isValid.set(true);
+            applyStyle();
+            notifyListeners();
+            return;
+        }
         this.value.addListener((observable, oldValue, newValue) -> {
             Boolean isValid = this.validator.validate(newValue);
             this.isValid.set(isValid);

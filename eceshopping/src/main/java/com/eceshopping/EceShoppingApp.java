@@ -34,9 +34,12 @@ public class EceShoppingApp extends Application {
         GridPane root = new GridPane();
         InputModel test = new InputModel("Email", "Email", "email", "", "Email", "");
         InputModel test2 = new InputModel("Password", "Password", "password", "", "Password", "");
-        InputField inputField = InputFieldFactory.createInputField(test, new EmailValidator());
-        InputField inputField2 = InputFieldFactory.createInputField(test2, new PasswordValidator());
+        InputField inputField = InputFieldFactory.createInputField(test, null);
+        InputField inputField2 = InputFieldFactory.createInputField(test2, null);
         Form loginForm = FormFactory.createFormFromInputField(List.of(inputField, inputField2), "Submit");
+        loginForm.getController().addIsValidChangeListener((observable, oldValue, newValue) -> {
+            System.out.println("Is valid: " + newValue);
+        });
         root.add(loginForm.getView(), 0, 0);
 
         s.setTitle("My JavaFX App");
