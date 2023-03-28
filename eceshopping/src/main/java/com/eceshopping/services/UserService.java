@@ -4,7 +4,7 @@ import com.eceshopping.converter.UserConverter;
 import com.eceshopping.daos.UserDao;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.models.UserModel;
-import com.eceshopping.utils.PasswordValidator;
+import com.eceshopping.utils.validator.PasswordValidator;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import jakarta.persistence.EntityExistsException;
@@ -62,7 +62,6 @@ public class UserService {
                 return UserConverter.convertToDto(userDao.getUserByEmail(email));
             }
         };
-        new Thread(task).start();
         return task;
     }
 
@@ -79,24 +78,41 @@ public class UserService {
     }
 
     /**
-     * This method is used to save a user to the database.
+     * This method is used to save a user asynchronously to the database.
      * 
      * @param userDto The user to be saved.
      * @throws IllegalArgumentException If the password is not valid or the email is
      *                                  already in use.
      */
-    public void saveUser(UserDto userDto)
-            throws IllegalArgumentException {
-        if (!PasswordValidator.validate(userDto.getPassword())) {
+    public Task<UserDto> saveUserAsync(UserDto userDto) throws EntityExistsException {
+        if (new PasswordValidator().validate(userDto.getPassword())) {
             throw new IllegalArgumentException("Password is not valid.");
         }
-        if (this.userDao.getUserByEmail(userDto.getEmail()) != null) {
-            throw new IllegalArgumentException("Email is already in use.");
+
+        boolean emailExists = true;
+
+        try {
+            this.userDao.getUserByEmail(userDto.getEmail());
+        } catch (EntityNotFoundException e) {
+            emailExists = false;
         }
+
+        if (emailExists) {
+            throw new EntityExistsException("Email is already in use.");
+        }
+
         String hashPassword = encryptPassword(userDto.getPassword());
         userDto.setPassword(hashPassword);
-        UserModel user = UserConverter.convertToModel(userDto);
-        this.userDao.save(user);
+
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                UserModel user = UserConverter.convertToModel(userDto);
+                userDao.save(user);
+                return UserConverter.convertToDto(user);
+            }
+        };
+        return task;
     }
 
     /**
@@ -141,7 +157,7 @@ public class UserService {
         if (this.userDao.getById(id) == null) {
             throw new EntityNotFoundException("User does not exist.");
         }
-        if (!PasswordValidator.validate(newPassword)) {
+        if (new PasswordValidator().validate(newPassword)) {
             throw new IllegalArgumentException("Password is not valid.");
         }
 
@@ -175,7 +191,8 @@ public class UserService {
 
     /**
      * This method is used to delete a user. It checks if the user exists. If the
-     * user does not exist, an EntityNotFoundException is thrown. If the user exists,
+     * user does not exist, an EntityNotFoundException is thrown. If the user
+     * exists,
      * the user is deleted.
      * 
      * @param id The id of the user

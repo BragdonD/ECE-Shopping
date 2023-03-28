@@ -37,7 +37,7 @@ public class UserDao extends Dao<UserModel, Integer> {
             SelectionQuery<UserModel> query = session.createNamedSelectionQuery("UserModel.findByEmail",
                     UserModel.class);
             query.setParameter("email", email);
-            UserModel user = query.getSingleResult();
+            UserModel user = query.getSingleResultOrNull();
             if (user == null) {
                 throw new EntityNotFoundException("User with email " + email + " does not exist.");
             }
