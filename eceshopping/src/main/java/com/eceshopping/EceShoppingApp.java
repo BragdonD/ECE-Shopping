@@ -7,7 +7,7 @@ import com.eceshopping.components.InputField;
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.Controller;
 import com.eceshopping.controllers.LoginPageController;
-import com.eceshopping.controllers.RegisterFormController;
+
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.factories.component.FormFactory;
 import com.eceshopping.factories.component.InputFieldFactory;
@@ -16,6 +16,7 @@ import com.eceshopping.utils.Router;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.PasswordValidator;
 import com.eceshopping.views.LoginPageView;
+import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.components.LoginFormView;
 import com.eceshopping.views.components.RegisterFormView;
 import com.eceshopping.views.components.InputFieldView;
@@ -34,6 +35,7 @@ public class EceShoppingApp extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
         LoginPageView loginPage = new LoginPageView();
+        RegisterPageView registerPage = new RegisterPageView();
 
         // Set the main stage inside the router controller
         this.router = Router.getInstance();
@@ -45,10 +47,10 @@ public class EceShoppingApp extends Application {
         this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
         this.router.getRouterController().setMainStage(s);
 
-        Scene scene = new Scene(this.router.getRootPane(), 400, 400);
+        Scene scene = new Scene(registerPage, 400, 400);
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();
-        this.router.navigateTo("/login");
+        //this.router.navigateTo("/login");
     }
 
     public static void main(String[] args) {
