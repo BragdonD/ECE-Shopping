@@ -3,7 +3,6 @@ package com.eceshopping.views.components;
 import java.util.List;
 
 import com.eceshopping.styles.AppText;
-import com.eceshopping.views.components.input.InputFieldView;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;

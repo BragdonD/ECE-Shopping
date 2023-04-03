@@ -6,7 +6,7 @@ import java.util.List;
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.validator.Validator;
 import com.eceshopping.views.components.ErrorsList;
-import com.eceshopping.views.components.input.InputFieldView;
+import com.eceshopping.views.components.InputFieldView;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -164,5 +164,11 @@ public class InputFieldController {
     public InputFieldController validator(Validator validator) {
         setValidator(validator);
         return this;
+    }
+
+    public void reset() {
+        this.value.set("");
+        this.view.getTextField().setText("");
+        this.isValid.set(false);
     }
 }

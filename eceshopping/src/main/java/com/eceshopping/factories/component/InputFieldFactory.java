@@ -7,7 +7,7 @@ import com.eceshopping.components.InputField;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.models.component.input.InputModel;
 import com.eceshopping.utils.validator.Validator;
-import com.eceshopping.views.components.input.InputFieldView;
+import com.eceshopping.views.components.InputFieldView;
 
 public class InputFieldFactory {
     public static InputField createInputField(InputModel inputModel, Validator validator) {

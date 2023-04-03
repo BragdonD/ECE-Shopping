@@ -7,7 +7,7 @@ import com.eceshopping.components.InputField;
 import com.eceshopping.controllers.components.FormController;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.views.components.FormView;
-import com.eceshopping.views.components.input.InputFieldView;
+import com.eceshopping.views.components.InputFieldView;
 
 import javafx.scene.control.Button;
 

@@ -15,6 +15,7 @@ public class FormController {
     private SimpleBooleanProperty isValid;
     private List<InputFieldController> inputFieldsController;
     private List<ChangeListener<Boolean>> isValidListeners;
+    private List<ChangeListener<Boolean>> isSubmitting;
 
     public FormController(FormView view, List<InputFieldController> inputFieldsController) {
         this.view = view;
@@ -23,7 +24,9 @@ public class FormController {
         this.isValidListeners = new ArrayList<ChangeListener<Boolean>>();
         addIsValidListener();
         checkIsValid();
+        this.isSubmitting = new ArrayList<ChangeListener<Boolean>>();
         this.view.getSubmitButton().setDisable(!this.isValid.get());
+        checkSubmit();
     }
 
     public FormView getView() {
@@ -109,6 +112,23 @@ public class FormController {
         this.isValidListeners.remove(listener);
     }
 
+    public void addIsSubmittingListener(ChangeListener<Boolean> listener) {
+        this.isSubmitting.add(listener);
+    }
+
+    public void removeIsSubmittingListener(ChangeListener<Boolean> listener) {
+        this.isSubmitting.remove(listener);
+    }
+
+    public void checkSubmit() {
+        this.view.getSubmitButton().setOnAction(e -> {
+            System.out.println("FormController.checkSubmit() - Submitting");
+            this.isSubmitting.forEach(listener -> {
+                listener.changed(this.isValid, false, true);
+            });
+        });
+    }
+
     public List<InputModel> getValues() {
         List<InputModel> values = new ArrayList<InputModel>();
         for (InputFieldController inputFieldController : this.inputFieldsController) {
@@ -126,6 +146,12 @@ public class FormController {
     private void notifyListeners() {
         for(ChangeListener<Boolean> listener : this.isValidListeners) {
             listener.changed(this.isValid, !this.isValid.get(), this.isValid.get());
+        }
+    }
+
+    public void reset() {
+        for (InputFieldController inputFieldController : this.inputFieldsController) {
+            inputFieldController.reset();
         }
     }
 }

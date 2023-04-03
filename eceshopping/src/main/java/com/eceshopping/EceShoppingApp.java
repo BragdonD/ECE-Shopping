@@ -18,7 +18,7 @@ import com.eceshopping.utils.validator.PasswordValidator;
 import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.components.LoginFormView;
 import com.eceshopping.views.components.RegisterFormView;
-import com.eceshopping.views.components.input.InputFieldView;
+import com.eceshopping.views.components.InputFieldView;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

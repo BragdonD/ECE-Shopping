@@ -1,4 +1,4 @@
-package com.eceshopping.views.components.input;
+package com.eceshopping.views.components;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;

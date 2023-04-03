@@ -8,6 +8,8 @@ public class AppText {
     public static final String LOGIN_FORM_PASSWORD_LABEL = "Password";
     public static final String LOGIN_FORM_PASSWORD_PLACEHOLDER = "Enter your password";
     public static final String LOGIN_FORM_SUBMIT_BUTTON = "Login";
+    public static final String LOGIN_FORM_REGISTER_LABEL = "New to ECE-Shopping?";
+    public static final String LOGIN_FORM_REGISTER_BUTTON = "Register";
 
     public static final String INPUT_EMAIL = "email";
     public static final String INPUT_PASSWORD = "password";

@@ -1,15 +1,27 @@
 package com.eceshopping.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.eceshopping.controllers.components.FormController;
+import com.eceshopping.controllers.components.InputFieldController;
+import com.eceshopping.dto.UserDto;
+import com.eceshopping.services.UserService;
+import com.eceshopping.utils.Router;
+import com.eceshopping.utils.validator.EmailValidator;
+import com.eceshopping.utils.validator.NotEmptyStringValidator;
 import com.eceshopping.views.LoginPageView;
+import com.eceshopping.views.components.InputFieldView;
+
+import javafx.concurrent.Task;
 
 /**
  * This class is the controller of the login form view.
  **/
 public class LoginPageController implements Controller {
-    
     private LoginPageView view;
-    
-
+    private FormController loginFormController;
+    private UserService userService;
     /**
      * Constructor of the class.
      * 
@@ -17,7 +29,65 @@ public class LoginPageController implements Controller {
      **/
     public LoginPageController(LoginPageView view) {
         this.view = view;
-        
+        this.userService = new UserService();
 
+        List<InputFieldView> inputFieldViews = new ArrayList<InputFieldView>();
+        inputFieldViews.add(this.view.getLoginFormView().getEmailInputFieldView());
+        inputFieldViews.add(this.view.getLoginFormView().getPasswordInputFieldView());
+        List<InputFieldController> inputFieldsControllers = new ArrayList<InputFieldController>();
+        inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(0), new EmailValidator()));
+        inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(1), new NotEmptyStringValidator()));
+
+        this.loginFormController = new FormController(this.view.getLoginFormView().getFormView(), inputFieldsControllers); 
+        
+        onSubmit();
+
+        setupRegisterLink();
+    }
+
+    /**
+     * This method is called when the user click on the submit button of the login form.
+     **/
+    public void onSubmit() {
+        this.loginFormController.addIsSubmittingListener((observable, oldValue, newValue) -> {
+            System.out.println("Is submitting: " + newValue);
+            if(newValue) {
+                String email = this.loginFormController.getinputFieldsController().get(0).getValue();
+                String password = this.loginFormController.getinputFieldsController().get(1).getValue();
+                Task<UserDto> getUserTask = this.userService.getUserByEmailAsync(email);
+                new Thread(getUserTask).start();
+
+                getUserTask.setOnSucceeded(event -> {
+                    UserDto user = getUserTask.getValue();
+                    if(user != null) {
+                        if(!userService.verifyPassword(password, user.getPassword())) {
+                            /// Display credential error
+                            System.out.println("Credential error");
+                            this.loginFormController.reset();
+                        } else {
+                            Router.getInstance().navigateTo("/");
+                        }
+                    } else {
+                        // Display user not found
+                        System.out.println("User not found");
+                        this.loginFormController.reset();
+                    }
+                });
+
+                getUserTask.setOnFailed(event -> {
+                    // Display user not found
+                    // Display error
+                    System.out.println(getUserTask.getException().getMessage());
+                    System.out.println("Login Task Error");
+                    this.loginFormController.reset();
+                });
+            }
+        });
+    }
+    
+    private void setupRegisterLink() {
+        this.view.getRegisterButton().setOnAction(event -> {
+            Router.getInstance().navigateTo("/register");
+        });
     }
 }
