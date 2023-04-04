@@ -44,13 +44,14 @@ public class ErrorsList extends StackPane {
             };
             return cell;
         });
-        this.errors.setPrefHeight(errors.size() * 19);
         // this.errors.setMouseTransparent(true); // Bad idea to enable it
         this.errors.setStyle(AppStyles.TRANSPARENT_BG);
+        this.errors.setPrefHeight(errors.size() * 19);
         this.errors.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
         this.getChildren().add(this.errors);
         this.setPadding(new Insets(5));
         this.setStyle(AppStyles.TRANSPARENT_BG);
         this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
+        this.setHeight(400);
     }
 }

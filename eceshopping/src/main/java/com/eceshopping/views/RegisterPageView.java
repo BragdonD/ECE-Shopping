@@ -74,7 +74,7 @@ public class RegisterPageView extends StackPane implements View {
         this.registerFormView = new RegisterFormView();
         this.gridPane.setStyle(AppStyles.LOGIN_FORM_STYLE);
         this.registerFormView.getFormView().setStyle(AppStyles.FORM_STYLE);
-        this.registerFormView.getFormView().setPrefSize(300, 300);
+        this.registerFormView.getFormView().setPrefSize(300, 500);
         this.registerFormView.getFormView().setPadding(new Insets(10, 10, 10, 10));
         this.registerFormView.getFormView().setVgap(10);
         this.gridPane.add(this.registerFormView.getFormView(), 0, 1);

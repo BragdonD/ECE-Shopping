@@ -43,7 +43,6 @@ public class RegisterPageController implements Controller {
         this.registerFormController = new FormController(this.view.getregisterFormView().getFormView(), inputFieldsControllers); 
         
         onSubmit();
-
         setupRegisterLink();
     }
 
@@ -54,21 +53,24 @@ public class RegisterPageController implements Controller {
         this.registerFormController.addIsSubmittingListener((observable, oldValue, newValue) -> {
             System.out.println("Is submitting: " + newValue);
             if(newValue) {
-                String email = this.registerFormController.getinputFieldsController().get(0).getValue();
-                String password = this.registerFormController.getinputFieldsController().get(1).getValue();
-                Task<UserDto> getUserTask = this.userService.getUserByEmailAsync(email);
-                new Thread(getUserTask).start();
+                String name = this.registerFormController.getinputFieldsController().get(0).getValue();
+                String email = this.registerFormController.getinputFieldsController().get(1).getValue();
+                String password = this.registerFormController.getinputFieldsController().get(2).getValue();
+                
+                UserDto user = new UserDto();
+                user.setUsername(name);
+                user.setEmail(email);
+                user.setPassword(password);
 
-                getUserTask.setOnSucceeded(event -> {
-                    UserDto user = getUserTask.getValue();
-                    if(user != null) {
-                        if(!userService.verifyPassword(password, user.getPassword())) {
-                            /// Display credential error
-                            System.out.println("Credential error");
-                            this.registerFormController.reset();
-                        } else {
-                            Router.getInstance().navigateTo("/");
-                        }
+                System.out.println(user);
+
+                Task<UserDto> saveUserTask = this.userService.saveUserAsync(user);
+                new Thread(saveUserTask).start();
+
+                saveUserTask.setOnSucceeded(event -> {
+                    UserDto newUser = saveUserTask.getValue();
+                    if(newUser != null) {
+                        
                     } else {
                         // Display user not found
                         System.out.println("User not found");
@@ -76,11 +78,11 @@ public class RegisterPageController implements Controller {
                     }
                 });
 
-                getUserTask.setOnFailed(event -> {
+                saveUserTask.setOnFailed(event -> {
                     // Display user not found
                     // Display error
-                    System.out.println(getUserTask.getException().getMessage());
-                    System.out.println("Login Task Error");
+                    System.out.println(saveUserTask.getException().getMessage());
+                    System.out.println("Register Task Error");
                     this.registerFormController.reset();
                 });
             }
@@ -89,6 +91,7 @@ public class RegisterPageController implements Controller {
     
     private void setupRegisterLink() {
         this.view.getRegisterButton().setOnAction(event -> {
+            System.out.print("Navigate to Login");
             Router.getInstance().navigateTo("/login");
         });
     }
