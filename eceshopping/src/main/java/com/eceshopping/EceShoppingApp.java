@@ -1,6 +1,7 @@
 package com.eceshopping;
 
 import com.eceshopping.controllers.LoginFormController;
+import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterFormController;
 import com.eceshopping.views.LoginFormView;
 import com.eceshopping.views.ProfilePageView;
@@ -20,6 +21,7 @@ public class EceShoppingApp extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
         ProfilePageView profileView = new ProfilePageView();
+        ProfilePageController profileController = new ProfilePageController(profileView);
         Scene scene = new Scene(profileView, 400, 400);
         s.setTitle("My JavaFX App");
         s.setScene(scene);
@@ -36,5 +38,4 @@ public class EceShoppingApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

@@ -2,12 +2,12 @@ package com.eceshopping.views;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.eceshopping.ProfilFormView;
 import com.eceshopping.views.components.ProfileMenuButtonLinkView;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+
 
 /// Differencier View and Controller
 
@@ -51,6 +51,10 @@ public class ProfilePageView extends StackPane implements View {
         }
         initLayout();
         this.getChildren().add(this.layout);
+    }
+
+    public List<ProfileMenuButtonLinkView> getButtons() {
+        return this.buttons;
     }
 
     private void initLayout() {
