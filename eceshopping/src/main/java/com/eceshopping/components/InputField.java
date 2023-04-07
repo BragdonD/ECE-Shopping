@@ -1,7 +1,7 @@
 package com.eceshopping.components;
 
 import com.eceshopping.controllers.components.InputFieldController;
-import com.eceshopping.views.components.input.InputFieldView;
+import com.eceshopping.views.components.InputFieldView;
 
 public class InputField {
     private InputFieldView view;

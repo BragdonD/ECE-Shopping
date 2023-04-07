@@ -2,8 +2,6 @@ package com.eceshopping.views.components;
 
 import java.util.List;
 
-import com.eceshopping.views.components.input.InputFieldView;
-
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
