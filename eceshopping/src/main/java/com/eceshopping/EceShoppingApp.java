@@ -7,12 +7,14 @@ import com.eceshopping.components.InputField;
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.Controller;
 import com.eceshopping.controllers.LoginPageController;
+import com.eceshopping.controllers.MainStageController;
 import com.eceshopping.controllers.RegisterPageController;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.factories.component.FormFactory;
 import com.eceshopping.factories.component.InputFieldFactory;
 import com.eceshopping.models.component.input.InputModel;
 import com.eceshopping.utils.Router;
+import com.eceshopping.utils.Session;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.PasswordValidator;
 import com.eceshopping.views.LoginPageView;
@@ -34,6 +36,8 @@ public class EceShoppingApp extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
+        new MainStageController(s);
+
         LoginPageView loginPage = new LoginPageView();
         RegisterPageView registerPage = new RegisterPageView();
         // Set the main stage inside the router controller

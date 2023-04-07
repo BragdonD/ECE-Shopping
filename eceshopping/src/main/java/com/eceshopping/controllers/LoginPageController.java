@@ -10,6 +10,7 @@ import com.eceshopping.services.UserService;
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.styles.AppText;
 import com.eceshopping.utils.Router;
+import com.eceshopping.utils.Session;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.NotEmptyStringValidator;
 import com.eceshopping.views.LoginPageView;
@@ -67,6 +68,7 @@ public class LoginPageController implements Controller {
                             DisplayError(AppText.NO_USER_FOUND);
                             this.loginFormController.reset();
                         } else {
+                            Session.getInstance().setUser(user);
                             Router.getInstance().navigateTo("/");
                         }
                     } else {
