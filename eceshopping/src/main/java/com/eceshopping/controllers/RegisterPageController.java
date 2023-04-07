@@ -9,6 +9,7 @@ import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.Router;
+import com.eceshopping.utils.Session;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.NotEmptyStringValidator;
 import com.eceshopping.utils.validator.PasswordValidator;
@@ -22,6 +23,7 @@ public class RegisterPageController implements Controller {
     private RegisterPageView view;
     private FormController registerFormController;
     private UserService userService;
+
     /**
      * Constructor of the class.
      * 
@@ -70,7 +72,8 @@ public class RegisterPageController implements Controller {
                 saveUserTask.setOnSucceeded(event -> {
                     UserDto newUser = saveUserTask.getValue();
                     if(newUser != null) {
-                        
+                        Session.getInstance().setUser(newUser);
+                        Router.getInstance().navigateTo("/");
                     } else {
                         DisplayError("User already exists");
                         this.registerFormController.reset();
