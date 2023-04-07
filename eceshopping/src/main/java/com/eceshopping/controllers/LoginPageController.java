@@ -7,6 +7,8 @@ import com.eceshopping.controllers.components.FormController;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
+import com.eceshopping.styles.AppStyles;
+import com.eceshopping.styles.AppText;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.NotEmptyStringValidator;
@@ -14,6 +16,7 @@ import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.concurrent.Task;
+import javafx.scene.text.Text;
 
 /**
  * This class is the controller of the login form view.
@@ -41,7 +44,6 @@ public class LoginPageController implements Controller {
         this.loginFormController = new FormController(this.view.getLoginFormView().getFormView(), inputFieldsControllers); 
         
         onSubmit();
-
         setupRegisterLink();
     }
 
@@ -62,27 +64,39 @@ public class LoginPageController implements Controller {
                     if(user != null) {
                         if(!userService.verifyPassword(password, user.getPassword())) {
                             /// Display credential error
-                            System.out.println("Credential error");
+                            DisplayError(AppText.NO_USER_FOUND);
                             this.loginFormController.reset();
                         } else {
                             Router.getInstance().navigateTo("/");
                         }
                     } else {
-                        // Display user not found
-                        System.out.println("User not found");
-                        this.loginFormController.reset();
+                        if(getUserTask.getException().getMessage() != null) {
+                            DisplayError(getUserTask.getException().getMessage());
+                            this.loginFormController.reset();
+                            return;
+                        }
                     }
                 });
 
                 getUserTask.setOnFailed(event -> {
                     // Display user not found
-                    // Display error
-                    System.out.println(getUserTask.getException().getMessage());
-                    System.out.println("Login Task Error");
-                    this.loginFormController.reset();
+                    if(getUserTask.getException().getMessage() != null) {
+                        DisplayError(getUserTask.getException().getMessage());
+                        this.loginFormController.reset();
+                        return;
+                    }
                 });
             }
         });
+    }
+
+    private void DisplayError(String message) {
+        if(this.view.getLoginFormView().getFormView().getChildren().size() == 3) {
+            this.view.getLoginFormView().getFormView().getChildren().remove(2);
+        }
+        Text errorText = new Text(message);
+        errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);
+        this.view.getLoginFormView().getFormView().add(errorText, 0, 3);
     }
     
     private void setupRegisterLink() {

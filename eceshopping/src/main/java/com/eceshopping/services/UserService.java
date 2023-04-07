@@ -85,28 +85,29 @@ public class UserService {
      *                                  already in use.
      */
     public Task<UserDto> saveUserAsync(UserDto userDto) throws EntityExistsException {
-        if (new PasswordValidator().validate(userDto.getPassword())) {
-            throw new IllegalArgumentException("Password is not valid.");
-        }
-
-        boolean emailExists = true;
-
-        try {
-            this.userDao.getUserByEmail(userDto.getEmail());
-        } catch (EntityNotFoundException e) {
-            emailExists = false;
-        }
-
-        if (emailExists) {
-            throw new EntityExistsException("Email is already in use.");
-        }
-
-        String hashPassword = encryptPassword(userDto.getPassword());
-        userDto.setPassword(hashPassword);
 
         Task<UserDto> task = new Task<UserDto>() {
             @Override
             protected UserDto call() throws Exception {
+                if (!(new PasswordValidator().validate(userDto.getPassword()))) {
+                    throw new IllegalArgumentException("Password is not valid.");
+                }
+                
+                boolean emailExists = true;
+
+                try {
+                    userDao.getUserByEmail(userDto.getEmail());
+                } catch (EntityNotFoundException e) {
+                    emailExists = false;
+                }
+
+                if (emailExists) {
+                    throw new EntityExistsException("Email is already in use.");
+                }
+
+                String hashPassword = encryptPassword(userDto.getPassword());
+                userDto.setPassword(hashPassword);
+        
                 UserModel user = UserConverter.convertToModel(userDto);
                 userDao.save(user);
                 return UserConverter.convertToDto(user);

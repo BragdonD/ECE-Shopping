@@ -7,6 +7,7 @@ import com.eceshopping.controllers.components.FormController;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
+import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.validator.EmailValidator;
 import com.eceshopping.utils.validator.NotEmptyStringValidator;
@@ -15,6 +16,7 @@ import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.concurrent.Task;
+import javafx.scene.text.Text;
 
 public class RegisterPageController implements Controller {
     private RegisterPageView view;
@@ -33,12 +35,10 @@ public class RegisterPageController implements Controller {
         inputFieldViews.add(this.view.getregisterFormView().getNameInputFieldView());
         inputFieldViews.add(this.view.getregisterFormView().getEmailInputFieldView());
         inputFieldViews.add(this.view.getregisterFormView().getPasswordInputFieldView());
-        inputFieldViews.add(this.view.getregisterFormView().getConfirmPasswordInputFieldView());
         List<InputFieldController> inputFieldsControllers = new ArrayList<InputFieldController>();
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(0), new NotEmptyStringValidator()));
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(1), new EmailValidator()));
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(2), new PasswordValidator()));
-        inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(3), new PasswordValidator()));
 
         this.registerFormController = new FormController(this.view.getregisterFormView().getFormView(), inputFieldsControllers); 
         
@@ -72,23 +72,32 @@ public class RegisterPageController implements Controller {
                     if(newUser != null) {
                         
                     } else {
-                        // Display user not found
-                        System.out.println("User not found");
+                        DisplayError("User already exists");
                         this.registerFormController.reset();
+                        return;
                     }
                 });
 
                 saveUserTask.setOnFailed(event -> {
-                    // Display user not found
-                    // Display error
-                    System.out.println(saveUserTask.getException().getMessage());
-                    System.out.println("Register Task Error");
-                    this.registerFormController.reset();
+                    if(saveUserTask.getException().getMessage() != null) {
+                        DisplayError(saveUserTask.getException().getMessage());
+                        this.registerFormController.reset();
+                        return;
+                    }                 
                 });
             }
         });
     }
     
+    private void DisplayError(String message) {
+        if(this.view.getregisterFormView().getFormView().getChildren().size() == 4) {
+            this.view.getregisterFormView().getFormView().getChildren().remove(3);
+        }
+        Text errorText = new Text(message);
+        errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);
+        this.view.getregisterFormView().getFormView().add(errorText, 0, 4);
+    }
+
     private void setupRegisterLink() {
         this.view.getRegisterButton().setOnAction(event -> {
             System.out.print("Navigate to Login");

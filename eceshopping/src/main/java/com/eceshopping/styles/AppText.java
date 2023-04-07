@@ -27,4 +27,6 @@ public class AppText {
     public static final String INPUT_EMAIL = "email";
     public static final String INPUT_PASSWORD = "password";
     public static final String INPUT_NAME = "name";
+
+    public static final String NO_USER_FOUND = "No user found with those credentials";
 }

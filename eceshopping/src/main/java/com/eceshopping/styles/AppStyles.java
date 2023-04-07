@@ -8,7 +8,6 @@ import javafx.geometry.Dimension2D;
  */
 public class AppStyles {
     
-
     /**
      * Primary button styles for the application
      */
@@ -27,7 +26,7 @@ public class AppStyles {
     /**
      * Error Text styles for the application
      */
-    public static final String ERROR_TEXT_STYLE = "-fx-text-fill: red; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
+    public static final String ERROR_TEXT_STYLE = "-fx-fill: red; -fx-text-fill: red; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
     public static final String CORRECT_TEXT_STYLE = "-fx-fill: #88D498; -fx-font-size: 12px; -fx-font-weight: bold; -fx-padding: 0 0 0 5px; -fx-text-alignment: right; -fx-wrap-text: true; -fx-width: 100%;";
 
     public static final String TITLE_STYLE = "-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-padding: 0 0 0 0px; -fx-text-alignment: center; -fx-wrap-text: true; -fx-width: 100%;";
@@ -36,6 +35,7 @@ public class AppStyles {
     public static final String FORM_STYLE = "-fx-width: 100%; -fx-max-width: 250px ; -fx-padding: 5px; -fx-text-alignment: left; -fx-font-size: 14px; -fx-text-fill: #000000; ";
     public static final String LOGIN_FORM_STYLE = "-fx-background-color: #ffffff; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-border-color: #bfbfbf; -fx-border-width: 1px; -fx-padding: 20px 20px 20px 20px; -fx-spacing: 10px; -fx-alignment: center; -fx-min-width: 300px; -fx-min-height: 300px;";
     public static final String SUBMIT_BUTTON_STYLE = "-fx-background-color: #00bfff; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-cursor: hand; -fx-padding: 6px 5px 6px 5px; -fx-width: 100%;";
+    
     /**
      * Sizes for the application
      */

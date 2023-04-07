@@ -16,7 +16,6 @@ public class RegisterFormView {
     private InputFieldView nameInputFieldView;
     private InputFieldView emailInputFieldView;
     private InputFieldView passwordInputFieldView;
-    private InputFieldView confirmPasswordInputFieldView;
     private Button submitButton;
 
     public RegisterFormView() {
@@ -24,8 +23,7 @@ public class RegisterFormView {
         this.nameInputFieldView = new InputFieldView(AppText.REGISTER_FORM_NAME_LABEL, AppText.REGISTER_FORM_NAME_PLACEHOLDER, AppText.INPUT_NAME);
         this.emailInputFieldView = new InputFieldView(AppText.REGISTER_FORM_EMAIL_LABEL, AppText.REGISTER_FORM_EMAIL_PLACEHOLDER, AppText.INPUT_EMAIL);
         this.passwordInputFieldView = new InputFieldView(AppText.REGISTER_FORM_PASSWORD_LABEL, AppText.REGISTER_FORM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
-        this.confirmPasswordInputFieldView = new InputFieldView(AppText.REGISTER_FORM_CONFIRM_PASSWORD_LABEL, AppText.REGISTER_FORM_CONFIRM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
-        this.formView = new FormView(List.of(this.nameInputFieldView, this.emailInputFieldView, this.passwordInputFieldView, this.confirmPasswordInputFieldView), this.submitButton);
+        this.formView = new FormView(List.of(this.nameInputFieldView, this.emailInputFieldView, this.passwordInputFieldView), this.submitButton);
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setHgrow(Priority.ALWAYS);
         this.formView.getColumnConstraints().add(column1);
@@ -69,14 +67,6 @@ public class RegisterFormView {
         this.passwordInputFieldView = passwordInputFieldView;
     }
 
-    public InputFieldView getConfirmPasswordInputFieldView() {
-        return this.confirmPasswordInputFieldView;
-    }
-
-    public void setConfirmPasswordInputFieldView(InputFieldView confirmPasswordInputFieldView) {
-        this.confirmPasswordInputFieldView = confirmPasswordInputFieldView;
-    }
-
     public Button getSubmitButton() {
         return this.submitButton;
     }
@@ -103,11 +93,6 @@ public class RegisterFormView {
 
     public RegisterFormView passwordInputFieldView(InputFieldView passwordInputFieldView) {
         setPasswordInputFieldView(passwordInputFieldView);
-        return this;
-    }
-
-    public RegisterFormView confirmPasswordInputFieldView(InputFieldView confirmPasswordInputFieldView) {
-        setConfirmPasswordInputFieldView(confirmPasswordInputFieldView);
         return this;
     }
 
