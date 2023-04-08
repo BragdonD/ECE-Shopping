@@ -46,4 +46,8 @@ public class InputFieldView extends GridPane {
     public Label getLabelField() {
         return this.labelField;
     }
+
+    public void setValue(String value) {
+        this.textField.setText(value);
+    }
 }

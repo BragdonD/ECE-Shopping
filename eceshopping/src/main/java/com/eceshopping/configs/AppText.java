@@ -3,6 +3,7 @@ package com.eceshopping.configs;
 public class AppText {
     public static final String LOGIN_PAGE_TITLE = "Login";
     public static final String REGISTER_PAGE_TITLE = "Register";
+    public static final String USER_INFORMATIONS_PAGE_TITLE = "User Informations";
     
     public static final String LOGIN_FORM_EMAIL_LABEL = "Email";
     public static final String LOGIN_FORM_EMAIL_PLACEHOLDER = "Enter your email";
@@ -29,4 +30,9 @@ public class AppText {
     public static final String INPUT_NAME = "name";
 
     public static final String NO_USER_FOUND = "No user found with those credentials";
+
+    public static final String SAVE_BUTTON_TEXT = "Save";
+    public static final String EDIT_BUTTON_TEXT = "Edit";
+    public static final String CANCEL_BUTTON_TEXT = "Cancel";
+    
 }

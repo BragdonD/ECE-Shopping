@@ -17,6 +17,7 @@ import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.concurrent.Task;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
 
 /**
@@ -105,5 +106,11 @@ public class LoginPageController implements Controller {
         this.view.getRegisterButton().setOnAction(event -> {
             Router.getInstance().navigateTo("/register");
         });
+    }
+
+    @Override
+    public void bindScene(Scene s) {
+        this.view.prefWidthProperty().bind(s.widthProperty());
+        this.view.prefHeightProperty().bind(s.heightProperty());
     }
 }

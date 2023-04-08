@@ -57,6 +57,7 @@ public class Router {
         routes.add(route);
         views.put(route, view);
         controllers.put(route, controller);
+        controller.bindScene(this.routerController.getScene());
     }
 
     /**
