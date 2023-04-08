@@ -36,6 +36,9 @@ public class AppStyles {
     public static final String LOGIN_FORM_STYLE = "-fx-background-color: #ffffff; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-border-color: #bfbfbf; -fx-border-width: 1px; -fx-padding: 20px 20px 20px 20px; -fx-spacing: 10px; -fx-alignment: center; -fx-min-width: 300px; -fx-min-height: 300px;";
     public static final String SUBMIT_BUTTON_STYLE = "-fx-background-color: #00bfff; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 4px; -fx-background-radius: 4px; -fx-cursor: hand; -fx-padding: 6px 5px 6px 5px; -fx-width: 100%;";
     
+    public static final String PROFILE_PAGE_BUTTON_STYLE = "-fx-background-color: #ffffff; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8px; -fx-background-radius: 4px; -fx-cursor: hand; -fx-padding: 6px 5px 6px 5px; -fx-width: 100%;";
+    public static final String PROFILE_PAGE_BUTTON_STYLE_HOVER = "-fx-background-color: #bac4d4; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 8px; -fx-background-radius: 4px; -fx-cursor: hand; -fx-padding: 6px 5px 6px 5px; -fx-width: 100%;";
+
     /**
      * Sizes for the application
      */
@@ -61,5 +64,4 @@ public class AppStyles {
     public static final Dimension2D WINDOW_SIZE_XL = new Dimension2D(WINDOW_WIDTH_XL, WINDOW_HEIGHT_XL);
     public static final Dimension2D WINDOW_SIZE_2XL = new Dimension2D(WINDOW_WIDTH_2XL, WINDOW_HEIGHT_2XL);
     public static final Dimension2D WINDOW_SIZE_3XL = new Dimension2D(WINDOW_WIDTH_3XL, WINDOW_HEIGHT_3XL);
-
 }

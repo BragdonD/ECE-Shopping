@@ -3,10 +3,12 @@ package com.eceshopping;
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
+import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterPageController;
 import com.eceshopping.controllers.UserInformationsPageController;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.LoginPageView;
+import com.eceshopping.views.ProfilePageView;
 import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.UserInformationsPage;
 
@@ -32,18 +34,19 @@ public class EceShoppingApp extends Application {
         LoginPageView loginPage = new LoginPageView();
         RegisterPageView registerPage = new RegisterPageView();
         UserInformationsPage userInformationPage = new UserInformationsPage();
+        ProfilePageView profilePage = new ProfilePageView();
 
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
         this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
+        this.router.addRoute("/user", profilePage, new ProfilePageController(profilePage));
         this.router.addRoute("/user/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
-        this.router.navigateTo("/user/informations");
+        this.router.navigateTo("/user");
     }
 
     public static void main(String[] args) {
         FlywayConfig.getInstance();
         launch(args);
     }
-
 }
