@@ -2,7 +2,6 @@ package com.eceshopping.views.components;
 
 import com.eceshopping.configs.AppStyles;
 
-import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 

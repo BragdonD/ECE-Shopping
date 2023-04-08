@@ -1,5 +1,9 @@
 package com.eceshopping.controllers;
 
+import java.util.List;
+
+import com.eceshopping.configs.AppStyles;
+import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.utils.Session;
 import com.eceshopping.views.UserInformationsPage;
 
@@ -19,6 +23,7 @@ public class UserInformationsPageController implements Controller {
         this.editable = new SimpleBooleanProperty(false);
         this.bindEditable();
         this.bindToCurrentUser();
+        this.ButtonsStyle();
     }
 
     private void bindEditable() {
@@ -46,6 +51,27 @@ public class UserInformationsPageController implements Controller {
             this.view.getEmailInput().setValue(newValue.getEmail());
             this.view.getNameInput().setValue(newValue.getUsername());
             this.view.getPasswordInput().setValue(newValue.getPassword());
+        });
+    }
+
+    private void ButtonsStyle() {
+        this.view.getEditButton().setOnMouseEntered(e -> {
+            this.view.getEditButton().setStyle(AppStyles.EDIT_BUTTON_STYLE_HOVER);
+        });
+        this.view.getEditButton().setOnMouseExited(e -> {
+            this.view.getEditButton().setStyle(AppStyles.EDIT_BUTTON_STYLE);
+        });
+        this.view.getCancelButton().setOnMouseEntered(e -> {
+            this.view.getCancelButton().setStyle(AppStyles.CANCEL_BUTTON_STYLE_HOVER);
+        });
+        this.view.getCancelButton().setOnMouseExited(e -> {
+            this.view.getCancelButton().setStyle(AppStyles.CANCEL_BUTTON_STYLE);
+        });
+        this.view.getSaveButton().setOnMouseEntered(e -> {
+            this.view.getSaveButton().setStyle(AppStyles.SAVE_BUTTON_STYLE_HOVER);
+        });
+        this.view.getSaveButton().setOnMouseExited(e -> {
+            this.view.getSaveButton().setStyle(AppStyles.SAVE_BUTTON_STYLE);
         });
     }
 
