@@ -3,7 +3,7 @@ package com.eceshopping.controllers.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.eceshopping.styles.AppStyles;
+import com.eceshopping.configs.AppStyles;
 import com.eceshopping.utils.validator.Validator;
 import com.eceshopping.views.components.ErrorsList;
 import com.eceshopping.views.components.InputFieldView;

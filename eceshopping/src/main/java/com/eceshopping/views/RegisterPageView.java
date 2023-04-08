@@ -1,7 +1,7 @@
 package com.eceshopping.views;
 
-import com.eceshopping.styles.AppStyles;
-import com.eceshopping.styles.AppText;
+import com.eceshopping.configs.AppStyles;
+import com.eceshopping.configs.AppText;
 import com.eceshopping.views.components.InputFieldView;
 import com.eceshopping.views.components.RegisterFormView;
 

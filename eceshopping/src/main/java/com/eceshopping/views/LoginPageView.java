@@ -1,8 +1,8 @@
 package com.eceshopping.views;
 
-import com.eceshopping.styles.AppStyles;
-import com.eceshopping.styles.AppText;
 import com.eceshopping.views.components.LoginFormView;
+import com.eceshopping.configs.AppStyles;
+import com.eceshopping.configs.AppText;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.geometry.HPos;

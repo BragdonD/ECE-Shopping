@@ -1,4 +1,4 @@
-package com.eceshopping.styles;
+package com.eceshopping.configs;
 
 public class AppText {
     public static final String LOGIN_PAGE_TITLE = "Login";

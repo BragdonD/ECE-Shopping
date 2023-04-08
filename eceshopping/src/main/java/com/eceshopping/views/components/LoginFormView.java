@@ -2,7 +2,7 @@ package com.eceshopping.views.components;
 
 import java.util.List;
 
-import com.eceshopping.styles.AppText;
+import com.eceshopping.configs.AppText;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.ColumnConstraints;

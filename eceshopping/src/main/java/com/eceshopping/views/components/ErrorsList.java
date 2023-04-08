@@ -2,7 +2,7 @@ package com.eceshopping.views.components;
 
 import java.util.List;
 
-import com.eceshopping.styles.AppStyles;
+import com.eceshopping.configs.AppStyles;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
