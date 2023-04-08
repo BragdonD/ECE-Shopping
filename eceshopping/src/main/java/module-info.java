@@ -8,4 +8,6 @@ module com.eceshopping {
     requires org.flywaydb.core;
     exports com.eceshopping;
     opens com.eceshopping.models;
+    requires javafaker;
+    requires bcrypt;
 }
