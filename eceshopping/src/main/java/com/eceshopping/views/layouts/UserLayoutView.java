@@ -1,10 +1,11 @@
-package com.eceshopping.views;
+package com.eceshopping.views.layouts;
 
 import com.eceshopping.factories.components.NavBarFactory;
 import com.eceshopping.views.components.UserNavBarView;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -35,5 +36,14 @@ public class UserLayoutView extends GridPane {
         this.prefWidthProperty().bind(scene.widthProperty());
         this.prefHeightProperty().bind(scene.heightProperty());
         this.navBar.bindScene(scene);
+    }
+
+    public void setSlot(Node node) {
+        this.slot.getChildren().clear();
+        this.slot.getChildren().add(node);
+    }
+
+    public UserNavBarView getNavBar() {
+        return this.navBar;
     }
 }

@@ -13,7 +13,7 @@ public class Routes {
         new Route("Payment Methods", 2, "/profile/informations")
     );
 
-    public static final List<Route> routes = Arrays.asList(
+    public static final List<Route> navBarRoutes = Arrays.asList(
         new Route("Home", 0, "/"),
         new Route("Products", 1, "/products"),
         new Route("Cart", 2, "/cart"),

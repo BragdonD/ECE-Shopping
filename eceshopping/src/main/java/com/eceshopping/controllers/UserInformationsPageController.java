@@ -11,9 +11,11 @@ import javafx.scene.Scene;
 public class UserInformationsPageController implements Controller {
     private UserInformationsPage view;
     private BooleanProperty editable;
+    private UserNavBarController navBarController;
 
     public UserInformationsPageController(UserInformationsPage view) {
         this.view = view;
+        this.navBarController = new UserNavBarController(this.view.getNavBar());
         this.editable = new SimpleBooleanProperty(false);
         this.bindEditable();
         this.bindToCurrentUser();

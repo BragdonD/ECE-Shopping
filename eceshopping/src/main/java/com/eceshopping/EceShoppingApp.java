@@ -38,11 +38,11 @@ public class EceShoppingApp extends Application {
 
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
         this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
-        this.router.addRoute("/user", profilePage, new ProfilePageController(profilePage));
-        this.router.addRoute("/user/informations", userInformationPage,
+        this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));
+        this.router.addRoute("/profile/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
-        this.router.navigateTo("/user");
+        this.router.navigateTo("/profile");
     }
 
     public static void main(String[] args) {

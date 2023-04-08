@@ -47,6 +47,41 @@ public class AppStyles {
     public static final String PROFILE_PAGE_BUTTON_STYLE_HOVER = "-fx-background-color: #bac4d4; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-border-radius: 15px; -fx-background-radius: 4px; -fx-cursor: hand; -fx-width: 100%;";
 
     public static final String PROFILE_PAGE_BUTTON_DESCRIPTION_STYLE = "-fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: #a6a4a4; -fx-padding: 0 0 0 0px; -fx-text-alignment: left; -fx-wrap-text: true; -fx-width: 100%;";
+    
+    public static final String NAVBAR_STYLE = "" +
+            "-fx-background-color: #ffffff;" +
+            "-fx-border-radius: 0px;" +
+            "-fx-background-radius: 0px;" +
+            "-fx-border-color: #bfbfbf;" +
+            "-fx-border-width: 1px;" +
+            "-fx-padding: 10px;" +
+            "-fx-spacing: 0px;" +
+            "-fx-alignment: center;" +
+            "-fx-min-width: 300px;" +
+            "-fx-min-height: 50px;";
+
+    public static final String NAVBAR_BUTTON_STYLE = "" +
+            "-fx-background-color: #ffffff;" +
+            "-fx-text-fill: #000000;" +
+            "-fx-font-size: 14px;" +
+            "-fx-font-weight: bold;" +
+            "-fx-border-radius: 0px;" +
+            "-fx-background-radius: 0px;" +
+            "-fx-cursor: hand;" +
+            "-fx-padding: 8px;" +
+            "-fx-width: 100%;";
+
+    public static final String NAVBAR_BUTTON_STYLE_HOVER = "" +
+            "-fx-background-color: #f0eded;" +
+            "-fx-text-fill: #000000;" +
+            "-fx-font-size: 14px;" +
+            "-fx-font-weight: bold;" +
+            "-fx-border-radius: 0px;" +
+            "-fx-background-radius: 0px;" +
+            "-fx-cursor: hand;" +
+            "-fx-padding: 8px;" +
+            "-fx-width: 100%;";
+
     /**
      * Sizes for the application
      */

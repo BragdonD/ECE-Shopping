@@ -7,6 +7,7 @@ import com.eceshopping.configs.AppPath;
 import com.eceshopping.configs.AppStyles;
 import com.eceshopping.configs.AppText;
 import com.eceshopping.views.components.ProfileMenuButtonLinkView;
+import com.eceshopping.views.layouts.UserLayoutView;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -50,7 +51,7 @@ public class ProfilePageView extends UserLayoutView implements View {
         }
         this.layout.setVgap(10);
         this.layout.setAlignment(Pos.CENTER);
-        this.slot.getChildren().add(this.layout);
+        this.setSlot(this.layout);
         this.slot.setAlignment(Pos.CENTER);
     }
 

@@ -11,6 +11,7 @@ public class ButtonLinkController {
     public ButtonLinkController(String to, ButtonLinkView view) {
         this.router = Router.getInstance();
         this.view = view;
+        this.linkTo = to;
         this.view.setOnMouseClicked(e -> {
             this.router.navigateTo(this.linkTo);
         });

@@ -81,7 +81,7 @@ public class Router {
      */
     public void navigateTo(String route) throws IllegalArgumentException {
         if(!routes.contains(route)) {
-            throw new IllegalArgumentException("Route does not exist");
+            throw new IllegalArgumentException("Route : " + route + " does not exist");
         }
         View view = views.get(route);
         if(current != null) {

@@ -1,12 +1,23 @@
 package com.eceshopping.views.components;
 
-import javafx.scene.control.Menu;
+import com.eceshopping.configs.AppStyles;
 
-public class LinkNavBarView extends Menu {
+import javafx.scene.Node;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+
+public class LinkNavBarView extends HBox {
     String name;
+    Text text;
 
     public LinkNavBarView(String text) {
-        super(text);
         this.name = text;
+        this.text = new Text(text);
+        this.getChildren().add(this.text);
+        this.setStyle(AppStyles.NAVBAR_BUTTON_STYLE);
+    }
+
+    public void bindHeight(HBox parent) {
+        this.prefHeightProperty().bind(parent.heightProperty());
     }
 }

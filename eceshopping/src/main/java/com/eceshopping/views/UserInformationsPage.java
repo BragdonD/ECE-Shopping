@@ -2,6 +2,7 @@ package com.eceshopping.views;
 
 import com.eceshopping.configs.AppText;
 import com.eceshopping.views.components.InputFieldView;
+import com.eceshopping.views.layouts.UserLayoutView;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -36,7 +37,7 @@ public class UserInformationsPage extends UserLayoutView implements View {
         this.buttonsLayout = new HBox();
         this.buttonsLayout.getChildren().addAll(this.editButton);
         this.formLayout.add(this.buttonsLayout, 0, 4);
-        this.slot.getChildren().add(this.formLayout);
+        this.setSlot(this.formLayout);
     }
 
     public InputFieldView getNameInput() {
