@@ -6,6 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+/*
+ * FormView class is a utility class for creating a form.
+ * It takes a list of InputFieldView and a submit button.
+ * It will display the input fields and the submit button.
+ * It will also handle the layout of the form.
+ * It is used in the LoginPageView and the RegisterPageView.
+ * It is also used in the AdminPageView.
+ */
 public class FormView extends GridPane {
     Button submitButton;
     List<InputFieldView> inputFields;
@@ -16,6 +24,9 @@ public class FormView extends GridPane {
         initLayout();
     }
 
+    /*
+     * This method will initialize the layout of the form.
+     */
     private void initLayout() {
         int i = 0;
         for(InputFieldView inputField : this.inputFields) {
@@ -27,6 +38,9 @@ public class FormView extends GridPane {
         this.add(buttonBox, 0, i);
     }
 
+    /*
+     * get and set methods for the submit button and the input fields.
+     */
     public Button getSubmitButton() {
         return this.submitButton;
     }

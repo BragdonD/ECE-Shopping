@@ -36,6 +36,9 @@ public class RegisterFormView {
     }
 
 
+    /*
+     * Getters and setters
+     */
     public FormView getFormView() {
         return this.formView;
     }

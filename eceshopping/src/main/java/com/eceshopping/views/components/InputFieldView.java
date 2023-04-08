@@ -7,6 +7,13 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
+/*
+ * InputFieldView class is a utility class for creating an input field.
+ * It takes a label, a placeholder and a type.
+ * It will display the label and the input field.
+ * It will also handle the layout of the input field.
+ * It is used in the LoginPageView and the RegisterPageView.
+ */
 public class InputFieldView extends GridPane {
     private Label labelField;
     private TextField textField;

@@ -10,6 +10,10 @@ import javafx.scene.shape.ArcType;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
+/*
+ * LoadingCircle class is a utility class for creating a loading circle.
+ * This class is used in the LoginView class.
+ */
 public class LoadingCircle extends Pane {
     public static final double DEFAULT_DIAMETER = 40;
 

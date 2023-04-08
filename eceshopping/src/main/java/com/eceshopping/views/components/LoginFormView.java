@@ -33,6 +33,9 @@ public class LoginFormView {
         this.formView.getColumnConstraints().add(column2);
     }
 
+    /*
+     * Getters and setters
+     */
     public FormView getFormView() {
         return this.formView;
     }

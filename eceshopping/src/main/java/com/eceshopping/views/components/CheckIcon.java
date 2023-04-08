@@ -6,6 +6,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 
+/*
+ * CheckIcon class is a utility class for creating a check icon.
+ */
 public class CheckIcon extends Group {
     public CheckIcon(double size) {
         double strokeWidth = size / 10;

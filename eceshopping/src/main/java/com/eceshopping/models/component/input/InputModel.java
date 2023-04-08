@@ -13,7 +13,10 @@ public class InputModel {
     private String value;
     private String placeholder;
     private String style;
-
+    
+    /*
+     * Default constructor
+     */
     public InputModel() {
         this.label = "";
         this.type = "";
@@ -24,6 +27,9 @@ public class InputModel {
         this.style = "";
     }
 
+    /*
+     * Constructor with parameters
+     */
     public InputModel(String label, String type, String name, String value, String placeholder, String style) {
         this.label = label;
         this.type = type;
@@ -34,6 +40,9 @@ public class InputModel {
         this.style = style;
     }
 
+    /*
+     * Getters and setters
+     */
     public String getLabel() {
         return this.label;
     }
@@ -125,6 +134,9 @@ public class InputModel {
         return this;
     }
 
+    /*
+     * toString method for the InputModel class to print the attributes of the class
+     */
     @Override
     public String toString() {
         return "{" +

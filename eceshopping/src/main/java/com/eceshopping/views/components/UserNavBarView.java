@@ -6,7 +6,12 @@ import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 
-
+/*
+ * UserNavBarView class is a utility class for creating a navigation bar.
+ * It takes a list of LinkNavBarView.
+ * It will display the links in the navigation bar.
+ * It will also handle the layout of the navigation bar.
+ */
 public class UserNavBarView extends MenuBar {
     List<LinkNavBarView> links;
 

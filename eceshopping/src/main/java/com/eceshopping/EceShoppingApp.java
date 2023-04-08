@@ -1,27 +1,21 @@
 package com.eceshopping;
 
-import java.util.List;
+
 
 import com.eceshopping.configs.FlywayConfig;
-import com.eceshopping.controllers.Controller;
+
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
 import com.eceshopping.controllers.RegisterPageController;
-import com.eceshopping.controllers.components.InputFieldController;
-import com.eceshopping.models.component.input.InputModel;
 import com.eceshopping.utils.Router;
-import com.eceshopping.utils.Session;
-import com.eceshopping.utils.validator.EmailValidator;
-import com.eceshopping.utils.validator.PasswordValidator;
+
+
 import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.RegisterPageView;
-import com.eceshopping.views.components.LoginFormView;
-import com.eceshopping.views.components.RegisterFormView;
-import com.eceshopping.views.components.InputFieldView;
+
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
