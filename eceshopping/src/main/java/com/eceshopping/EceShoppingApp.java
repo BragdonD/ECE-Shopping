@@ -49,4 +49,5 @@ public class EceShoppingApp extends Application {
         FlywayConfig.getInstance();
         launch(args);
     }
+
 }

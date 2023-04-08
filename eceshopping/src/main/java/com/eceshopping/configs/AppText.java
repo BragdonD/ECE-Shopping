@@ -39,7 +39,7 @@ public class AppText {
     public static final String PROFILE_PAGE_TITLE_BUTTON_2 = "Contact Us";
     public static final String PROFILE_PAGE_TITLE_BUTTON_3 = "My informations";
     
-    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_1 = "VIew your new and old orders";
+    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_1 = "View your new and old orders";
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_2 = "You can ask us all your questions";
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_3 = "See/Change my informations";    
 }

@@ -26,7 +26,6 @@ public class ProfilePageController implements Controller {
 
     @Override
     public void bindScene(Scene s) {
-        this.view.prefWidthProperty().bind(s.widthProperty());
-        this.view.prefHeightProperty().bind(s.heightProperty());
+        this.view.bindScene(s);
     }
 }

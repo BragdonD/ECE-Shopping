@@ -8,6 +8,7 @@ import com.eceshopping.configs.AppStyles;
 import com.eceshopping.configs.AppText;
 import com.eceshopping.views.components.ProfileMenuButtonLinkView;
 
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
@@ -16,8 +17,6 @@ public class ProfilePageView extends UserLayoutView implements View {
 
     private List<ProfileMenuButtonLinkView> buttons;
     private GridPane layout;
-    private GridPane column1;
-    private GridPane column2;
 
     private Image image1;
     private Image image2;
@@ -43,19 +42,16 @@ public class ProfilePageView extends UserLayoutView implements View {
 
     private void initLayout() {
         this.layout = new GridPane();
-        this.column1 = new GridPane();
-        this.column1.setVgap(10);
-        this.column2 = new GridPane();
-        buttons.get(0).setStyle(AppStyles.PROFILE_PAGE_BUTTON_STYLE);
-        this.column1.add(buttons.get(0), 0, 0);
-        buttons.get(1).setStyle(AppStyles.PROFILE_PAGE_BUTTON_STYLE);
-        this.column1.add(buttons.get(1), 0, 1);
-        buttons.get(2).setStyle(AppStyles.PROFILE_PAGE_BUTTON_STYLE);
-        this.column2.add(buttons.get(2), 0, 0);
-        this.layout.add(column1, 0, 0);
-        this.layout.add(column2, 1, 0);
-        this.layout.setHgap(10);
+        int i = 0;
+        for(ProfileMenuButtonLinkView button : this.buttons) {
+            button.setStyle(AppStyles.PROFILE_PAGE_BUTTON_STYLE);
+            this.layout.add(button, 0, i);
+            i++;
+        }
+        this.layout.setVgap(10);
+        this.layout.setAlignment(Pos.CENTER);
         this.slot.getChildren().add(this.layout);
+        this.slot.setAlignment(Pos.CENTER);
     }
 
     @Override
