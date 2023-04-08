@@ -1,4 +1,4 @@
-package com.eceshopping.styles;
+package com.eceshopping.configs;
 
 import javafx.geometry.Dimension2D;
 

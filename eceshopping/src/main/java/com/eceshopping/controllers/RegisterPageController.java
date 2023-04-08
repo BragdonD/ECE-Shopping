@@ -3,11 +3,11 @@ package com.eceshopping.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.eceshopping.configs.AppStyles;
 import com.eceshopping.controllers.components.FormController;
 import com.eceshopping.controllers.components.InputFieldController;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
-import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.Session;
 import com.eceshopping.utils.validator.EmailValidator;
