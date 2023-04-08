@@ -3,6 +3,9 @@ package com.eceshopping.factories;
 import com.eceshopping.dto.UserDto;
 import com.github.javafaker.Faker;
 
+/**
+ * This class is used to create a user
+ */
 public class UserFactory {
 
     private static final Faker faker = new Faker();;
@@ -21,6 +24,10 @@ public class UserFactory {
         return newUser;
     }
 
+    /**
+     * This method is used to create a random guest user
+     * @return new user
+     */
     public static UserDto createGuestUser(String userName, String email, String password) {
         UserDto newUser = new UserDto()
             .username(userName)
@@ -31,6 +38,10 @@ public class UserFactory {
         return newUser;
     }
 
+    /**
+     * This method is used to create a random admin user
+     * @return new user
+     */
     public static UserDto createAdminUser(String userName, String email, String password) {
         UserDto newUser = new UserDto()
             .username(userName)

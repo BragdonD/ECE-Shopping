@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -18,6 +17,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * LoginPageView class that creates the login page view for the user.
+ */
 public class LoginPageView extends StackPane implements View {
     private GridPane gridPane;
     private LoginFormView loginFormView;
@@ -27,6 +29,9 @@ public class LoginPageView extends StackPane implements View {
     private Label RegisterLabel;
     private Insets margin;
     
+    /*
+     * loginFormView is the login form view for the user.
+     */
     public LoginPageView() {
         this.gridPane = new GridPane();
         this.gridPane.setVgap(10);
@@ -50,6 +55,10 @@ public class LoginPageView extends StackPane implements View {
         setMargin(this.gridPane, this.margin);
     }
 
+    /*
+     * Set up the register box 
+     * Where the user can register for a new account
+     */
     private void setupRegisterBox() {
         this.RegisterBoxLayout = new GridPane();
         this.RegisterBoxLayout.setVgap(10);
@@ -64,6 +73,9 @@ public class LoginPageView extends StackPane implements View {
         this.RegisterBoxLayout.setAlignment(Pos.CENTER);
     }
 
+    /*
+     * Set up the title of the login page
+     */
     private void setupTitle() {
         this.title = new Text(AppText.LOGIN_PAGE_TITLE);
         this.title.setTextAlignment(TextAlignment.CENTER);
@@ -71,6 +83,9 @@ public class LoginPageView extends StackPane implements View {
         this.title.setStyle(AppStyles.TITLE_STYLE); 
     }
 
+    /*
+     * Set up the login form view
+     */
     private void setupLoginForm() {
         this.loginFormView = new LoginFormView();
         this.gridPane.setStyle(AppStyles.LOGIN_FORM_STYLE);
@@ -88,14 +103,23 @@ public class LoginPageView extends StackPane implements View {
     }
 
 
+    /*
+     * Getters and setters
+     */
     public GridPane getGridPane() {
         return this.gridPane;
     }
 
+    /*
+     * Set the grid pane
+     */
     public void setGridPane(GridPane gridPane) {
         this.gridPane = gridPane;
     }
 
+    /*
+     * Get the login form view
+     */
     public LoginFormView getLoginFormView() {
         return this.loginFormView;
     }
@@ -104,82 +128,135 @@ public class LoginPageView extends StackPane implements View {
         this.loginFormView = loginFormView;
     }
 
+    /*
+     * Get the title of the login page
+     */
     public Text getTitle() {
         return this.title;
     }
 
+    /*
+     * Set the title of the login page
+     */
     public void setTitle(Text title) {
         this.title = title;
     }
 
+    /*
+     * Get the register box
+     */
     public GridPane getRegisterBoxLayout() {
         return this.RegisterBoxLayout;
     }
 
+    /*
+     * Set the register box
+     */
     public void setRegisterBoxLayout(GridPane RegisterBoxLayout) {
         this.RegisterBoxLayout = RegisterBoxLayout;
     }
 
+    /*
+     * Get the register button
+     */
     public Button getRegisterButton() {
         return this.RegisterButton;
     }
 
+    /*
+     * Set the register button
+     */
     public void setRegisterButton(Button RegisterButton) {
         this.RegisterButton = RegisterButton;
     }
 
+    /*
+     * Get the register label
+     */
     public Label getRegisterLabel() {
         return this.RegisterLabel;
     }
 
+    /*
+     * Set the register label
+     */
     public void setRegisterLabel(Label RegisterLabel) {
         this.RegisterLabel = RegisterLabel;
     }
 
+    /*
+     * Get the margin of the login page
+     */
     public Insets getMargin() {
         return this.margin;
     }
 
+    /*
+     * Set the margin of the login page
+     */
     public void setMargin(Insets margin) {
         this.margin = margin;
     }
 
-
+    /*
+     * gridPane is the grid pane of the login page
+     */
     public LoginPageView gridPane(GridPane gridPane) {
         setGridPane(gridPane);
         return this;
     }
 
+    /*
+     * Set the login form view for the user.
+     */
     public LoginPageView loginFormView(LoginFormView loginFormView) {
         setLoginFormView(loginFormView);
         return this;
     }
 
+    /*
+     * Set the title of the login page
+     */
     public LoginPageView title(Text title) {
         setTitle(title);
         return this;
     }
-
+    
+    /* 
+     * Set the register box
+     */
     public LoginPageView RegisterBoxLayout(GridPane RegisterBoxLayout) {
         setRegisterBoxLayout(RegisterBoxLayout);
         return this;
     }
 
+    /*
+     * Set the register button
+     */
     public LoginPageView RegisterButton(Button RegisterButton) {
         setRegisterButton(RegisterButton);
         return this;
     }
 
+    /*
+     * Set the register label
+     */
     public LoginPageView RegisterLabel(Label RegisterLabel) {
         setRegisterLabel(RegisterLabel);
         return this;
     }
 
+    /*
+     * Set the margin of the login page
+     */
     public LoginPageView margin(Insets margin) {
         setMargin(margin);
         return this;
     }    
 
+    /*
+     * Get the root node of the login page
+     */
     @Override
     public Node getRootNode() {
         return this;

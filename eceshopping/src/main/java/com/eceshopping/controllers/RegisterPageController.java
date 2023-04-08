@@ -92,6 +92,9 @@ public class RegisterPageController implements Controller {
         });
     }
     
+    /*
+     * Display the error message
+     */
     private void DisplayError(String message) {
         if(this.view.getregisterFormView().getFormView().getChildren().size() == 4) {
             this.view.getregisterFormView().getFormView().getChildren().remove(3);
@@ -101,6 +104,9 @@ public class RegisterPageController implements Controller {
         this.view.getregisterFormView().getFormView().add(errorText, 0, 4);
     }
 
+    /**
+     * This method is used to navigate to the login page.
+     **/
     private void setupRegisterLink() {
         this.view.getRegisterButton().setOnAction(event -> {
             System.out.print("Navigate to Login");

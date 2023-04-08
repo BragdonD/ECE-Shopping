@@ -1,9 +1,13 @@
 package com.eceshopping.configs;
 
+
 public class AppText {
     public static final String LOGIN_PAGE_TITLE = "Login";
     public static final String REGISTER_PAGE_TITLE = "Register";
     
+    /*
+     * Login Form Text 
+     */
     public static final String LOGIN_FORM_EMAIL_LABEL = "Email";
     public static final String LOGIN_FORM_EMAIL_PLACEHOLDER = "Enter your email";
     public static final String LOGIN_FORM_PASSWORD_LABEL = "Password";
@@ -12,6 +16,9 @@ public class AppText {
     public static final String LOGIN_FORM_REGISTER_LABEL = "New to ECE-Shopping?";
     public static final String LOGIN_FORM_REGISTER_BUTTON = "Register";
 
+    /*
+     * Register Form Text 
+     */
     public static final String REGISTER_FORM_NAME_LABEL = "Name";
     public static final String REGISTER_FORM_NAME_PLACEHOLDER = "Enter your name";
     public static final String REGISTER_FORM_EMAIL_LABEL = "Email";
@@ -24,9 +31,15 @@ public class AppText {
     public static final String REGISTER_FORM_REGISTER_LABEL = "Already a member to ECE-Shopping?";
     public static final String REGISTER_FORM_REGISTER_BUTTON = "Login";
 
+    /*
+     * Input Field Text 
+     */
     public static final String INPUT_EMAIL = "email";
     public static final String INPUT_PASSWORD = "password";
     public static final String INPUT_NAME = "name";
-
+    
+    /*
+     * Error Messages
+     */
     public static final String NO_USER_FOUND = "No user found with those credentials";
 }

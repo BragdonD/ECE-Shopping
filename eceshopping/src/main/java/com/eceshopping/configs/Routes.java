@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.eceshopping.utils.Route;
 
+/**
+ * This class is used to configure the routes of the application
+ */
 public class Routes {
     public static final List<Route> routes = Arrays.asList(
         new Route("Home", 0, "/"),

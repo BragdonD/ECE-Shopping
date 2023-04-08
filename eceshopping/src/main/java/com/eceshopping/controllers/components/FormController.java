@@ -9,14 +9,19 @@ import com.eceshopping.views.components.FormView;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 
+/**
+ * This class is used to control the form view and its input fields 
+ */
 public class FormController {
     private FormView view;
-    private String name;
     private SimpleBooleanProperty isValid;
     private List<InputFieldController> inputFieldsController;
     private List<ChangeListener<Boolean>> isValidListeners;
     private List<ChangeListener<Boolean>> isSubmitting;
 
+    /*
+     * This method is used to check if the form is valid
+     */
     public FormController(FormView view, List<InputFieldController> inputFieldsController) {
         this.view = view;
         this.isValid = new SimpleBooleanProperty(false);
@@ -29,38 +34,37 @@ public class FormController {
         checkSubmit();
     }
 
-    public FormView getView() {
-        return this.view;
-    }
-
-    public void setView(FormView view) {
-        this.view = view;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /*
+     * get the form input fields
+     */
     public List<InputFieldController> getinputFieldsController() {
         return this.inputFieldsController;
     }
 
+    /*
+     * set the form input fields
+     */
     public void setinputFieldsController(List<InputFieldController> inputFieldsController) {
         this.inputFieldsController = inputFieldsController;
     }
 
+    /*
+     * Boolean property to check if the form is valid
+     */
     public SimpleBooleanProperty isValidProperty() {
         return this.isValid;
     }
 
+    /*
+     * get the form is valid
+     */
     public boolean isValid() {
         return this.isValid.get();
     }
 
+    /*
+     * set the form is valid
+     */
     public void setValid(boolean isValid) {
         this.isValid.set(isValid);
     }
@@ -70,10 +74,6 @@ public class FormController {
         return this;
     }
 
-    public FormController name(String name) {
-        this.name = name;
-        return this;
-    }
 
     public FormController inputFieldsController(List<InputFieldController> inputFieldsController) {
         this.inputFieldsController = inputFieldsController;
@@ -85,6 +85,9 @@ public class FormController {
         return this;
     }
 
+    /*
+     * This method is used to notify the listeners when the form is valid or not 
+    */
     private void addIsValidListener() {
         for (InputFieldController inputField : this.inputFieldsController) {
             inputField.addIsValidChangeListener((observable, oldValue, newValue) -> {
@@ -96,6 +99,10 @@ public class FormController {
         }
     }
 
+    /*
+     * This method checks if the form is valid
+     */ 
+
     private void checkIsValid() {
         Boolean isValid = true;
         for (InputFieldController inputField : this.inputFieldsController) {
@@ -104,22 +111,35 @@ public class FormController {
         this.isValid.set(isValid);
     }
 
+    /*
+     * add the listener
+     */
     public void addIsValidChangeListener(ChangeListener<Boolean> listener) {
         this.isValidListeners.add(listener);
     }
 
+    /*
+     * remmove the listener
+     */
     public void removeIsValidChangeListener(ChangeListener<Boolean> listener) {
         this.isValidListeners.remove(listener);
     }
-
+    /* This method is used to notify the listeners when the form is valid or not 
+    */
     public void addIsSubmittingListener(ChangeListener<Boolean> listener) {
         this.isSubmitting.add(listener);
     }
 
+    /*
+     * remmove the listener
+     */
     public void removeIsSubmittingListener(ChangeListener<Boolean> listener) {
         this.isSubmitting.remove(listener);
     }
 
+    /*
+     * This method is used to check if the form is submitting
+     */
     public void checkSubmit() {
         this.view.getSubmitButton().setOnAction(e -> {
             System.out.println("FormController.checkSubmit() - Submitting");
@@ -129,6 +149,9 @@ public class FormController {
         });
     }
 
+    /*
+     * This method is used to get the form values
+     */
     public List<InputModel> getValues() {
         List<InputModel> values = new ArrayList<InputModel>();
         for (InputFieldController inputFieldController : this.inputFieldsController) {
@@ -143,12 +166,18 @@ public class FormController {
         return values;
     }
 
+    /*
+     * This method is used to notify the listeners when the form is valid or not 
+    */
     private void notifyListeners() {
         for(ChangeListener<Boolean> listener : this.isValidListeners) {
             listener.changed(this.isValid, !this.isValid.get(), this.isValid.get());
         }
     }
 
+    /*
+     * This method is used to reset the form
+     */
     public void reset() {
         for (InputFieldController inputFieldController : this.inputFieldsController) {
             inputFieldController.reset();

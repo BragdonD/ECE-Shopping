@@ -13,6 +13,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Node;
 
+/**
+ * This class is used to control the input field view
+ */
 public class InputFieldController {
     private InputFieldView view;
     private String name;
@@ -55,6 +58,9 @@ public class InputFieldController {
         });
     }
 
+    /*
+     * This method is used to check if the input field is valid
+     */
     private void addValueListener() {
         if(this.validator == null) {
             this.isValid.set(true);
@@ -78,6 +84,9 @@ public class InputFieldController {
         });
     }
 
+   /*
+    check if the input field is valid
+   */ 
     private ErrorsList checkForErrorList() {
         ErrorsList errorList = null;
         for(Node node : this.view.getChildren()) {
@@ -89,6 +98,9 @@ public class InputFieldController {
         return errorList;
     }
 
+    /*
+     * This method is used to apply the correct style to the input field
+     */
     private void applyStyle() {
         if(this.isValid.get()) {
             this.view.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
@@ -97,75 +109,79 @@ public class InputFieldController {
         }
     }
 
+    /*
+     * This method is used to get the view of the input field
+     */
     public InputFieldView getView() {
         return this.view;
     }
 
+    /*
+     * This method is used to set the view of the input field
+     */
     public void setView(InputFieldView view) {
         this.view = view;
     }
 
+    /*
+     * This method is used to get the validator of the input field
+     */
     public Validator getValidator() {
         return this.validator;
     }
-
+    /*
+     * This method is used to set the validator of the input field
+     */
     public void setValidator(Validator validator) {
         this.validator = validator;
     }
 
+    /*
+     * This method is used to get the name of the input field
+     */
     public String getName() {
         return this.name;
     }
 
+    /*
+     * This method is used to set the name of the input field
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /*
+     * This method is used to get the value of the input field
+     */
     public SimpleStringProperty valueProperty() {
         return this.value;
     }
 
+    /*
+     * This method is used to set the value of the input field
+     */
     public void setValue(String value) {
         this.value.set(value);
     }
 
+    /*
+     * This method is used to get the isValid property of the input field
+     */
     public SimpleBooleanProperty isValidProperty() {
         return this.isValid;
     }
 
+    /*
+     * This method is used to get the isValid value of the input field
+     */
     public boolean isValid() {
         return this.isValid.get();
     }
 
-    public void setValid(boolean isValid) {
-        this.isValid.set(isValid);
-    }
 
-    public InputFieldController name(String name) {
-        setName(name);
-        return this;
-    }
-
-    public InputFieldController value(String value) {
-        setValue(value);
-        return this;
-    }
-
-    public InputFieldController isValid(boolean isValid) {
-        setValid(isValid);
-        return this;
-    }
-
-    public InputFieldController view(InputFieldView view) {
-        setView(view);
-        return this;
-    }
-
-    public InputFieldController validator(Validator validator) {
-        setValidator(validator);
-        return this;
-    }
-
+    /*
+     * This method reset the input field
+     */
     public void reset() {
         this.value.set("");
         this.view.getTextField().setText("");

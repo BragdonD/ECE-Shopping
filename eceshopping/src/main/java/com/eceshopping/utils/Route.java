@@ -1,5 +1,8 @@
 package com.eceshopping.utils;
 
+/**
+ * This class is used to store the route information
+ */
 public class Route {
     private final String name;
     private final String path;

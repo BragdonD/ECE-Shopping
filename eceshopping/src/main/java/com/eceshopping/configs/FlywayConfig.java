@@ -1,13 +1,17 @@
 package com.eceshopping.configs;
-
 import java.util.Properties;
-
 import org.flywaydb.core.Flyway;
 
+/*
+ * This class is used to configure the database migration tool Flyway
+ */
 public class FlywayConfig {
     private static FlywayConfig instance;
     Properties flywayProperties;
-
+ 
+    /*
+     * This method is used to configure the Flyway tool
+     */
     private FlywayConfig() {
         Properties properties = HibernateConfig.getDevelopmentProperties();
         this.flywayProperties = new Properties();
@@ -18,6 +22,9 @@ public class FlywayConfig {
         flyway.migrate();
     }
 
+    /*
+     * This method is used to get the instance of the FlywayConfig class
+     */
     public static FlywayConfig getInstance() {
         if (instance == null) {
             instance = new FlywayConfig();

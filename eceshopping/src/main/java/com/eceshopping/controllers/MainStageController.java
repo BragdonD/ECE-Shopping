@@ -4,6 +4,9 @@ import com.eceshopping.utils.Session;
 
 import javafx.stage.Stage;
 
+/**
+ * This class is used to handle the main stage
+ */
 public class MainStageController {
     private Stage stage;
 

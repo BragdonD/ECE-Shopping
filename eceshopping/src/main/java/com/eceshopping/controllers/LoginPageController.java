@@ -92,6 +92,11 @@ public class LoginPageController implements Controller {
         });
     }
 
+    /**
+     * This method is used to display an error message.
+     * 
+     * @param message the error message
+     **/
     private void DisplayError(String message) {
         if(this.view.getLoginFormView().getFormView().getChildren().size() == 3) {
             this.view.getLoginFormView().getFormView().getChildren().remove(2);
@@ -101,6 +106,9 @@ public class LoginPageController implements Controller {
         this.view.getLoginFormView().getFormView().add(errorText, 0, 3);
     }
     
+    /**
+     * This method is called when the user click on the register link.
+     **/
     private void setupRegisterLink() {
         this.view.getRegisterButton().setOnAction(event -> {
             Router.getInstance().navigateTo("/register");
