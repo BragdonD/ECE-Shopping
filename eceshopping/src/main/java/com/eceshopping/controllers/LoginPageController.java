@@ -94,8 +94,8 @@ public class LoginPageController implements Controller {
     }
 
     private void DisplayError(String message) {
-        if(this.view.getLoginFormView().getFormView().getChildren().size() == 3) {
-            this.view.getLoginFormView().getFormView().getChildren().remove(2);
+        if(this.view.getLoginFormView().getFormView().getChildren().size() == 4) {
+            this.view.getLoginFormView().getFormView().getChildren().remove(3);
         }
         Text errorText = new Text(message);
         errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);

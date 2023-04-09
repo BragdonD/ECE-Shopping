@@ -128,16 +128,26 @@ public class UserService {
      * @throws EntityExistsException   If the email is already in use
      * @throws EntityNotFoundException If the user does not exist
      */
-    public void updateEmail(String newEmail, int id) throws EntityExistsException, EntityNotFoundException {
-        if (this.userDao.getUserByEmail(newEmail) != null) {
-            throw new EntityExistsException("Email is already in use.");
-        }
-        if (this.userDao.getById(id) == null) {
-            throw new EntityNotFoundException("User does not exist.");
-        }
-        UserModel user = this.userDao.getById(id);
-        user.setEmail(newEmail);
-        this.userDao.update(user);
+    public Task<UserDto> updateEmailAsync(String newEmail, int id) throws EntityExistsException, EntityNotFoundException {
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                try {
+                    userDao.getUserByEmail(newEmail);
+                    throw new EntityExistsException("Email is already in use.");
+                } catch (EntityNotFoundException e) {
+                    // Do nothing
+                }
+                if (userDao.getById(id) == null) {
+                    throw new EntityNotFoundException("User does not exist.");
+                }
+                UserModel user = userDao.getById(id);
+                user.setEmail(newEmail);
+                userDao.update(user);
+                return UserConverter.convertToDto(user);
+            }
+        };
+        return task;
     }
 
     /**
@@ -153,23 +163,40 @@ public class UserService {
      * @throws EntityNotFoundException  If the user does not exist
      * @throws IllegalArgumentException If the password is not valid
      */
-    public void updatePassword(String newPassword, String currentPassword, int id)
+    public Task<UserDto> updatePasswordAsync(String newPassword, int id)
             throws EntityNotFoundException, IllegalArgumentException {
-        if (this.userDao.getById(id) == null) {
-            throw new EntityNotFoundException("User does not exist.");
-        }
-        if (new PasswordValidator().validate(newPassword)) {
-            throw new IllegalArgumentException("Password is not valid.");
-        }
+        Task<UserDto> task = new Task<UserDto>() {
+           @Override
+            protected UserDto call() throws Exception {
+                if (userDao.getById(id) == null) {
+                    throw new EntityNotFoundException("User does not exist.");
+                }
+                if (!(new PasswordValidator().validate(newPassword))) {
+                    throw new IllegalArgumentException("Password is not valid.");
+                }
+                UserModel user = userDao.getById(id);
+                user.setPassword(encryptPassword(newPassword));
+                userDao.update(user);
+                return UserConverter.convertToDto(user);
+            }
+        };
+        return task;
+    }
 
-        UserModel user = this.userDao.getById(id);
-        if (!this.verifyPassword(currentPassword, user.getPassword())) {
-            throw new IllegalArgumentException("Password is not valid.");
-        }
-
-        newPassword = encryptPassword(newPassword);
-        user.setPassword(newPassword);
-        this.userDao.update(user);
+    public Task<UserDto> updateNameAsync(String newName, int id) throws EntityNotFoundException {
+        Task<UserDto> task = new Task<UserDto>() {
+            @Override
+            protected UserDto call() throws Exception {
+                if (userDao.getById(id) == null) {
+                    throw new EntityNotFoundException("User does not exist.");
+                }
+                UserModel user = userDao.getById(id);
+                user.setUsername(newName);
+                userDao.update(user);
+                return UserConverter.convertToDto(user);
+            }
+        };
+        return task;
     }
 
     /**
