@@ -85,6 +85,10 @@ public class UserInformationsPage extends UserLayoutView implements View {
         return this.buttonsLayout;
     }
 
+    public GridPane getFormLayout() {
+        return this.formLayout;
+    }
+
     @Override
     public Node getRootNode() {
         return this;

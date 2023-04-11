@@ -17,6 +17,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 
 public class UserInformationsPageController implements Controller {
     private UserInformationsPage view;
@@ -60,10 +61,11 @@ public class UserInformationsPageController implements Controller {
                     this.view.getButtonsLayout().getChildren().remove(this.view.getCancelButton());
                     this.view.getButtonsLayout().getChildren().remove(this.view.getSaveButton());
                     this.view.getButtonsLayout().getChildren().add(this.view.getEditButton());
+                    eraseError();
                 });
 
                 UpdateEmailTask.setOnFailed(event -> {
-                    System.out.println(UpdateEmailTask.getException().getMessage());
+                    displayError(UpdateEmailTask.getException().getMessage());
                 });
             }
 
@@ -78,10 +80,12 @@ public class UserInformationsPageController implements Controller {
                     this.view.getButtonsLayout().getChildren().remove(this.view.getCancelButton());
                     this.view.getButtonsLayout().getChildren().remove(this.view.getSaveButton());
                     this.view.getButtonsLayout().getChildren().add(this.view.getEditButton());
+                    eraseError();
+                    this.view.getPasswordInput().setValue("");
                 });
 
                 UpdatePasswordTask.setOnFailed(event -> {
-                    System.out.println("Failed to update password");
+                    displayError(UpdatePasswordTask.getException().getMessage());
                 });
             }
 
@@ -96,13 +100,24 @@ public class UserInformationsPageController implements Controller {
                     this.view.getButtonsLayout().getChildren().remove(this.view.getCancelButton());
                     this.view.getButtonsLayout().getChildren().remove(this.view.getSaveButton());
                     this.view.getButtonsLayout().getChildren().add(this.view.getEditButton());
+                    eraseError();
                 });
 
                 UpdateUsernameTask.setOnFailed(event -> {
-                    System.out.println("Failed to update username");
+                    displayError(UpdateUsernameTask.getException().getMessage());
                 });
             }
         });
+    }
+
+    private void displayError(String error) {
+        Text errorText = new Text(error);
+        errorText.getStyleClass().add(AppStyles.ERROR_TEXT_STYLE);
+        this.view.getFormLayout().add(errorText, 0, 5);
+    }
+
+    private void eraseError() {
+        this.view.getFormLayout().getChildren().removeIf(node -> node.getStyleClass().contains(AppStyles.ERROR_TEXT_STYLE));
     }
 
     private void bindEditable() {
