@@ -8,6 +8,8 @@ public class ArticleDto {
     private Double price;
     private Double bulkprice;
    private Image image;
+   private String type;
+    private String marque;
     /**
      * Default constructor for the ArticleDto class. This constructor is used to create
      */
@@ -26,12 +28,15 @@ public class ArticleDto {
      * @param bulkprice The bulkprice of the article
      * @param image The image of the article
      */
-    public ArticleDto(Integer id, String name, Double price,Double bulkprice, Image image) {
+    public ArticleDto(Integer id, String name, Double price,Double bulkprice, Image image, String type, String marque) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.bulkprice = bulkprice;
         this.image = image;
+        this.type = type;
+        this.marque = marque;
+
         
     }   
     /**
@@ -96,6 +101,38 @@ public class ArticleDto {
     }
 
     /**
+     * Gets the type of the article.
+     * @return The type of the article
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the type of the article.
+     * @param type The type of the article
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * Gets the marque of the article.
+     * @return The marque of the article
+     */
+    public String getMarque() {
+        return marque;
+    }
+
+    /**
+     * Sets the marque of the article.
+     * @param marque The marque of the article
+     */
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+
+    /**
      * Gets the image of the article.
      * @return The image of the article
      */
@@ -130,6 +167,8 @@ public class ArticleDto {
         return this;
     }
 
+
+
 /**
  * Sets the bulkprice of the article.
  * @param bulkprice
@@ -147,6 +186,26 @@ public class ArticleDto {
      */
     public ArticleDto image(Image image) {
         setImage(image);
+        return this;
+    }
+
+    /**
+     * Sets the type of the article.
+     * @param type
+     * @return
+     */
+    public ArticleDto type(String type) {
+        setType(type);
+        return this;
+    }
+
+    /**
+     * Sets the marque of the article.
+     * @param marque
+     * @return
+     */
+    public ArticleDto marque(String marque) {
+        setMarque(marque);
         return this;
     }
 

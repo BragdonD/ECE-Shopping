@@ -3,13 +3,14 @@ package com.eceshopping;
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.LoginFormController;
 import com.eceshopping.controllers.RegisterFormController;
+import com.eceshopping.controllers.AddArticleFormController;
 import com.eceshopping.utils.Router;
+import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.LoginFormView;
 import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -24,17 +25,18 @@ public class EceShoppingApp extends Application {
 
         // Set the main stage inside the router controller
         this.router = Router.getInstance(); 
-
+        AddArticleFormView addArticleView = new AddArticleFormView();
         LoginFormView loginView = new LoginFormView();
         RegisterFormView registerView = new RegisterFormView();
-        this.router.addRoute("/register", registerView, new RegisterFormController(registerView));
-        this.router.addRoute("/login", loginView, new LoginFormController(loginView));
+        //this.router.addRoute("/register", registerView, new RegisterFormController(registerView));
+        //this.router.addRoute("/login", loginView, new LoginFormController(loginView));
+        this.router.addRoute("/addArticle", addArticleView, new AddArticleFormController(addArticleView));
         this.router.getRouterController().setMainStage(s);
-
+        
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();
-        this.router.navigateTo("/login");
+        this.router.navigateTo("/addArticle");
     }
 
     public static void main(String[] args) {

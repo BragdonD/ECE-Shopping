@@ -21,7 +21,7 @@ public class ArticleService {
         this.articleDAO = new ArticleDAO();
     }
 
-    public ArticleDto getUserByEmailSync(String name) throws EntityNotFoundException {
+    public ArticleDto getArticlebyname(String name) throws EntityNotFoundException {
         return ArticleConverter.convertToDto(articleDAO.getArticleByName(name));
     }
 

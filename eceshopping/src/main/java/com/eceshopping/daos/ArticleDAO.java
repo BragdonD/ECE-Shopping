@@ -33,4 +33,5 @@ public class ArticleDAO extends Dao<ArticleModel, Integer> {
         return curentSession;
     }   
 
+    
 }
