@@ -17,6 +17,7 @@ import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.concurrent.Task;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
 
 public class RegisterPageController implements Controller {
@@ -112,5 +113,11 @@ public class RegisterPageController implements Controller {
             System.out.print("Navigate to Login");
             Router.getInstance().navigateTo("/login");
         });
+    }
+
+    @Override
+    public void bindScene(Scene s) {
+        this.view.prefWidthProperty().bind(s.widthProperty());
+        this.view.prefHeightProperty().bind(s.heightProperty());
     }
 }

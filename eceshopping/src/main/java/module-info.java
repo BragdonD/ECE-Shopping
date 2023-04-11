@@ -10,4 +10,5 @@ module com.eceshopping {
     opens com.eceshopping.models;
     requires javafaker;
     requires bcrypt;
+    opens images;
 }

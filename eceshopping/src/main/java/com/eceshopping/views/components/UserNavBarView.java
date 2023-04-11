@@ -3,8 +3,11 @@ package com.eceshopping.views.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.eceshopping.configs.AppStyles;
+
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
+import javafx.scene.layout.HBox;
 
 /*
  * UserNavBarView class is a utility class for creating a navigation bar.
@@ -12,11 +15,12 @@ import javafx.scene.control.MenuBar;
  * It will display the links in the navigation bar.
  * It will also handle the layout of the navigation bar.
  */
-public class UserNavBarView extends MenuBar {
+public class UserNavBarView extends HBox {
     List<LinkNavBarView> links;
 
     public UserNavBarView() {
         this.links = new ArrayList<>();
+        this.setStyle(AppStyles.NAVBAR_STYLE);
     }
 
     public UserNavBarView(List<LinkNavBarView> links) {
@@ -32,13 +36,14 @@ public class UserNavBarView extends MenuBar {
     }
 
     public void addLink(LinkNavBarView link) {
+        link.setPadding(new Insets(10));
         this.links.add(link);
-        this.getMenus().add(link);
+        this.getChildren().add(link);
     }
 
     public void addLink(int index, LinkNavBarView link) {
         this.links.add(index, link);
-        this.getMenus().add(index, link);
+        this.getChildren().add(index, link);
     }
 
     public void removeLink(LinkNavBarView link) {

@@ -187,4 +187,9 @@ public class InputFieldController {
         this.view.getTextField().setText("");
         this.isValid.set(false);
     }
+
+    public InputFieldController validator(Validator validator) {
+        this.validator = validator;
+        return this;
+    }
 }

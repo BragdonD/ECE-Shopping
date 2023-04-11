@@ -1,5 +1,7 @@
 package com.eceshopping.views.components;
 
+import com.eceshopping.configs.AppStyles;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -19,12 +21,13 @@ public class InputFieldView extends GridPane {
     private TextField textField;
 
     public InputFieldView(String label, String placeholder, String type) {
-        this.labelField = new Label(label);
+        this.labelField = new Label(label.toUpperCase());
         initTextField(type, placeholder);
         initLayout();
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setHgrow(Priority.ALWAYS);
         this.getColumnConstraints().add(column1);
+        this.labelField.setStyle(AppStyles.LABEL_STYLE);
 
         // set the second column width to its preferred size
         ColumnConstraints column2 = new ColumnConstraints();
@@ -52,5 +55,9 @@ public class InputFieldView extends GridPane {
 
     public Label getLabelField() {
         return this.labelField;
+    }
+
+    public void setValue(String value) {
+        this.textField.setText(value);
     }
 }

@@ -9,11 +9,17 @@ import com.eceshopping.utils.Route;
  * This class is used to configure the routes of the application
  */
 public class Routes {
-    public static final List<Route> routes = Arrays.asList(
+
+    public static final List<Route> userProfileRoute = Arrays.asList(
+        new Route("Orders", 0, "/profile/orders"),
+        new Route("Addresses", 1, "/profile/contact"),
+        new Route("Payment Methods", 2, "/profile/informations")
+    );
+
+    public static final List<Route> navBarRoutes = Arrays.asList(
         new Route("Home", 0, "/"),
         new Route("Products", 1, "/products"),
         new Route("Cart", 2, "/cart"),
-        new Route("Login", 3, "/login"),
-        new Route("Register", 4, "/register")
+        new Route("Profile", 3, "/profile")
     );
 }

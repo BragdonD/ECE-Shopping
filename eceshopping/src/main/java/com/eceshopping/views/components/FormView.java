@@ -33,9 +33,11 @@ public class FormView extends GridPane {
             this.add(inputField, 0, i);
             i++;
         }
-        HBox buttonBox = new HBox();
-        buttonBox.getChildren().add(this.submitButton);
-        this.add(buttonBox, 0, i);
+        if(this.submitButton != null) {
+            HBox buttonBox = new HBox();
+            buttonBox.getChildren().add(this.submitButton);
+            this.add(buttonBox, 0, i);
+        }
     }
 
     /*

@@ -17,6 +17,7 @@ import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.components.InputFieldView;
 
 import javafx.concurrent.Task;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
 
 /**
@@ -69,7 +70,7 @@ public class LoginPageController implements Controller {
                             this.loginFormController.reset();
                         } else {
                             Session.getInstance().setUser(user);
-                            Router.getInstance().navigateTo("/");
+                            Router.getInstance().navigateTo("/profile");
                         }
                     } else {
                         if(getUserTask.getException().getMessage() != null) {
@@ -98,8 +99,8 @@ public class LoginPageController implements Controller {
      * @param message the error message
      **/
     private void DisplayError(String message) {
-        if(this.view.getLoginFormView().getFormView().getChildren().size() == 3) {
-            this.view.getLoginFormView().getFormView().getChildren().remove(2);
+        if(this.view.getLoginFormView().getFormView().getChildren().size() == 4) {
+            this.view.getLoginFormView().getFormView().getChildren().remove(3);
         }
         Text errorText = new Text(message);
         errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);
@@ -113,5 +114,11 @@ public class LoginPageController implements Controller {
         this.view.getRegisterButton().setOnAction(event -> {
             Router.getInstance().navigateTo("/register");
         });
+    }
+
+    @Override
+    public void bindScene(Scene s) {
+        this.view.prefWidthProperty().bind(s.widthProperty());
+        this.view.prefHeightProperty().bind(s.heightProperty());
     }
 }

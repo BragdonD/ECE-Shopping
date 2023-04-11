@@ -1,6 +1,10 @@
 package com.eceshopping.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.eceshopping.dto.UserDto;
+import com.eceshopping.utils.listeners.UserChangedListener;
 
 /**
  * Session class is used to store the current user in memory.
@@ -9,6 +13,7 @@ import com.eceshopping.dto.UserDto;
  */
 public class Session {
     private UserDto user;
+    private List<UserChangedListener> userChangedListeners;
     private static Session instance;
 
     /**
@@ -16,6 +21,7 @@ public class Session {
      */
     private Session() {
         this.user = null;
+        this.userChangedListeners = new ArrayList<UserChangedListener>();
     }
 
     /**
@@ -43,6 +49,7 @@ public class Session {
      */
     public void setUser(UserDto user) {
         this.user = user;
+        notifyUserChangedListeners();
     }
     
     /**
@@ -53,15 +60,40 @@ public class Session {
     }
 
     /**
+     * This method is used to register an observer of user changes.
+     * @param listener The observer to register
+     */
+    public void addUserChangedListener(UserChangedListener listener) {
+        userChangedListeners.add(listener);
+    }
+
+    /**
+     * This method is used to unregister an observer of user changes.
+     * @param listener The observer to unregister
+     */
+    public void removeUserChangedListener(UserChangedListener listener) {
+        userChangedListeners.remove(listener);
+    }
+
+    /**
+     * This method is used to notify all observers of user changes.
+     */
+    private void notifyUserChangedListeners() {
+        for (UserChangedListener listener : userChangedListeners) {
+            listener.userChanged(user);
+        }
+    }
+
+        /**
      * This method is used to set the current user in the session.
      * @param user The current user in the session
      * @return The current session
      */
     public Session user(UserDto user) {
         this.user = user;
+        notifyUserChangedListeners();
         return this;
     }
-
 
     @Override
     public String toString() {
