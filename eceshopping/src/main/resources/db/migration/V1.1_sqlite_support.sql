@@ -1,2 +1,5 @@
-add Column "marque" to table "Products";
-add Column "type" to table "Products";
+ALTER TABLE Products
+ADD COLUMN marque varchar;
+
+ALTER TABLE Products
+ADD COLUMN product_type varchar;

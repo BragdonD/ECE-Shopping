@@ -17,6 +17,12 @@
     <dependencies>
 
          <dependency>
+             <groupId>org.jfxcore</groupId>
+             <artifactId>javafx-swing</artifactId>
+             <version>18-ea+1</version>
+         </dependency>
+
+         <dependency>
              <groupId>io.github.qsy7.java.modules.notification.providers</groupId>
              <artifactId>awt</artifactId>
              <version>0.1.2</version>

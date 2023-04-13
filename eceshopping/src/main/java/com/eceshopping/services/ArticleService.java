@@ -1,6 +1,9 @@
 package com.eceshopping.services;
     
     
+import java.io.IOException;
+import java.sql.SQLException;
+
 import com.eceshopping.converter.ArticleConverter;
 
 import com.eceshopping.daos.ArticleDAO;
@@ -21,7 +24,7 @@ public class ArticleService {
         this.articleDAO = new ArticleDAO();
     }
 
-    public ArticleDto getArticlebyname(String name) throws EntityNotFoundException {
+    public ArticleDto getArticlebyname(String name) throws EntityNotFoundException, IOException {
         return ArticleConverter.convertToDto(articleDAO.getArticleByName(name));
     }
 
@@ -30,11 +33,12 @@ public class ArticleService {
             @Override
             protected ArticleDto call() throws Exception {
                 try {
+                    System.out.println(articleDto);
                     articleDAO.save(ArticleConverter.convertToModel(articleDto));
                 } catch (EntityExistsException e) {
                     throw e;
                 }
-                return null;
+                return articleDto;
             }
         };
         return task;
@@ -77,7 +81,7 @@ public class ArticleService {
         article.setBulkprice(newbulkprice);
         this.articleDAO.update(article);
     }
-    public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException{
+    public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
