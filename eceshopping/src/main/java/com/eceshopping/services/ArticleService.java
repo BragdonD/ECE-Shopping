@@ -85,11 +85,11 @@ public class ArticleService {
         article.setImage(image);
         this.articleDAO.update(article);
     } 
-    public void delete(int id) throws EntityNotFoundException {
-        if (this.articleDAO.getById(id) == null) {
+    public void delete(String name) throws EntityNotFoundException {
+        if (this.articleDAO.getArticleByName(name) == null) {
             throw new EntityNotFoundException("User does not exist.");
         }
-        ArticleModel user = this.articleDAO.getById(id);
+        ArticleModel user = this.articleDAO.getArticleByName(name);
         this.articleDAO.delete(user);
     }
 }

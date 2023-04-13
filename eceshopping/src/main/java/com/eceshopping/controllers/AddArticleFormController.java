@@ -29,14 +29,15 @@ import javafx.stage.Stage;
 
 public class AddArticleFormController implements Controller {
 private ArticleService articleService;
-private final AddArticleFormView view;
+private  AddArticleFormView view;
 private String name;
     private String type;
     private String marque;
     private Double price;
     private Double bulkprice;
     private Image image;
-    private GridPane grid;
+    private int stock;
+    
     
     public AddArticleFormController(AddArticleFormView view) throws IllegalArgumentException {
         this.view = view;
@@ -46,6 +47,7 @@ private String name;
         this.marque = "";
         this.price = 0.0;
         this.bulkprice = 0.0;
+        this.stock = 0;
         this.image = null;
         setupAddButton();
         setupTextFields();
@@ -54,11 +56,15 @@ private String name;
         setupMarqueChangeListener();
         setupPriceChangeListener();
         setupBulkPriceChangeListener();
+        setupStockChangeListener();
+        setupHyperlink();
 
 
         //setupImageChangeListener();
         //hideErrorText();
     }
+
+
  
     private void setupNameChangeListener() {
         this.view.getArticleNameTextField().textProperty().addListener((observable, oldValue, newValue) -> {
@@ -109,12 +115,22 @@ private String name;
             }
         });
     }
+
+    private void setupStockChangeListener() {
+        this.view.getStockTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            stock = Integer.parseInt(newValue);
+            if (stock > 0) {
+                this.view.getStockTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+                //this.view.getStockErrorText().setVisible(false);
+            }
+        });
+    }
  
     private void setupAddArticleButton()
     {
 
         this.view.getAddImage().setOnAction(event -> {
-            System.out.println("hello");
+            
 FileChooser file = new FileChooser();
 file.getExtensionFilters().addAll(
         new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
@@ -139,6 +155,15 @@ file.showOpenDialog(stage2);
               
                 task.setOnFailed(event1 -> {
                     this.view.getAddArticleButton().setDisable(false);
+                    this.view.getAddArticleButton().setText("Add");
+                    //this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
+                    this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
+                    //this.view.getLoadingCircle().setVisible(false);
+                    //this.view.getLoadingCircle().stop();
+                    System.out.println(task.getException().getMessage());
+                });
+             task.setOnSucceeded(event1 -> {
+                    System.out.println("Success");
                     this.view.getAddArticleButton().setText("Add");
                     //this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
                     this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
@@ -210,6 +235,11 @@ file.showOpenDialog(stage2);
 this.setupButton();
 this.setupAddArticleButton();
 
+    }
+    public void setupHyperlink(){
+         this.view.getBackLink().setOnAction(e -> {
+            Router.getInstance().navigateTo("/adminMenu");
+        });
     }
     
     public Scene getScene() {

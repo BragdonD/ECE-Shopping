@@ -27,11 +27,13 @@ public class AddArticleFormView extends GridPane implements View
     private Label articleBulkPriceLabel;
     private Label articleMarqueLabel;
     private Label articleImageLabel;
+    private Label articleStockLabel;
     private TextField articleNameTextField;
     private TextField bulkpriceTextField;
     private TextField priceTextField;
     private TextField typeTextField;
     private TextField marqueTextField;
+    private TextField stockTextField;
 
     private Button addArticleButton;
     private Button addImage;
@@ -75,11 +77,16 @@ public class AddArticleFormView extends GridPane implements View
         this.marqueTextField = new TextField();
 
         this.articleImageLabel = new Label("Image de l'article");
-        this.add(articleImageLabel,0,6,2,1);
+        this.add(articleImageLabel,0,7,2,1);
         this.addArticleButton = new Button("Ajouter");
         
+        this.articleStockLabel = new Label("Stock de l'article");
+        this.add(articleStockLabel,0,6,2,1);
+        this.stockTextField = new TextField();
+        
+
         this.addImage = new Button("Ajouter une image");
-        this.add(addImage, 1, 6, 2, 1);
+        this.add(addImage, 1, 7, 2, 1);
 
         this.add(bulkpriceTextField, 1, 4, 2, 1);
         
@@ -91,11 +98,15 @@ public class AddArticleFormView extends GridPane implements View
 
         this.add(marqueTextField, 1, 5, 2, 1);
 
-        this.add(addArticleButton, 1, 7, 2, 1);
+        this.add(addArticleButton, 1, 9, 2, 1);
 
+        this.add(stockTextField, 1, 6, 2, 1);
         
          this.cancelButton = new Button("Annuler");
         this.backLink = new Hyperlink("Retour");
+        this.add(backLink, 0, 9, 1, 1);
+
+
          }
     
     @Override
@@ -188,6 +199,14 @@ public class AddArticleFormView extends GridPane implements View
         return marqueTextField;
     }
 
+
+    public TextField getStockTextField() {
+        return stockTextField;
+    }
+
+    public void setStockTextField(TextField stockTextField) {
+        this.stockTextField = stockTextField;
+    }
     public void setMarqueTextField(TextField marquTextField) {
         this.marqueTextField = marquTextField;
     }

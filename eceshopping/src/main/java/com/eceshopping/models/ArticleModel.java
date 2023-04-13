@@ -1,29 +1,64 @@
 package com.eceshopping.models;
 
 import javafx.scene.image.Image;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+@Table(name = "Products")
+@NamedQueries({
+        @NamedQuery(name = "ArticleModel.findById", query = "FROM ArticleModel WHERE id = :id"),
+        @NamedQuery(name = "ArticleModel.findByEmail", query = "FROM ArticleModel WHERE name = :name"),
+        @NamedQuery(name = "ArticleModel.findAll", query = "FROM ArticleModel"),
+})
 public class ArticleModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotBlank
+    @Column(name = "name")
     private String name;
-    private String description;
+
+    @NotBlank
+    @Column(name = "name")
+    private String type;
+
+    @NotBlank
+    @Column(name = "price")
     private double price;
+
+    @NotBlank
+    @Column(name = "bulkprice")
     private double bulkprice;
+
+    @NotBlank
+    @Column(name = "stock")
     private int stock;
+
+    @NotBlank
+    @Column(name = "image")
     private Image image;
-    private int idCategory;
+    
 
     public ArticleModel() {
     }
 
-    public ArticleModel(int id, String name, String description, double price, double bulkprice, int stock, Image image, int idCategory) {
+    public ArticleModel(int id, String name, String type, double price, double bulkprice, int stock, Image image) {
         this.id = id;
         this.name = name;
-        this.description = description;
+        this.type = type;
         this.price = price;
         this.bulkprice = bulkprice;
         this.stock = stock;
         this.image = image;
-        this.idCategory = idCategory;
+        
     }
 /**
  * Get the id of the article
@@ -57,15 +92,15 @@ public class ArticleModel {
  * Get the description of the article
  * @return
  */
-    public String getDescription() {
-        return description;
+    public String getType() {
+        return type;
     }
 /**
  *  Set the description of the article
  * @param description
  */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setType(String description) {
+        this.type = description;
     }
 /**
  * Get the price of the article
@@ -113,16 +148,12 @@ public class ArticleModel {
  * Get the id of the category of the article
  * @return
  */
-    public int getIdCategory() {
-        return idCategory;
-    }
+    
 /**
  * Set the id of the category of the article
  * @param idCategory
  */
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
-    }
+    
 
      public void setBulkprice(double bulkprice) {
         this.bulkprice = bulkprice;
