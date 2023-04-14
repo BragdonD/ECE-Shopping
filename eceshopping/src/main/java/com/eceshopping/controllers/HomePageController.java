@@ -24,22 +24,17 @@ public class HomePageController implements Controller {
     }
 
     private void loadArticles() {
-        try {
-            Task<List<ArticleDto>> getAllArticleTask = this.articleService.getAllArticles();
-            getAllArticleTask.setOnSucceeded(e -> {
-                List<ArticleDto> articles = getAllArticleTask.getValue();
-                for (ArticleDto article : articles) {
-                    ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(), article.getPrice(), 0.0); 
-                    new ProductOverviewController(product);
-                    this.view.addProduct(product);
-                }
-                //this.view.loadArticles(articles);
-            });
-            new Thread(getAllArticleTask).start();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        Task<List<ArticleDto>> getAllArticleTask = this.articleService.getAllArticles();
+        getAllArticleTask.setOnSucceeded(e -> {
+            List<ArticleDto> articles = getAllArticleTask.getValue();
+            for (ArticleDto article : articles) {
+                ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(), article.getPrice(), 0.0); 
+                new ProductOverviewController(product);
+                this.view.addProduct(product);
+            }
+            //this.view.loadArticles(articles);
+        });
+        new Thread(getAllArticleTask).start();
     }
 
     @Override

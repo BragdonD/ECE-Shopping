@@ -107,7 +107,7 @@ public class ArticleService {
         this.articleDAO.delete(user);
     }
 
-    public Task<List<ArticleDto>> getAllArticles() throws IOException {
+    public Task<List<ArticleDto>> getAllArticles() {
         Task<List<ArticleDto>> task = new Task<List<ArticleDto>>() {
             @Override
             protected List<ArticleDto> call() throws Exception {

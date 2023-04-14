@@ -18,7 +18,7 @@ public class ProductOverviewController {
         this.view.setOnMouseExited(e -> {
             this.view.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
         });
-    }
+    }     
 
 
 }
