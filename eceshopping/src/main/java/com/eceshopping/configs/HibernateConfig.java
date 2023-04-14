@@ -4,6 +4,7 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.ArticleModel;
 import com.eceshopping.models.UserModel;
 
 /**
@@ -33,6 +34,7 @@ public class HibernateConfig {
         sessionFactory = new Configuration()
             .addProperties(hibernateProperties)
             .addAnnotatedClass(UserModel.class)
+            .addAnnotatedClass(ArticleModel.class)
             .buildSessionFactory();
     }
 

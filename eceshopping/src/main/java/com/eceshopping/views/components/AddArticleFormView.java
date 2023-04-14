@@ -28,12 +28,15 @@ public class AddArticleFormView extends GridPane implements View
     private Label articleMarqueLabel;
     private Label articleImageLabel;
     private Label articleStockLabel;
+
+    private Label articleDescriptionLabel;
     private TextField articleNameTextField;
     private TextField bulkpriceTextField;
     private TextField priceTextField;
     private TextField typeTextField;
     private TextField marqueTextField;
     private TextField stockTextField;
+    private TextField descriptionTextField;
 
     private Button addArticleButton;
     private Button addImage;
@@ -43,6 +46,7 @@ public class AddArticleFormView extends GridPane implements View
     private Text actiontarget;  
     private Hyperlink backLink;
     private Text scenetitle;
+
     public AddArticleFormView() {
 
         this.setAlignment(Pos.CENTER);
@@ -77,16 +81,20 @@ public class AddArticleFormView extends GridPane implements View
         this.marqueTextField = new TextField();
 
         this.articleImageLabel = new Label("Image de l'article");
-        this.add(articleImageLabel,0,7,2,1);
+        this.add(articleImageLabel,0,8,2,1);
         this.addArticleButton = new Button("Ajouter");
         
         this.articleStockLabel = new Label("Stock de l'article");
         this.add(articleStockLabel,0,6,2,1);
         this.stockTextField = new TextField();
         
+        this.articleDescriptionLabel = new Label("Description de l'article");
+        this.add(articleDescriptionLabel,0,7,2,1);
+        this.descriptionTextField = new TextField();
+        this.add(descriptionTextField,1, 7, 2, 1);
 
         this.addImage = new Button("Ajouter une image");
-        this.add(addImage, 1, 7, 2, 1);
+        this.add(addImage, 1, 8, 2, 1); 
 
         this.add(bulkpriceTextField, 1, 4, 2, 1);
         
@@ -165,6 +173,10 @@ public class AddArticleFormView extends GridPane implements View
 
     public TextField getArticleNameTextField() {
         return articleNameTextField;
+    }
+
+    public TextField getDescriptionTextField() {
+        return descriptionTextField;
     }
 
     public void setArticleNameTextField(TextField articleNameTextField) {

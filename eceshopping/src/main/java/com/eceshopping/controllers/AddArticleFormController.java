@@ -1,6 +1,5 @@
 package com.eceshopping.controllers;
 
-
 import java.io.File;
 
 import com.eceshopping.dto.ArticleDto;
@@ -26,19 +25,19 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-
 public class AddArticleFormController implements Controller {
-private ArticleService articleService;
-private  AddArticleFormView view;
-private String name;
+    private ArticleService articleService;
+    private final AddArticleFormView view;
+    private String name;
     private String type;
     private String marque;
+    private String description  ;
     private Double price;
     private Double bulkprice;
     private Image image;
     private int stock;
-    
-    
+    private GridPane grid;
+
     public AddArticleFormController(AddArticleFormView view) throws IllegalArgumentException {
         this.view = view;
         this.articleService = new ArticleService();
@@ -49,6 +48,7 @@ private String name;
         this.bulkprice = 0.0;
         this.stock = 0;
         this.image = null;
+        this.description = "";
         setupAddButton();
         setupTextFields();
         setupNameChangeListener();
@@ -56,42 +56,40 @@ private String name;
         setupMarqueChangeListener();
         setupPriceChangeListener();
         setupBulkPriceChangeListener();
+        
         setupStockChangeListener();
         setupHyperlink();
 
-
-        //setupImageChangeListener();
-        //hideErrorText();
+        // setupImageChangeListener();
+        // hideErrorText();
     }
 
-
- 
     private void setupNameChangeListener() {
         this.view.getArticleNameTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             name = newValue.trim();
             if (name.length() > 0) {
                 this.view.getArticleNameTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getArticleNameErrorText().setVisible(false);
+                // this.view.getArticleNameErrorText().setVisible(false);
             }
         });
     }
-    
+
     private void setupTypeChangeListener() {
         this.view.getTypeTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             type = newValue.trim();
             if (type.length() > 0) {
                 this.view.getTypeTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getTypeErrorText().setVisible(false);
+                // this.view.getTypeErrorText().setVisible(false);
             }
         });
     }
-     
+
     private void setupMarqueChangeListener() {
         this.view.getMarqueTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             marque = newValue.trim();
             if (marque.length() > 0) {
                 this.view.getMarqueTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getMarqueErrorText().setVisible(false);
+                // this.view.getMarqueErrorText().setVisible(false);
             }
         });
     }
@@ -101,7 +99,7 @@ private String name;
             price = Double.parseDouble(newValue);
             if (price > 0) {
                 this.view.getPriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getPriceErrorText().setVisible(false);
+                // this.view.getPriceErrorText().setVisible(false);
             }
         });
     }
@@ -111,72 +109,50 @@ private String name;
             bulkprice = Double.parseDouble(newValue);
             if (bulkprice > 0) {
                 this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getBulkpriceErrorText().setVisible(false);
+                // this.view.getBulkpriceErrorText().setVisible(false);
             }
         });
     }
 
-    private void setupStockChangeListener() {
-        this.view.getStockTextField().textProperty().addListener((observable, oldValue, newValue) -> {
-            stock = Integer.parseInt(newValue);
-            if (stock > 0) {
-                this.view.getStockTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                //this.view.getStockErrorText().setVisible(false);
-            }
-        });
-    }
- 
-    private void setupAddArticleButton()
-    {
+    private void setupAddArticleButton() {
 
         this.view.getAddImage().setOnAction(event -> {
-            
-FileChooser file = new FileChooser();
-file.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-        Stage stage2=Router.getInstance().getRouterController().getMainStage();
-file.showOpenDialog(stage2);
+            FileChooser filechooser = new FileChooser();
+            filechooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+            Stage stage2 = Router.getInstance().getRouterController().getMainStage();
+            java.io.File file = filechooser.showOpenDialog(stage2.getScene().getWindow());
+            this.image = new Image(file.getAbsolutePath());
         });
     }
+
     private void setupButton() {
 
         this.view.getAddArticleButton().setOnAction(event -> {
-            if (validateForm())
-            {
-             
-                ArticleDto articleDto = ArticleFactory.createArticle(name,price, bulkprice,type, marque,  image);
-                Task<Void> task = new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        articleService.saveArticleAsync(articleDto);
-                        return null;
-                    }
-                };
-              
-                task.setOnFailed(event1 -> {
-                    this.view.getAddArticleButton().setDisable(false);
-                    this.view.getAddArticleButton().setText("Add");
-                    //this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
-                    this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
-                    //this.view.getLoadingCircle().setVisible(false);
-                    //this.view.getLoadingCircle().stop();
-                    System.out.println(task.getException().getMessage());
+            if (validateForm()) {
+ 
+                ArticleDto articleDto = ArticleFactory.createArticle(name, price, bulkprice, stock, type, marque, this.image, description);
+                System.out.println(articleDto);
+                Task<ArticleDto> saveArticleTask = articleService.saveArticleAsync(articleDto);
+
+                saveArticleTask.setOnSucceeded(e -> {
+                    System.out.println("Article added successfully");
                 });
-             task.setOnSucceeded(event1 -> {
-                    System.out.println("Success");
-                    this.view.getAddArticleButton().setText("Add");
-                    //this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
-                    this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
-                    //this.view.getLoadingCircle().setVisible(false);
-                    //this.view.getLoadingCircle().stop();
+
+                saveArticleTask.setOnFailed(e -> {
+                    System.out.println("Article not added");
+                    System.out.println(saveArticleTask.getException().getMessage());
+                    System.out.println("Article not added");
                 });
+
                 this.view.getAddArticleButton().setDisable(true);
                 this.view.getAddArticleButton().setText("");
-                //this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
+                // this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
                 this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
-                //this.view.getLoadingCircle().setVisible(true);
-                //this.view.getLoadingCircle().start();
-                new Thread(task).start();
+                // this.view.getLoadingCircle().setVisible(true);
+                // this.view.getLoadingCircle().start();
+
+                new Thread(saveArticleTask).start();
             }
         });
     }
@@ -189,51 +165,62 @@ file.showOpenDialog(stage2);
         this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
     }
 
-    
-/** 
-    private void hideErrorText() {
-        this.view.getNameErrorText().setVisible(false);
-        this.view.getTypeErrorText().setVisible(false);
-        this.view.getMarqueErrorText().setVisible(false);
-        this.view.getPriceErrorText().setVisible(false);
-        this.view.getBulkPriceErrorText().setVisible(false);
-        this.view.getQuantityErrorText().setVisible(false);
-        this.view.getImageErrorText().setVisible(false);
-    }*/
- 
-     private boolean validateForm() {
+    /**
+     * private void hideErrorText() {
+     * this.view.getNameErrorText().setVisible(false);
+     * this.view.getTypeErrorText().setVisible(false);
+     * this.view.getMarqueErrorText().setVisible(false);
+     * this.view.getPriceErrorText().setVisible(false);
+     * this.view.getBulkPriceErrorText().setVisible(false);
+     * this.view.getQuantityErrorText().setVisible(false);
+     * this.view.getImageErrorText().setVisible(false);
+     * }
+     */
+
+     public void setupStockChangeListener() {
+        this.view.getStockTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            stock = Integer.parseInt(newValue);
+            if (stock > 0) {
+                this.view.getStockTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+                // this.view.getQuantityErrorText().setVisible(false);
+            }
+        });
+    }
+
+    private boolean validateForm() {
         boolean valid = true;
         if (name.length() == 0) {
             this.view.getArticleNameTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            //this.view.getNameErrorText().setVisible(true);
+            // this.view.getNameErrorText().setVisible(true);
             valid = false;
         }
         if (type.length() == 0) {
             this.view.getTypeTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            //this.view.getTypeErrorText().setVisible(true);
+            // this.view.getTypeErrorText().setVisible(true);
             valid = false;
         }
         if (marque.length() == 0) {
             this.view.getMarqueTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            //this.view.getMarqueErrorText().setVisible(true);
+            // this.view.getMarqueErrorText().setVisible(true);
             valid = false;
         }
         if (price == 0) {
             this.view.getPriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            //this.view.getPriceErrorText().setVisible(true);
+            // this.view.getPriceErrorText().setVisible(true);
             valid = false;
         }
         if (bulkprice == 0 || bulkprice < 0) {
             this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            //this.view.getBulkpriceErrorText().setVisible(true);
+            // this.view.getBulkpriceErrorText().setVisible(true);
             valid = false;
         }
         return valid;
     }
-    private void setupAddButton(){
-        
-this.setupButton();
-this.setupAddArticleButton();
+
+    private void setupAddButton() {
+
+        this.setupButton();
+        this.setupAddArticleButton();
 
     }
     public void setupHyperlink(){
@@ -242,9 +229,17 @@ this.setupAddArticleButton();
         });
     }
     
+    public void setupDescriptionChangeListener() {
+        this.view.getDescriptionTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            description = newValue.trim();
+            if (description.length() > 0) {
+                this.view.getDescriptionTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+                // this.view.getMarqueErrorText().setVisible(false);
+            }
+        });
+    }
     public Scene getScene() {
         return this.view.getScene();
     }
 
-     
 }

@@ -6,13 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.GridPane;
 
-public class AdminMenuView extends GridPane implements View {
+public class ManageInvView extends GridPane implements View {
     
         private Hyperlink addArticleButton;
         private Hyperlink removeArticleButton;
         private Hyperlink modifyArticleButton;
         
-        public AdminMenuView() {
+        public ManageInvView() {
             super();
             this.addArticleButton = new Hyperlink("Add Article");
             this.removeArticleButton = new Hyperlink("Remove Article");

@@ -1,20 +1,18 @@
 package com.eceshopping.controllers;
 
-import com.eceshopping.views.components.AdminMenuView;
+import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.utils.Router;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 
-public class AdminMenuController implements Controller{
+public class ManageInvController implements Controller{
 
 
-    private  AdminMenuView view;
-    Hyperlink addArticleButton;
-    Hyperlink removeArticleButton;
-    Hyperlink modifyArticleButton;
+    private  ManageInvView view;
+
     
 
-    public AdminMenuController(AdminMenuView view) throws IllegalArgumentException {
+    public ManageInvController(ManageInvView view) throws IllegalArgumentException {
         this.view =view;
 
        setupHyperlink();
@@ -23,19 +21,17 @@ public class AdminMenuController implements Controller{
     }
     
     private void setupHyperlink() {
-        addArticleButton = this.view.getAddArticleButton();
-        removeArticleButton = this.view.getRemoveArticleButton();
-        modifyArticleButton = this.view.getModifyArticleButton();
         
-        addArticleButton.setOnAction(e -> {
+        
+        this.view.getAddArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/addArticle");
         });
         
-        removeArticleButton.setOnAction(e -> {
+        this.view.getRemoveArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/removeArticle");
         });
         
-        modifyArticleButton.setOnAction(e -> {
+        this.view.getModifyArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/modifyArticle");
         });
     }

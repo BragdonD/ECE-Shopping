@@ -4,14 +4,18 @@ import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.LoginFormController;
 import com.eceshopping.controllers.RegisterFormController;
 import com.eceshopping.controllers.AddArticleFormController;
-import com.eceshopping.controllers.RemoveArticleController;
 import com.eceshopping.controllers.AdminMenuController;
+import com.eceshopping.controllers.RemoveArticleController;
+import com.eceshopping.controllers.ManageInvController;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.AdminMenuView;
+import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.views.components.LoginFormView;
+import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.views.components.RegisterFormView;
 import com.eceshopping.views.components.RemoveArticleFormView;
+
 
 
 import javafx.application.Application;
@@ -31,15 +35,17 @@ public class EceShoppingApp extends Application {
         // Set the main stage inside the router controller
         this.router = Router.getInstance(); 
         AdminMenuView adminMenuView = new AdminMenuView();
+        ManageInvView manageInvView = new  ManageInvView();
         AddArticleFormView addArticleView = new AddArticleFormView();
         RemoveArticleFormView removeArticleView = new RemoveArticleFormView();
         LoginFormView loginView = new LoginFormView();
         RegisterFormView registerView = new RegisterFormView();
         //this.router.addRoute("/register", registerView, new RegisterFormController(registerView));
         //this.router.addRoute("/login", loginView, new LoginFormController(loginView));
-        this.router.addRoute("/adminMenu", adminMenuView , new AdminMenuController(adminMenuView));
+        this.router.addRoute("/manageInv", manageInvView , new ManageInvController(manageInvView));
         this.router.addRoute("/addArticle", addArticleView, new AddArticleFormController(addArticleView));
         this.router.addRoute("/removeArticle", removeArticleView, new RemoveArticleController(removeArticleView));
+        this.router.addRoute("/adminMenu", adminMenuView, new AdminMenuController(adminMenuView));
         //this.router.addRoute("/modifyArticle", addArticleView, new AddArticleFormController(addArticleView));
         this.router.getRouterController().setMainStage(s);
         
