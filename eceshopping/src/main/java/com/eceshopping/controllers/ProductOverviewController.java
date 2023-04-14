@@ -29,6 +29,7 @@ public class ProductOverviewController {
     private void setupEvents() {
         this.view.setOnMouseClicked(e -> {
             Router.getInstance().getRouterController().getMainStage().fireEvent(new DisplayProductEvent(this.article));
+            Router.getInstance().navigateTo("/products");
         });
     }
 

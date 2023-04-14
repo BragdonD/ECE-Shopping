@@ -364,6 +364,8 @@ public class AppStyles {
                         "-fx-font-weight: bold;" +
                         "-fx-text-fill: #000000;";
 
+        public static final int PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS = 5;
+
         
 
         /**

@@ -18,8 +18,7 @@ public class Routes {
 
     public static final List<Route> navBarRoutes = Arrays.asList(
         new Route("Home", 0, "/"),
-        new Route("Products", 1, "/products"),
-        new Route("Cart", 2, "/cart"),
-        new Route("Profile", 3, "/profile")
+        new Route("Cart", 1, "/cart"),
+        new Route("Profile", 2, "/profile")
     );
 }
