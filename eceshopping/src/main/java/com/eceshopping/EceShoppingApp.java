@@ -51,7 +51,7 @@ public class EceShoppingApp extends Application {
     }
 
     public static void main(String[] args) {
-        //FlywayConfig.getInstance();
+        FlywayConfig.getInstance();
         launch(args);
     }
 
