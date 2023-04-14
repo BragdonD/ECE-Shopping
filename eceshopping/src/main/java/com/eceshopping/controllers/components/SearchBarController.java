@@ -1,95 +1,111 @@
 package com.eceshopping.controllers.components;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.eceshopping.configs.AppStyles;
 import com.eceshopping.events.FocusSearchEvent;
+import com.eceshopping.events.SearchEvent;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.components.SearchBarView;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 
+/**
+ * SearchBarController class is the controller for the SearchBarView class.
+ */
 public class SearchBarController {
     private SearchBarView view;
-    private boolean isFocused = false;
-    private SimpleStringProperty searchQuery;
-    private List<ChangeListener<String>> searchQueryListeners;
+    private boolean isFocused = false; // Represents if the search bar is focused or not
+    private String query; // Represents the query of the search bar
 
+    /**
+     * Constructor of the SearchBarController class.
+     * @param view The view of the search bar
+     */
     public SearchBarController(SearchBarView view) {
         this.view = view;
-        this.searchQuery = new SimpleStringProperty();
-        this.searchQueryListeners = new ArrayList<ChangeListener<String>>();
+        this.query = "";
         setupSearchButton();
         setupSearchBar();
-        Router.getInstance().getRouterController().getStage().addEventHandler(FocusSearchEvent.FOCUS_SEARCH_EVENT, e -> {
-            if (e.getFocus()) {
-                this.view.getSearchBar().requestFocus();
-                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS); 
-                isFocused = true;
-            } else {
-                isFocused = false;
-                this.view.getSearchBar().getParent().requestFocus();
-                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE);
-            }
-        });
+        Router.getInstance().getRouterController().getStage().addEventHandler(FocusSearchEvent.FOCUS_SEARCH_EVENT,
+                e -> {
+                    if (e.getFocus()) {
+                        focus();
+                    } else {
+                        unfocus();
+                    }
+                });
     }
 
-    public void addSearchQueryListener(ChangeListener<String> listener) {
-        this.searchQueryListeners.add(listener);
-        this.searchQuery.addListener(listener);
-    }
-
-    public void removeSearchQueryListener(ChangeListener<String> listener) {
-        this.searchQueryListeners.remove(listener);
-        this.searchQuery.removeListener(listener);
-    }
-
-    private void notifyListeners() {
-        for (ChangeListener<String> listener : this.searchQueryListeners) {
-            listener.changed(this.searchQuery, null, this.searchQuery.get());
-        }
-    }
-
+    /**
+     * Setup the search button style and action. 
+     */
     private void setupSearchButton() {
         this.view.getSearchButton().setOnMouseEntered(e -> {
-            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_HOVER); 
+            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_HOVER);
         });
         this.view.getSearchButton().setOnMouseExited(e -> {
-            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE); 
+            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
+        });
+        this.view.getSearchButton().setOnMouseClicked(e -> {
+            search();
+            unfocus();
         });
     }
 
+    /**
+     * Setup the search bar text field style and action.
+     */
     private void setupSearchBar() {
+        this.view.getSearchBar().textProperty().addListener((observable, oldValue, newValue) -> {
+            this.query = newValue;
+        });
         this.view.getSearchBar().setOnMouseEntered(e -> {
-            this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_HOVER); 
+            this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_HOVER);
         });
         this.view.getSearchBar().setOnMouseExited(e -> {
             if (!isFocused) {
-                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE); 
+                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE);
             }
         });
         this.view.getSearchBar().setOnMouseClicked(e -> {
-            isFocused = true;
-            this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS); 
+            focus();
         });
 
         this.view.getSearchBar().setOnKeyPressed(e -> {
-            if(e.getCode() == KeyCode.ENTER)
+            if (e.getCode() == KeyCode.ENTER) {
                 search();
-            if(e.getCode() == KeyCode.ESCAPE) {
-                isFocused = false;
-                this.view.getSearchBar().getParent().requestFocus();
-                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE); 
+                unfocus();
+            }
+            if (e.getCode() == KeyCode.ESCAPE) {
+                unfocus();
             }
         });
     }
 
+    /**
+     * Focus the search bar.
+     */
+    private void focus() {
+        this.view.getSearchBar().requestFocus();
+        this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS);
+        isFocused = true;
+    }
+
+    /**
+     * Unfocus the search bar.
+     */
+    private void unfocus() {
+        isFocused = false;
+        this.view.getSearchBar().getParent().requestFocus();
+        this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE);
+    }
+
+    /**
+     * Search the query.
+     */
     private void search() {
-        notifyListeners();
-        System.out.println("Search for: " + this.view.getSearchBar().getText());
+        if(!query.isEmpty()) {
+            Router.getInstance().getRouterController().getStage().fireEvent(new SearchEvent(query));
+        }
+        System.out.println("Nothing to do: empty query");
     }
 }

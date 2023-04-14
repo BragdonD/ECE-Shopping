@@ -3,15 +3,14 @@ package com.eceshopping;
 
 
 import com.eceshopping.configs.FlywayConfig;
-
+import com.eceshopping.controllers.HomePageController;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
 import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterPageController;
 import com.eceshopping.controllers.UserInformationsPageController;
 import com.eceshopping.utils.Router;
-
-
+import com.eceshopping.views.HomePageView;
 import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.ProfilePageView;
 import com.eceshopping.views.RegisterPageView;
@@ -40,7 +39,9 @@ public class EceShoppingApp extends Application {
         RegisterPageView registerPage = new RegisterPageView();
         UserInformationsPage userInformationPage = new UserInformationsPage();
         ProfilePageView profilePage = new ProfilePageView();
+        HomePageView homePage = new HomePageView();
 
+        this.router.addRoute("/", homePage, new HomePageController(homePage));
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
         this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
         this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));

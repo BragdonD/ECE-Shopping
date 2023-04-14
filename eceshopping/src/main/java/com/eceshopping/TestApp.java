@@ -4,6 +4,7 @@ import com.eceshopping.configs.AppSvg;
 import com.eceshopping.controllers.components.SearchBarController;
 import com.eceshopping.events.FocusSearchEvent;
 import com.eceshopping.events.LooseFocusEvent;
+import com.eceshopping.events.SearchEvent;
 import com.eceshopping.factories.components.NavBarFactory;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.EceShoppingPane;
@@ -54,6 +55,10 @@ public class TestApp extends Application {
         eceShoppingPane.bindScene(scene);
         s.setScene(scene);
         s.show();
+
+        s.addEventHandler(SearchEvent.SEARCH_EVENT, e -> {
+            System.out.println(e.getQuery());
+        });
 
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();

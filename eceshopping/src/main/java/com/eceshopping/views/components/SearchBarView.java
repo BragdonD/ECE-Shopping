@@ -4,7 +4,6 @@ import com.eceshopping.configs.AppStyles;
 import com.eceshopping.configs.AppSvg;
 import com.eceshopping.configs.AppText;
 
-import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
