@@ -16,7 +16,6 @@
         <mainClass>com.eceshopping.MainApp</mainClass>
     </properties>
     <dependencies>
-
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>

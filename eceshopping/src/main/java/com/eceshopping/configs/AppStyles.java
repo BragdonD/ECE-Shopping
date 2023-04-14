@@ -269,6 +269,69 @@ public class AppStyles {
                         "-fx-padding: 5px 15px 5px 15px;" +
                         "-fx-width: 100%;";
 
+        public static final String SEARCH_BAR_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #bfbfbf;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #bfbfbf;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE_HOVER = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #424fd6;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+        
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #424fd6;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_BUTTON_STYLE = "" +
+                        "-fx-background-color: #424fd6;" +
+                        "-fx-text-fill: #fff;" +
+                        "-fx-font-size: 14px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-padding: 5px 15px 5px 15px;" +
+                        "-fx-width: 100%;";
+        
+        public static final String SEARCH_BAR_BUTTON_STYLE_HOVER = "" +
+                        "-fx-background-color: #242e8c;" +
+                        "-fx-text-fill: #fff;" +
+                        "-fx-font-size: 14px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-padding: 5px 15px 5px 15px;" +
+                        "-fx-width: 100%;";
+
         /**
          * Sizes for the application
          */
