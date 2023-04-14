@@ -273,8 +273,6 @@ public class AppStyles {
                         "-fx-background-color: #ffffff;" +
                         "-fx-border-radius: 4px;" +
                         "-fx-background-radius: 4px;" +
-                        "-fx-border-color: #bfbfbf;" +
-                        "-fx-border-width: 1px;" +
                         "-fx-padding: 5px 5px 5px 5px;" +
                         "-fx-spacing: 10px;" +
                         "-fx-alignment: center;" +

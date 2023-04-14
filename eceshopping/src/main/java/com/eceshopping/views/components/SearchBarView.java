@@ -2,6 +2,7 @@ package com.eceshopping.views.components;
 
 import com.eceshopping.configs.AppStyles;
 import com.eceshopping.configs.AppSvg;
+import com.eceshopping.configs.AppText;
 
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
@@ -20,7 +21,9 @@ public class SearchBarView extends HBox {
         svgPath.setContent(AppSvg.SEARCH_ICON);
         this.searchButton.setGraphic(svgPath);
         this.searchBar.setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE);
-        this.searchButton.setStyle(AppStyles.SEARCH_BAR_BUTTON_STYLE);
+        this.searchBar.setPromptText(AppText.SEARCH_BAR_PLACEHOLDER);
+        this.searchBar.setFocusTraversable(false);
+        this.searchButton.setStyle(AppStyles.PRIMARY_BUTTON_STYLE);
         HBox.setHgrow(this.searchBar, javafx.scene.layout.Priority.ALWAYS);
         this.getChildren().addAll(this.searchBar, this.searchButton);
         this.setStyle(AppStyles.SEARCH_BAR_STYLE);

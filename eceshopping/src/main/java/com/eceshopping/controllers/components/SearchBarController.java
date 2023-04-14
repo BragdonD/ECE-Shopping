@@ -1,4 +1,4 @@
-package com.eceshopping.controllers;
+package com.eceshopping.controllers.components;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +43,10 @@ public class SearchBarController {
 
     private void setupSearchButton() {
         this.view.getSearchButton().setOnMouseEntered(e -> {
-            this.view.getSearchButton().setStyle(AppStyles.SEARCH_BAR_BUTTON_STYLE_HOVER); 
+            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE_HOVER); 
         });
         this.view.getSearchButton().setOnMouseExited(e -> {
-            this.view.getSearchButton().setStyle(AppStyles.SEARCH_BAR_BUTTON_STYLE); 
+            this.view.getSearchButton().setStyle(AppStyles.PRIMARY_BUTTON_STYLE); 
         });
     }
 
@@ -63,14 +63,15 @@ public class SearchBarController {
             isFocused = true;
             this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS); 
         });
-        this.view.getSearchBar().getParent().addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
-            isFocused = false;
-            this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE); 
-        });
 
         this.view.getSearchBar().setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER)
                 search();
+            if(e.getCode() == KeyCode.ESCAPE) {
+                isFocused = false;
+                this.view.getSearchBar().getParent().requestFocus();
+                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE); 
+            }
         });
     }
 

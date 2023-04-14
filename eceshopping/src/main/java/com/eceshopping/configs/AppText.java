@@ -59,4 +59,6 @@ public class AppText {
     public static final String PRODUCT_PAGE_TITLE = "Welcome to ECE Shopping";
     public static final String PRODUCT_PAGE_SORT_ALPHA = "Sort by name";
     public static final String PRODUCT_PAGE_SORT_PRICE = "Sort by price";
+
+    public static final String SEARCH_BAR_PLACEHOLDER = "Search for a product";
 }
