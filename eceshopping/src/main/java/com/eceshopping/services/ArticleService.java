@@ -3,10 +3,12 @@ package com.eceshopping.services;
     
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.eceshopping.converter.ArticleConverter;
 
-import com.eceshopping.daos.ArticleDAO;
+import com.eceshopping.daos.ArticleDao;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.models.ArticleModel;
 
@@ -18,10 +20,10 @@ import javafx.scene.image.Image;
 
 public class ArticleService {
 
-    private ArticleDAO articleDAO;
+    private ArticleDao articleDAO;
 
     public ArticleService() {
-        this.articleDAO = new ArticleDAO();
+        this.articleDAO = new ArticleDao();
     }
 
     public ArticleDto getArticlebyname(String name) throws EntityNotFoundException, IOException {
@@ -32,12 +34,18 @@ public class ArticleService {
         Task<ArticleDto> task = new Task<ArticleDto>() {
             @Override
             protected ArticleDto call() throws Exception {
+                if(articleDto.getImage() == null) {
+                    throw new EntityExistsException("Image is missing.");
+                }
+
                 try {
                     System.out.println(articleDto);
-                    articleDAO.save(ArticleConverter.convertToModel(articleDto));
+                    ArticleModel article = ArticleConverter.convertToModel(articleDto); 
+                    articleDAO.save(article);
                 } catch (EntityExistsException e) {
-                    throw e;
+                    System.out.println(e.getMessage());
                 }
+
                 return articleDto;
             }
         };
@@ -81,6 +89,7 @@ public class ArticleService {
         article.setBulkprice(newbulkprice);
         this.articleDAO.update(article);
     }
+
     public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -89,11 +98,26 @@ public class ArticleService {
         article.setImage(image);
         this.articleDAO.update(article);
     } 
+
     public void delete(int id) throws EntityNotFoundException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("User does not exist.");
         }
         ArticleModel user = this.articleDAO.getById(id);
         this.articleDAO.delete(user);
+    }
+
+    public Task<List<ArticleDto>> getAllArticles() throws IOException {
+        Task<List<ArticleDto>> task = new Task<List<ArticleDto>>() {
+            @Override
+            protected List<ArticleDto> call() throws Exception {
+                List<ArticleDto> articleDtos = new ArrayList<>();
+                for (ArticleModel article : articleDAO.getAll()) {
+                    articleDtos.add(ArticleConverter.convertToDto(article));
+                }
+                return articleDtos;
+            }
+        };
+        return task;
     }
 }

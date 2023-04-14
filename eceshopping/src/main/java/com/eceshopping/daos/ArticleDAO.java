@@ -1,15 +1,15 @@
 package com.eceshopping.daos;
+
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 import com.eceshopping.configs.HibernateConfig;
 import com.eceshopping.models.ArticleModel;
 import jakarta.persistence.EntityNotFoundException;
 
-public class ArticleDAO extends Dao<ArticleModel, Integer> {
+public class ArticleDao extends Dao<ArticleModel, Integer> {
     private HibernateConfig hibernateConfig;
-    private Session curentSession;
 
-    public ArticleDAO() {
+    public ArticleDao() {
         super(ArticleModel.class);
         hibernateConfig = HibernateConfig.getInstance();
     }
@@ -26,12 +26,4 @@ public class ArticleDAO extends Dao<ArticleModel, Integer> {
             return article;
         }
     }
-    public Session openCurrentSession() {
-
-
-        curentSession = hibernateConfig.getSessionFactory().openSession();
-        return curentSession;
-    }   
-
-    
 }

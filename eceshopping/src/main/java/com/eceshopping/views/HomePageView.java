@@ -1,5 +1,6 @@
 package com.eceshopping.views;
 
+import com.eceshopping.views.components.ProductOverviewView;
 import com.eceshopping.views.layouts.UserLayoutView;
 
 import javafx.scene.Node;
@@ -17,6 +18,10 @@ public class HomePageView extends UserLayoutView implements View {
 
     public GridPane getProductLayout() {
         return this.productsLayout;
+    }
+
+    public void addProduct(ProductOverviewView product) {
+        this.productsLayout.getChildren().add(product);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.eceshopping.views.components;
 
-import com.eceshopping.configs.AppStyles;
 import com.eceshopping.views.View;
 
 import javafx.geometry.Insets;
@@ -9,17 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class AddArticleFormView extends GridPane implements View
-{
+public class AddArticleFormView extends GridPane implements View {
 
     private Label articleNameLabel;
     private Label articleTypeLabel;
@@ -38,16 +34,16 @@ public class AddArticleFormView extends GridPane implements View
     private Button cancelButton;
     private HBox hBox;
     private Text titleText;
-    private Text actiontarget;  
+    private Text actiontarget;
     private Hyperlink backLink;
     private Text scenetitle;
+
     public AddArticleFormView() {
 
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(10);
         this.setPadding(new Insets(25, 25, 25, 25));
-    
 
         this.scenetitle = new Text("Ajouter un article");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -55,34 +51,33 @@ public class AddArticleFormView extends GridPane implements View
 
         this.articleNameLabel = new Label("Nom de l'article");
         this.articleNameTextField = new TextField();
-        this.add(articleNameLabel,0,1,2,1);
+        this.add(articleNameLabel, 0, 1, 2, 1);
 
         this.articleTypeLabel = new Label("Type de l'article");
-        this.add(articleTypeLabel,0,2,2,1);
+        this.add(articleTypeLabel, 0, 2, 2, 1);
         this.typeTextField = new TextField();
 
         this.articlePriceLabel = new Label("Prix de l'article");
-        this.add(articlePriceLabel,0,3,2,1);
+        this.add(articlePriceLabel, 0, 3, 2, 1);
         this.priceTextField = new TextField();
 
         this.articleBulkPriceLabel = new Label("Bulkprice de l'article");
-        this.add(articleBulkPriceLabel,0,4,2,1);
+        this.add(articleBulkPriceLabel, 0, 4, 2, 1);
         this.bulkpriceTextField = new TextField();
 
-
         this.articleMarqueLabel = new Label("Marque de l'article");
-        this.add(articleMarqueLabel,0,5,2,1);
+        this.add(articleMarqueLabel, 0, 5, 2, 1);
         this.marqueTextField = new TextField();
 
         this.articleImageLabel = new Label("Image de l'article");
-        this.add(articleImageLabel,0,6,2,1);
+        this.add(articleImageLabel, 0, 6, 2, 1);
         this.addArticleButton = new Button("Ajouter");
-        
+
         this.addImage = new Button("Ajouter une image");
         this.add(addImage, 1, 6, 2, 1);
 
         this.add(bulkpriceTextField, 1, 4, 2, 1);
-        
+
         this.add(priceTextField, 1, 3, 2, 1);
 
         this.add(typeTextField, 1, 2, 2, 1);
@@ -93,15 +88,13 @@ public class AddArticleFormView extends GridPane implements View
 
         this.add(addArticleButton, 1, 7, 2, 1);
 
-        
-         this.cancelButton = new Button("Annuler");
+        this.cancelButton = new Button("Annuler");
         this.backLink = new Hyperlink("Retour");
-         }
-    
+    }
+
     @Override
     public Node getRootNode() {
-        // TODO Auto-generated method stub
-      return this;
+        return this;
     }
 
     public Label getArticleNameLabel() {
@@ -200,8 +193,6 @@ public class AddArticleFormView extends GridPane implements View
         this.addArticleButton = addArticleButton;
     }
 
-   
-
     public Button getCancelButton() {
         return cancelButton;
     }
@@ -212,7 +203,7 @@ public class AddArticleFormView extends GridPane implements View
 
     public HBox gethBox() {
         return hBox;
-    } 
+    }
 
     public void sethBox(HBox hBox) {
         this.hBox = hBox;
@@ -258,6 +249,4 @@ public class AddArticleFormView extends GridPane implements View
         this.addImage = addImage;
     }
 
-
-    
 }

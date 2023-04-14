@@ -1,27 +1,17 @@
 package com.eceshopping.controllers;
 
-import java.io.File;
-
+import com.eceshopping.configs.AppStyles;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
-import com.eceshopping.styles.AppStyles;
-import com.eceshopping.utils.EmailValidator;
-import com.eceshopping.utils.PasswordValidator;
 import com.eceshopping.utils.Router;
-import com.eceshopping.utils.StringSanitizer;
 import com.eceshopping.views.components.AddArticleFormView;
-import com.eceshopping.views.components.LoadingCircle;
-import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.concurrent.Task;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -138,13 +128,6 @@ public class AddArticleFormController implements Controller {
                     System.out.println("Article not added");
                 });
 
-                this.view.getAddArticleButton().setDisable(true);
-                this.view.getAddArticleButton().setText("");
-                // this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
-                this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
-                // this.view.getLoadingCircle().setVisible(true);
-                // this.view.getLoadingCircle().start();
-
                 new Thread(saveArticleTask).start();
             }
         });
@@ -211,4 +194,7 @@ public class AddArticleFormController implements Controller {
         return this.view.getScene();
     }
 
+    public void bindScene(Scene scene) {
+        // Need to be done
+    }
 }

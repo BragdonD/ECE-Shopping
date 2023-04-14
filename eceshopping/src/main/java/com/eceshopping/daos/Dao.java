@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 
 import com.eceshopping.configs.HibernateConfig;
+import com.eceshopping.models.ArticleModel;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
@@ -84,7 +85,6 @@ public abstract class Dao<T, I> implements DaoInterface<T, I> {
     @Override
     public void save(T t) throws ConstraintViolationException {
         validateModel(t);
-        System.out.println(t);
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             session.beginTransaction();
             session.save(t); // Deprecated but still working so seems fine

@@ -1,15 +1,20 @@
 package com.eceshopping.dto;
 
+import java.util.List;
+
 public class BasketDto {
     private int id;
     private UserDto user;
+    private List<BasketItemDto> basketItems;
+    
 
     public BasketDto() {
     }
 
-    public BasketDto(int id, UserDto user) {
+    public BasketDto(int id, UserDto user, List<BasketItemDto> basketItems) {
         this.id = id;
         this.user = user;
+        this.basketItems = basketItems;
     }
 
     public int getId() {
@@ -28,6 +33,14 @@ public class BasketDto {
         this.user = user;
     }
 
+    public List<BasketItemDto> getBasketItems() {
+        return this.basketItems;
+    }
+
+    public void setBasketItems(List<BasketItemDto> basketItems) {
+        this.basketItems = basketItems;
+    }
+
     public BasketDto id(int id) {
         setId(id);
         return this;
@@ -38,11 +51,8 @@ public class BasketDto {
         return this;
     }
 
-    @Override 
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", user='" + getUser() + "'" +
-            "}";
-    }
+    public BasketDto basketItems(List<BasketItemDto> basketItems) {
+        setBasketItems(basketItems);
+        return this;
+    }    
 }
