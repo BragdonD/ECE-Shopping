@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.configs.AppStyles;
+import com.eceshopping.events.FocusSearchEvent;
+import com.eceshopping.utils.Router;
 import com.eceshopping.views.components.SearchBarView;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -23,6 +25,17 @@ public class SearchBarController {
         this.searchQueryListeners = new ArrayList<ChangeListener<String>>();
         setupSearchButton();
         setupSearchBar();
+        Router.getInstance().getRouterController().getStage().addEventHandler(FocusSearchEvent.FOCUS_SEARCH_EVENT, e -> {
+            if (e.getFocus()) {
+                this.view.getSearchBar().requestFocus();
+                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS); 
+                isFocused = true;
+            } else {
+                isFocused = false;
+                this.view.getSearchBar().getParent().requestFocus();
+                this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE);
+            }
+        });
     }
 
     public void addSearchQueryListener(ChangeListener<String> listener) {
