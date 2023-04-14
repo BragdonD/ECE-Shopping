@@ -2,6 +2,9 @@ package com.eceshopping.utils;
 
 import java.util.regex.Pattern;
 
+/* 
+ * StringSanitizer class is a utility class for sanitizing strings.
+*/
 public class StringSanitizer {
     private static final Pattern INVALID_CHARACTERS = Pattern.compile("[^\\p{L}\\p{N}\\s_.@-]");
 
