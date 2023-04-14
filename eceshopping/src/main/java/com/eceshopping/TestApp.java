@@ -9,6 +9,7 @@ import com.eceshopping.factories.components.NavBarFactory;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.EceShoppingPane;
 import com.eceshopping.views.HomePageView;
+import com.eceshopping.views.ProductPage;
 import com.eceshopping.views.components.ProductOverviewView;
 import com.eceshopping.views.components.SearchBarView;
 import com.eceshopping.views.components.UserNavBarView;
@@ -64,7 +65,7 @@ public class TestApp extends Application {
 
         // this.router.getRouterController().setScene(scene);
         // this.router.getRouterController().show();
-        ProductOverviewView productOverviewView = new ProductOverviewView(new Image("/images/product.png"), "Product Name", 10.0, 4.2);
+        ProductPage productOverviewView = new ProductPage();
         Scene scene = new Scene(productOverviewView, 400, 400);
 
         s.setScene(scene);
