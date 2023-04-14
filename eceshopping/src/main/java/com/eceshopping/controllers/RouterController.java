@@ -23,7 +23,10 @@ public class RouterController {
     public void setMainStage(Stage stage) {
         this.mainStage = stage;
     }
-
+    
+    public Stage getMainStage() {
+        return mainStage;
+    }
     /**
      * Show the main stage.
      */

@@ -84,9 +84,10 @@ public abstract class Dao<T, I> implements DaoInterface<T, I> {
     @Override
     public void save(T t) throws ConstraintViolationException {
         validateModel(t);
+        System.out.println(t);
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.merge(t);
+            session.save(t); // Deprecated but still working so seems fine
             session.getTransaction().commit();
         }
     }

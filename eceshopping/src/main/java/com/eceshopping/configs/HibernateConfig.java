@@ -4,6 +4,7 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.ArticleModel;
 import com.eceshopping.models.UserModel;
 
 /**
@@ -33,6 +34,7 @@ public class HibernateConfig {
         sessionFactory = new Configuration()
             .addProperties(hibernateProperties)
             .addAnnotatedClass(UserModel.class)
+            .addAnnotatedClass(ArticleModel.class)
             .buildSessionFactory();
     }
 
@@ -57,7 +59,7 @@ public class HibernateConfig {
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/main/resources/db/test_db.db");
         properties.setProperty("hibernate.archive.autodetection", "class, hbm");
-        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
 
