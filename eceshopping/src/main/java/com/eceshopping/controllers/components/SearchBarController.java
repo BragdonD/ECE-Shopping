@@ -27,6 +27,7 @@ public class SearchBarController {
         setupSearchBar();
         Router.getInstance().getRouterController().getStage().addEventHandler(FocusSearchEvent.FOCUS_SEARCH_EVENT,
                 e -> {
+                    System.out.println("Focus search event");
                     if (e.getFocus()) {
                         focus();
                     } else {
@@ -57,6 +58,7 @@ public class SearchBarController {
     private void setupSearchBar() {
         this.view.getSearchBar().textProperty().addListener((observable, oldValue, newValue) -> {
             this.query = newValue;
+            search();
         });
         this.view.getSearchBar().setOnMouseEntered(e -> {
             this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_HOVER);
@@ -103,9 +105,6 @@ public class SearchBarController {
      * Search the query.
      */
     private void search() {
-        if(!query.isEmpty()) {
-            Router.getInstance().getRouterController().getStage().fireEvent(new SearchEvent(query));
-        }
-        System.out.println("Nothing to do: empty query");
+        Router.getInstance().getRouterController().getStage().fireEvent(new SearchEvent(query));
     }
 }

@@ -9,6 +9,8 @@ import com.eceshopping.controllers.MainStageController;
 import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterPageController;
 import com.eceshopping.controllers.UserInformationsPageController;
+import com.eceshopping.events.FocusSearchEvent;
+import com.eceshopping.events.LooseFocusEvent;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.HomePageView;
 import com.eceshopping.views.LoginPageView;
@@ -17,7 +19,10 @@ import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.UserInformationsPage;
 
 import javafx.application.Application;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 /**
@@ -25,6 +30,8 @@ import javafx.stage.Stage;
  */
 public class EceShoppingApp extends Application {
     private Router router;
+    private final BooleanProperty ctrlPressed = new SimpleBooleanProperty(false);
+    private final BooleanProperty kPressed = new SimpleBooleanProperty(false);
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
@@ -32,6 +39,9 @@ public class EceShoppingApp extends Application {
         this.router = Router.getInstance();
         this.router.getRouterController().setMainStage(s);
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
+
+        addSceneEventHandler(scene, s);
+
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();
 
@@ -49,6 +59,22 @@ public class EceShoppingApp extends Application {
                 new UserInformationsPageController(userInformationPage));
 
         this.router.navigateTo("/");
+    }
+
+    public void addSceneEventHandler(@SuppressWarnings("exports") Scene scene, @SuppressWarnings("exports") Stage s) {
+        scene.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.CONTROL)
+                ctrlPressed.set(true);
+            if(e.getCode() == KeyCode.K)
+                kPressed.set(true);
+            if(ctrlPressed.get() && kPressed.get()) {
+                s.fireEvent(new FocusSearchEvent(true));
+            }
+            if(e.getCode() == KeyCode.ESCAPE) {
+                s.fireEvent(new LooseFocusEvent());
+                s.fireEvent(new FocusSearchEvent(false));
+            }
+        });
     }
 
     public static void main(String[] args) {

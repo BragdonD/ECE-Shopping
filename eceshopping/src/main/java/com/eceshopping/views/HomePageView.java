@@ -34,6 +34,11 @@ public class HomePageView extends UserLayoutView implements View {
         this.row++;
     }
 
+    public void clearProducts() {
+        this.productsLayout.getChildren().clear();
+        this.row = 0;
+    }
+
     @Override
     public Node getRootNode() {
         return this;
