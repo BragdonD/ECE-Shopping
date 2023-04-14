@@ -330,6 +330,42 @@ public class AppStyles {
                         "-fx-padding: 5px 15px 5px 15px;" +
                         "-fx-width: 100%;";
 
+        public static final String PRODUCT_OVERVIEW_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 15px;" +
+                        "-fx-background-radius: 15px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 200px;";
+
+        public static final String PRODUCT_OVERVIEW_STYLE_HOVER = "" +
+                        "-fx-background-color: #eeeeee;" +
+                        "-fx-border-radius: 15px;" +
+                        "-fx-background-radius: 15px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 200px;" +
+                        "-fx-cursor: hand;";
+
+        
+        public static final String PRODUCT_OVERVIEW_TITLE_STYLE = "" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 50px;" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-text-fill: #000000;";
+
+        
+
         /**
          * Sizes for the application
          */

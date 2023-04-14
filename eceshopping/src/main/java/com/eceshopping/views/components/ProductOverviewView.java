@@ -1,5 +1,8 @@
 package com.eceshopping.views.components;
 
+import com.eceshopping.configs.AppStyles;
+
+import javafx.geometry.HPos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,8 +21,6 @@ public class ProductOverviewView extends GridPane {
         this.title = new Label(title);
         this.price = new Label(Double.toString(price) + " €");
         this.image = new ImageView(image);
-        this.prefHeight(200);
-        this.prefWidth(100);
         this.image.setFitHeight(100);
         this.image.setFitWidth(100);
         this.add(this.image, 0, 0);
@@ -39,6 +40,16 @@ public class ProductOverviewView extends GridPane {
         ratingLayout.add(this.rating, 0, 0);
         lastRow.add(ratingLayout, 1, 0);
         this.add(lastRow, 0, 3);
+        this.image.setFitHeight(170);
+        this.image.setFitWidth(170);
+        GridPane.setHalignment(this.image, HPos.CENTER);
+        GridPane.setHalignment(this.title, HPos.CENTER);
+        GridPane.setHalignment(this.price, HPos.CENTER);
+        GridPane.setHalignment(this.rating, HPos.CENTER);
+        GridPane.setHalignment(this.star, HPos.CENTER);
+        GridPane.setHalignment(lastRow, HPos.CENTER);
+        this.title.setStyle(AppStyles.PRODUCT_OVERVIEW_TITLE_STYLE);
+        this.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
     }
 
     public ImageView getImage() {

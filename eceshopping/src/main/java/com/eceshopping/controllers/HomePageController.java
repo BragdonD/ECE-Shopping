@@ -30,6 +30,7 @@ public class HomePageController implements Controller {
                 List<ArticleDto> articles = getAllArticleTask.getValue();
                 for (ArticleDto article : articles) {
                     ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(), article.getPrice(), 0.0); 
+                    new ProductOverviewController(product);
                     this.view.addProduct(product);
                 }
                 //this.view.loadArticles(articles);

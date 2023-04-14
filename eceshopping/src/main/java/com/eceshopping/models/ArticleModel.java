@@ -25,6 +25,7 @@ import javafx.scene.image.Image;
 @Table(name = "Products")
 @NamedQueries({
         @NamedQuery(name = "ArticleModel.findById", query = "FROM ArticleModel WHERE id = :id"),
+        @NamedQuery(name = "ArticleModel.findByName", query = "FROM ArticleModel WHERE name = :name"),
         @NamedQuery(name = "ArticleModel.findAll", query = "FROM ArticleModel"),
 })
 public class ArticleModel {

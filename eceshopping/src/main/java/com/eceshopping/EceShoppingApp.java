@@ -48,7 +48,7 @@ public class EceShoppingApp extends Application {
         this.router.addRoute("/profile/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
-        this.router.navigateTo("/login");
+        this.router.navigateTo("/");
     }
 
     public static void main(String[] args) {
