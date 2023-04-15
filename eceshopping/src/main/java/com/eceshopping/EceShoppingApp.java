@@ -1,10 +1,12 @@
 package com.eceshopping;
 
 import com.eceshopping.configs.FlywayConfig;
+import com.eceshopping.controllers.AddArticleFormController;
 import com.eceshopping.controllers.AdminMenuController;
 import com.eceshopping.controllers.HomePageController;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
+import com.eceshopping.controllers.ManageInvController;
 import com.eceshopping.controllers.ProductPageController;
 import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterPageController;
@@ -18,7 +20,9 @@ import com.eceshopping.views.ProductPageView;
 import com.eceshopping.views.ProfilePageView;
 import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.UserInformationsPage;
+import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.AdminMenuView;
+import com.eceshopping.views.components.ManageInvView;
 
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
@@ -62,15 +66,24 @@ public class EceShoppingApp extends Application {
         HomePageView homePage = new HomePageView();
         ProductPageView productPage = new ProductPageView();
         AdminMenuView AdminMenuView = new AdminMenuView();
+        ManageInvView manaInvView = new ManageInvView();
+        AddArticleFormView addArticleFormView = new AddArticleFormView();
 
-        this.router.addRoute("/", homePage, new HomePageController(homePage));
-        this.router.addRoute("/products", productPage, new ProductPageController(productPage));
+        // Routes for login and register
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
         this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
+
+        // Normal routes
+        this.router.addRoute("/", homePage, new HomePageController(homePage));
+        this.router.addRoute("/products", productPage, new ProductPageController(productPage));
         this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));
         this.router.addRoute("/profile/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
+        // Routes for admin
+        this.router.addRoute("/manageInv", manaInvView, new ManageInvController(manaInvView));
+        this.router.addRoute("/addArticle", addArticleFormView, new AddArticleFormController(addArticleFormView));
+        //this.router.addRoute("/manageUsers", manageUse)
         this.router.addRoute("/admin", AdminMenuView, new AdminMenuController(AdminMenuView));
 
         this.router.navigateTo("/login");
