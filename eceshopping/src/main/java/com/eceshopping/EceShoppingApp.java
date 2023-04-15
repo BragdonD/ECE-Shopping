@@ -86,7 +86,7 @@ public class EceShoppingApp extends Application {
         //this.router.addRoute("/manageUsers", manageUse)
         this.router.addRoute("/admin", AdminMenuView, new AdminMenuController(AdminMenuView));
 
-        this.router.navigateTo("/login");
+        this.router.navigateTo("/");
     }
 
     public void setWindowSize(@SuppressWarnings("exports") Stage s) {
