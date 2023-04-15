@@ -59,7 +59,7 @@ public class HibernateConfig {
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         properties.setProperty("hibernate.connection.url", "jdbc:sqlite:src/main/resources/db/test_db.db");
         properties.setProperty("hibernate.archive.autodetection", "class, hbm");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
 

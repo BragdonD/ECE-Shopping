@@ -7,7 +7,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 public class ArticleDAO extends Dao<ArticleModel, Integer> {
     private HibernateConfig hibernateConfig;
-    private Session curentSession;
+   
 
     public ArticleDAO() {
         super(ArticleModel.class);
@@ -25,13 +25,5 @@ public class ArticleDAO extends Dao<ArticleModel, Integer> {
             }
             return article;
         }
-    }
-    public Session openCurrentSession() {
-
-
-        curentSession = hibernateConfig.getSessionFactory().openSession();
-        return curentSession;
-    }   
-
-    
+    } 
 }

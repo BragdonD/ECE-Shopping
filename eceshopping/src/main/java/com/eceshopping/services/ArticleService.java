@@ -3,6 +3,8 @@ package com.eceshopping.services;
     
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.eceshopping.converter.ArticleConverter;
 
@@ -129,11 +131,24 @@ public class ArticleService {
 
     public void delete(String name) throws EntityNotFoundException {
         if (this.articleDAO.getArticleByName(name) == null) {
-            throw new EntityNotFoundException("User does not exist.");
+            throw new EntityNotFoundException(" does not exist.");
         }
         ArticleModel user = this.articleDAO.getArticleByName(name);
         this.articleDAO.delete(user);
     }
 
-
+    public Task<List<ArticleDto>> getAllArticles() {
+        Task<List<ArticleDto>> task = new Task<List<ArticleDto>>() {
+            @Override
+            protected List<ArticleDto> call() throws Exception {
+                List<ArticleDto> articleDtos = new ArrayList<>();
+                for (ArticleModel article : articleDAO.getAll()) {
+                    articleDtos.add(ArticleConverter.convertToDto(article));
+                }
+                System.out.println("articleDtos");
+                return articleDtos;
+            }
+        };
+        return task;
+    }
 }

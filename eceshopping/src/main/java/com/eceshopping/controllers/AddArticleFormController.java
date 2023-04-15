@@ -1,6 +1,7 @@
 package com.eceshopping.controllers;
 
 import java.io.File;
+import java.util.List;
 
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.factories.ArticleFactory;
@@ -12,6 +13,7 @@ import com.eceshopping.utils.Router;
 import com.eceshopping.utils.StringSanitizer;
 import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.LoadingCircle;
+import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.concurrent.Task;
@@ -132,7 +134,6 @@ public class AddArticleFormController implements Controller {
             if (validateForm()) {
  
                 ArticleDto articleDto = ArticleFactory.createArticle(name, price, bulkprice, stock, type, marque, this.image, description);
-                System.out.println(articleDto);
                 Task<ArticleDto> saveArticleTask = articleService.saveArticleAsync(articleDto);
 
                 saveArticleTask.setOnSucceeded(e -> {
@@ -144,13 +145,6 @@ public class AddArticleFormController implements Controller {
                     System.out.println(saveArticleTask.getException().getMessage());
                     System.out.println("Article not added");
                 });
-
-                this.view.getAddArticleButton().setDisable(true);
-                this.view.getAddArticleButton().setText("");
-                // this.view.getAddArticleButton().setStyle(AppStyles.BUTTON_STYLE);
-                this.view.getAddArticleButton().setTooltip(new Tooltip("Add"));
-                // this.view.getLoadingCircle().setVisible(true);
-                // this.view.getLoadingCircle().start();
 
                 new Thread(saveArticleTask).start();
             }
@@ -238,6 +232,7 @@ public class AddArticleFormController implements Controller {
             }
         });
     }
+    
     public Scene getScene() {
         return this.view.getScene();
     }

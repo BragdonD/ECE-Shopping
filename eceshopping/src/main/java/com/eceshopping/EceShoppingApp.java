@@ -8,6 +8,7 @@ import com.eceshopping.controllers.AdminMenuController;
 import com.eceshopping.controllers.RemoveArticleController;
 import com.eceshopping.controllers.ManageInvController;
 import com.eceshopping.utils.Router;
+import com.eceshopping.views.ProductOverviewView;
 import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.AdminMenuView;
 import com.eceshopping.views.components.ManageInvView;
@@ -31,9 +32,9 @@ public class EceShoppingApp extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
         s.setTitle("My JavaFX App");       
-
         // Set the main stage inside the router controller
         this.router = Router.getInstance(); 
+        
         AdminMenuView adminMenuView = new AdminMenuView();
         ManageInvView manageInvView = new  ManageInvView();
         AddArticleFormView addArticleView = new AddArticleFormView();

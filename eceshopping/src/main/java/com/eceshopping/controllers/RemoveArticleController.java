@@ -18,6 +18,7 @@ public class RemoveArticleController implements Controller {
     public  RemoveArticleController(RemoveArticleFormView view) throws IllegalArgumentException {
 
         this.view = view;
+        this.articleService = new ArticleService();
         this.name = "";
         setupRemoveButton();
         setupNameChangeListener();
@@ -38,16 +39,10 @@ public class RemoveArticleController implements Controller {
         this.view.getRemoveArticleButton().setOnAction(e -> {
             if (validateForm())
             {
-             
-                Task<Void> task = new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
                        
                         articleService.delete(name);
-                        return null;
-                    }
-                };
-                new Thread(task).start();
+                       
+               
         }
         
         });

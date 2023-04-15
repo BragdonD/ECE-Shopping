@@ -26,6 +26,7 @@ import javafx.scene.image.Image;
 @NamedQueries({
         @NamedQuery(name = "ArticleModel.findById", query = "FROM ArticleModel WHERE id = :id"),
         @NamedQuery(name = "ArticleModel.findAll", query = "FROM ArticleModel"),
+        @NamedQuery(name = "ArticleModel.findByName", query = "FROM ArticleModel WHERE name = :name"),
 })
 public class ArticleModel {
     @Id
@@ -50,11 +51,14 @@ public class ArticleModel {
     @Column(name = "image")
     private byte[] image;
 
-    @Column(name = "type")
+    @Column(name = "product_type")
     private String type;
 
     @Column(name = "marque")
     private String marque;
+
+    @Column(name = "ventes")
+    private Integer ventes;
 
     public ArticleModel() {
     }
