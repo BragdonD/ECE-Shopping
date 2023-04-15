@@ -1,11 +1,24 @@
 package com.eceshopping.models;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+
+
+@Entity
+@Table(name = "Purchase_Items")
+@NamedQueries({
+        @NamedQuery(name = "PurchasedItemModel.findById", query = "FROM PurchasedItemModel WHERE id = :id"),
+        @NamedQuery(name = "PurchasedItemModel.findAll", query = "FROM PurchasedItemModel"),
+        @NamedQuery(name = "PurchasedItemModel.findByName", query = "FROM PurchasedItemModel WHERE name = :name"),
+})
 
 public class PurchasedItemModel {
 
@@ -28,6 +41,9 @@ public class PurchasedItemModel {
         this.id = id;
         this.idArticle = idArticle;
         this.idPurchase = idPurchase;
+    }
+
+    public PurchasedItemModel() {
     }
 
 

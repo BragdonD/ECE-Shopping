@@ -61,6 +61,7 @@ public class ArticleModel {
     private Integer ventes;
 
     public ArticleModel() {
+        this.image=new byte[0];
     }
 
     public ArticleModel(int id, String name, String type, double price, double bulkprice, int stock, Image image, String description) throws SQLException {

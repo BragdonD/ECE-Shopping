@@ -1,11 +1,13 @@
 package com.eceshopping.controllers;
 
-import com.eceshopping.views.ProductOverviewView;
+import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.components.ManageInvView;
 
 import java.util.List;
 
 import com.eceshopping.dto.ArticleDto;
+import com.eceshopping.events.DisplayArticleEvent;
+import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
 
@@ -20,6 +22,7 @@ public class ManageInvController implements Controller{
 
     ArticleService articleService;
     private List<ArticleDto> articles;
+    private ArticleDto article;
 
     public ManageInvController(ManageInvView view) throws IllegalArgumentException {
         
@@ -28,22 +31,15 @@ public class ManageInvController implements Controller{
        setupHyperlink();
        loadArticles();
        displayArticles();
+       listenToEvents() ;
+       
     }
     
     private void setupHyperlink() {
-        
-        
         this.view.getAddArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/addArticle");
         });
         
-        this.view.getRemoveArticleButton().setOnAction(e -> {
-            Router.getInstance().navigateTo("/removeArticle");
-        });
-        
-        this.view.getModifyArticleButton().setOnAction(e -> {
-            Router.getInstance().navigateTo("/modifyArticle");
-        });
     }
     private void loadArticles() {
         Task<List<ArticleDto>> getAllArticleTask = this.articleService.getAllArticles();
@@ -52,6 +48,7 @@ public class ManageInvController implements Controller{
             displayArticles();
             //this.view.loadArticles(articles);
             System.out.println(this.articles);
+            
         });
         getAllArticleTask.setOnFailed(e -> {
             System.out.println(e.getSource().getException().getMessage());
@@ -64,11 +61,29 @@ public class ManageInvController implements Controller{
             return;
         }
         for (ArticleDto article : this.articles) {
-            ProductOverviewView product = new ProductOverviewView(article.getName()); 
-            new ProductOverviewController(product);
+            ProductOView product = new ProductOView(article.getName(),article.getId()); 
+            new ProductOviewController(product,article);
             this.view.addProduct(product);
         }
     }
 
+    private void listenToEvents() {
+        Router.getInstance().getRouterController().getMainStage().addEventHandler(DisplayArticleEvent.DISPLAY_ARTICLE, e -> {
+            this.article = e.getArticle();
+            System.out.println("Article : " + article);
+            this.view.setName(article.getName());
+
+        });  
+
+        Router.getInstance().getRouterController().getMainStage().addEventHandler(ModifyInvEvent.MODIFY_ARTICLE, e -> {
+            this.article = e.getArticle();
+            System.out.println("Article : " + article);
+            this.view.setName(article.getName());
+
+        });
+        
+    }
+
+    
     
 }
