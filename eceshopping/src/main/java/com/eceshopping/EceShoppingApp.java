@@ -1,6 +1,7 @@
 package com.eceshopping;
 
 import com.eceshopping.configs.FlywayConfig;
+import com.eceshopping.controllers.AdminMenuController;
 import com.eceshopping.controllers.HomePageController;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
@@ -17,6 +18,7 @@ import com.eceshopping.views.ProductPageView;
 import com.eceshopping.views.ProfilePageView;
 import com.eceshopping.views.RegisterPageView;
 import com.eceshopping.views.UserInformationsPage;
+import com.eceshopping.views.components.AdminMenuView;
 
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
@@ -59,6 +61,7 @@ public class EceShoppingApp extends Application {
         ProfilePageView profilePage = new ProfilePageView();
         HomePageView homePage = new HomePageView();
         ProductPageView productPage = new ProductPageView();
+        AdminMenuView AdminMenuView = new AdminMenuView();
 
         this.router.addRoute("/", homePage, new HomePageController(homePage));
         this.router.addRoute("/products", productPage, new ProductPageController(productPage));
@@ -68,7 +71,9 @@ public class EceShoppingApp extends Application {
         this.router.addRoute("/profile/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
-        this.router.navigateTo("/");
+        this.router.addRoute("/admin", AdminMenuView, new AdminMenuController(AdminMenuView));
+
+        this.router.navigateTo("/login");
     }
 
     public void setWindowSize(@SuppressWarnings("exports") Stage s) {

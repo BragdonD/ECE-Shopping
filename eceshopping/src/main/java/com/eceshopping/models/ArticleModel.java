@@ -51,7 +51,7 @@ public class ArticleModel {
     @Column(name = "image")
     private byte[] image;
 
-    @Column(name = "type")
+    @Column(name = "product_type")
     private String type;
 
     @Column(name = "marque")

@@ -70,7 +70,10 @@ public class LoginPageController implements Controller {
                             this.loginFormController.reset();
                         } else {
                             Session.getInstance().setUser(user);
-                            Router.getInstance().navigateTo("/profile");
+                            if(user.getAdmin())
+                                Router.getInstance().navigateTo("/admin");
+                            else
+                                Router.getInstance().navigateTo("/");
                         }
                     } else {
                         if(getUserTask.getException().getMessage() != null) {
