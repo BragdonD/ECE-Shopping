@@ -10,7 +10,8 @@ public class ArticleDto {
     private Image image;
     private String type;
     private String marque;
-
+    private String description;
+    private Integer stock;
     /**
      * Default constructor for the ArticleDto class. This constructor is used to
      * create
@@ -20,6 +21,10 @@ public class ArticleDto {
         this.name = "";
         this.price = 0.0;
         this.bulkprice = 0.0;
+        this.marque = "";
+        this.type = "";
+        this.description = "";
+        this.stock = 0;
         image = null;
     }
 
@@ -33,7 +38,7 @@ public class ArticleDto {
      * @param image     The image of the article
      */
     public ArticleDto(Integer id, String name, Double price, Double bulkprice, Image image, String type,
-            String marque) {
+            Integer stock,String marque, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -41,6 +46,10 @@ public class ArticleDto {
         this.image = image;
         this.type = type;
         this.marque = marque;
+        this.description = description;
+        this.stock = stock;
+
+
 
     }
 
@@ -233,6 +242,56 @@ public class ArticleDto {
      */
     public ArticleDto marque(String marque) {
         setMarque(marque);
+        return this;
+    }
+
+    /**
+     * Sets the description of the article.
+     * 
+     * @param description
+     * @return
+     */
+    public ArticleDto description(String description) {
+        setDescription(description);
+        return this;
+
+    }
+
+    public void setDescription(String description2) {
+        this.description = description2;
+    }
+
+    /**
+     * Gets the description of the article.
+     * 
+     * @return The description of the article
+     */     
+
+    public String getDescription() {
+        return description;
+
+    }
+    
+    /**
+     * Gets the stock of the article.
+     * 
+     * @return The stock of the article
+     */
+    public Integer getStock() {
+        return stock;
+    }
+
+    /**
+     * Sets the stock of the article.
+     * 
+     * @param stock The stock of the article
+     */
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public ArticleDto stock(Integer stock) {
+        setStock(stock);
         return this;
     }
 

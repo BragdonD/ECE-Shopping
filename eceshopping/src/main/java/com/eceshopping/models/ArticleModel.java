@@ -51,10 +51,16 @@ public class ArticleModel {
     @Column(name = "image")
     private byte[] image;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "marque")
+    private String marque;
+
     public ArticleModel() {
     }
 
-    public ArticleModel(int id, String name, String description, double price, double bulkprice, int stock, Image image) throws SQLException {
+    public ArticleModel(int id, String name, String type, double price, double bulkprice, int stock, Image image, String description) throws SQLException {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -62,6 +68,7 @@ public class ArticleModel {
         this.bulkprice = bulkprice;
         this.stock = stock;
         this.setImage(image);
+        this.type = type;
     }
 
     /**
@@ -81,6 +88,9 @@ public class ArticleModel {
     public void setId(int id) {
         this.id = id;
     }
+
+
+
 
     /**
      * Get the name of the article
@@ -155,6 +165,25 @@ public class ArticleModel {
     }
 
     /**
+     * Get the type of the article
+     * 
+     * @return
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Set the type of the article
+     * 
+     * @param string
+     */
+    public void setType(String string) {
+        this.type = string;
+    }
+
+
+    /**
      * Get the image of the article
      * 
      * @return
@@ -190,5 +219,16 @@ public class ArticleModel {
 
     public double getBulkprice() {
         return bulkprice;
+    }
+    public void setMarque(String marque) {
+        this.marque = marque;
+    }
+    public String getMarque() {
+        return marque;
+    }
+    @Override
+    public String toString() {
+        return "ArticleModel [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+                + ", bulkprice=" + bulkprice + ", stock=" + stock + ", image=" + image + ", type=" + type + "]";
     }
 }

@@ -99,11 +99,48 @@ public class ArticleService {
         this.articleDAO.update(article);
     } 
 
-    public void delete(int id) throws EntityNotFoundException {
+    public void updateMarque(String marque, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
         if (this.articleDAO.getById(id) == null) {
+            throw new EntityNotFoundException("Article does not exist.");
+        }
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setMarque(marque);
+        this.articleDAO.update(article);
+    }
+
+    public void updateType(String type,int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+        if (this.articleDAO.getById(id) == null) {
+            throw new EntityNotFoundException("Article does not exist.");
+        }
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setType(type);
+        this.articleDAO.update(article);
+    }
+
+    public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+
+        if (this.articleDAO.getById(id) == null) {
+            throw new EntityNotFoundException("Article does not exist.");
+        }
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setStock(stock);
+        this.articleDAO.update(article);
+    }
+
+    public void updateDescription(String description,int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+        if (this.articleDAO.getById(id) == null) {
+            throw new EntityNotFoundException("Article does not exist.");
+        }
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setDescription(description);
+        this.articleDAO.update(article);
+    }
+
+    public void delete(String name) throws EntityNotFoundException {
+        if (this.articleDAO.getArticleByName(name) == null) {
             throw new EntityNotFoundException("User does not exist.");
         }
-        ArticleModel user = this.articleDAO.getById(id);
+        ArticleModel user = this.articleDAO.getArticleByName(name);
         this.articleDAO.delete(user);
     }
 

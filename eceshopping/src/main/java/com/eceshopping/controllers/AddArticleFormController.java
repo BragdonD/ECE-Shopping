@@ -21,9 +21,11 @@ public class AddArticleFormController implements Controller {
     private String name;
     private String type;
     private String marque;
+    private String description  ;
     private Double price;
     private Double bulkprice;
     private Image image;
+    private int stock;
     private GridPane grid;
 
     public AddArticleFormController(AddArticleFormView view) throws IllegalArgumentException {
@@ -34,7 +36,9 @@ public class AddArticleFormController implements Controller {
         this.marque = "";
         this.price = 0.0;
         this.bulkprice = 0.0;
+        this.stock = 0;
         this.image = null;
+        this.description = "";
         setupAddButton();
         setupTextFields();
         setupNameChangeListener();
@@ -42,6 +46,9 @@ public class AddArticleFormController implements Controller {
         setupMarqueChangeListener();
         setupPriceChangeListener();
         setupBulkPriceChangeListener();
+        
+        setupStockChangeListener();
+        setupHyperlink();
 
         // setupImageChangeListener();
         // hideErrorText();
@@ -113,8 +120,8 @@ public class AddArticleFormController implements Controller {
 
         this.view.getAddArticleButton().setOnAction(event -> {
             if (validateForm()) {
-
-                ArticleDto articleDto = ArticleFactory.createArticle(name, price, bulkprice, type, marque, this.image);
+ 
+                ArticleDto articleDto = ArticleFactory.createArticle(name, price, bulkprice, stock, type, marque, this.image, description);
                 System.out.println(articleDto);
                 Task<ArticleDto> saveArticleTask = articleService.saveArticleAsync(articleDto);
 
@@ -153,6 +160,16 @@ public class AddArticleFormController implements Controller {
      * }
      */
 
+     public void setupStockChangeListener() {
+        this.view.getStockTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            stock = Integer.parseInt(newValue);
+            if (stock > 0) {
+                this.view.getStockTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+                // this.view.getQuantityErrorText().setVisible(false);
+            }
+        });
+    }
+
     private boolean validateForm() {
         boolean valid = true;
         if (name.length() == 0) {
@@ -189,7 +206,21 @@ public class AddArticleFormController implements Controller {
         this.setupAddArticleButton();
 
     }
-
+    public void setupHyperlink(){
+         this.view.getBackLink().setOnAction(e -> {
+            Router.getInstance().navigateTo("/adminMenu");
+        });
+    }
+    
+    public void setupDescriptionChangeListener() {
+        this.view.getDescriptionTextField().textProperty().addListener((observable, oldValue, newValue) -> {
+            description = newValue.trim();
+            if (description.length() > 0) {
+                this.view.getDescriptionTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
+                // this.view.getMarqueErrorText().setVisible(false);
+            }
+        });
+    }
     public Scene getScene() {
         return this.view.getScene();
     }

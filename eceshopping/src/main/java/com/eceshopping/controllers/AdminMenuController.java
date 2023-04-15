@@ -1,5 +1,35 @@
 package com.eceshopping.controllers;
 
-// public class AdminMenuController implements Controller{
+import com.eceshopping.utils.Router;
+import com.eceshopping.views.components.AdminMenuView;
+
+import javafx.scene.Scene;
+
+public class AdminMenuController implements Controller {
     
-// }
+    private AdminMenuView view;
+
+    public AdminMenuController(AdminMenuView view) throws IllegalArgumentException {
+        this.view = view;
+        setupHyperlink();
+    }
+
+    private void setupHyperlink() {
+        this.view. getManageInvButton().setOnAction(e -> {
+            Router.getInstance().navigateTo("/manageInv");
+        });
+        
+        this.view.getManageUsersButton().setOnAction(e -> {
+            Router.getInstance().navigateTo("/manageUsers");
+        });
+        
+        this.view.getManageOrdersButton().setOnAction(e -> {
+            Router.getInstance().navigateTo("/manageOrders");
+        });
+    }
+
+    @Override
+    public void bindScene(Scene s) {
+        //this.view.bindScene(s);
+    }
+}

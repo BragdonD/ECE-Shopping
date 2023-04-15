@@ -21,6 +21,11 @@ public class ArticleConverter {
         article.setName(articleDto.getName());
         article.setPrice(articleDto.getPrice());
         article.setBulkprice(articleDto.getBulkprice());
+        article.setType(articleDto.getType());
+        article.setDescription(articleDto.getDescription());
+        article.setStock(articleDto.getStock());
+        article.setMarque(articleDto.getMarque());
+
         try {
             article.setImage(articleDto.getImage());
         } catch (SQLException e) {
@@ -43,6 +48,9 @@ public class ArticleConverter {
         articleDto.setName(article.getName());
         articleDto.setPrice(article.getPrice());
         articleDto.setBulkprice(article.getBulkprice());
+        articleDto.setType(article.getType());
+        articleDto.setDescription(article.getDescription());
+        articleDto.setStock(article.getStock());
         articleDto.setImage(article.getImage());
         return articleDto;
     }
