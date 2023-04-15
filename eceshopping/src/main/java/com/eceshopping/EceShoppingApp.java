@@ -35,12 +35,17 @@ public class EceShoppingApp extends Application {
     private final BooleanProperty ctrlPressed = new SimpleBooleanProperty(false);
     private final BooleanProperty kPressed = new SimpleBooleanProperty(false);
 
+    public static final String APP_NAME = "EceShopping";
+
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
         new MainStageController(s);
         this.router = Router.getInstance();
         this.router.getRouterController().setMainStage(s);
+
         setWindowSize(s);
+        s.setTitle(APP_NAME);
+        
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
 
         addSceneEventHandler(scene, s);
