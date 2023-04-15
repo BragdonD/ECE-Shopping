@@ -1,6 +1,5 @@
 package com.eceshopping.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
 import com.eceshopping.dto.ArticleDto;

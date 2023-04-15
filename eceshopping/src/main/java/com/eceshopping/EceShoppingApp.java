@@ -21,8 +21,10 @@ import com.eceshopping.views.UserInformationsPage;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -38,6 +40,7 @@ public class EceShoppingApp extends Application {
         new MainStageController(s);
         this.router = Router.getInstance();
         this.router.getRouterController().setMainStage(s);
+        setWindowSize(s);
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
 
         addSceneEventHandler(scene, s);
@@ -61,6 +64,29 @@ public class EceShoppingApp extends Application {
                 new UserInformationsPageController(userInformationPage));
 
         this.router.navigateTo("/");
+    }
+
+    public void setWindowSize(@SuppressWarnings("exports") Stage s) {
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        int screenWidth = (int) screenBounds.getWidth();
+        int screenHeight = (int) screenBounds.getHeight();
+
+        int sceneWidth = 0;
+        int sceneHeight = 0;
+
+        if (screenWidth <= 800 && screenHeight <= 600) {
+            sceneWidth = 600;
+            sceneHeight = 350;
+        } else if (screenWidth <= 1280 && screenHeight <= 768) {
+            sceneWidth = 1000;
+            sceneHeight = 600;
+        } else if (screenWidth <= 1920 && screenHeight <= 1080) {
+            sceneWidth = 1400;
+            sceneHeight = 800;
+        }
+
+        s.setWidth(sceneWidth);
+        s.setHeight(sceneHeight);
     }
 
     public void addSceneEventHandler(@SuppressWarnings("exports") Scene scene, @SuppressWarnings("exports") Stage s) {
