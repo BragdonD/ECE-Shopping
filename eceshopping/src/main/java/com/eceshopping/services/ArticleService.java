@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.converter.ArticleConverter;
+import com.eceshopping.daos.ArticleDAO;
 
-import com.eceshopping.daos.ArticleDao;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.models.ArticleModel;
 
@@ -19,10 +19,10 @@ import javafx.scene.image.Image;
 
 public class ArticleService {
 
-    private ArticleDao articleDAO;
+    private ArticleDAO articleDAO;
 
     public ArticleService() {
-        this.articleDAO = new ArticleDao();
+        this.articleDAO = new ArticleDAO();
     }
 
     /**
@@ -82,6 +82,13 @@ public class ArticleService {
         }
     }
 
+    /**
+     * This method is used to update the price of an article.
+     * @param newprice
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updatePrice(double newprice, int id) throws EntityExistsException, EntityNotFoundException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -91,6 +98,13 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the bulkprice of an article.
+     * @param newbulkprice
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updateBulkprice(double newbulkprice, int id) throws EntityExistsException, EntityNotFoundException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -100,6 +114,13 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the Image of an article.
+     * @param image
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -109,6 +130,13 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the Marque of an article.
+     * @param marque
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updateMarque(String marque, int id)
             throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
@@ -119,6 +147,13 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the Type of an article.
+     * @param type
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updateType(String type, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -128,6 +163,14 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the Stock of an article.
+     * @param stock
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
+
     public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
         this.articleDAO.getById(id);
         ArticleModel article = this.articleDAO.getById(id);
@@ -135,6 +178,12 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * This method is used to update the Stock of an article.
+     * @param id
+     * @param stock
+     * @return
+     */
     public Task<Void> updateStockAsync(int id, Integer stock) {
         return new Task<Void>() {
             @Override
@@ -150,6 +199,13 @@ public class ArticleService {
         };
     }
 
+    /**
+     * This method is used to update the Description of an article.
+     * @param description
+     * @param id
+     * @throws EntityExistsException
+     * @throws EntityNotFoundException
+     */
     public void updateDescription(String description, int id)
             throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
@@ -160,6 +216,11 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
+    /**
+     * Delete an article by its name.
+     * @param name
+     * @throws EntityNotFoundException
+     */
     public void delete(String name) throws EntityNotFoundException {
         if (this.articleDAO.getArticleByName(name) == null) {
             throw new EntityNotFoundException("User does not exist.");
@@ -168,6 +229,10 @@ public class ArticleService {
         this.articleDAO.delete(user);
     }
 
+    /**
+     * Get all articles of the database.
+     * @return
+     */
     public Task<List<ArticleDto>> getAllArticles() {
         Task<List<ArticleDto>> task = new Task<List<ArticleDto>>() {
             @Override

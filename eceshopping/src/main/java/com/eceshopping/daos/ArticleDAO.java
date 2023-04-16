@@ -6,10 +6,12 @@ import com.eceshopping.configs.HibernateConfig;
 import com.eceshopping.models.ArticleModel;
 import jakarta.persistence.EntityNotFoundException;
 
-public class ArticleDao extends Dao<ArticleModel, Integer> {
+public class ArticleDAO extends Dao<ArticleModel, Integer> {
     private HibernateConfig hibernateConfig;
-
-    public ArticleDao() {
+/**
+ * Constructor of ArticleDAO
+ */
+    public ArticleDAO() {
         super(ArticleModel.class);
         hibernateConfig = HibernateConfig.getInstance();
     }

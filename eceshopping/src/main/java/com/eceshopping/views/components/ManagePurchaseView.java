@@ -10,7 +10,10 @@ public class ManagePurchaseView extends GridPane implements View {
     GridPane purchasesLayout;
     int row = 1;
     private Hyperlink backLink;
-
+/**
+ * Constructor of ManagePurchaseView
+ * @param row
+ */
     public ManagePurchaseView() {
         super();
         purchasesLayout = new GridPane();

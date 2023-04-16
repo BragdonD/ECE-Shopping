@@ -12,7 +12,10 @@ import javafx.scene.control.TextField;
 public class PaymentPageController implements Controller {
 
     private PaymentPageView view;
-
+/**
+ * Constructor for the PaymentPageController class
+ * @param view
+ */
     public PaymentPageController(PaymentPageView view) {
         this.view = view;
 

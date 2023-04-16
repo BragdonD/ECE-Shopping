@@ -47,6 +47,10 @@ public class AdminMenuView extends GridPane implements View {
         return this.manageUsersButton;
     }
 
+    /**
+     * 
+     * @return Hyperlink
+     */
     public Hyperlink getManageOrdersButton() {
         return this.manageOrdersButton;
     }

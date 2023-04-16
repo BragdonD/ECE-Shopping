@@ -12,7 +12,7 @@ public class RemoveArticleController implements Controller {
     private RemoveArticleFormView view;
     private String name;
 
-    ArticleService articleService;
+    private ArticleService articleService;
 
     public RemoveArticleController(RemoveArticleFormView view) throws IllegalArgumentException {
 
@@ -65,6 +65,7 @@ public class RemoveArticleController implements Controller {
         return valid;
     }
 
+ 
     public void setupHyperlink() {
         this.view.getBackButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/adminMenu");

@@ -54,7 +54,11 @@ public class PurchaseService {
         };
         return task;
     }
-
+/**
+ * Get all Purchases from database and convert them to PurchaseDto
+ * @param purchaseDto
+ * @return
+ */
     public Task<List<PurchaseDto>> getAllPurchases() {
         Task<List<PurchaseDto>> task = new Task<List<PurchaseDto>>() {
             @Override
@@ -70,6 +74,11 @@ public class PurchaseService {
         return task;
     }
 
+    /**
+     * Save a Purchase in database after converting it to PurchaseModel
+     * @param purchaseDto
+     * @return
+     */
     public Task<PurchaseDto> savePurchaseAsync(PurchaseDto purchaseDto) {
         Task<PurchaseDto> task = new Task<PurchaseDto>() {
             @Override

@@ -11,12 +11,21 @@ public class ModifyInvEvent extends Event {
     private ArticleDto article;
     private boolean isDelete;
 
+    /**
+     * Constructor of ModifyInvEvent
+     * @param article
+     */
     public ModifyInvEvent(ArticleDto article) {
         super(MODIFY_ARTICLE);
         this.article = article;
         this.isDelete = false;
     }
 
+/**
+ * Constructor of ModifyInvEvent
+ * @param article
+ * @param isDelete
+ */
     public ModifyInvEvent(ArticleDto article, boolean isDelete) {
         super(MODIFY_ARTICLE);
         this.article = article;
@@ -30,6 +39,9 @@ public class ModifyInvEvent extends Event {
         return article;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean isDelete() {
         return isDelete;
     }

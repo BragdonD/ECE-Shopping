@@ -15,7 +15,9 @@ import javafx.concurrent.Task;
 
 public class PurchasedItemService {
     private PurchaseItemDAO purchaseItemDAO;
-
+/**
+ * Constructor of PurchasedItemService
+ */
     public PurchasedItemService() {
         this.purchaseItemDAO = new PurchaseItemDAO();
     }
@@ -53,6 +55,10 @@ public class PurchasedItemService {
         return task;
     }
 
+    /**
+     * Get all PurchasedItem from database and convert them to PurchasedItemDto
+     * @return Task<List<PurchasedItemDto>>
+     */
     public Task<List<PurchasedItemDto>> getAllPurchasedItem() {
         Task<List<PurchasedItemDto>> task = new Task<List<PurchasedItemDto>>() {
             @Override
@@ -67,6 +73,13 @@ public class PurchasedItemService {
         };
         return task;
     }
+
+    /**
+     * Save PurchasedItem to database after converting it to PurchasedItemModel
+     * @param purchasedItemDto
+     * @return Task<PurchasedItemDto>
+     * @throws EntityExistsException
+     */
 
     public Task<PurchasedItemDto> save(PurchasedItemDto purchasedItemDto) throws EntityExistsException {
         Task<PurchasedItemDto> task = new Task<PurchasedItemDto>() {

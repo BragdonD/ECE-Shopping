@@ -14,7 +14,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
-
+/**
+ * PurchaseModel class is used to create a purchase object that will be used to store purchase information in the database.
+ */
 @Entity
 @Table(name = "Purchases")
 @NamedQueries({
@@ -60,27 +62,50 @@ public class PurchaseModel {
     public void setId(int id) {
         this.id = id;
     }
-
+/**
+ * Gets the user
+ * @return
+ */
     public UserModel getUser() {
         return user;
     }
 
+    /**
+     * Sets the user
+     * @param user
+     */
     public void setUser(UserModel user) {
         this.user = user;
     }
 
+    /**
+     * Gets the amount payed
+     * @return Double
+     */
     public Double getAmountPayed() {
         return amountPayed;
     }
 
+    /**
+     * Sets the amount payed
+     * @param double1
+     */
     public void setAmountPayed(Double double1) {
         this.amountPayed = double1;
     }
 
+    /**
+     * Gets the date
+     * @return LocalDate
+     */
     public LocalDate getDate() {
         return date.toLocalDate();
     }
 
+    /**
+     * Sets the date
+     * @param date
+     */
     public void setDate(LocalDate date) {
         this.date = LocalDateTime.of(date, LocalDateTime.now().toLocalTime());
     }

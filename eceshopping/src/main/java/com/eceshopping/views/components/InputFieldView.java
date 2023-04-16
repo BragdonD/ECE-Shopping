@@ -59,11 +59,17 @@ public class InputFieldView extends GridPane {
     public TextField getTextField() {
         return this.textField;
     }
-
+/**
+ * Get the value of labelField
+ * @return Label
+ */
     public Label getLabelField() {
         return this.labelField;
     }
-
+/**
+ * 
+ * @param value
+ */
     public void setValue(String value) {
         this.textField.setText(value);
     }

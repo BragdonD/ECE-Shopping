@@ -18,6 +18,10 @@ public class HomePageController implements Controller {
     private ArticleService articleService;
     private List<ArticleDto> articles;
 
+    /**
+     * Constructor for HomePageController
+     * @param view
+     */
     public HomePageController(HomePageView view) {
         this.view = view;
         this.articleService = new ArticleService();

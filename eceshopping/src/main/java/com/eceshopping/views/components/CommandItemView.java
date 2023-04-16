@@ -23,19 +23,30 @@ public class CommandItemView {
         this.price = new Label();
         this.layout.add(this.price, 2, 0);
     }
-
+/**
+ * Get the value of layout
+ * @return
+ */
     public GridPane getLayout() {
         return this.layout;
     }
-
+/**
+ * Get the value of display
+ * @return
+ */
     public Button getDisplay() {
         return this.display;
     }
-
+/**
+ * Get the value of date
+ */
     public Label getDate() {
         return this.date;
     }
-
+/**
+ * Get the value of price
+ * @return
+ */
     public Label getPrice() {
         return this.price;
     }

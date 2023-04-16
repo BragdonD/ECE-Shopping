@@ -21,7 +21,9 @@ public class ManageUsersController implements Controller {
         this.userService = new UserService();
         setupHyperlink();
     }
-
+/**
+ * Load all users from database
+ */
     public void loadUsers() {
         Task<List<UserDto>> getAllUserTask = this.userService.getAllUser();
         getAllUserTask.setOnSucceeded(e -> {
@@ -36,7 +38,9 @@ public class ManageUsersController implements Controller {
         });
         new Thread(getAllUserTask).start();
     }
-
+/**
+ * Display all users in the view
+ */
     private void displayUsers() {
         if (this.users == null) {
             return;
@@ -47,7 +51,9 @@ public class ManageUsersController implements Controller {
             this.view.addUser(userOView);
         }
     }
-
+/**
+ * Setup the hyperlink to go back to the admin menu
+ */
     public void setupHyperlink() {
         this.view.getBackLink().setOnAction(e -> {
             Router.getInstance().navigateTo("/adminMenu");

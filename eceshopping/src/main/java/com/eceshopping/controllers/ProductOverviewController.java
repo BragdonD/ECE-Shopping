@@ -9,7 +9,11 @@ import com.eceshopping.views.components.ProductOverviewView;
 public class ProductOverviewController {
     private ProductOverviewView view;
     private ArticleDto article;
-
+/**
+ * Constructor of ProductOverviewController
+ * @param view
+ * @param article
+ */
     public ProductOverviewController(ProductOverviewView view, ArticleDto article) {
         this.view = view;
         this.article = article;

@@ -24,7 +24,10 @@ public class UserInformationsPageController implements Controller {
     private BooleanProperty editable;
     private List<InputFieldController> inputFieldsControllers;
     private UserService userService;
-
+/**
+ * Constructor of UserInformationsPageController
+ * @param view
+ */
     public UserInformationsPageController(UserInformationsPage view) {
         this.view = view;
         new UserNavBarController(this.view.getNavBar());

@@ -13,7 +13,12 @@ public class ProductOviewController implements Controller {
     ArticleService articleService = new ArticleService();
     ArticleDto article;
     private ProductOView view;
-
+/**
+ * Constructor of ProductOviewController
+ * @param view
+ * @param article
+ * @throws IllegalArgumentException
+ */
     public ProductOviewController(ProductOView view, ArticleDto article) throws IllegalArgumentException {
 
         this.view = view;
@@ -23,7 +28,10 @@ public class ProductOviewController implements Controller {
         this.article = article;
 
     }
-
+/**
+ * Getter of view
+ * @return
+ */
     public ProductOView getView() {
         return this.view;
     }
@@ -55,4 +63,5 @@ public class ProductOviewController implements Controller {
     @Override
     public void bindScene(Scene scene) {
     }
+
 }

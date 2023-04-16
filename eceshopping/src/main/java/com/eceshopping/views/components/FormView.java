@@ -56,15 +56,24 @@ public class FormView extends GridPane {
     public void setSubmitButton(Button submitButton) {
         this.submitButton = submitButton;
     }
-
+/**
+ * Get the value of inputFields
+ * @return
+ */
     public List<InputFieldView> getInputFields() {
         return this.inputFields;
     }
-
+/**
+ * Set the value of inputFields
+ * @param inputFields
+ */
     public void setInputFields(List<InputFieldView> inputFields) {
         this.inputFields = inputFields;
     }
-
+/**
+ * Set the value of inputFields
+ * @param inputFields
+ */
     public FormView inputFields(List<InputFieldView> inputFields) {
         this.inputFields = inputFields;
         return this;

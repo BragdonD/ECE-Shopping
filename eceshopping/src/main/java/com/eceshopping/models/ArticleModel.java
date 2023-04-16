@@ -18,7 +18,9 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-
+/**
+ * ArticleModel class is the model of the article entity in the database
+ */
 @Entity
 @Table(name = "Products")
 @NamedQueries({

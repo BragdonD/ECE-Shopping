@@ -40,10 +40,17 @@ public class CartItemView extends GridPane {
         return this.quantity;
     }
 
+    /**
+     * Get the value of removeButton
+     * @return Button
+     */
     public Button getRemoveButton() {
         return this.removeButton;
     }
-
+/**
+ * Get the value of deleteButton
+ * @return Button
+ */
     public Button getDeleteButton() {
         return this.deleteButton;
     }

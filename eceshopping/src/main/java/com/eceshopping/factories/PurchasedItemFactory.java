@@ -9,6 +9,7 @@ import com.eceshopping.models.PurchaseModel;
 public class PurchasedItemFactory {
 
     /**
+     * Creates a purchased item
      * @param id
      * @param article
      * @param purchase

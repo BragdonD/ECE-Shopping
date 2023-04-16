@@ -22,13 +22,18 @@ import com.eceshopping.views.components.CartItemView;
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+/**
+ * CartPageController
+ */
 public class CartPageController implements Controller {
     private CartPageView view;
     private Double totalPrice;
     private List<CartItemController> cartItemsControllers;
     private PurchaseService purchaseService;
-
+/**
+ * Constructor for CartPageController
+ * @param view
+ */
     public CartPageController(CartPageView view) {
         this.view = view;
         this.purchaseService = new PurchaseService();

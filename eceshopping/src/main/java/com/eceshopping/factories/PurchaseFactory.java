@@ -9,6 +9,7 @@ import com.eceshopping.models.UserModel;
 public class PurchaseFactory {
 
     /**
+     * Creates a purchase
      * @param id
      * @param amountPayed
      * @param date
