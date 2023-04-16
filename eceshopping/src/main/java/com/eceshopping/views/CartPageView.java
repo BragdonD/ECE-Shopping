@@ -8,6 +8,7 @@ import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
@@ -37,7 +38,8 @@ public class CartPageView extends UserLayoutView implements View {
         column1.setHalignment(HPos.CENTER);
         this.cartLayout.setAlignment(javafx.geometry.Pos.TOP_CENTER);
         this.cartLayout.getColumnConstraints().add(column1);
-        this.slot.getChildren().add(cartLayout);
+        ScrollPane scrollPane = new ScrollPane(cartLayout);
+        this.slot.getChildren().add(scrollPane);
     }
 
     public Button getPaymentButton() {

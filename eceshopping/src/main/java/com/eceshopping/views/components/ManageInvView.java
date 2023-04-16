@@ -5,31 +5,35 @@ import com.eceshopping.views.View;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
-public class ManageInvView extends GridPane implements View {
+public class ManageInvView extends ScrollPane implements View {
 
     private Hyperlink addArticleButton;
     private Hyperlink backLink;
     private int row = 1;
     private GridPane productsLayout;
     private Label name;
+    private GridPane gridPane;
 
     public ManageInvView() {
         super();
+        this.gridPane = new GridPane();
         productsLayout = new GridPane();
         this.addArticleButton = new Hyperlink("Add Article");
         this.backLink = new Hyperlink("Retour");
         this.name = new Label();
 
-        this.add(this.backLink, 0, 9, 1, 1);
-        this.add(this.addArticleButton, 0, 0);
+        this.gridPane.add(this.backLink, 0, 9, 1, 1);
+        this.gridPane.add(this.addArticleButton, 0, 0);
         this.productsLayout.setAlignment(javafx.geometry.Pos.TOP_CENTER);
         this.productsLayout.setPadding(new javafx.geometry.Insets(20.0, 20.0, 20.0, 20.0));
         this.productsLayout.setHgap(20);
         this.productsLayout.setVgap(20);
-        this.add(productsLayout, row, row);
+        this.gridPane.add(productsLayout, row, row);
         this.row++;
+        this.setContent(this.gridPane);
     }
 
     /**

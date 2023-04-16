@@ -14,9 +14,7 @@ public class CommandView extends GridPane {
     private Label purchaseAmountPayedLabel;
     private Label purchasedItemsLabel;
 
-    private Label purchasedItemIdLabel;
-    private Label purchasedItemArticleLabel;
-    private Label purchasedItemQuantityLabel;
+
 
     public CommandView(PurchaseDto purchaseDto) {
         this.purchaseIdLabel = new Label("Purchase ID: " + purchaseDto.getId());
@@ -24,9 +22,7 @@ public class CommandView extends GridPane {
         this.purchaseUserLabel = new Label("Purchase User: " + purchaseDto.getUser().getEmail());
         this.purchaseAmountPayedLabel = new Label("Amount Payed: " + purchaseDto.getAmountPayed());
         this.purchasedItemsLabel = new Label("Purchased Items:");
-        this.purchasedItemIdLabel = new Label();
-        this.purchasedItemArticleLabel = new Label();
-        this.purchasedItemQuantityLabel = new Label();
+        
 
         this.setPadding(new Insets(10));
         this.setHgap(10);
@@ -40,9 +36,12 @@ public class CommandView extends GridPane {
 
         int rowIndex = 5;
         for (PurchasedItemDto purchasedItemDto : purchaseDto.getPurchasedItems()) {
-            this.purchasedItemIdLabel.setText("Item ID: " + purchasedItemDto.getId());
-            this.purchasedItemArticleLabel.setText("Article: " + purchasedItemDto.getArticle().getName());
-            this.purchasedItemQuantityLabel.setText("Quantity: " + purchasedItemDto.getQuantity().toString());
+            Label purchasedItemIdLabel = new Label();
+            Label purchasedItemArticleLabel = new Label();
+            Label purchasedItemQuantityLabel = new Label();
+            purchasedItemIdLabel.setText("Item ID: " + purchasedItemDto.getId());
+            purchasedItemArticleLabel.setText("Article: " + purchasedItemDto.getArticle().getName());
+            purchasedItemQuantityLabel.setText("Quantity: " + purchasedItemDto.getQuantity().toString());
 
             this.add(purchasedItemIdLabel, 0, rowIndex);
             this.add(purchasedItemArticleLabel, 0, rowIndex + 1);
