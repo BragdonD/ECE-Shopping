@@ -35,7 +35,6 @@ public class ManagePurchaseController implements Controller {
             this.purchases = getAllPurchaseTask.getValue();
             displayPurchases();
             // this.view.loadPurchases(Purchases);
-            System.out.println(this.purchases);
 
         });
         getAllPurchaseTask.setOnFailed(e -> {
@@ -50,7 +49,8 @@ public class ManagePurchaseController implements Controller {
             return;
         }
         for (PurchaseDto purchase : this.purchases) {
-            for (PurchasedItemDto purchasedItem : this.purchasedItems) {
+            purchasedItems = purchase.getPurchasedItems();
+            for (PurchasedItemDto purchasedItem : purchasedItems) {
                 PurchaseOverView purch = new PurchaseOverView(purchase.getId(), purchase.getDate(),
                         purchasedItem.getId());
                 new PurchaseOviewController(purch, purchase, purchasedItem);

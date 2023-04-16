@@ -20,6 +20,7 @@ public class ManageUsersController implements Controller {
         this.view = view;
         this.userService = new UserService();
         setupHyperlink();
+        loadUsers();
     }
 /**
  * Load all users from database
@@ -29,9 +30,6 @@ public class ManageUsersController implements Controller {
         getAllUserTask.setOnSucceeded(e -> {
             this.users = getAllUserTask.getValue();
             displayUsers();
-            // this.view.loadUsers(Users);
-            System.out.println(this.users);
-
         });
         getAllUserTask.setOnFailed(e -> {
             System.out.println(e.getSource().getException().getMessage());

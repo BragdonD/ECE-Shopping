@@ -31,6 +31,8 @@ public class ManagePurchaseView extends GridPane implements View {
         int rowIdx = row / 1; // calculate the row index
 
         this.purchasesLayout.add(purchase, col, rowIdx);
+
+        row++;
     }
 
     public Hyperlink getBackLink() {

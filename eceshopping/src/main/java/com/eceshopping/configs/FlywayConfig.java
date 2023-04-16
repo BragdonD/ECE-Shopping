@@ -14,11 +14,20 @@ public class FlywayConfig {
      * This method is used to configure the Flyway tool
      */
     private FlywayConfig() {
-        Properties properties = HibernateConfig.getDevelopmentProperties();
+        String activeProfile = System.getProperty("app.profiles.active", "prod");
+        Properties properties; 
+        if (activeProfile.equals("dev")) {
+            properties = HibernateConfig.getDevelopmentProperties();
+        } else if (activeProfile.equals("test")) {
+            properties = HibernateConfig.getTestProperties();
+        } else {
+            properties = HibernateConfig.getProductionProperties();
+        }
+        
         this.flywayProperties = new Properties();
         this.flywayProperties.setProperty("flyway.url", properties.getProperty("hibernate.connection.url"));
         Flyway flyway = Flyway.configure()
-                .dataSource(properties.getProperty("hibernate.connection.url"), null, null)
+                .dataSource(properties.getProperty("hibernate.connection.url"), "root", "root")
                 .load();
         flyway.migrate();
     }

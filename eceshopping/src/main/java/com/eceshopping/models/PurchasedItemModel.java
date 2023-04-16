@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = "PurchasedItemModel.findById", query = "FROM PurchasedItemModel WHERE id = :id"),
         @NamedQuery(name = "PurchasedItemModel.findAll", query = "FROM PurchasedItemModel"),
+        @NamedQuery(name = "PurchasedItemModel.findAllByPurchaseId", query = "FROM PurchasedItemModel WHERE purchase = :purchase"),
 })
 
 public class PurchasedItemModel {

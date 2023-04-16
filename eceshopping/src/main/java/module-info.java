@@ -12,7 +12,8 @@ module com.eceshopping {
     requires javafaker;
 
     opens com.eceshopping.models;
-    opens db.migration;
+    //opens db.migration.sqlite;
+    opens db.migration.mysql;
     opens images;
 
     exports com.eceshopping;

@@ -2,8 +2,6 @@ package com.eceshopping.views.components;
 
 import java.time.LocalDate;
 
-import com.eceshopping.dto.UserDto;
-
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -25,6 +23,8 @@ public class PurchaseOverView extends GridPane {
         this.add(this.dateLabel, 1, 2);
         this.productIdLabel = new Label(productId.toString());
         this.add(this.productIdLabel, 2, 2);
+
+        this.setHgap(20);
 
         this.purchaseId = purchaseId;
         this.date = date;

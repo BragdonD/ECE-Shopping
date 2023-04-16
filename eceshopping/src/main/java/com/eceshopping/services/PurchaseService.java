@@ -10,6 +10,7 @@ import com.eceshopping.daos.PurchaseItemDAO;
 import com.eceshopping.dto.PurchaseDto;
 import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.models.PurchaseModel;
+import com.eceshopping.models.PurchasedItemModel;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -64,8 +65,19 @@ public class PurchaseService {
             @Override
             protected List<PurchaseDto> call() throws Exception {
                 List<PurchaseDto> PurchaseDtos = new ArrayList<>();
+                PurchaseItemDAO purchaseItemDAO = new PurchaseItemDAO();
                 for (PurchaseModel article : purchaseDAO.getAll()) {
-                    PurchaseDtos.add(PurchaseConverter.convertToDto(article));
+                    List<PurchasedItemModel> purchasedItemModels = purchaseItemDAO.getAll();
+                    PurchaseDto temp = PurchaseConverter.convertToDto(article);
+
+                    for (PurchasedItemModel item : purchasedItemModels) {
+                        System.out.println("item.getPurchase().getId(): " + item.getPurchase().getId());
+                        if (item.getPurchase().getId() == article.getId()) {
+                            temp.getPurchasedItems().add(PurchaseItemConverter.convertToDto(item));
+                        }
+
+                    }
+                    PurchaseDtos.add(temp);
                 }
                 System.out.println("PurchaseDtos");
                 return PurchaseDtos;
