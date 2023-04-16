@@ -29,51 +29,64 @@ public class BasketItemDto {
     public void setId(int id) {
         this.id = id;
     }
-/**
- * Getter of Basket
- * @return
- */
+
+    /**
+     * Getter of Basket
+     * 
+     * @return
+     */
     public BasketDto getBasket() {
         return basket;
     }
-/**
- * Setter of Basket
- * @param basket
- */
+
+    /**
+     * Setter of Basket
+     * 
+     * @param basket
+     */
     public void setBasket(BasketDto basket) {
         this.basket = basket;
     }
-/**
- * Getter of Product
- * @return
- */
+
+    /**
+     * Getter of Product
+     * 
+     * @return
+     */
     public ArticleDto getProduct() {
         return product;
     }
-/**
- * Setter of Product
- * @param product
- */
+
+    /**
+     * Setter of Product
+     * 
+     * @param product
+     */
     public void setProduct(ArticleDto product) {
         this.product = product;
     }
-/**
- * Getter of Quantity
- * @return
- */
+
+    /**
+     * Getter of Quantity
+     * 
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }
-/**
- * Setter of Quantity
- * @param quantity
- */
+
+    /**
+     * Setter of Quantity
+     * 
+     * @param quantity
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
     /**
      * set id
+     * 
      * @param id
      * @return
      */
@@ -84,6 +97,7 @@ public class BasketItemDto {
 
     /**
      * set basket
+     * 
      * @param basket
      * @return
      */
@@ -94,6 +108,7 @@ public class BasketItemDto {
 
     /**
      * set product
+     * 
      * @param product
      * @return
      */
@@ -104,6 +119,7 @@ public class BasketItemDto {
 
     /**
      * set quantity
+     * 
      * @param quantity
      * @return
      */

@@ -127,6 +127,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articleNameLabel
+     * 
      * @param articleNameLabel
      */
     public void setArticleNameLabel(Label articleNameLabel) {
@@ -135,6 +136,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get the articleTypeLabel
+     * 
      * @return Label
      */
     public Label getArticleTypeLabel() {
@@ -143,6 +145,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articleTypeLabel
+     * 
      * @param articleTypeLabel
      */
     public void setArticleTypeLabel(Label articleTypeLabel) {
@@ -151,6 +154,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get the articlePriceLabel
+     * 
      * @return Label
      */
     public Label getArticlePriceLabel() {
@@ -159,6 +163,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articlePriceLabel
+     * 
      * @param articlePriceLabel
      */
     public void setArticlePriceLabel(Label articlePriceLabel) {
@@ -167,6 +172,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get the articleBulkPriceLabel
+     * 
      * @return Label
      */
     public Label getArticleBulkPriceLabel() {
@@ -175,6 +181,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articleBulkPriceLabel
+     * 
      * @param articleBulkPriceLabel
      */
     public void setArticleBulkPriceLabel(Label articleBulkPriceLabel) {
@@ -183,6 +190,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get the articleStockLabel
+     * 
      * @return Label
      */
     public Label getArticleMarqueLabel() {
@@ -191,6 +199,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articleStockLabel
+     * 
      * @param articleStockLabel
      */
     public void setArticleMarqueLabel(Label articleMarqueLabel) {
@@ -199,6 +208,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get the articleStockLabel
+     * 
      * @return Label
      */
     public Label getArticleImageLabel() {
@@ -207,22 +217,25 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set the articleStockLabel
+     * 
      * @param articleStockLabel
      */
     public void setArticleImageLabel(Label articleImageLabel) {
         this.articleImageLabel = articleImageLabel;
     }
 
-/**
- * Get articleNameTextField
- * @return
- */
+    /**
+     * Get articleNameTextField
+     * 
+     * @return
+     */
     public TextField getArticleNameTextField() {
         return articleNameTextField;
     }
 
     /**
      * Set the articleStockLabel
+     * 
      * @param articleStockLabel
      */
     public TextField getDescriptionTextField() {
@@ -231,6 +244,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set articleNameTextField
+     * 
      * @param articleNameTextField
      */
     public void setArticleNameTextField(TextField articleNameTextField) {
@@ -239,6 +253,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get bulkpriceTextField
+     * 
      * @return
      */
     public TextField getBulkpriceTextField() {
@@ -247,6 +262,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set bulkpriceTextField
+     * 
      * @param bulkpriceTextField
      */
     public void setBulkpriceTextField(TextField bulkpriceTextField) {
@@ -255,6 +271,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get priceTextField
+     * 
      * @return
      */
     public TextField getPriceTextField() {
@@ -263,6 +280,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set priceTextField
+     * 
      * @param priceTextField
      */
     public void setPriceTextField(TextField priceTextField) {
@@ -271,6 +289,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get typeTextField
+     * 
      * @return
      */
     public TextField getTypeTextField() {
@@ -279,6 +298,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set typeTextField
+     * 
      * @param typeTextField
      */
     public void setTypeTextField(TextField typeTextField) {
@@ -287,6 +307,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get marqueTextField
+     * 
      * @return
      */
     public TextField getMarqueTextField() {
@@ -295,6 +316,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set marqueTextField
+     * 
      * @param marqueTextField
      */
     public TextField getStockTextField() {
@@ -303,6 +325,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set marqueTextField
+     * 
      * @param marqueTextField
      */
     public void setStockTextField(TextField stockTextField) {
@@ -311,6 +334,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set marqueTextField
+     * 
      * @param marqueTextField
      */
     public void setMarqueTextField(TextField marquTextField) {
@@ -319,6 +343,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get imageTextField
+     * 
      * @return
      */
     public Button getAddArticleButton() {
@@ -327,6 +352,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set imageTextField
+     * 
      * @param imageTextField
      */
     public void setAddArticleButton(Button addArticleButton) {
@@ -335,6 +361,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get cancelButton
+     * 
      * @return
      */
     public Button getCancelButton() {
@@ -343,6 +370,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set cancelButton
+     * 
      * @param cancelButton
      */
     public void setCancelButton(Button cancelButton) {
@@ -351,6 +379,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get imageTextField
+     * 
      * @return
      */
     public HBox gethBox() {
@@ -359,6 +388,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set imageTextField
+     * 
      * @param imageTextField
      */
     public void sethBox(HBox hBox) {
@@ -367,6 +397,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Get imageTextField
+     * 
      * @return
      */
     public Text getTitleText() {
@@ -375,48 +406,52 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set imageTextField
+     * 
      * @param imageTextField
      */
     public void setTitleText(Text titleText) {
         this.titleText = titleText;
     }
 
- 
-
-  /**
-   * Get backLink
-   * @return
-   */
+    /**
+     * Get backLink
+     * 
+     * @return
+     */
     public Hyperlink getBackLink() {
         return backLink;
     }
 
-/**
- * Set backLink
- * @param backLink
- */
+    /**
+     * Set backLink
+     * 
+     * @param backLink
+     */
     public void setBackLink(Hyperlink backLink) {
         this.backLink = backLink;
     }
 
-/**
- * Get scenetitle
- * @return Text
- */
+    /**
+     * Get scenetitle
+     * 
+     * @return Text
+     */
     public Text getScenetitle() {
         return scenetitle;
     }
 
-/**
- * Set scenetitle
- * @param scenetitle
- */
+    /**
+     * Set scenetitle
+     * 
+     * @param scenetitle
+     */
     public void setScenetitle(Text scenetitle) {
         this.scenetitle = scenetitle;
     }
 
     /**
      * Get buttonAddImage
+     * 
      * @return
      */
     public Button getAddImage() {
@@ -425,6 +460,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     /**
      * Set buttonAddImage
+     * 
      * @param buttonAddImage
      */
     public void setAddImage(Button addImage) {

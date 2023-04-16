@@ -8,6 +8,7 @@ public class ArticleFactory {
 
     /**
      * Creates an article
+     * 
      * @param name
      * @param price
      * @param bulkprice

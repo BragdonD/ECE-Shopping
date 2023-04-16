@@ -9,11 +9,13 @@ public class AddToBasketEvent extends Event {
     public static final EventType<AddToBasketEvent> ADD_TO_CART_EVENT = new EventType<>(Event.ANY, "ADD_TO_CART_EVENT");
     private int quantity;
     private ArticleDto article;
-/**
- * Constructor of AddToBasketEvent
- * @param article
- * @param quantity
- */
+
+    /**
+     * Constructor of AddToBasketEvent
+     * 
+     * @param article
+     * @param quantity
+     */
     public AddToBasketEvent(ArticleDto article, int quantity) {
         super(ADD_TO_CART_EVENT);
         this.quantity = quantity;

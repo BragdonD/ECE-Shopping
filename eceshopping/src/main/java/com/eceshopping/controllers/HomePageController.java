@@ -20,6 +20,7 @@ public class HomePageController implements Controller {
 
     /**
      * Constructor for HomePageController
+     * 
      * @param view
      */
     public HomePageController(HomePageView view) {

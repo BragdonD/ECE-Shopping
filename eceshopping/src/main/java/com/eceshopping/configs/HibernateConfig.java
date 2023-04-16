@@ -52,7 +52,7 @@ public class HibernateConfig {
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.connection.username", "root");
         properties.setProperty("hibernate.connection.password", "root");
-        properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
+        properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/eceshopping");
         properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
         properties.setProperty("hibernate.hbm2ddl.auto", "validate");

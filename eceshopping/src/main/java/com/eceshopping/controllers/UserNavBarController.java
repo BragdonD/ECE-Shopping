@@ -12,10 +12,12 @@ import com.eceshopping.views.components.UserNavBarView;
 public class UserNavBarController {
     private UserNavBarView view;
     private List<LinkNavBarController> links;
-/**
- * Constructor of UserNavBarController
- * @param view
- */
+
+    /**
+     * Constructor of UserNavBarController
+     * 
+     * @param view
+     */
     public UserNavBarController(UserNavBarView view) {
         this.view = view;
         this.links = new ArrayList<LinkNavBarController>();

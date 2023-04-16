@@ -9,10 +9,12 @@ public class DisplayProductEvent extends Event {
     public static final EventType<DisplayProductEvent> DISPLAY_PRODUCT_EVENT = new EventType<>(Event.ANY,
             "DISPLAY_PRODUCT_EVENT");
     private ArticleDto article;
-/**
- * Constructor of DisplayProductEvent
- * @param article
- */
+
+    /**
+     * Constructor of DisplayProductEvent
+     * 
+     * @param article
+     */
     public DisplayProductEvent(ArticleDto article) {
         super(DISPLAY_PRODUCT_EVENT);
         this.article = article;

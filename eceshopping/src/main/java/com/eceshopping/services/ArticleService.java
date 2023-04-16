@@ -84,6 +84,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the price of an article.
+     * 
      * @param newprice
      * @param id
      * @throws EntityExistsException
@@ -100,6 +101,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the bulkprice of an article.
+     * 
      * @param newbulkprice
      * @param id
      * @throws EntityExistsException
@@ -116,6 +118,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Image of an article.
+     * 
      * @param image
      * @param id
      * @throws EntityExistsException
@@ -132,6 +135,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Marque of an article.
+     * 
      * @param marque
      * @param id
      * @throws EntityExistsException
@@ -149,6 +153,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Type of an article.
+     * 
      * @param type
      * @param id
      * @throws EntityExistsException
@@ -165,6 +170,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Stock of an article.
+     * 
      * @param stock
      * @param id
      * @throws EntityExistsException
@@ -180,6 +186,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Stock of an article.
+     * 
      * @param id
      * @param stock
      * @return
@@ -201,6 +208,7 @@ public class ArticleService {
 
     /**
      * This method is used to update the Description of an article.
+     * 
      * @param description
      * @param id
      * @throws EntityExistsException
@@ -218,6 +226,7 @@ public class ArticleService {
 
     /**
      * Delete an article by its name.
+     * 
      * @param name
      * @throws EntityNotFoundException
      */
@@ -231,6 +240,7 @@ public class ArticleService {
 
     /**
      * Get all articles of the database.
+     * 
      * @return
      */
     public Task<List<ArticleDto>> getAllArticles() {

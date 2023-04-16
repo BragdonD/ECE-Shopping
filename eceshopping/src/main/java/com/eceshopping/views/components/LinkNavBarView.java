@@ -11,10 +11,12 @@ import javafx.scene.text.Text;
 public class LinkNavBarView extends HBox {
     String name;
     Text text;
-/**
- * Constructor of LinkNavBarView
- * @param text
- */
+
+    /**
+     * Constructor of LinkNavBarView
+     * 
+     * @param text
+     */
     public LinkNavBarView(String text) {
         this.name = text;
         this.text = new Text(text);

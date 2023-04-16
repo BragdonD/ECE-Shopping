@@ -204,9 +204,9 @@ public class AddArticleFormController implements Controller {
         return valid;
     }
 
-/**
- * Setup buttons
- */
+    /**
+     * Setup buttons
+     */
     private void setupAddButton() {
 
         this.setupButton();
@@ -214,16 +214,16 @@ public class AddArticleFormController implements Controller {
 
     }
 
- 
     public void setupHyperlink() {
         this.view.getBackLink().setOnAction(e -> {
             Router.getInstance().navigateTo("/adminMenu");
         });
     }
-/**
- * Setup
- * 
- */
+
+    /**
+     * Setup
+     * 
+     */
     public void setupDescriptionChangeListener() {
         this.view.getDescriptionTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             description = newValue.trim();

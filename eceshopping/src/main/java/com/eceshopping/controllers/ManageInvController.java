@@ -14,6 +14,7 @@ import com.eceshopping.events.DisplayArticleEvent;
 import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
+
 /**
  * Controller of ManageInvView
  */
@@ -25,11 +26,13 @@ public class ManageInvController implements Controller {
     private List<ArticleDto> articles;
     private List<ProductOviewController> productOviewControllers;
     private ArticleDto article;
-/**
- * Constructor of ManageInvController
- * @param view
- * @throws IllegalArgumentException
- */
+
+    /**
+     * Constructor of ManageInvController
+     * 
+     * @param view
+     * @throws IllegalArgumentException
+     */
     public ManageInvController(ManageInvView view) throws IllegalArgumentException {
         this.productOviewControllers = new ArrayList<ProductOviewController>();
         this.view = view;

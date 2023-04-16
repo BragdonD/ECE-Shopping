@@ -13,10 +13,12 @@ import javafx.scene.Scene;
 public class ProfilePageController implements Controller {
     private final ProfilePageView view;
     private List<ProfileMenuButtonLinkController> controllers;
-/**
- * Constructor of ProfilePageController
- * @param view
- */
+
+    /**
+     * Constructor of ProfilePageController
+     * 
+     * @param view
+     */
     public ProfilePageController(ProfilePageView view) {
         this.view = view;
         this.controllers = new ArrayList<>();

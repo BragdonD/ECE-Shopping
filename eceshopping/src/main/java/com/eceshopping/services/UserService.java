@@ -227,7 +227,7 @@ public class UserService {
         this.userDao.update(user);
     }
 
-    /** 
+    /**
      * This method is used to delete a user. It checks if the user exists. If the
      * user does not exist, an EntityNotFoundException is thrown. If the user
      * exists,
@@ -246,6 +246,7 @@ public class UserService {
 
     /**
      * This method is used to get all users. It returns a list of all users.
+     * 
      * @param UserDto
      * @return
      */

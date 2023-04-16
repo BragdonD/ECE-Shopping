@@ -49,6 +49,7 @@ public class ManageInvView extends GridPane implements View {
 
     /**
      * ADD PRODUCT TO THE GRID LAYOUT
+     * 
      * @param product
      */
     public void addProduct(ProductOView product) {
@@ -58,17 +59,20 @@ public class ManageInvView extends GridPane implements View {
         this.productsLayout.add(product, col, rowIdx);
         this.row++;
     }
-/**
- * GET THE GRID LAYOUT
- * @return
- */
+
+    /**
+     * GET THE GRID LAYOUT
+     * 
+     * @return
+     */
     public GridPane getProductsLayout() {
         return this.productsLayout;
     }
-/**
- * CLEAR THE GRID LAYOUT
- * 
- */
+
+    /**
+     * CLEAR THE GRID LAYOUT
+     * 
+     */
     public void clearProducts() {
         this.productsLayout.getChildren().clear();
         this.row = 0;
@@ -76,28 +80,30 @@ public class ManageInvView extends GridPane implements View {
 
     /**
      * REMOVE A PRODUCT FROM THE GRID LAYOUT
+     * 
      * @param product
      */
     public void removeProduct(ProductOView product) {
         this.productsLayout.getChildren().remove(product);
     }
 
-    
-  /**
-   * Get backLink
-   * @return
-   */
-  public Hyperlink getBackLink() {
-    return backLink;
-}
+    /**
+     * Get backLink
+     * 
+     * @return
+     */
+    public Hyperlink getBackLink() {
+        return backLink;
+    }
 
-/**
-* Set backLink
-* @param backLink
-*/
-public void setBackLink(Hyperlink backLink) {
-    this.backLink = backLink;
-}
+    /**
+     * Set backLink
+     * 
+     * @param backLink
+     */
+    public void setBackLink(Hyperlink backLink) {
+        this.backLink = backLink;
+    }
 
     @Override
     public Node getRootNode() {

@@ -32,10 +32,12 @@ public class DeleteFromBasketEvent extends Event {
     public boolean isDeleteAll() {
         return isDeleteAll;
     }
-/**
- * Getter of Quantity
- * @return
- */
+
+    /**
+     * Getter of Quantity
+     * 
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }

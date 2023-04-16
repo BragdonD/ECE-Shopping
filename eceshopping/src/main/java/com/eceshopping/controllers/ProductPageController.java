@@ -11,10 +11,12 @@ import javafx.scene.Scene;
 public class ProductPageController implements Controller {
     private ProductPageView view;
     private ArticleDto article;
-/**
- * Constructor of ProductPageController
- * @param view
- */
+
+    /**
+     * Constructor of ProductPageController
+     * 
+     * @param view
+     */
     public ProductPageController(ProductPageView view) {
         this.view = view;
         new UserNavBarController(this.view.getNavBar());

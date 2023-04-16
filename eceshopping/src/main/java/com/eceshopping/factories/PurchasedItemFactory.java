@@ -10,6 +10,7 @@ public class PurchasedItemFactory {
 
     /**
      * Creates a purchased item
+     * 
      * @param id
      * @param article
      * @param purchase

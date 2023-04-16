@@ -10,8 +10,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+
 /**
- * PurchasedItemModel class is used to create a purchased item object that will be used to store purchased item information in the database.
+ * PurchasedItemModel class is used to create a purchased item object that will
+ * be used to store purchased item information in the database.
  */
 @Entity
 @Table(name = "Purchase_Items")

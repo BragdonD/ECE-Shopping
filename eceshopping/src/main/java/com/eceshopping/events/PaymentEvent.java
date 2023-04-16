@@ -9,10 +9,12 @@ import javafx.event.EventType;
 public class PaymentEvent extends Event {
     public static final EventType<PaymentEvent> PAYMENT_EVENT = new EventType<>(Event.ANY, "PAYMENT_EVENT");
     private PurchaseDto purchase;
-/**
- * Constructor of PaymentEvent
- * @param purchase
- */
+
+    /**
+     * Constructor of PaymentEvent
+     * 
+     * @param purchase
+     */
     public PaymentEvent(PurchaseDto purchase) {
         super(PAYMENT_EVENT);
         this.purchase = purchase;

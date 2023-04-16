@@ -22,24 +22,29 @@ public class CommandItemView extends GridPane {
         this.add(this.price, 2, 0);
     }
 
-/**
- * Get the value of display
- * @return
- */
+    /**
+     * Get the value of display
+     * 
+     * @return
+     */
     public Button getDisplay() {
         return this.display;
     }
-/**
- * Get the value of date
- */
+
+    /**
+     * Get the value of date
+     */
     public Label getDate() {
         return this.date;
     }
-/**
- * Get the value of price
- * @return
- */
+    
+    /**
+      * Get the value of price
+      * 
+      * @return
+      */
     public Label getPrice() {
         return this.price;
     }
 }
+     

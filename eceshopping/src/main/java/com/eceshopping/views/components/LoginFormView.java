@@ -51,16 +51,19 @@ public class LoginFormView {
     public InputFieldView getEmailInputFieldView() {
         return this.emailInputFieldView;
     }
-/**
- * Get the password input field view.
- * @return InputFieldView
- */
+
+    /**
+     * Get the password input field view.
+     * 
+     * @return InputFieldView
+     */
     public InputFieldView getPasswordInputFieldView() {
         return this.passwordInputFieldView;
     }
 
     /**
      * Get the submit button.
+     * 
      * @return Button
      */
     public Button getSubmitButton() {
@@ -69,6 +72,7 @@ public class LoginFormView {
 
     /**
      * Set the submit button.
+     * 
      * @param submitButton
      */
     public void setSubmitButton(Button submitButton) {
@@ -77,6 +81,7 @@ public class LoginFormView {
 
     /**
      * Set the form view.
+     * 
      * @param formView
      */
     public void setFormView(FormView formView) {
@@ -85,6 +90,7 @@ public class LoginFormView {
 
     /**
      * Set the email input field view.
+     * 
      * @param emailInputFieldView
      */
     public void setEmailInputFieldView(InputFieldView emailInputFieldView) {
@@ -93,6 +99,7 @@ public class LoginFormView {
 
     /**
      * Set the password input field view.
+     * 
      * @param passwordInputFieldView
      */
     public void setPasswordInputFieldView(InputFieldView passwordInputFieldView) {
@@ -101,6 +108,7 @@ public class LoginFormView {
 
     /**
      * Set the form view.
+     * 
      * @param formView
      * @return
      */
@@ -111,6 +119,7 @@ public class LoginFormView {
 
     /**
      * Set the email input field view.
+     * 
      * @param emailInputFieldView
      * @return
      */
@@ -121,6 +130,7 @@ public class LoginFormView {
 
     /**
      * Set the password input field view.
+     * 
      * @param passwordInputFieldView
      * @return
      */
@@ -131,6 +141,7 @@ public class LoginFormView {
 
     /**
      * Set the submit button.
+     * 
      * @param submitButton
      * @return
      */

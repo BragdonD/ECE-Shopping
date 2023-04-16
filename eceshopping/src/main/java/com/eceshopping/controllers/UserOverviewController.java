@@ -6,9 +6,10 @@ import com.eceshopping.views.components.UserOverView;
 public class UserOverviewController {
     UserDto user;
     private UserOverView view;
-/**
- * Constructor of UserOverviewController
- */
+
+    /**
+     * Constructor of UserOverviewController
+     */
     public UserOverviewController(UserOverView view, UserDto user) throws IllegalArgumentException {
         this.view = view;
         this.user = user;

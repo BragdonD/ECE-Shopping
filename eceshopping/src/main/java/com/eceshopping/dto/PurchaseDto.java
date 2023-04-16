@@ -10,9 +10,10 @@ public class PurchaseDto {
     private UserDto user;
     private Double amountPayed;
     private List<PurchasedItemDto> purchasedItems;
-/**
- * Default Constructor of PurchaseDto
- */
+
+    /**
+     * Default Constructor of PurchaseDto
+     */
     public PurchaseDto() {
         this.id = -1;
         this.date = null;
@@ -23,6 +24,7 @@ public class PurchaseDto {
 
     /**
      * Constructor of PurchaseDto
+     * 
      * @param id
      * @param date
      * @param user
@@ -38,6 +40,7 @@ public class PurchaseDto {
 
     /**
      * Add PurchasedItem to the list
+     * 
      * @param purchasedItem
      */
 
@@ -45,11 +48,11 @@ public class PurchaseDto {
         this.purchasedItems.add(purchasedItem);
     }
 
-
-/**
- * Remove PurchasedItem from the list
- * @param purchasedItem
- */
+    /**
+     * Remove PurchasedItem from the list
+     * 
+     * @param purchasedItem
+     */
 
     public void removePurchasedItem(PurchasedItemDto purchasedItem) {
         this.purchasedItems.remove(purchasedItem);
@@ -62,12 +65,14 @@ public class PurchaseDto {
     public List<PurchasedItemDto> getPurchasedItems() {
         return purchasedItems;
     }
+
     /**
      * Getter and Setter
      */
 
     /**
      * Getter of Id
+     * 
      * @return Integer
      */
     public Integer getId() {
@@ -76,6 +81,7 @@ public class PurchaseDto {
 
     /**
      * Setter of Id
+     * 
      * @param id
      */
     public void setId(Integer id) {
@@ -84,6 +90,7 @@ public class PurchaseDto {
 
     /**
      * Getter of Date
+     * 
      * @return
      */
     public LocalDate getDate() {
@@ -92,6 +99,7 @@ public class PurchaseDto {
 
     /**
      * Setter of Date
+     * 
      * @param date
      */
     public void setDate(LocalDate date) {
@@ -100,6 +108,7 @@ public class PurchaseDto {
 
     /**
      * Getter of User
+     * 
      * @return
      */
     public UserDto getUser() {
@@ -108,6 +117,7 @@ public class PurchaseDto {
 
     /**
      * Setter of User
+     * 
      * @param user
      */
     public void setUser(UserDto user) {
@@ -116,6 +126,7 @@ public class PurchaseDto {
 
     /**
      * Getter of AmountPayed
+     * 
      * @return
      */
     public Double getAmountPayed() {
@@ -124,6 +135,7 @@ public class PurchaseDto {
 
     /**
      * Setter of AmountPayed
+     * 
      * @param amountPayed
      */
     public void setAmountPayed(Double amountPayed2) {
@@ -132,6 +144,7 @@ public class PurchaseDto {
 
     /**
      * Builder id
+     * 
      * @param id
      * @return
      */
@@ -142,6 +155,7 @@ public class PurchaseDto {
 
     /**
      * Builder date
+     * 
      * @param date
      * @return
      */
@@ -152,6 +166,7 @@ public class PurchaseDto {
 
     /**
      * Builder user
+     * 
      * @param user
      * @return
      */
@@ -162,6 +177,7 @@ public class PurchaseDto {
 
     /**
      * Builder amountPayed
+     * 
      * @param amountPayed
      * @return
      */

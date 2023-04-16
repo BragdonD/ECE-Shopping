@@ -5,7 +5,7 @@ public class PurchasedItemDto {
     private Integer id;
     private ArticleDto article;
     private PurchaseDto purchase;
-   private  Integer quantity;
+    private Integer quantity;
 
     public PurchasedItemDto() {
         this.id = -1;
@@ -30,7 +30,6 @@ public class PurchasedItemDto {
     /**
      * Getters and Setters
      */
-
 
     /**
      * @return Integer
@@ -84,6 +83,7 @@ public class PurchasedItemDto {
 
     /**
      * Builder
+     * 
      * @param id
      * @return
      */
@@ -94,6 +94,7 @@ public class PurchasedItemDto {
 
     /**
      * Builder
+     * 
      * @param article
      * @return
      */
@@ -104,6 +105,7 @@ public class PurchasedItemDto {
 
     /**
      * Builder
+     * 
      * @param purchase
      * @return
      */
@@ -114,6 +116,7 @@ public class PurchasedItemDto {
 
     /**
      * Builder
+     * 
      * @param quantity
      * @return
      */

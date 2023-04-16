@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 public class AdminMenuController implements Controller {
 
     private AdminMenuView view;
+
     /**
      * 
      * @param view
      * @throws IllegalArgumentException
      */
-
     public AdminMenuController(AdminMenuView view) throws IllegalArgumentException {
         this.view = view;
         setupHyperlink();

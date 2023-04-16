@@ -8,9 +8,10 @@ import jakarta.persistence.EntityNotFoundException;
 
 public class ArticleDAO extends Dao<ArticleModel, Integer> {
     private HibernateConfig hibernateConfig;
-/**
- * Constructor of ArticleDAO
- */
+
+    /**
+     * Constructor of ArticleDAO
+     */
     public ArticleDAO() {
         super(ArticleModel.class);
         hibernateConfig = HibernateConfig.getInstance();

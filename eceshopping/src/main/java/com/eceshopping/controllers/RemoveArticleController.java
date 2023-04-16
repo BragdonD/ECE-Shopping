@@ -65,7 +65,6 @@ public class RemoveArticleController implements Controller {
         return valid;
     }
 
- 
     public void setupHyperlink() {
         this.view.getBackButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/adminMenu");

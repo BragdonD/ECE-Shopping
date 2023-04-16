@@ -58,17 +58,19 @@ public class ManagePurchaseController implements Controller {
             }
         }
     }
-/**
- * Setup the hyperlink to go back to the admin menu
- */
+
+    /**
+     * Setup the hyperlink to go back to the admin menu
+     */
     public void setupHyperlink() {
         this.view.getBackLink().setOnAction(e -> {
             Router.getInstance().navigateTo("/adminMenu");
         });
     }
-/**
- * @param scene
- */
+
+    /**
+     * @param scene
+     */
     @Override
     public void bindScene(javafx.scene.Scene scene) {
     }

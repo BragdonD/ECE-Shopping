@@ -15,7 +15,7 @@ public class FlywayConfig {
      */
     private FlywayConfig() {
         String activeProfile = System.getProperty("app.profiles.active", "prod");
-        Properties properties; 
+        Properties properties;
         if (activeProfile.equals("dev")) {
             properties = HibernateConfig.getDevelopmentProperties();
         } else if (activeProfile.equals("test")) {
@@ -23,7 +23,7 @@ public class FlywayConfig {
         } else {
             properties = HibernateConfig.getProductionProperties();
         }
-        
+
         this.flywayProperties = new Properties();
         this.flywayProperties.setProperty("flyway.url", properties.getProperty("hibernate.connection.url"));
         Flyway flyway = Flyway.configure()

@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 public class PurchaseOviewController implements Controller {
 
     PurchaseDto purchase;
-     PurchasedItemDto purchasedItem;
+    PurchasedItemDto purchasedItem;
     private PurchaseOverView view;
 
     public PurchaseOviewController(PurchaseOverView view, PurchaseDto purchase, PurchasedItemDto purchasedItem)

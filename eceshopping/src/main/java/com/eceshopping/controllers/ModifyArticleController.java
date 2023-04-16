@@ -217,6 +217,7 @@ public class ModifyArticleController implements Controller {
         this.view.getPriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
         this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
     }
+
     /**
      * Setup the change listener for the stock text field
      */
@@ -242,10 +243,10 @@ public class ModifyArticleController implements Controller {
             Router.getInstance().navigateTo("/adminMenu");
         });
     }
+
     /**
      * Setup the change listener for the description text field
      */
-     
 
     public void setupDescriptionChangeListener() {
         this.view.getDescriptionTextField().textProperty().addListener((observable, oldValue, newValue) -> {
