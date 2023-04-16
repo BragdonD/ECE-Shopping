@@ -15,6 +15,6 @@ module com.eceshopping {
     exports com.eceshopping;
 
     opens com.eceshopping.models;
-
+    opens db.migration;
     opens images;
 }
