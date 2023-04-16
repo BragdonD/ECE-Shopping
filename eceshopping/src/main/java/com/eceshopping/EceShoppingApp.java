@@ -3,6 +3,7 @@ package com.eceshopping;
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.AddArticleFormController;
 import com.eceshopping.controllers.AdminMenuController;
+import com.eceshopping.controllers.CartPageController;
 import com.eceshopping.controllers.HomePageController;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
@@ -14,6 +15,7 @@ import com.eceshopping.controllers.UserInformationsPageController;
 import com.eceshopping.events.FocusSearchEvent;
 import com.eceshopping.events.LooseFocusEvent;
 import com.eceshopping.utils.Router;
+import com.eceshopping.views.CartPageView;
 import com.eceshopping.views.HomePageView;
 import com.eceshopping.views.LoginPageView;
 import com.eceshopping.views.ProductPageView;
@@ -68,6 +70,7 @@ public class EceShoppingApp extends Application {
         AdminMenuView AdminMenuView = new AdminMenuView();
         ManageInvView manaInvView = new ManageInvView();
         AddArticleFormView addArticleFormView = new AddArticleFormView();
+        CartPageView cartPageView = new CartPageView();
 
         // Routes for login and register
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
@@ -75,6 +78,7 @@ public class EceShoppingApp extends Application {
 
         // Normal routes
         this.router.addRoute("/", homePage, new HomePageController(homePage));
+        this.router.addRoute("/cart", cartPageView, new CartPageController(cartPageView));
         this.router.addRoute("/products", productPage, new ProductPageController(productPage));
         this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));
         this.router.addRoute("/profile/informations", userInformationPage,

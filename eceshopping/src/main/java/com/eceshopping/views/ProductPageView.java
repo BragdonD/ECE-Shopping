@@ -132,7 +132,6 @@ public class ProductPageView extends UserLayoutView implements View {
         productDetails.add(this.stock, 1, 3);
     }
 
-
     public Button getAddToCart() {
         return this.addToCart;
     }
@@ -140,7 +139,6 @@ public class ProductPageView extends UserLayoutView implements View {
     public TextField getQuantity() {
         return this.quantity;
     }
-    
 
     @Override
     public Node getRootNode() {

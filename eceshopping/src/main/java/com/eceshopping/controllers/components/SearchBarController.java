@@ -27,12 +27,15 @@ public class SearchBarController {
         setupSearchBar();
         Router.getInstance().getRouterController().getStage().addEventHandler(FocusSearchEvent.FOCUS_SEARCH_EVENT,
                 e -> {
-                    System.out.println("Focus search event");
+                    
                     if (e.getFocus()) {
+                        System.out.println("Focus search event");
                         focus();
                     } else {
+                        System.out.println("Loose focus event");
                         unfocus();
                     }
+                    e.consume();
                 });
     }
 
@@ -90,6 +93,9 @@ public class SearchBarController {
         this.view.getSearchBar().requestFocus();
         this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS);
         isFocused = true;
+        if(!Router.getInstance().getCurrentRoute().equals("/")) {
+            Router.getInstance().navigateTo("/");
+        }
     }
 
     /**
