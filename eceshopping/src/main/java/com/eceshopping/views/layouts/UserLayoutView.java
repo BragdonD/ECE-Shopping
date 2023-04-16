@@ -26,15 +26,21 @@ public class UserLayoutView extends GridPane {
         RowConstraints row2 = new RowConstraints();
         row2.setVgrow(Priority.ALWAYS);
         this.getRowConstraints().add(row2);
-        this.setStyle("-fx-background-color: red;");
+        // this.setStyle("-fx-background-color: red;");
     }
 
+    /**
+     * @param scene
+     */
     public void bindScene(Scene scene) {
         this.prefWidthProperty().bind(scene.widthProperty());
         this.prefHeightProperty().bind(scene.heightProperty());
         this.navBar.bindScene(scene);
     }
 
+    /**
+     * @param node
+     */
     public void setSlot(Node node) {
         this.slot.getChildren().clear();
         this.slot.getChildren().add(node);

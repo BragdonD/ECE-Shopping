@@ -1,6 +1,5 @@
 package com.eceshopping.models.component.input;
 
-
 /**
  * InputModel class is a model class for the Input component. It contains the
  * attributes of the Input component.
@@ -13,7 +12,7 @@ public class InputModel {
     private String value;
     private String placeholder;
     private String style;
-    
+
     /*
      * Default constructor
      */
@@ -40,6 +39,9 @@ public class InputModel {
         this.style = style;
     }
 
+    /**
+     * @return String
+     */
     /*
      * Getters and setters
      */
@@ -47,6 +49,9 @@ public class InputModel {
         return this.label;
     }
 
+    /**
+     * @param label
+     */
     public void setLabel(String label) {
         this.label = label;
     }

@@ -8,7 +8,8 @@ import com.eceshopping.models.UserModel;
  */
 public class UserConverter {
     /**
-     * Converts a UserModel object to a UserDto object. 
+     * Converts a UserModel object to a UserDto object.
+     * 
      * @param user The UserModel object to be converted
      * @return The converted UserDto object
      */
@@ -23,8 +24,9 @@ public class UserConverter {
     }
 
     /**
-     * Converts a UserDto object to a UserModel object. 
-     * @param userDto The UserDto object to be converted 
+     * Converts a UserDto object to a UserModel object.
+     * 
+     * @param userDto The UserDto object to be converted
      * @return The converted UserModel object
      */
     public static UserModel convertToModel(UserDto userDto) {

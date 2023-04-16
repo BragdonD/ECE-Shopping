@@ -13,12 +13,16 @@ import javafx.scene.Scene;
 public class ProfilePageController implements Controller {
     private final ProfilePageView view;
     private List<ProfileMenuButtonLinkController> controllers;
-    private UserNavBarController navBarController;
 
+    /**
+     * Constructor of ProfilePageController
+     * 
+     * @param view
+     */
     public ProfilePageController(ProfilePageView view) {
         this.view = view;
         this.controllers = new ArrayList<>();
-        this.navBarController = new UserNavBarController(this.view.getNavBar());
+        new UserNavBarController(this.view.getNavBar());
         int i = 0;
         for (ProfileMenuButtonLinkView button : this.view.getButtons()) {
             System.out.println(Routes.userProfileRoute.get(i).getPath());
@@ -26,6 +30,10 @@ public class ProfilePageController implements Controller {
             i++;
         }
     }
+
+    /**
+     * @param s
+     */
 
     @Override
     public void bindScene(Scene s) {

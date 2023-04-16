@@ -4,6 +4,9 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.ArticleModel;
+import com.eceshopping.models.PurchaseModel;
+import com.eceshopping.models.PurchasedItemModel;
 import com.eceshopping.models.UserModel;
 
 /**
@@ -22,18 +25,21 @@ public class HibernateConfig {
      * SessionFactory object that is used to create a Session object.
      */
     private HibernateConfig() {
-        String activeProfile = System.getProperty("app.profiles.active", "dev");
+        String activeProfile = System.getProperty("app.profiles.active", "prod");
         if (activeProfile.equals("dev")) {
             hibernateProperties = getDevelopmentProperties();
         } else if (activeProfile.equals("test")) {
             hibernateProperties = getTestProperties();
         } else {
-            hibernateProperties = getProductionProperties();  
+            hibernateProperties = getProductionProperties();
         }
         sessionFactory = new Configuration()
-            .addProperties(hibernateProperties)
-            .addAnnotatedClass(UserModel.class)
-            .buildSessionFactory();
+                .addProperties(hibernateProperties)
+                .addAnnotatedClass(UserModel.class)
+                .addAnnotatedClass(ArticleModel.class)
+                .addAnnotatedClass(PurchaseModel.class)
+                .addAnnotatedClass(PurchasedItemModel.class)
+                .buildSessionFactory();
     }
 
     /**
@@ -41,16 +47,23 @@ public class HibernateConfig {
      * 
      * @return The Hibernate properties for production environment.
      */
-    private static Properties getProductionProperties() {
+    public static Properties getProductionProperties() {
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
         properties.setProperty("hibernate.connection.username", "root");
         properties.setProperty("hibernate.connection.password", "root");
+        properties.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/eceshopping");
         properties.setProperty("hibernate.archive.autodetection", "class, hbm");
         properties.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+        properties.setProperty("hibernate.hbm2ddl.auto", "validate");
         return properties;
     }
 
+    /**
+     * Gets the Hibernate properties for development environment.
+     * 
+     * @return The Hibernate properties for development environment.
+     */
     public static Properties getDevelopmentProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
@@ -66,7 +79,7 @@ public class HibernateConfig {
      * 
      * @return The Hibernate properties for test environment.
      */
-    private static Properties getTestProperties() {
+    public static Properties getTestProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");
         properties.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");

@@ -1,15 +1,11 @@
 package com.eceshopping.configs;
 
-import javafx.geometry.Dimension2D;
-
 /**
  * This class contains all the styles used in the application.
  * It is used to avoid having the same style in multiple places.
  */
 public class AppStyles {
-        /**
-         * Primary button styles for the application
-         */
+
         public static final String PRIMARY_BUTTON_STYLE_DEACTIVATED = "" +
                         "-fx-background-color: #bfbfbf;" +
                         " -fx-text-fill: white;" +
@@ -18,6 +14,7 @@ public class AppStyles {
                         " -fx-border-radius: 4px;" +
                         " -fx-background-radius: 4px;" +
                         " -fx-cursor: hand";
+
         public static final String PRIMARY_BUTTON_STYLE = "" +
                         "-fx-background-color: #00bfff;" +
                         " -fx-text-fill: white;" +
@@ -26,6 +23,7 @@ public class AppStyles {
                         " -fx-border-radius: 4px;" +
                         " -fx-background-radius: 4px;" +
                         " -fx-cursor: hand";
+
         public static final String PRIMARY_BUTTON_STYLE_HOVER = "" +
                         "-fx-background-color: #009bcf;" +
                         " -fx-text-fill: white;" +
@@ -269,29 +267,117 @@ public class AppStyles {
                         "-fx-padding: 5px 15px 5px 15px;" +
                         "-fx-width: 100%;";
 
-        /**
-         * Sizes for the application
-         */
-        public static final int WINDOW_WIDTH_SM = 640;
-        public static final int WINDOW_HEIGHT_SM = 480;
-        public static final int WINDOW_WIDTH_MD = 768;
-        public static final int WINDOW_HEIGHT_MD = 576;
-        public static final int WINDOW_WIDTH_LG = 1024;
-        public static final int WINDOW_HEIGHT_LG = 768;
-        public static final int WINDOW_WIDTH_XL = 1280;
-        public static final int WINDOW_HEIGHT_XL = 960;
-        public static final int WINDOW_WIDTH_2XL = 1536;
-        public static final int WINDOW_HEIGHT_2XL = 1152;
-        public static final int WINDOW_WIDTH_3XL = 1920;
-        public static final int WINDOW_HEIGHT_3XL = 1440;
+        public static final String SEARCH_BAR_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 300px;";
 
-        /**
-         * 2D Dimension for the application
-         */
-        public static final Dimension2D WINDOW_SIZE_SM = new Dimension2D(WINDOW_WIDTH_SM, WINDOW_HEIGHT_SM);
-        public static final Dimension2D WINDOW_SIZE_MD = new Dimension2D(WINDOW_WIDTH_MD, WINDOW_HEIGHT_MD);
-        public static final Dimension2D WINDOW_SIZE_LG = new Dimension2D(WINDOW_WIDTH_LG, WINDOW_HEIGHT_LG);
-        public static final Dimension2D WINDOW_SIZE_XL = new Dimension2D(WINDOW_WIDTH_XL, WINDOW_HEIGHT_XL);
-        public static final Dimension2D WINDOW_SIZE_2XL = new Dimension2D(WINDOW_WIDTH_2XL, WINDOW_HEIGHT_2XL);
-        public static final Dimension2D WINDOW_SIZE_3XL = new Dimension2D(WINDOW_WIDTH_3XL, WINDOW_HEIGHT_3XL);
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #bfbfbf;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE_HOVER = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #424fd6;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-border-color: #424fd6;" +
+                        "-fx-border-width: 1px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-min-width: 300px;";
+
+        public static final String SEARCH_BAR_BUTTON_STYLE = "" +
+                        "-fx-background-color: #424fd6;" +
+                        "-fx-text-fill: #fff;" +
+                        "-fx-font-size: 14px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-padding: 5px 15px 5px 15px;" +
+                        "-fx-width: 100%;";
+
+        public static final String SEARCH_BAR_BUTTON_STYLE_HOVER = "" +
+                        "-fx-background-color: #242e8c;" +
+                        "-fx-text-fill: #fff;" +
+                        "-fx-font-size: 14px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-cursor: hand;" +
+                        "-fx-padding: 5px 15px 5px 15px;" +
+                        "-fx-width: 100%;";
+
+        public static final String PRODUCT_OVERVIEW_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 15px;" +
+                        "-fx-background-radius: 15px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 200px;";
+
+        public static final String PRODUCT_OVERVIEW_STYLE_HOVER = "" +
+                        "-fx-background-color: #eeeeee;" +
+                        "-fx-border-radius: 15px;" +
+                        "-fx-background-radius: 15px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 200px;" +
+                        "-fx-cursor: hand;";
+
+        public static final String PRODUCT_OVERVIEW_TITLE_STYLE = "" +
+                        "-fx-border-radius: 4px;" +
+                        "-fx-background-radius: 4px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 50px;" +
+                        "-fx-font-size: 16px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-text-fill: #000000;";
+
+        public static final int PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS = 5;
+
+        public static final String CART_ITEM_STYLE = "" +
+                        "-fx-background-color: #ffffff;" +
+                        "-fx-border-radius: 15px;" +
+                        "-fx-background-radius: 15px;" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-spacing: 10px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-width: 200px;" +
+                        "-fx-min-height: 200px;";
+
+        public static final String CART_TOTAL_PRICE_STYLE = "" +
+                        "-fx-padding: 5px 5px 5px 5px;" +
+                        "-fx-alignment: center;" +
+                        "-fx-min-height: 100px;" +
+                        "-fx-font-size: 28px;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-text-fill: #000000;";
 }

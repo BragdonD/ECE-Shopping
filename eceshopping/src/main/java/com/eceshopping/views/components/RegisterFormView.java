@@ -21,10 +21,15 @@ public class RegisterFormView {
 
     public RegisterFormView() {
         this.submitButton = new Button(AppText.REGISTER_FORM_SUBMIT_BUTTON);
-        this.nameInputFieldView = new InputFieldView(AppText.REGISTER_FORM_NAME_LABEL, AppText.REGISTER_FORM_NAME_PLACEHOLDER, AppText.INPUT_NAME);
-        this.emailInputFieldView = new InputFieldView(AppText.REGISTER_FORM_EMAIL_LABEL, AppText.REGISTER_FORM_EMAIL_PLACEHOLDER, AppText.INPUT_EMAIL);
-        this.passwordInputFieldView = new InputFieldView(AppText.REGISTER_FORM_PASSWORD_LABEL, AppText.REGISTER_FORM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
-        this.formView = new FormView(List.of(this.nameInputFieldView, this.emailInputFieldView, this.passwordInputFieldView), this.submitButton);
+        this.nameInputFieldView = new InputFieldView(AppText.REGISTER_FORM_NAME_LABEL,
+                AppText.REGISTER_FORM_NAME_PLACEHOLDER, AppText.INPUT_NAME);
+        this.emailInputFieldView = new InputFieldView(AppText.REGISTER_FORM_EMAIL_LABEL,
+                AppText.REGISTER_FORM_EMAIL_PLACEHOLDER, AppText.INPUT_EMAIL);
+        this.passwordInputFieldView = new InputFieldView(AppText.REGISTER_FORM_PASSWORD_LABEL,
+                AppText.REGISTER_FORM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
+        this.formView = new FormView(
+                List.of(this.nameInputFieldView, this.emailInputFieldView, this.passwordInputFieldView),
+                this.submitButton);
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setHgrow(Priority.ALWAYS);
         this.formView.getColumnConstraints().add(column1);
@@ -35,7 +40,9 @@ public class RegisterFormView {
         this.formView.getColumnConstraints().add(column2);
     }
 
-
+    /**
+     * @return FormView
+     */
     /*
      * Getters and setters
      */
@@ -43,6 +50,9 @@ public class RegisterFormView {
         return this.formView;
     }
 
+    /**
+     * @param formView
+     */
     public void setFormView(FormView formView) {
         this.formView = formView;
     }
@@ -78,7 +88,6 @@ public class RegisterFormView {
     public void setSubmitButton(Button submitButton) {
         this.submitButton = submitButton;
     }
-
 
     public RegisterFormView formView(FormView formView) {
         setFormView(formView);

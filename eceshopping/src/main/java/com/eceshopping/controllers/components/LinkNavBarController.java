@@ -18,6 +18,10 @@ public class LinkNavBarController {
         setupHover();
     }
 
+    /**
+     * @return LinkNavBarView
+     */
+
     /*
      * get the view
      */

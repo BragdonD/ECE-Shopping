@@ -18,11 +18,33 @@
     <dependencies>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.32</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jfxcore</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>18-ea+1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.qsy7.java.modules.notification.providers</groupId>
+            <artifactId>awt</artifactId>
+            <version>0.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>ij</artifactId>
+            <version>1.53j</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
         <dependency>
             <groupId>jakarta.el</groupId>
             <artifactId>jakarta.el-api</artifactId>
@@ -80,19 +102,32 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>11</version>
+            <version>16</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>11</version>
+            <version>20</version>
         </dependency>
-        
+        <dependency>
+            <groupId>me.saharnooby</groupId>
+            <artifactId>qoi-java-awt</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <outputDirectory>${project.basedir}/docs</outputDirectory>
+                </configuration>
+            </plugin>
+
             <!-- adds file to let you run program outside of IDE -->
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
