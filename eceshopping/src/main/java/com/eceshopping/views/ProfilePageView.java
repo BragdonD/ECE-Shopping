@@ -20,7 +20,6 @@ public class ProfilePageView extends UserLayoutView implements View {
     private GridPane layout;
 
     private Image image1;
-    private Image image2;
     private Image image3;
 
     public ProfilePageView() {
@@ -28,9 +27,6 @@ public class ProfilePageView extends UserLayoutView implements View {
         this.image1 = new Image(AppPath.PATH_IMAGE_PROFILE_PAGE_BUTTON_1);
         this.buttons.add(new ProfileMenuButtonLinkView(this.image1, AppText.PROFILE_PAGE_TITLE_BUTTON_1,
                 AppText.PROFILE_PAGE_DESCRIPTION_BUTTON_1));
-        this.image2 = new Image(AppPath.PATH_IMAGE_PROFILE_PAGE_BUTTON_2);
-        this.buttons.add(new ProfileMenuButtonLinkView(this.image2, AppText.PROFILE_PAGE_TITLE_BUTTON_2,
-                AppText.PROFILE_PAGE_DESCRIPTION_BUTTON_2));
         this.image3 = new Image(AppPath.PATH_IMAGE_PROFILE_PAGE_BUTTON_3);
         this.buttons.add(new ProfileMenuButtonLinkView(this.image3, AppText.PROFILE_PAGE_TITLE_BUTTON_3,
                 AppText.PROFILE_PAGE_DESCRIPTION_BUTTON_3));

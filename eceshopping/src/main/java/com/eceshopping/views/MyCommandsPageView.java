@@ -8,6 +8,7 @@ public class MyCommandsPageView extends UserLayoutView implements View {
     GridPane layout;
 
     public MyCommandsPageView() {
+        super();
         this.layout = new GridPane();
         this.layout.setHgap(10);
         this.layout.setVgap(10);
@@ -23,6 +24,6 @@ public class MyCommandsPageView extends UserLayoutView implements View {
 
     @Override
     public javafx.scene.Node getRootNode() {
-        return this.layout;
+        return this;
     }
 }

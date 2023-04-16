@@ -1,8 +1,15 @@
 package com.eceshopping;
 
+import java.util.List;
+
 import com.eceshopping.configs.FlywayConfig;
 import com.eceshopping.controllers.AddArticleFormController;
 import com.eceshopping.controllers.PaymentPageController;
+import com.eceshopping.daos.ArticleDao;
+import com.eceshopping.daos.PurchaseDAO;
+import com.eceshopping.daos.PurchaseItemDAO;
+import com.eceshopping.models.ArticleModel;
+import com.eceshopping.models.PurchaseModel;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.PaymentPageView;
 import com.eceshopping.views.components.AddArticleFormView;
@@ -19,19 +26,9 @@ public class TestApp extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
-        s.setTitle("My JavaFX App");
-
-        // Set the main stage inside the router controller
-        this.router = Router.getInstance();
-        this.router.getRouterController().setMainStage(s);
-        AddArticleFormView addArticleView = new AddArticleFormView();
-        PaymentPageView paymentPageView = new PaymentPageView();
-        this.router.addRoute("/addArticle", paymentPageView, new PaymentPageController(paymentPageView));
-
-        Scene scene = new Scene(this.router.getRootPane(), 400, 400);
-        this.router.getRouterController().setScene(scene);
-        this.router.getRouterController().show();
-        this.router.navigateTo("/addArticle");
+        List<ArticleModel> temp = new ArticleDao().getAll();
+        List<PurchaseModel> temp1 = new PurchaseDAO().getAll();
+        System.out.println(new PurchaseItemDAO().getAll());
     }
 
     public static void main(String[] args) {

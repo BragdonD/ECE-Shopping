@@ -11,6 +11,7 @@ import com.eceshopping.controllers.ManageInvController;
 import com.eceshopping.controllers.ManagePurchaseController;
 import com.eceshopping.controllers.ManageUsersController;
 import com.eceshopping.controllers.ModifyArticleController;
+import com.eceshopping.controllers.MyCommandPageController;
 import com.eceshopping.controllers.ProductPageController;
 import com.eceshopping.controllers.ProfilePageController;
 import com.eceshopping.controllers.RegisterPageController;
@@ -21,6 +22,7 @@ import com.eceshopping.utils.Router;
 import com.eceshopping.views.CartPageView;
 import com.eceshopping.views.HomePageView;
 import com.eceshopping.views.LoginPageView;
+import com.eceshopping.views.MyCommandsPageView;
 import com.eceshopping.views.components.ModifyArticleFormView;
 import com.eceshopping.views.ProductPageView;
 import com.eceshopping.views.ProfilePageView;
@@ -83,6 +85,7 @@ public class EceShoppingApp extends Application {
         ModifyArticleFormView modifyArticleFormView = new ModifyArticleFormView();
         ManagePurchaseView managePurchaseView = new ManagePurchaseView();
         ManageUserView manageUserView = new ManageUserView();
+        MyCommandsPageView myCommandsPageView = new MyCommandsPageView();
 
         // Routes for login and register
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
@@ -93,6 +96,7 @@ public class EceShoppingApp extends Application {
         this.router.addRoute("/cart", cartPageView, new CartPageController(cartPageView));
         this.router.addRoute("/products", productPage, new ProductPageController(productPage));
         this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));
+        this.router.addRoute("/profile/orders", myCommandsPageView, new MyCommandPageController(myCommandsPageView));
         this.router.addRoute("/profile/informations", userInformationPage,
                 new UserInformationsPageController(userInformationPage));
 
