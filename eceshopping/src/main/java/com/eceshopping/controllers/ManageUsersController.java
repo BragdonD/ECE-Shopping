@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.services.UserService;
+import com.eceshopping.utils.Router;
 import com.eceshopping.views.components.ManageUserView;
 import com.eceshopping.views.components.UserOverView;
 
@@ -17,7 +18,7 @@ private List<UserDto> users;
     public ManageUsersController(ManageUserView view) throws IllegalArgumentException {
         this.view=view;
         this.userService = new UserService();
-
+        setupHyperlink();
     }
 
     public void loadUsers(){
@@ -44,6 +45,10 @@ private List<UserDto> users;
             this.view.addUser(userOView);
         }
     }
-        
+    public void setupHyperlink(){
+        this.view.getBackLink().setOnAction(e -> {
+           Router.getInstance().navigateTo("/adminMenu");
+       });
+   }
     }
 

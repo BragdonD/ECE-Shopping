@@ -41,7 +41,7 @@ public class PurchaseService {
         return task;
     }
 
-    public Task<List<PurchaseDto>> getAllPurchasedItem() {
+    public Task<List<PurchaseDto>> getAllPurchases() {
         Task<List<PurchaseDto>> task = new Task<List<PurchaseDto>>() {
             @Override
             protected List<PurchaseDto> call() throws Exception {
