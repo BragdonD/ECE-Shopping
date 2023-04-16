@@ -24,10 +24,18 @@ public class PurchaseDto {
         this.amountPayed = amountPayed;
     }
 
+    
+    /** 
+     * @return Integer
+     */
     public Integer getId() {
         return id;
     }
 
+    
+    /** 
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }

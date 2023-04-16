@@ -2,6 +2,7 @@ package com.eceshopping.controllers;
 
 import com.eceshopping.configs.AppStyles;
 import com.eceshopping.dto.ArticleDto;
+import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
@@ -124,6 +125,8 @@ public class AddArticleFormController implements Controller {
 
                 saveArticleTask.setOnSucceeded(e -> {
                     System.out.println("Article added successfully");
+                    Router.getInstance().getRouterController().getMainStage().fireEvent(new ModifyInvEvent(saveArticleTask.getValue()));
+                    Router.getInstance().navigateTo("/manageInv");
                 });
 
                 saveArticleTask.setOnFailed(e -> {
@@ -167,6 +170,10 @@ public class AddArticleFormController implements Controller {
         });
     }
 
+    
+    /** 
+     * @return boolean
+     */
     private boolean validateForm() {
         boolean valid = true;
         if (name.length() == 0) {
@@ -218,10 +225,6 @@ public class AddArticleFormController implements Controller {
                 // this.view.getMarqueErrorText().setVisible(false);
             }
         });
-    }
-
-    public Scene getScene() {
-        return this.view.getScene();
     }
 
     @Override

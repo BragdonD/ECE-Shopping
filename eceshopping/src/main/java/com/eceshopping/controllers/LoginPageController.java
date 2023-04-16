@@ -74,7 +74,7 @@ public class LoginPageController implements Controller {
                         } else {
                             Session.getInstance().setUser(user);
                             if (user.getAdmin())
-                                Router.getInstance().navigateTo("/admin");
+                                Router.getInstance().navigateTo("/adminMenu");
                             else
                                 Router.getInstance().navigateTo("/");
                         }
@@ -122,6 +122,10 @@ public class LoginPageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.prefWidthProperty().bind(s.widthProperty());

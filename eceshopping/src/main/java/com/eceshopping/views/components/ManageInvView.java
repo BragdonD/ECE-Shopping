@@ -30,11 +30,19 @@ public class ManageInvView extends GridPane implements View {
         this.row++;
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name) {
         this.productsLayout.getChildren().remove(this.name);
         this.name.setText(name);
     }
 
+    
+    /** 
+     * @return Hyperlink
+     */
     public Hyperlink getAddArticleButton() {
         return this.addArticleButton;
     }
@@ -54,6 +62,10 @@ public class ManageInvView extends GridPane implements View {
     public void clearProducts() {
         this.productsLayout.getChildren().clear();
         this.row = 0;
+    }
+
+    public void removeProduct(ProductOView product) {
+        this.productsLayout.getChildren().remove(product);
     }
 
     @Override

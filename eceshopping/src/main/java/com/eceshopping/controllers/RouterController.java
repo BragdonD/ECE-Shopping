@@ -25,6 +25,10 @@ public class RouterController {
         this.mainStage = stage;
     }
 
+    
+    /** 
+     * @return Stage
+     */
     public Stage getMainStage() {
         return mainStage;
     }
@@ -56,6 +60,10 @@ public class RouterController {
         mainStage.close();
     }
 
+    
+    /** 
+     * @return Scene
+     */
     public Scene getScene() {
         return mainStage.getScene();
     }

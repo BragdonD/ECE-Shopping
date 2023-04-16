@@ -95,6 +95,10 @@ public class RegisterPageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param message
+     */
     /*
      * Display the error message
      */
@@ -117,6 +121,10 @@ public class RegisterPageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.prefWidthProperty().bind(s.widthProperty());

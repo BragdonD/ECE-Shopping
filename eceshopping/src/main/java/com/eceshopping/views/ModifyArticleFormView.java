@@ -106,11 +106,19 @@ public class ModifyArticleFormView extends GridPane implements View {
 
     }
 
+    
+    /** 
+     * @return Node
+     */
     @Override
     public Node getRootNode() {
         return this;
     }
 
+    
+    /** 
+     * @return Integer
+     */
     public Integer getProductId() {
         return id;
     }

@@ -18,10 +18,18 @@ public class BasketDto {
         this.basketItems = basketItems;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getId() {
         return this.id;
     }
 
+    
+    /** 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }

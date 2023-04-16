@@ -19,10 +19,18 @@ public class DeleteFromBasketEvent extends Event {
         this.isDeleteAll = isDeleteAll;
     }
 
+    
+    /** 
+     * @return ArticleDto
+     */
     public ArticleDto getArticle() {
         return article;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isDeleteAll() {
         return isDeleteAll;
     }

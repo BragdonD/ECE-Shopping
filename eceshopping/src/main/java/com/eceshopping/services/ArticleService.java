@@ -25,10 +25,22 @@ public class ArticleService {
         this.articleDAO = new ArticleDao();
     }
 
+    
+    /** 
+     * @param name
+     * @return ArticleDto
+     * @throws EntityNotFoundException
+     * @throws IOException
+     */
     public ArticleDto getArticlebyname(String name) throws EntityNotFoundException, IOException {
         return ArticleConverter.convertToDto(articleDAO.getArticleByName(name));
     }
 
+    
+    /** 
+     * @param articleDto
+     * @return Task<ArticleDto>
+     */
     public Task<ArticleDto> saveArticleAsync(ArticleDto articleDto) {
         Task<ArticleDto> task = new Task<ArticleDto>() {
             @Override

@@ -208,10 +208,18 @@ public class ArticleModel {
         this.image = oS.toByteArray();
     }
 
+    
+    /** 
+     * @param bulkprice
+     */
     public void setBulkprice(double bulkprice) {
         this.bulkprice = bulkprice;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getBulkprice() {
         return bulkprice;
     }

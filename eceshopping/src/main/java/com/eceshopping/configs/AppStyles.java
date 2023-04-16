@@ -1,15 +1,11 @@
 package com.eceshopping.configs;
 
-import javafx.geometry.Dimension2D;
-
 /**
  * This class contains all the styles used in the application.
  * It is used to avoid having the same style in multiple places.
  */
 public class AppStyles {
-        /**
-         * Primary button styles for the application
-         */
+
         public static final String PRIMARY_BUTTON_STYLE_DEACTIVATED = "" +
                         "-fx-background-color: #bfbfbf;" +
                         " -fx-text-fill: white;" +
@@ -18,6 +14,7 @@ public class AppStyles {
                         " -fx-border-radius: 4px;" +
                         " -fx-background-radius: 4px;" +
                         " -fx-cursor: hand";
+
         public static final String PRIMARY_BUTTON_STYLE = "" +
                         "-fx-background-color: #00bfff;" +
                         " -fx-text-fill: white;" +
@@ -26,6 +23,7 @@ public class AppStyles {
                         " -fx-border-radius: 4px;" +
                         " -fx-background-radius: 4px;" +
                         " -fx-cursor: hand";
+
         public static final String PRIMARY_BUTTON_STYLE_HOVER = "" +
                         "-fx-background-color: #009bcf;" +
                         " -fx-text-fill: white;" +
@@ -382,30 +380,4 @@ public class AppStyles {
                         "-fx-font-size: 28px;" +
                         "-fx-font-weight: bold;" +
                         "-fx-text-fill: #000000;";
-
-        /**
-         * Sizes for the application
-         */
-        public static final int WINDOW_WIDTH_SM = 640;
-        public static final int WINDOW_HEIGHT_SM = 480;
-        public static final int WINDOW_WIDTH_MD = 768;
-        public static final int WINDOW_HEIGHT_MD = 576;
-        public static final int WINDOW_WIDTH_LG = 1024;
-        public static final int WINDOW_HEIGHT_LG = 768;
-        public static final int WINDOW_WIDTH_XL = 1280;
-        public static final int WINDOW_HEIGHT_XL = 960;
-        public static final int WINDOW_WIDTH_2XL = 1536;
-        public static final int WINDOW_HEIGHT_2XL = 1152;
-        public static final int WINDOW_WIDTH_3XL = 1920;
-        public static final int WINDOW_HEIGHT_3XL = 1440;
-
-        /**
-         * 2D Dimension for the application
-         */
-        public static final Dimension2D WINDOW_SIZE_SM = new Dimension2D(WINDOW_WIDTH_SM, WINDOW_HEIGHT_SM);
-        public static final Dimension2D WINDOW_SIZE_MD = new Dimension2D(WINDOW_WIDTH_MD, WINDOW_HEIGHT_MD);
-        public static final Dimension2D WINDOW_SIZE_LG = new Dimension2D(WINDOW_WIDTH_LG, WINDOW_HEIGHT_LG);
-        public static final Dimension2D WINDOW_SIZE_XL = new Dimension2D(WINDOW_WIDTH_XL, WINDOW_HEIGHT_XL);
-        public static final Dimension2D WINDOW_SIZE_2XL = new Dimension2D(WINDOW_WIDTH_2XL, WINDOW_HEIGHT_2XL);
-        public static final Dimension2D WINDOW_SIZE_3XL = new Dimension2D(WINDOW_WIDTH_3XL, WINDOW_HEIGHT_3XL);
 }

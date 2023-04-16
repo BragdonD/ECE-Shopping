@@ -34,10 +34,18 @@ public class ProductOView extends GridPane {
         this.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
     }
 
+    
+    /** 
+     * @return Integer
+     */
     public Integer getProdId() {
         return this.id;
     }
 
+    
+    /** 
+     * @return Button
+     */
     public Button getRemoveArticleButton() {
         return this.removeProduct;
     }

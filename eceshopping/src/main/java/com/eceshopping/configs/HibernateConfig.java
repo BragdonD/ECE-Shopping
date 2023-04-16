@@ -53,6 +53,10 @@ public class HibernateConfig {
         return properties;
     }
 
+    /**
+     * Gets the Hibernate properties for development environment.
+     * @return The Hibernate properties for development environment.
+     */
     public static Properties getDevelopmentProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.community.dialect.SQLiteDialect");

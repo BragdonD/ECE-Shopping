@@ -112,6 +112,10 @@ public class UserInformationsPageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param error
+     */
     private void displayError(String error) {
         Text errorText = new Text(error);
         errorText.getStyleClass().add(AppStyles.ERROR_TEXT_STYLE);
@@ -184,6 +188,10 @@ public class UserInformationsPageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.bindScene(s);

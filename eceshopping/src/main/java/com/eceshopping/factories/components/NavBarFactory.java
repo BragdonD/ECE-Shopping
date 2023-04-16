@@ -9,6 +9,10 @@ import com.eceshopping.views.components.UserNavBarView;
  * This class is used to create the navbar
  */
 public class NavBarFactory {
+    
+    /** 
+     * @return UserNavBarView
+     */
     public static UserNavBarView createUserNavBarView() {
         UserNavBarView navBar = new UserNavBarView();
         for (Route route : Routes.navBarRoutes) {

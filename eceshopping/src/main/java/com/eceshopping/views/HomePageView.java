@@ -23,10 +23,18 @@ public class HomePageView extends UserLayoutView implements View {
         this.row = 0;
     }
 
+    
+    /** 
+     * @return GridPane
+     */
     public GridPane getProductLayout() {
         return this.productsLayout;
     }
 
+    
+    /** 
+     * @param product
+     */
     public void addProduct(ProductOverviewView product) {
         int col = row % AppStyles.PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS; // calculate the column index
         int rowIdx = row / AppStyles.PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS; // calculate the row index

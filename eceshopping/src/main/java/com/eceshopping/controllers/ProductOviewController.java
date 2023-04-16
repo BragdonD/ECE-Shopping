@@ -2,6 +2,7 @@ package com.eceshopping.controllers;
 
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.events.DisplayArticleEvent;
+import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.ProductOView;
@@ -23,11 +24,14 @@ public class ProductOviewController implements Controller {
 
     }
 
+    public ProductOView getView() {
+        return this.view;
+    }
+
     private void setupRemoveButton() {
         this.view.getRemoveArticleButton().setOnAction(e -> {
-
+            Router.getInstance().getRouterController().getMainStage().fireEvent(new ModifyInvEvent(this.article, true));
             articleService.delete(this.view.getTitle());
-
         });
     }
 
@@ -40,6 +44,14 @@ public class ProductOviewController implements Controller {
         });
     }
 
+    public void updateView(ArticleDto article) {
+        this.article = article;
+        this.view.setTitle(article.getName());
+    }
+    
+    /** 
+     * @param scene
+     */
     @Override
     public void bindScene(Scene scene) {
     }

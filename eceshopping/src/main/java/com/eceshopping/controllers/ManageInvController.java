@@ -6,6 +6,7 @@ import com.eceshopping.views.components.ManageInvView;
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.dto.ArticleDto;
@@ -20,10 +21,11 @@ public class ManageInvController implements Controller {
 
     ArticleService articleService;
     private List<ArticleDto> articles;
+    private List<ProductOviewController> productOviewControllers;
     private ArticleDto article;
 
     public ManageInvController(ManageInvView view) throws IllegalArgumentException {
-
+        this.productOviewControllers = new ArrayList<ProductOviewController>();
         this.view = view;
         this.articleService = new ArticleService();
         setupHyperlink();
@@ -63,7 +65,7 @@ public class ManageInvController implements Controller {
         }
         for (ArticleDto article : this.articles) {
             ProductOView product = new ProductOView(article.getName(), article.getId());
-            new ProductOviewController(product, article);
+            productOviewControllers.add(new ProductOviewController(product, article));
             this.view.addProduct(product);
         }
     }
@@ -78,14 +80,47 @@ public class ManageInvController implements Controller {
                 });
 
         Router.getInstance().getRouterController().getMainStage().addEventHandler(ModifyInvEvent.MODIFY_ARTICLE, e -> {
-            this.article = e.getArticle();
-            System.out.println("Article : " + article);
-            this.view.setName(article.getName());
-
+            ArticleDto articleEvent = e.getArticle();
+            System.out.println("Article : " + articleEvent);
+            boolean found = false;
+            int i = 0;
+            for(ArticleDto a : this.articles){
+                if(a.getId() == articleEvent.getId()){
+                    if(e.isDelete()) {
+                        this.articles.remove(a);
+                        this.view.removeProduct(productOviewControllers.get(i).getView());
+                        productOviewControllers.remove(i);
+                        found = true;
+                        break;
+                    }
+                    a.setName(articleEvent.getName());
+                    a.setMarque(articleEvent.getMarque());
+                    a.setPrice(articleEvent.getPrice());
+                    a.setBulkprice(articleEvent.getBulkprice());
+                    a.setStock(articleEvent.getStock());
+                    a.setType(articleEvent.getType());
+                    a.setDescription(articleEvent.getDescription());
+                    a.setImage(articleEvent.getImage());
+                    productOviewControllers.get(i).updateView(articleEvent);
+                    found = true;
+                    break;
+                }
+                i++;
+            }
+            if(!found){
+                this.articles.add(article);
+                ProductOView product = new ProductOView(article.getName(), article.getId());
+                productOviewControllers.add(new ProductOviewController(product, article));
+                this.view.addProduct(product);
+            }
         });
 
     }
 
+    
+    /** 
+     * @param scene
+     */
     @Override
     public void bindScene(Scene scene) {
 

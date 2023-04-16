@@ -20,10 +20,22 @@ public class PurchaseService {
         purchaseDAO = new PurchaseDAO();
     }
 
+    
+    /** 
+     * @param id
+     * @return PurchaseModel
+     * @throws EntityNotFoundException
+     */
     public PurchaseModel getPurchaseById(Integer id) throws EntityNotFoundException {
         return purchaseDAO.getPurchaseById(id);
     }
 
+    
+    /** 
+     * @param purchaseDto
+     * @return Task<PurchaseDto>
+     * @throws EntityNotFoundException
+     */
     public Task<PurchaseDto> getByIdAsync(PurchaseDto purchaseDto) throws EntityNotFoundException {
         Task<PurchaseDto> task = new Task<PurchaseDto>() {
             @Override

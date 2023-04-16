@@ -255,6 +255,10 @@ public class ArticleDto {
 
     }
 
+    
+    /** 
+     * @param description2
+     */
     public void setDescription(String description2) {
         this.description = description2;
     }
@@ -288,6 +292,11 @@ public class ArticleDto {
         this.stock = stock;
     }
 
+    
+    /** 
+     * @param stock
+     * @return ArticleDto
+     */
     public ArticleDto stock(Integer stock) {
         setStock(stock);
         return this;

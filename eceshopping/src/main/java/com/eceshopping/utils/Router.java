@@ -95,6 +95,10 @@ public class Router {
         current = route;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getCurrentRoute() {
         return current;
     }

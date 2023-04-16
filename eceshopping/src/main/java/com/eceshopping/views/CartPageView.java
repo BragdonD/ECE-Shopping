@@ -43,10 +43,18 @@ public class CartPageView extends UserLayoutView implements View {
         this.cartLayout.setVgap(20);
     }
 
+    
+    /** 
+     * @return GridPane
+     */
     public GridPane getCartLayout() {
         return cartLayout;
     }
 
+    
+    /** 
+     * @param cartItemView
+     */
     public void addProductToCart(CartItemView cartItemView) {
         this.cartLayout.add(cartItemView, 0, item);
         item++;

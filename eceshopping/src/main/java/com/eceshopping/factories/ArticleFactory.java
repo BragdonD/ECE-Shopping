@@ -6,6 +6,18 @@ import javafx.scene.image.Image;
 
 public class ArticleFactory {
 
+    
+    /** 
+     * @param name
+     * @param price
+     * @param bulkprice
+     * @param stock
+     * @param type
+     * @param marque
+     * @param image
+     * @param description
+     * @return ArticleDto
+     */
     public static ArticleDto createArticle(String name, Double price, Double bulkprice, Integer stock, String type,
             String marque, Image image, String description) {
         ArticleDto newArticle = new ArticleDto()

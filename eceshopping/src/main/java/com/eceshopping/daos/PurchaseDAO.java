@@ -16,6 +16,12 @@ public class PurchaseDAO extends Dao<PurchaseModel, Integer> {
         hibernateConfig = HibernateConfig.getInstance();
     }
 
+    
+    /** 
+     * @param id
+     * @return PurchaseModel
+     * @throws EntityNotFoundException
+     */
     public PurchaseModel getPurchaseById(Integer id) throws EntityNotFoundException {
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             SelectionQuery<PurchaseModel> query = session.createNamedSelectionQuery("PurchaseModel.findById",

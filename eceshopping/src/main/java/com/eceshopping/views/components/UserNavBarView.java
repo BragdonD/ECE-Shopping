@@ -31,10 +31,18 @@ public class UserNavBarView extends HBox {
         this.links = links;
     }
 
+    
+    /** 
+     * @return SearchBarView
+     */
     public SearchBarView getSearchBar() {
         return searchBar;
     }
 
+    
+    /** 
+     * @return List<LinkNavBarView>
+     */
     public List<LinkNavBarView> getLinks() {
         return links;
     }

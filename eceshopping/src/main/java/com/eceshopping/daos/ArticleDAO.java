@@ -14,6 +14,12 @@ public class ArticleDao extends Dao<ArticleModel, Integer> {
         hibernateConfig = HibernateConfig.getInstance();
     }
 
+    
+    /** 
+     * @param name
+     * @return ArticleModel
+     * @throws EntityNotFoundException
+     */
     public ArticleModel getArticleByName(String name) throws EntityNotFoundException {
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             SelectionQuery<ArticleModel> query = session.createNamedSelectionQuery("ArticleModel.findByName",

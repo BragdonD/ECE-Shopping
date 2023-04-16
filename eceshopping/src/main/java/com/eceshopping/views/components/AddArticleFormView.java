@@ -110,11 +110,19 @@ public class AddArticleFormView extends GridPane implements View {
 
     }
 
+    
+    /** 
+     * @return Node
+     */
     @Override
     public Node getRootNode() {
         return this;
     }
 
+    
+    /** 
+     * @return Label
+     */
     public Label getArticleNameLabel() {
         return articleNameLabel;
     }

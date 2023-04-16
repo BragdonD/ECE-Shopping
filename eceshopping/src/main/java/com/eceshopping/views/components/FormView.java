@@ -40,6 +40,10 @@ public class FormView extends GridPane {
         }
     }
 
+    
+    /** 
+     * @return Button
+     */
     /*
      * get and set methods for the submit button and the input fields.
      */
@@ -47,6 +51,10 @@ public class FormView extends GridPane {
         return this.submitButton;
     }
 
+    
+    /** 
+     * @param submitButton
+     */
     public void setSubmitButton(Button submitButton) {
         this.submitButton = submitButton;
     }

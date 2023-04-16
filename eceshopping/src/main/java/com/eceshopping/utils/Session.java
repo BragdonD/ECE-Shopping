@@ -40,6 +40,10 @@ public class Session {
         return instance;
     }
 
+    
+    /** 
+     * @return List<BasketItemDto>
+     */
     public List<BasketItemDto> getItems() {
         return basket.getBasketItems();
     }
@@ -109,6 +113,10 @@ public class Session {
         return this;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "{" +

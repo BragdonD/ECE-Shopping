@@ -20,10 +20,22 @@ public class PurchasedItemService {
         this.purchaseItemDAO = new PurchaseItemDAO();
     }
 
+    
+    /** 
+     * @param id
+     * @return PurchasedItemDto
+     */
     public PurchasedItemDto getById(Integer id) {
         return PurchaseItemConverter.convertToDto(purchaseItemDAO.getPurchaseItemById(id));
     }
 
+    
+    /** 
+     * @param purchasedItemDto
+     * @return Task<PurchasedItemDto>
+     * @throws EntityNotFoundException
+     * @throws IOException
+     */
     public Task<PurchasedItemDto> getByIdAsync(PurchasedItemDto purchasedItemDto)
             throws EntityNotFoundException, IOException {
         Task<PurchasedItemDto> task = new Task<PurchasedItemDto>() {

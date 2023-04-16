@@ -16,10 +16,18 @@ public class AddToBasketEvent extends Event {
         this.article = article;
     }
 
+    
+    /** 
+     * @return ArticleDto
+     */
     public ArticleDto getArticle() {
         return article;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getQuantity() {
         return quantity;
     }

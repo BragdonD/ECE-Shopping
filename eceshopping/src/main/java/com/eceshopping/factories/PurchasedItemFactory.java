@@ -6,6 +6,13 @@ import com.eceshopping.models.PurchaseModel;
 
 public class PurchasedItemFactory {
 
+    
+    /** 
+     * @param id
+     * @param article
+     * @param purchase
+     * @return PurchasedItemDto
+     */
     public static PurchasedItemDto createPurchasedItem(Integer id, ArticleModel article, PurchaseModel purchase) {
         PurchasedItemDto newPurchasedItem = new PurchasedItemDto()
                 .id(id)

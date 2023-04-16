@@ -39,6 +39,10 @@ public class InputModel {
         this.style = style;
     }
 
+    
+    /** 
+     * @return String
+     */
     /*
      * Getters and setters
      */
@@ -46,6 +50,10 @@ public class InputModel {
         return this.label;
     }
 
+    
+    /** 
+     * @param label
+     */
     public void setLabel(String label) {
         this.label = label;
     }

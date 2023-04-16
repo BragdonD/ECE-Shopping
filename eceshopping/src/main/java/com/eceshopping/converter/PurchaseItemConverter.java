@@ -5,6 +5,11 @@ import com.eceshopping.models.PurchasedItemModel;
 
 public class PurchaseItemConverter {
 
+    
+    /** 
+     * @param purchaseItemDto
+     * @return PurchasedItemModel
+     */
     public static PurchasedItemModel convertToModel(PurchasedItemDto purchaseItemDto) {
         PurchasedItemModel purchaseItemModel = new PurchasedItemModel();
         purchaseItemModel.setId(purchaseItemDto.getId());
@@ -13,6 +18,11 @@ public class PurchaseItemConverter {
         return purchaseItemModel;
     }
 
+    
+    /** 
+     * @param purchaseItemModel
+     * @return PurchasedItemDto
+     */
     public static PurchasedItemDto convertToDto(PurchasedItemModel purchaseItemModel) {
         PurchasedItemDto purchaseItemDto = new PurchasedItemDto();
         purchaseItemDto.setId(purchaseItemModel.getId());

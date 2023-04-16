@@ -10,6 +10,10 @@ public class UserFactory {
 
     private static final Faker faker = new Faker();;
 
+    
+    /** 
+     * @return UserDto
+     */
     public static UserDto createRandomUser() {
         String userName = faker.name().username();
         String email = faker.internet().emailAddress();

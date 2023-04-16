@@ -16,4 +16,14 @@ module com.eceshopping {
     opens images;
 
     exports com.eceshopping;
+    exports com.eceshopping.controllers;
+    exports com.eceshopping.converter;
+    exports com.eceshopping.daos;
+    exports com.eceshopping.dto;
+    exports com.eceshopping.events;
+    exports com.eceshopping.factories;
+    exports com.eceshopping.models;
+    exports com.eceshopping.services;
+    exports com.eceshopping.utils;
+    exports com.eceshopping.views;
 }

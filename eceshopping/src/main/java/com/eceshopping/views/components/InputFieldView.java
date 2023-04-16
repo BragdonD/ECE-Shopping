@@ -40,6 +40,11 @@ public class InputFieldView extends GridPane {
         this.add(this.textField, 0, 1);
     }
 
+    
+    /** 
+     * @param type
+     * @param placeholder
+     */
     private void initTextField(String type, String placeholder) {
         if (type.equals("password")) {
             this.textField = new PasswordField();
@@ -49,6 +54,10 @@ public class InputFieldView extends GridPane {
         this.textField.setPromptText(placeholder);
     }
 
+    
+    /** 
+     * @return TextField
+     */
     public TextField getTextField() {
         return this.textField;
     }

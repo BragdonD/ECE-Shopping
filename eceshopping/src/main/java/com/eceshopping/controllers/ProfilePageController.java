@@ -26,7 +26,13 @@ public class ProfilePageController implements Controller {
         }
     }
 
-    @Override
+    
+    /** 
+     * @param s
+     */
+    
+    
+     @Override
     public void bindScene(Scene s) {
         this.view.bindScene(s);
     }

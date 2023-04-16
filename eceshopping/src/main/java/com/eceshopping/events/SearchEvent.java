@@ -12,6 +12,10 @@ public class SearchEvent extends Event {
         this.query = query;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getQuery() {
         return this.query;
     }

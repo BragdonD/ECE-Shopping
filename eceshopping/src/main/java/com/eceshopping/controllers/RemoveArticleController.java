@@ -52,6 +52,10 @@ public class RemoveArticleController implements Controller {
         });
     }
 
+    
+    /** 
+     * @return boolean
+     */
     private boolean validateForm() {
         boolean valid = true;
         if (name.length() == 0) {
@@ -68,6 +72,10 @@ public class RemoveArticleController implements Controller {
         });
     }
 
+    
+    /** 
+     * @return Scene
+     */
     public Scene getScene() {
         return this.view.getScene();
     }

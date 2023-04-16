@@ -99,10 +99,18 @@ public class LoadingCircle extends Pane {
         this.rotateTransition.stop();
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getDiameter() {
         return this.diameter;
     }
 
+    
+    /** 
+     * @param diameter
+     */
     public void setDiameter(double diameter) {
         this.diameter = diameter;
         this.requestLayout();

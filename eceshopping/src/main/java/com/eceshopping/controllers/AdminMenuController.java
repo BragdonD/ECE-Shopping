@@ -28,6 +28,10 @@ public class AdminMenuController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param scene
+     */
     @Override
     public void bindScene(Scene scene) {
 

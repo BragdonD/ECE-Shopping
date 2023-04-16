@@ -96,12 +96,20 @@ public class ProductPageView extends UserLayoutView implements View {
         this.productDetails.getChildren().clear();
     }
 
+    
+    /** 
+     * @param image
+     */
     public void setImage(Image image) {
         this.gridPane.getChildren().remove(this.image);
         this.image.setImage(image);
         this.gridPane.add(this.image, 0, 0);
     }
 
+    
+    /** 
+     * @param name
+     */
     public void setName(String name) {
         this.productDetails.getChildren().remove(this.name);
         this.name.setText(name);

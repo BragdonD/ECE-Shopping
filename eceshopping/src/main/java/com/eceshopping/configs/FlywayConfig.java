@@ -23,6 +23,10 @@ public class FlywayConfig {
         flyway.migrate();
     }
 
+    
+    /** 
+     * @return FlywayConfig
+     */
     /*
      * This method is used to get the instance of the FlywayConfig class
      */

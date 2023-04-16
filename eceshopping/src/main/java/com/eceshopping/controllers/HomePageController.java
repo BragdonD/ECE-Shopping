@@ -76,6 +76,10 @@ public class HomePageController implements Controller {
         });
     }
 
+    
+    /** 
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.bindScene(s);

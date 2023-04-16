@@ -248,10 +248,18 @@ public class ModifyArticleController implements Controller {
         });
     }
 
+    
+    /** 
+     * @return Scene
+     */
     public Scene getScene() {
         return this.view.getScene();
     }
 
+    
+    /** 
+     * @param scene
+     */
     @Override
     public void bindScene(Scene scene) {
 

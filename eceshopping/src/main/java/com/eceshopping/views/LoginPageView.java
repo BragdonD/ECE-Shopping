@@ -102,6 +102,10 @@ public class LoginPageView extends StackPane implements View {
         this.loginFormView.getSubmitButton().setPrefWidth(300);
     }
 
+    
+    /** 
+     * @return GridPane
+     */
     /*
      * Getters and setters
      */
@@ -109,6 +113,10 @@ public class LoginPageView extends StackPane implements View {
         return this.gridPane;
     }
 
+    
+    /** 
+     * @param gridPane
+     */
     /*
      * Set the grid pane
      */

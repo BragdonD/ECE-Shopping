@@ -184,6 +184,13 @@ public class UserService {
         return task;
     }
 
+    
+    /** 
+     * @param newName
+     * @param id
+     * @return Task<UserDto>
+     * @throws EntityNotFoundException
+     */
     public Task<UserDto> updateNameAsync(String newName, int id) throws EntityNotFoundException {
         Task<UserDto> task = new Task<UserDto>() {
             @Override
