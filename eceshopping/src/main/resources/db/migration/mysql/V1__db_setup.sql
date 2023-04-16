@@ -24,7 +24,7 @@ CREATE TABLE `Purchases` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`user_id` INT NOT NULL,
 	`purchase_date` DATETIME NOT NULL,
-	`amounPayed` FLOAT NOT NULL,
+	`amountPayed` FLOAT NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
