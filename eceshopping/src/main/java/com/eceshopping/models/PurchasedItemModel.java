@@ -45,29 +45,28 @@ public class PurchasedItemModel {
     public PurchasedItemModel() {
     }
 
-    
-    /** 
+    /**
      * @return int
      */
     public int getId() {
         return id;
     }
 
-    /** 
+    /**
      * @return int
      */
     public int getQuantity() {
         return quantity;
     }
 
-    /** 
+    /**
      * @param quantity
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    /** 
+
+    /**
      * @param id
      */
     public void setId(int id) {

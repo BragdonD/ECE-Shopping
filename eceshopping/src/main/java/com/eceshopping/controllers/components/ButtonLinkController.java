@@ -14,8 +14,9 @@ public class ButtonLinkController {
 
     /**
      * Constructor for ButtonLinkController class.
-     * @param to The path to navigate to when the button is clicked.
-     * @param view The view to be controlled. 
+     * 
+     * @param to   The path to navigate to when the button is clicked.
+     * @param view The view to be controlled.
      */
     public ButtonLinkController(String to, ButtonLinkView view) {
         this.router = Router.getInstance();
@@ -28,6 +29,7 @@ public class ButtonLinkController {
 
     /**
      * Get the path to navigate to when the button is clicked.
+     * 
      * @return The path to navigate to when the button is clicked.
      */
     public String getLinkTo() {
@@ -36,6 +38,7 @@ public class ButtonLinkController {
 
     /**
      * Set the path to navigate to when the button is clicked.
+     * 
      * @param linkTo The path to navigate to when the button is clicked.
      */
     public void setLinkTo(String linkTo) {
@@ -44,6 +47,7 @@ public class ButtonLinkController {
 
     /**
      * Get the view to be controlled.
+     * 
      * @return The view to be controlled.
      */
     public ButtonLinkView getView() {
@@ -52,6 +56,7 @@ public class ButtonLinkController {
 
     /**
      * Set the view to be controlled.
+     * 
      * @param view The view to be controlled.
      */
     public void setView(ButtonLinkView view) {
@@ -60,6 +65,7 @@ public class ButtonLinkController {
 
     /**
      * Set the view to be controlled.
+     * 
      * @param view The view to be controlled.
      * @return The controller.
      */
@@ -70,6 +76,7 @@ public class ButtonLinkController {
 
     /**
      * Set the path to navigate to when the button is clicked.
+     * 
      * @param linkTo The path to navigate to when the button is clicked.
      * @return The controller.
      */

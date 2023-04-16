@@ -3,8 +3,8 @@ package com.eceshopping.utils.validator;
 import java.util.List;
 
 public class NotEmptyStringValidator implements Validator {
-    
-    /** 
+
+    /**
      * @param value
      * @return boolean
      */
@@ -13,8 +13,7 @@ public class NotEmptyStringValidator implements Validator {
         return value != null && ((String) (value)).length() > 0;
     }
 
-    
-    /** 
+    /**
      * @param value
      * @return List<String>
      */

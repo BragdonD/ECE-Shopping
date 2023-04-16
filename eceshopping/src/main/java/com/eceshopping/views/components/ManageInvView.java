@@ -1,6 +1,5 @@
 package com.eceshopping.views.components;
 
-import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.View;
 
 import javafx.scene.Node;
@@ -30,8 +29,7 @@ public class ManageInvView extends GridPane implements View {
         this.row++;
     }
 
-    
-    /** 
+    /**
      * @param name
      */
     public void setName(String name) {
@@ -39,8 +37,7 @@ public class ManageInvView extends GridPane implements View {
         this.name.setText(name);
     }
 
-    
-    /** 
+    /**
      * @return Hyperlink
      */
     public Hyperlink getAddArticleButton() {

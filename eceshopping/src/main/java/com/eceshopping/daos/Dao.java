@@ -86,7 +86,7 @@ public abstract class Dao<T, I> implements DaoInterface<T, I> {
         validateModel(t);
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             session.beginTransaction();
-            Integer idSavedObject = (Integer)session.save(t); // Deprecated but still working so seems fine
+            Integer idSavedObject = (Integer) session.save(t); // Deprecated but still working so seems fine
             session.getTransaction().commit();
             return idSavedObject;
         }

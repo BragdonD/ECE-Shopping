@@ -28,8 +28,7 @@ public class AdminMenuController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param scene
      */
     @Override

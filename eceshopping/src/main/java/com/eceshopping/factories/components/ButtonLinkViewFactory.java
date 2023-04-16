@@ -6,8 +6,8 @@ import com.eceshopping.views.components.ButtonLinkView;
 import javafx.util.Pair;
 
 public class ButtonLinkViewFactory {
-    
-    /** 
+
+    /**
      * @param to
      * @return Pair<ButtonLinkView, ButtonLinkController>
      */

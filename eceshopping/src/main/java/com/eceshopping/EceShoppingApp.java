@@ -8,6 +8,8 @@ import com.eceshopping.controllers.HomePageController;
 import com.eceshopping.controllers.LoginPageController;
 import com.eceshopping.controllers.MainStageController;
 import com.eceshopping.controllers.ManageInvController;
+import com.eceshopping.controllers.ManagePurchaseController;
+import com.eceshopping.controllers.ManageUsersController;
 import com.eceshopping.controllers.ModifyArticleController;
 import com.eceshopping.controllers.ProductPageController;
 import com.eceshopping.controllers.ProfilePageController;
@@ -19,7 +21,7 @@ import com.eceshopping.utils.Router;
 import com.eceshopping.views.CartPageView;
 import com.eceshopping.views.HomePageView;
 import com.eceshopping.views.LoginPageView;
-import com.eceshopping.views.ModifyArticleFormView;
+import com.eceshopping.views.components.ModifyArticleFormView;
 import com.eceshopping.views.ProductPageView;
 import com.eceshopping.views.ProfilePageView;
 import com.eceshopping.views.RegisterPageView;
@@ -27,6 +29,8 @@ import com.eceshopping.views.UserInformationsPage;
 import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.AdminMenuView;
 import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.ManagePurchaseView;
+import com.eceshopping.views.components.ManageUserView;
 
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
@@ -47,8 +51,7 @@ public class EceShoppingApp extends Application {
 
     public static final String APP_NAME = "EceShopping";
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override
@@ -78,6 +81,8 @@ public class EceShoppingApp extends Application {
         AddArticleFormView addArticleFormView = new AddArticleFormView();
         CartPageView cartPageView = new CartPageView();
         ModifyArticleFormView modifyArticleFormView = new ModifyArticleFormView();
+        ManagePurchaseView managePurchaseView = new ManagePurchaseView();
+        ManageUserView manageUserView = new ManageUserView();
 
         // Routes for login and register
         this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
@@ -94,14 +99,16 @@ public class EceShoppingApp extends Application {
         // Routes for admin
         this.router.addRoute("/manageInv", manaInvView, new ManageInvController(manaInvView));
         this.router.addRoute("/addArticle", addArticleFormView, new AddArticleFormController(addArticleFormView));
-        this.router.addRoute("/modifyArticle", modifyArticleFormView, new ModifyArticleController(modifyArticleFormView));
         this.router.addRoute("/adminMenu", AdminMenuView, new AdminMenuController(AdminMenuView));
+        this.router.addRoute("/modifyArticle", modifyArticleFormView,
+                new ModifyArticleController(modifyArticleFormView));
+        this.router.addRoute("/manageUsers", manageUserView, new ManageUsersController(manageUserView));
+        this.router.addRoute("/manageOrders", managePurchaseView, new ManagePurchaseController(managePurchaseView));
 
         this.router.navigateTo("/login");
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     public void setWindowSize(Stage s) {

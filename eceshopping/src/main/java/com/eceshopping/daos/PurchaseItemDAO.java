@@ -17,8 +17,7 @@ public class PurchaseItemDAO extends Dao<PurchasedItemModel, Integer> {
         hibernateConfig = HibernateConfig.getInstance();
     }
 
-    
-    /** 
+    /**
      * @param id
      * @return PurchasedItemModel
      * @throws EntityNotFoundException

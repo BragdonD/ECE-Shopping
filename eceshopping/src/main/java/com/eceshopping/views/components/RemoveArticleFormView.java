@@ -38,16 +38,14 @@ public class RemoveArticleFormView extends GridPane implements View {
 
     }
 
-    
-    /** 
+    /**
      * @return TextField
      */
     public TextField getArticleNameTextField() {
         return this.articleNameTextField;
     }
 
-    
-    /** 
+    /**
      * @return Button
      */
     public Button getRemoveArticleButton() {

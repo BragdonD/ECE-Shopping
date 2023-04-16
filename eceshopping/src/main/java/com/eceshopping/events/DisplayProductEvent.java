@@ -15,8 +15,7 @@ public class DisplayProductEvent extends Event {
         this.article = article;
     }
 
-    
-    /** 
+    /**
      * @return ArticleDto
      */
     public ArticleDto getArticle() {

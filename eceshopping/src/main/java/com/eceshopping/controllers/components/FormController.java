@@ -34,8 +34,7 @@ public class FormController {
         checkSubmit();
     }
 
-    
-    /** 
+    /**
      * @return List<InputFieldController>
      */
     /*
@@ -45,8 +44,7 @@ public class FormController {
         return this.inputFieldsController;
     }
 
-    
-    /** 
+    /**
      * @param inputFieldsController
      */
     /*
@@ -72,13 +70,13 @@ public class FormController {
 
     /**
      * set the form is valid
+     * 
      * @param isValid the form is valid
      */
     public void setValid(boolean isValid) {
         this.isValid.set(isValid);
     }
 
-    
     public FormController view(FormView view) {
         this.view = view;
         return this;

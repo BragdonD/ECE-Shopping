@@ -96,8 +96,7 @@ public class ProductPageView extends UserLayoutView implements View {
         this.productDetails.getChildren().clear();
     }
 
-    
-    /** 
+    /**
      * @param image
      */
     public void setImage(Image image) {
@@ -106,8 +105,7 @@ public class ProductPageView extends UserLayoutView implements View {
         this.gridPane.add(this.image, 0, 0);
     }
 
-    
-    /** 
+    /**
      * @param name
      */
     public void setName(String name) {

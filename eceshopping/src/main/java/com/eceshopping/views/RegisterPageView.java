@@ -105,8 +105,7 @@ public class RegisterPageView extends StackPane implements View {
         this.registerFormView.getSubmitButton().setPrefWidth(300);
     }
 
-    
-    /** 
+    /**
      * @return GridPane
      */
     /*
@@ -116,8 +115,7 @@ public class RegisterPageView extends StackPane implements View {
         return this.gridPane;
     }
 
-    
-    /** 
+    /**
      * @param gridPane
      */
     /*

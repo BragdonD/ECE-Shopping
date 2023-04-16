@@ -23,8 +23,7 @@ public class ModifyInvEvent extends Event {
         this.isDelete = isDelete;
     }
 
-    
-    /** 
+    /**
      * @return ArticleDto
      */
     public ArticleDto getArticle() {

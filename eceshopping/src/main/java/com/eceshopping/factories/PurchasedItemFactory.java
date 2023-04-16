@@ -8,8 +8,7 @@ import com.eceshopping.models.PurchaseModel;
 
 public class PurchasedItemFactory {
 
-    
-    /** 
+    /**
      * @param id
      * @param article
      * @param purchase

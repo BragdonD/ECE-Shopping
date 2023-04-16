@@ -26,7 +26,8 @@ public class InputFieldController {
 
     /**
      * This method is used to check if the input field is valid
-     * @param view the input field view
+     * 
+     * @param view      the input field view
      * @param validator the validator used to check if the input field is valid
      */
     public InputFieldController(InputFieldView view, Validator validator) {
@@ -41,22 +42,21 @@ public class InputFieldController {
 
     /**
      * This method is used to check if the input field is valid
+     * 
      * @return the input field view
-     */ 
+     */
     public String getValue() {
         return this.value.get();
     }
 
-    
-    /** 
+    /**
      * @param listener
      */
     public void addIsValidChangeListener(ChangeListener<Boolean> listener) {
         this.listeners.add(listener);
     }
 
-    
-    /** 
+    /**
      * @param listener
      */
     public void removeIsValidChangeListener(ChangeListener<Boolean> listener) {
@@ -64,7 +64,8 @@ public class InputFieldController {
     }
 
     /**
-     * This method is used to notify the listeners when the input field validity changes
+     * This method is used to notify the listeners when the input field validity
+     * changes
      */
     private void notifyListeners() {
         for (ChangeListener<Boolean> listener : this.listeners) {

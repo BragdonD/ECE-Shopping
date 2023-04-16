@@ -95,8 +95,7 @@ public class RegisterPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param message
      */
     /*
@@ -121,8 +120,7 @@ public class RegisterPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

@@ -42,6 +42,7 @@ public class PaymentPageController implements Controller {
 
     /**
      * Validate the name field (must not be empty)
+     * 
      * @param name
      * @return
      */
@@ -51,6 +52,7 @@ public class PaymentPageController implements Controller {
 
     /**
      * Validate the card field (must be a number with 16 digits)
+     * 
      * @param card
      * @return
      */
@@ -59,7 +61,9 @@ public class PaymentPageController implements Controller {
     }
 
     /**
-     * Validate the expiry field (must be a number with 2 digits for month and 2 digits for year)
+     * Validate the expiry field (must be a number with 2 digits for month and 2
+     * digits for year)
+     * 
      * @param expiry
      * @return
      */
@@ -69,6 +73,7 @@ public class PaymentPageController implements Controller {
 
     /**
      * Validate the CVV field (must be a number with 3 digits)
+     * 
      * @param cvv
      * @return
      */
@@ -78,6 +83,7 @@ public class PaymentPageController implements Controller {
 
     /**
      * Show an alert dialog with the given title and message
+     * 
      * @param title
      * @param message
      */

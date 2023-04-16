@@ -6,8 +6,7 @@ import javafx.scene.image.Image;
 
 public class ArticleFactory {
 
-    
-    /** 
+    /**
      * @param name
      * @param price
      * @param bulkprice

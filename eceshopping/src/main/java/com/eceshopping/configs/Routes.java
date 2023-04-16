@@ -10,13 +10,13 @@ import com.eceshopping.utils.Route;
  */
 public class Routes {
 
-    public static final List<Route> userProfileRoute = Arrays.asList(
-            new Route("Orders", 0, "/profile/orders"),
-            new Route("Addresses", 1, "/profile/contact"),
-            new Route("Payment Methods", 2, "/profile/informations"));
+        public static final List<Route> userProfileRoute = Arrays.asList(
+                        new Route("Orders", 0, "/profile/orders"),
+                        new Route("Addresses", 1, "/profile/contact"),
+                        new Route("Payment Methods", 2, "/profile/informations"));
 
-    public static final List<Route> navBarRoutes = Arrays.asList(
-            new Route("Home", 0, "/"),
-            new Route("Cart", 1, "/cart"),
-            new Route("Profile", 2, "/profile"));
+        public static final List<Route> navBarRoutes = Arrays.asList(
+                        new Route("Home", 0, "/"),
+                        new Route("Cart", 1, "/cart"),
+                        new Route("Profile", 2, "/profile"));
 }

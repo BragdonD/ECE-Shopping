@@ -40,8 +40,7 @@ public class RegisterFormView {
         this.formView.getColumnConstraints().add(column2);
     }
 
-    
-    /** 
+    /**
      * @return FormView
      */
     /*
@@ -51,8 +50,7 @@ public class RegisterFormView {
         return this.formView;
     }
 
-    
-    /** 
+    /**
      * @param formView
      */
     public void setFormView(FormView formView) {

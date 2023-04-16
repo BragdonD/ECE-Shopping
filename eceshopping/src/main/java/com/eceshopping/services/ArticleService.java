@@ -25,8 +25,7 @@ public class ArticleService {
         this.articleDAO = new ArticleDao();
     }
 
-    
-    /** 
+    /**
      * @param name
      * @return ArticleDto
      * @throws EntityNotFoundException
@@ -36,8 +35,7 @@ public class ArticleService {
         return ArticleConverter.convertToDto(articleDAO.getArticleByName(name));
     }
 
-    
-    /** 
+    /**
      * @param articleDto
      * @return Task<ArticleDto>
      */
@@ -131,10 +129,10 @@ public class ArticleService {
     }
 
     public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
-            this.articleDAO.getById(id);
-            ArticleModel article = this.articleDAO.getById(id);
-            article.setStock(stock);
-            this.articleDAO.update(article);
+        this.articleDAO.getById(id);
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setStock(stock);
+        this.articleDAO.update(article);
     }
 
     public Task<Void> updateStockAsync(int id, Integer stock) {

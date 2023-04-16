@@ -1,4 +1,6 @@
-package com.eceshopping.views;
+package com.eceshopping.views.components;
+
+import com.eceshopping.views.View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -106,8 +108,7 @@ public class ModifyArticleFormView extends GridPane implements View {
 
     }
 
-    
-    /** 
+    /**
      * @return Node
      */
     @Override
@@ -115,8 +116,7 @@ public class ModifyArticleFormView extends GridPane implements View {
         return this;
     }
 
-    
-    /** 
+    /**
      * @return Integer
      */
     public Integer getProductId() {

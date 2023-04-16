@@ -26,16 +26,14 @@ public class CartItemView extends GridPane {
         this.setStyle(AppStyles.CART_ITEM_STYLE);
     }
 
-    
-    /** 
+    /**
      * @return ProductOverviewView
      */
     public ProductOverviewView getProductOverviewView() {
         return this.productOverviewView;
     }
 
-    
-    /** 
+    /**
      * @return Label
      */
     public Label getQuantity() {

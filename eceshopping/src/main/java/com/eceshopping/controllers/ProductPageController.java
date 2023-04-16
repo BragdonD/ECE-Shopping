@@ -59,8 +59,7 @@ public class ProductPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

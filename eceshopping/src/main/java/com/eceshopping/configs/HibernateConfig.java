@@ -59,6 +59,7 @@ public class HibernateConfig {
 
     /**
      * Gets the Hibernate properties for development environment.
+     * 
      * @return The Hibernate properties for development environment.
      */
     public static Properties getDevelopmentProperties() {

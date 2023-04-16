@@ -33,16 +33,14 @@ public class AdminMenuView extends GridPane implements View {
 
     }
 
-    
-    /** 
+    /**
      * @return Hyperlink
      */
     public Hyperlink getManageInvButton() {
         return this.manageInvButton;
     }
 
-    
-    /** 
+    /**
      * @return Hyperlink
      */
     public Hyperlink getManageUsersButton() {

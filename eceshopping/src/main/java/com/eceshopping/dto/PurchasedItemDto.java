@@ -19,8 +19,8 @@ public class PurchasedItemDto {
         this.purchase = purchase;
         this.quantity = quantity;
     }
-    
-    /** 
+
+    /**
      * @return Integer
      */
     public Integer getId() {
@@ -34,8 +34,8 @@ public class PurchasedItemDto {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-    
-    /** 
+
+    /**
      * @param id
      */
     public void setId(Integer id) {
@@ -78,14 +78,13 @@ public class PurchasedItemDto {
         return this;
     }
 
-
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", article='" + getArticle() + "'" +
-            ", quantity='" + getQuantity() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", article='" + getArticle() + "'" +
+                ", quantity='" + getQuantity() + "'" +
+                "}";
     }
 
 }

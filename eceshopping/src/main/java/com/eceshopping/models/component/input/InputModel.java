@@ -39,8 +39,7 @@ public class InputModel {
         this.style = style;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     /*
@@ -50,8 +49,7 @@ public class InputModel {
         return this.label;
     }
 
-    
-    /** 
+    /**
      * @param label
      */
     public void setLabel(String label) {

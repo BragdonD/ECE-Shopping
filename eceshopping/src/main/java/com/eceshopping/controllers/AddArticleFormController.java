@@ -125,7 +125,8 @@ public class AddArticleFormController implements Controller {
 
                 saveArticleTask.setOnSucceeded(e -> {
                     System.out.println("Article added successfully");
-                    Router.getInstance().getRouterController().getMainStage().fireEvent(new ModifyInvEvent(saveArticleTask.getValue()));
+                    Router.getInstance().getRouterController().getMainStage()
+                            .fireEvent(new ModifyInvEvent(saveArticleTask.getValue()));
                     Router.getInstance().navigateTo("/manageInv");
                 });
 
@@ -170,8 +171,7 @@ public class AddArticleFormController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @return boolean
      */
     private boolean validateForm() {

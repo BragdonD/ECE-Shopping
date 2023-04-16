@@ -13,8 +13,7 @@ public class FocusSearchEvent extends Event {
         this.focus = focus;
     }
 
-    
-    /** 
+    /**
      * @return boolean
      */
     public boolean getFocus() {

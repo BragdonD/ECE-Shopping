@@ -40,8 +40,7 @@ public class Session {
         return instance;
     }
 
-    
-    /** 
+    /**
      * @return List<BasketItemDto>
      */
     public List<BasketItemDto> getItems() {
@@ -113,8 +112,7 @@ public class Session {
         return this;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     @Override

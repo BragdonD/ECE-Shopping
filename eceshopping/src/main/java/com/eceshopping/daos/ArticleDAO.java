@@ -14,8 +14,7 @@ public class ArticleDao extends Dao<ArticleModel, Integer> {
         hibernateConfig = HibernateConfig.getInstance();
     }
 
-    
-    /** 
+    /**
      * @param name
      * @return ArticleModel
      * @throws EntityNotFoundException

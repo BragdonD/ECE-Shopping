@@ -15,8 +15,7 @@ public class PaymentEvent extends Event {
         this.purchase = purchase;
     }
 
-    
-    /** 
+    /**
      * @return ArticleDto
      */
     public PurchaseDto getPurchase() {

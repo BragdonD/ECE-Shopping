@@ -7,8 +7,7 @@ import com.eceshopping.models.PurchasedItemModel;
 
 public class PurchaseItemConverter {
 
-    
-    /** 
+    /**
      * @param purchaseItemDto
      * @return PurchasedItemModel
      */
@@ -21,8 +20,7 @@ public class PurchaseItemConverter {
         return purchaseItemModel;
     }
 
-    
-    /** 
+    /**
      * @param purchaseItemModel
      * @return PurchasedItemDto
      * @throws IOException

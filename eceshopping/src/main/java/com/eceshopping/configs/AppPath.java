@@ -5,7 +5,7 @@ package com.eceshopping.configs;
  */
 public class AppPath {
     /**
-     * My Commands image path used in the user information page 
+     * My Commands image path used in the user information page
      */
     public static final String PATH_IMAGE_PROFILE_PAGE_BUTTON_1 = "images/Box.png";
     /**

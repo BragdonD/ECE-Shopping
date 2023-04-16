@@ -38,15 +38,15 @@ public class PurchaseDto {
     public List<PurchasedItemDto> getPurchasedItems() {
         return purchasedItems;
     }
-    
-    /** 
+
+    /**
      * @return Integer
      */
     public Integer getId() {
         return id;
     }
-    
-    /** 
+
+    /**
      * @param id
      */
     public void setId(Integer id) {
@@ -97,17 +97,15 @@ public class PurchaseDto {
         return this;
     }
 
-
-
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", date='" + getDate() + "'" +
-            ", user='" + getUser() + "'" +
-            ", amountPayed='" + getAmountPayed() + "'" +
-            ", purchasedItems='" + getPurchasedItems() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", date='" + getDate() + "'" +
+                ", user='" + getUser() + "'" +
+                ", amountPayed='" + getAmountPayed() + "'" +
+                ", purchasedItems='" + getPurchasedItems() + "'" +
+                "}";
     }
 
 }

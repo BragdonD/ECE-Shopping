@@ -8,8 +8,7 @@ import java.util.regex.Pattern;
 public class StringSanitizer {
     private static final Pattern INVALID_CHARACTERS = Pattern.compile("[^\\p{L}\\p{N}\\s_.@-]");
 
-    
-    /** 
+    /**
      * @param input
      * @return String
      */
@@ -24,8 +23,7 @@ public class StringSanitizer {
         return sanitized;
     }
 
-    
-    /** 
+    /**
      * @param input
      * @return String
      */

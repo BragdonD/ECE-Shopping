@@ -40,8 +40,7 @@ public class InputFieldView extends GridPane {
         this.add(this.textField, 0, 1);
     }
 
-    
-    /** 
+    /**
      * @param type
      * @param placeholder
      */
@@ -54,8 +53,7 @@ public class InputFieldView extends GridPane {
         this.textField.setPromptText(placeholder);
     }
 
-    
-    /** 
+    /**
      * @return TextField
      */
     public TextField getTextField() {

@@ -1,5 +1,8 @@
 package com.eceshopping.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.eceshopping.converter.UserConverter;
 import com.eceshopping.daos.UserDao;
 import com.eceshopping.dto.UserDto;
@@ -184,8 +187,7 @@ public class UserService {
         return task;
     }
 
-    
-    /** 
+    /**
      * @param newName
      * @param id
      * @return Task<UserDto>
@@ -240,5 +242,20 @@ public class UserService {
         }
         UserModel user = this.userDao.getById(id);
         this.userDao.delete(user);
+    }
+
+    public Task<List<UserDto>> getAllUser() {
+        Task<List<UserDto>> task = new Task<List<UserDto>>() {
+            @Override
+            protected List<UserDto> call() throws Exception {
+                List<UserModel> users = userDao.getAll();
+                List<UserDto> userDtos = new ArrayList<>();
+                for (UserModel user : users) {
+                    userDtos.add(UserConverter.convertToDto(user));
+                }
+                return userDtos;
+            }
+        };
+        return task;
     }
 }

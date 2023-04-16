@@ -1,7 +1,7 @@
 package com.eceshopping.controllers;
 
-import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.ProductOView;
 
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
@@ -84,9 +84,9 @@ public class ManageInvController implements Controller {
             System.out.println("Article : " + articleEvent);
             boolean found = false;
             int i = 0;
-            for(ArticleDto a : this.articles){
-                if(a.getId() == articleEvent.getId()){
-                    if(e.isDelete()) {
+            for (ArticleDto a : this.articles) {
+                if (a.getId() == articleEvent.getId()) {
+                    if (e.isDelete()) {
                         this.articles.remove(a);
                         this.view.removeProduct(productOviewControllers.get(i).getView());
                         productOviewControllers.remove(i);
@@ -107,7 +107,7 @@ public class ManageInvController implements Controller {
                 }
                 i++;
             }
-            if(!found){
+            if (!found) {
                 this.articles.add(articleEvent);
                 ProductOView product = new ProductOView(articleEvent.getName(), articleEvent.getId());
                 productOviewControllers.add(new ProductOviewController(product, articleEvent));
@@ -117,8 +117,7 @@ public class ManageInvController implements Controller {
 
     }
 
-    
-    /** 
+    /**
      * @param scene
      */
     @Override

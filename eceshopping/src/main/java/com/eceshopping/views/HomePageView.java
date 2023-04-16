@@ -23,16 +23,14 @@ public class HomePageView extends UserLayoutView implements View {
         this.row = 0;
     }
 
-    
-    /** 
+    /**
      * @return GridPane
      */
     public GridPane getProductLayout() {
         return this.productsLayout;
     }
 
-    
-    /** 
+    /**
      * @param product
      */
     public void addProduct(ProductOverviewView product) {

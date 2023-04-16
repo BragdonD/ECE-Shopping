@@ -24,8 +24,8 @@ public class PurchaseService {
         purchaseDAO = new PurchaseDAO();
         purchaseItemDAO = new PurchaseItemDAO();
     }
-    
-    /** 
+
+    /**
      * @param id
      * @return PurchaseModel
      * @throws EntityNotFoundException
@@ -33,8 +33,8 @@ public class PurchaseService {
     public PurchaseModel getPurchaseById(Integer id) throws EntityNotFoundException {
         return purchaseDAO.getPurchaseById(id);
     }
-    
-    /** 
+
+    /**
      * @param purchaseDto
      * @return Task<PurchaseDto>
      * @throws EntityNotFoundException
@@ -55,7 +55,7 @@ public class PurchaseService {
         return task;
     }
 
-    public Task<List<PurchaseDto>> getAllPurchasedItem() {
+    public Task<List<PurchaseDto>> getAllPurchases() {
         Task<List<PurchaseDto>> task = new Task<List<PurchaseDto>>() {
             @Override
             protected List<PurchaseDto> call() throws Exception {
@@ -76,7 +76,7 @@ public class PurchaseService {
             protected PurchaseDto call() throws Exception {
                 try {
                     Integer purchaseId = purchaseDAO.save(PurchaseConverter.convertToModel(purchaseDto));
-                    for(PurchasedItemDto items : purchaseDto.getPurchasedItems()) {
+                    for (PurchasedItemDto items : purchaseDto.getPurchasedItems()) {
                         items.getPurchase().setId(purchaseId);
                         purchaseItemDAO.save(PurchaseItemConverter.convertToModel(items));
                     }

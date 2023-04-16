@@ -122,8 +122,7 @@ public class LoginPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

@@ -76,8 +76,7 @@ public class HomePageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

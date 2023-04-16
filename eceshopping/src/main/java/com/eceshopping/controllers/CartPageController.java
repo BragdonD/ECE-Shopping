@@ -36,7 +36,7 @@ public class CartPageController implements Controller {
         this.totalPrice = 0.0;
         this.cartItemsControllers = new ArrayList<CartItemController>();
 
-        if(this.totalPrice == 0.0)
+        if (this.totalPrice == 0.0)
             this.deactivatePaymentButton();
         else
             this.activatePaymentButton();
@@ -58,7 +58,8 @@ public class CartPageController implements Controller {
                     if (cartItemController != null) {
                         cartItemController.updateQuantity(cartItemController.getQuantity() + quantity);
                         ifExists = true;
-                        this.totalPrice -= cartItemController.getArticle().getPrice() * (cartItemController.getQuantity() - quantity);
+                        this.totalPrice -= cartItemController.getArticle().getPrice()
+                                * (cartItemController.getQuantity() - quantity);
                     }
 
                     if (cartItemController == null || ifExists == false) {
@@ -73,7 +74,7 @@ public class CartPageController implements Controller {
                     this.totalPrice += cartItemController.getPrice();
                     this.view.setTotalPrice(Double.toString(totalPrice));
 
-                    if(this.totalPrice == 0.0)
+                    if (this.totalPrice == 0.0)
                         this.deactivatePaymentButton();
                     else
                         this.activatePaymentButton();
@@ -97,7 +98,7 @@ public class CartPageController implements Controller {
                     if (e.isDeleteAll() == true) {
                         if (quantity == 1) {
                             System.out.println("quantity: " + cartItemController.getQuantity());
-                            if(cartItemController.getQuantity() == 9)
+                            if (cartItemController.getQuantity() == 9)
                                 this.totalPrice -= cartItemController.getArticle().getBulkprice();
                             else
                                 this.totalPrice -= cartItemController.getArticle().getPrice();
@@ -106,15 +107,16 @@ public class CartPageController implements Controller {
                         this.cartItemsControllers.remove(cartItemController);
                         this.view.removeProductFromCart(cartItemController.getView());
                     } else {
-                        if((cartItemController.getQuantity() + 1) % 10 == 0) {
-                            this.totalPrice -= cartItemController.getArticle().getBulkprice() * (cartItemController.getQuantity() + 1);
-                            this.totalPrice += cartItemController.getArticle().getPrice() * cartItemController.getQuantity();
-                        }
-                        else
+                        if ((cartItemController.getQuantity() + 1) % 10 == 0) {
+                            this.totalPrice -= cartItemController.getArticle().getBulkprice()
+                                    * (cartItemController.getQuantity() + 1);
+                            this.totalPrice += cartItemController.getArticle().getPrice()
+                                    * cartItemController.getQuantity();
+                        } else
                             this.totalPrice -= cartItemController.getArticle().getPrice() * quantity;
                     }
 
-                    if(this.totalPrice == 0.0)
+                    if (this.totalPrice == 0.0)
                         this.deactivatePaymentButton();
                     else
                         this.activatePaymentButton();
@@ -144,22 +146,24 @@ public class CartPageController implements Controller {
             PaymentPageView paymentPageView = new PaymentPageView();
             new PaymentPageController(paymentPageView);
             paymentStage.setScene(new Scene(paymentPageView));
-            Router.getInstance().getRouterController().getMainStage().addEventHandler(PaymentEvent.PAYMENT_EVENT, e1 -> {
-                savePurchase();
-                this.totalPrice = 0.0;
-                this.view.setTotalPrice(Double.toString(totalPrice));
-                this.deactivatePaymentButton();
-                paymentStage.close();
-                this.cartItemsControllers.clear();
-                this.view.clearCart();
-            });
+            Router.getInstance().getRouterController().getMainStage().addEventHandler(PaymentEvent.PAYMENT_EVENT,
+                    e1 -> {
+                        savePurchase();
+                        this.totalPrice = 0.0;
+                        this.view.setTotalPrice(Double.toString(totalPrice));
+                        this.deactivatePaymentButton();
+                        paymentStage.close();
+                        this.cartItemsControllers.clear();
+                        this.view.clearCart();
+                    });
         });
     }
 
     private void savePurchase() {
         PurchaseDto purchase = new PurchaseDto(-1, LocalDate.now(), Session.getInstance().getUser(), this.totalPrice);
-        for(CartItemController cartItemController : this.cartItemsControllers) {
-            PurchasedItemDto purchasedItem = new PurchasedItemDto(-1, cartItemController.getArticle(), purchase, cartItemController.getQuantity());
+        for (CartItemController cartItemController : this.cartItemsControllers) {
+            PurchasedItemDto purchasedItem = new PurchasedItemDto(-1, cartItemController.getArticle(), purchase,
+                    cartItemController.getQuantity());
             purchase.addPurchasedItem(purchasedItem);
         }
         Task<PurchaseDto> savePurchasetask = this.purchaseService.savePurchaseAsync(purchase);
@@ -168,7 +172,8 @@ public class CartPageController implements Controller {
             System.out.println(savePurchase);
             ArticleService articleService = new ArticleService();
             for (PurchasedItemDto purchaseitem : savePurchase.getPurchasedItems()) {
-                Task<Void> updateArticleTask = articleService.updateStockAsync(purchaseitem.getArticle().getId(), purchaseitem.getArticle().getStock());
+                Task<Void> updateArticleTask = articleService.updateStockAsync(purchaseitem.getArticle().getId(),
+                        purchaseitem.getArticle().getStock());
                 updateArticleTask.setOnSucceeded(e1 -> {
                     System.out.println("Stock updated");
                 });

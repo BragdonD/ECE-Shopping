@@ -29,8 +29,7 @@ public class UserLayoutView extends GridPane {
         // this.setStyle("-fx-background-color: red;");
     }
 
-    
-    /** 
+    /**
      * @param scene
      */
     public void bindScene(Scene scene) {
@@ -39,8 +38,7 @@ public class UserLayoutView extends GridPane {
         this.navBar.bindScene(scene);
     }
 
-    
-    /** 
+    /**
      * @param node
      */
     public void setSlot(Node node) {

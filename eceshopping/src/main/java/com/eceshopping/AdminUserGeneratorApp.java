@@ -15,7 +15,8 @@ public class AdminUserGeneratorApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the admin user generator!");
-        System.out.println("This program will generate an admin user and print the SQL query to insert it in the database.");
+        System.out.println(
+                "This program will generate an admin user and print the SQL query to insert it in the database.");
         System.out.print("Name of the admin user: ");
         String username = scanner.nextLine();
         System.out.print("Email of the admin user: ");
@@ -23,7 +24,7 @@ public class AdminUserGeneratorApp {
         System.out.print("Password of the admin user: ");
         String password = scanner.nextLine();
         scanner.close();
-        
+
         UserDto user = UserFactory.createAdminUser(username, email, password);
         System.out.print("User created: ");
         System.out.println(user);

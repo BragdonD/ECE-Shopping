@@ -112,8 +112,7 @@ public class UserInformationsPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param error
      */
     private void displayError(String error) {
@@ -188,8 +187,7 @@ public class UserInformationsPageController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

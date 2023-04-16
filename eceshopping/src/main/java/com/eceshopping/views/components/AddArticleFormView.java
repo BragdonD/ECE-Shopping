@@ -110,8 +110,7 @@ public class AddArticleFormView extends GridPane implements View {
 
     }
 
-    
-    /** 
+    /**
      * @return Node
      */
     @Override
@@ -119,8 +118,7 @@ public class AddArticleFormView extends GridPane implements View {
         return this;
     }
 
-    
-    /** 
+    /**
      * @return Label
      */
     public Label getArticleNameLabel() {

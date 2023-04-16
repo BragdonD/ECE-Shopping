@@ -35,8 +35,7 @@ public class LoginFormView {
         this.formView.getColumnConstraints().add(column2);
     }
 
-    
-    /** 
+    /**
      * @return FormView
      */
     /*
@@ -46,8 +45,7 @@ public class LoginFormView {
         return this.formView;
     }
 
-    
-    /** 
+    /**
      * @return InputFieldView
      */
     public InputFieldView getEmailInputFieldView() {

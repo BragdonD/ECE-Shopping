@@ -5,8 +5,7 @@ import com.eceshopping.models.PurchaseModel;
 
 public class PurchaseConverter {
 
-    
-    /** 
+    /**
      * @param purchaseDto
      * @return PurchaseModel
      */
@@ -19,8 +18,7 @@ public class PurchaseConverter {
         return purchaseModel;
     }
 
-    
-    /** 
+    /**
      * @param purchaseModel
      * @return PurchaseDto
      */

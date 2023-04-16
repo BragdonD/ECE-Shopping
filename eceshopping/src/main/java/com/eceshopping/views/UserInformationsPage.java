@@ -57,16 +57,14 @@ public class UserInformationsPage extends UserLayoutView implements View {
         this.slot.setAlignment(Pos.CENTER);
     }
 
-    
-    /** 
+    /**
      * @return InputFieldView
      */
     public InputFieldView getNameInput() {
         return this.nameInput;
     }
 
-    
-    /** 
+    /**
      * @return InputFieldView
      */
     public InputFieldView getPasswordInput() {

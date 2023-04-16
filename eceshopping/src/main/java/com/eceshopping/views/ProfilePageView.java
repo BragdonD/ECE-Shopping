@@ -37,8 +37,7 @@ public class ProfilePageView extends UserLayoutView implements View {
         initLayout();
     }
 
-    
-    /** 
+    /**
      * @return List<ProfileMenuButtonLinkView>
      */
     public List<ProfileMenuButtonLinkView> getButtons() {
@@ -59,8 +58,7 @@ public class ProfilePageView extends UserLayoutView implements View {
         this.slot.setAlignment(Pos.CENTER);
     }
 
-    
-    /** 
+    /**
      * @return Node
      */
     @Override

@@ -28,16 +28,14 @@ public class SearchBarView extends HBox {
         this.setStyle(AppStyles.SEARCH_BAR_STYLE);
     }
 
-    
-    /** 
+    /**
      * @return TextField
      */
     public TextField getSearchBar() {
         return this.searchBar;
     }
 
-    
-    /** 
+    /**
      * @return Button
      */
     public Button getSearchButton() {

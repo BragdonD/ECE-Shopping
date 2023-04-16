@@ -20,8 +20,7 @@ public class PurchasedItemService {
         this.purchaseItemDAO = new PurchaseItemDAO();
     }
 
-    
-    /** 
+    /**
      * @param id
      * @return PurchasedItemDto
      * @throws IOException
@@ -30,8 +29,8 @@ public class PurchasedItemService {
     public PurchasedItemDto getById(Integer id) throws EntityNotFoundException, IOException {
         return PurchaseItemConverter.convertToDto(purchaseItemDAO.getPurchaseItemById(id));
     }
-    
-    /** 
+
+    /**
      * @param purchasedItemDto
      * @return Task<PurchasedItemDto>
      * @throws EntityNotFoundException

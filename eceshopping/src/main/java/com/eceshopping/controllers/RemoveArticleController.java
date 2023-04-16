@@ -52,8 +52,7 @@ public class RemoveArticleController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @return boolean
      */
     private boolean validateForm() {
@@ -72,8 +71,7 @@ public class RemoveArticleController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @return Scene
      */
     public Scene getScene() {

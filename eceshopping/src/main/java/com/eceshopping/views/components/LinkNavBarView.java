@@ -19,8 +19,7 @@ public class LinkNavBarView extends HBox {
         this.setStyle(AppStyles.NAVBAR_BUTTON_STYLE);
     }
 
-    
-    /** 
+    /**
      * @param parent
      */
     public void bindHeight(HBox parent) {

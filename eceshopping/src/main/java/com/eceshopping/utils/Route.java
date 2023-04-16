@@ -14,16 +14,14 @@ public class Route {
         this.path = path;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getName() {
         return name;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getPath() {

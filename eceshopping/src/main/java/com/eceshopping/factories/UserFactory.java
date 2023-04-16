@@ -10,8 +10,7 @@ public class UserFactory {
 
     private static final Faker faker = new Faker();;
 
-    
-    /** 
+    /**
      * @return UserDto
      */
     public static UserDto createRandomUser() {

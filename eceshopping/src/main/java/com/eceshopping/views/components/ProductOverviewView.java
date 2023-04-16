@@ -32,16 +32,14 @@ public class ProductOverviewView extends GridPane {
         this.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
     }
 
-    
-    /** 
+    /**
      * @return ImageView
      */
     public ImageView getImage() {
         return this.image;
     }
 
-    
-    /** 
+    /**
      * @return Label
      */
     public Label getTitle() {

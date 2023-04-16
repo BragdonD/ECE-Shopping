@@ -8,7 +8,7 @@ import com.eceshopping.events.DisplayArticleEvent;
 import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.ModifyArticleFormView;
+import com.eceshopping.views.components.ModifyArticleFormView;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -249,16 +249,14 @@ public class ModifyArticleController implements Controller {
         });
     }
 
-    
-    /** 
+    /**
      * @return Scene
      */
     public Scene getScene() {
         return this.view.getScene();
     }
 
-    
-    /** 
+    /**
      * @param scene
      */
     @Override

@@ -14,7 +14,7 @@ public class CommandItemController {
     private void listenToEvent() {
         this.view.getDisplay().setOnAction(e -> {
             // Stage stage = new Stage();
-            // stage.setTitle("Command"); 
+            // stage.setTitle("Command");
             // CommandView commandView = new CommandView();
             // stage.setScene(new Scene(new CommandView().getLayout()));
             // stage.show();

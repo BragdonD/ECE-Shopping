@@ -5,7 +5,7 @@ import com.eceshopping.events.DisplayArticleEvent;
 import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.ProductOView;
+import com.eceshopping.views.components.ProductOView;
 
 import javafx.scene.Scene;
 
@@ -48,8 +48,8 @@ public class ProductOviewController implements Controller {
         this.article = article;
         this.view.setTitle(article.getName());
     }
-    
-    /** 
+
+    /**
      * @param scene
      */
     @Override
