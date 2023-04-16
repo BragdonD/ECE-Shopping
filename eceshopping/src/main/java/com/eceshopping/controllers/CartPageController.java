@@ -41,7 +41,7 @@ public class CartPageController implements Controller {
                     if (cartItemController != null) {
                         cartItemController.updateQuantity(cartItemController.getQuantity() + quantity);
                         ifExists = true;
-                        this.totalPrice -= cartItemController.getPrice();
+                        this.totalPrice -= cartItemController.getArticle().getPrice() * (cartItemController.getQuantity() - quantity);
                     }
 
                     if (cartItemController == null || ifExists == false) {
@@ -73,22 +73,30 @@ public class CartPageController implements Controller {
                         return;
 
                     if (e.isDeleteAll() == true) {
-                        if (quantity == 1)
-                            this.totalPrice -= cartItemController.getArticle().getPrice() * quantity;
-                        else
+                        if (quantity == 1) {
+                            System.out.println("quantity: " + cartItemController.getQuantity());
+                            if(cartItemController.getQuantity() == 9)
+                                this.totalPrice -= cartItemController.getArticle().getBulkprice();
+                            else
+                                this.totalPrice -= cartItemController.getArticle().getPrice();
+                        } else
                             this.totalPrice -= cartItemController.getPrice();
                         this.cartItemsControllers.remove(cartItemController);
                         this.view.removeProductFromCart(cartItemController.getView());
                     } else {
-                        this.totalPrice -= cartItemController.getArticle().getPrice() * quantity;
+                        if((cartItemController.getQuantity() + 1) % 10 == 0) {
+                            this.totalPrice -= cartItemController.getArticle().getBulkprice() * (cartItemController.getQuantity() + 1);
+                            this.totalPrice += cartItemController.getArticle().getPrice() * cartItemController.getQuantity();
+                        }
+                        else
+                            this.totalPrice -= cartItemController.getArticle().getPrice() * quantity;
                     }
 
                     this.view.setTotalPrice(Double.toString(totalPrice));
                 });
     }
 
-    
-    /** 
+    /**
      * @param s
      */
     @Override

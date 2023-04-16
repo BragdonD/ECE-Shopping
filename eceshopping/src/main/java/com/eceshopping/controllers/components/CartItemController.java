@@ -17,8 +17,9 @@ public class CartItemController {
 
     /**
      * Constructor for CartItemController class.
-     * @param view The view to be controlled.
-     * @param article The article to be displayed.
+     * 
+     * @param view     The view to be controlled.
+     * @param article  The article to be displayed.
      * @param quantity The quantity of the article.
      */
     public CartItemController(CartItemView view, ArticleDto article, Integer quantity) {
@@ -34,25 +35,27 @@ public class CartItemController {
 
     /**
      * Update the quantity of the article.
+     * 
      * @param quantity The new quantity of the article.
      */
     public void updateQuantity(Integer quantity) {
         this.quantity = quantity;
-        if (quantity >= 10) {
-            int bulkSets = quantity / 10;
-            int remainingArticles = quantity % 10;
+        if (this.quantity >= 10) {
+            int bulkSets = this.quantity / 10;
+            int remainingArticles = this.quantity % 10;
             this.price = bulkSets * article.getBulkprice() * 10;
             if (remainingArticles > 0) {
                 this.price += remainingArticles * article.getPrice();
             }
         } else {
-            this.price = quantity * article.getPrice();
+            this.price = this.quantity * article.getPrice();
         }
-        this.view.getQuantity().setText(quantity.toString());
+        this.view.getQuantity().setText(this.quantity.toString());
     }
 
     /**
      * Get the article.
+     * 
      * @return The article.
      */
     public ArticleDto getArticle() {
@@ -61,6 +64,7 @@ public class CartItemController {
 
     /**
      * Get the price of the article.
+     * 
      * @return The price of the article.
      */
     public Double getPrice() {
@@ -69,6 +73,7 @@ public class CartItemController {
 
     /**
      * Get the quantity of the article.
+     * 
      * @return The quantity of the article.
      */
     public Integer getQuantity() {
@@ -77,6 +82,7 @@ public class CartItemController {
 
     /**
      * Get the view to be controlled.
+     * 
      * @return The view to be controlled.
      */
     public CartItemView getView() {
@@ -84,7 +90,7 @@ public class CartItemController {
     }
 
     /**
-     * Set the event handlers for the delete buttons. 
+     * Set the event handlers for the delete buttons.
      */
     private void setupDeleteArticle() {
         this.view.getRemoveButton().setOnAction(e -> {

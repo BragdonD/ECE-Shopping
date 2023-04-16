@@ -108,9 +108,9 @@ public class ManageInvController implements Controller {
                 i++;
             }
             if(!found){
-                this.articles.add(article);
-                ProductOView product = new ProductOView(article.getName(), article.getId());
-                productOviewControllers.add(new ProductOviewController(product, article));
+                this.articles.add(articleEvent);
+                ProductOView product = new ProductOView(articleEvent.getName(), articleEvent.getId());
+                productOviewControllers.add(new ProductOviewController(product, articleEvent));
                 this.view.addProduct(product);
             }
         });
