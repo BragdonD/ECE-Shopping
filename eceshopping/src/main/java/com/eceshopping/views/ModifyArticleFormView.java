@@ -108,7 +108,6 @@ public class ModifyArticleFormView extends GridPane implements View {
 
     @Override
     public Node getRootNode() {
-        // TODO Auto-generated method stub
         return this;
     }
 

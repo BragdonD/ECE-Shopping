@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.converter.PurchaseItemConverter;
-import com.eceshopping.daos.PurchaseDAO;
 import com.eceshopping.daos.PurchaseItemDAO;
 import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.models.PurchasedItemModel;

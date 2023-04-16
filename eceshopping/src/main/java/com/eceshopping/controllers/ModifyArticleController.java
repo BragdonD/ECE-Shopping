@@ -2,19 +2,16 @@ package com.eceshopping.controllers;
 
 import java.sql.SQLException;
 
+import com.eceshopping.configs.AppStyles;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.events.DisplayArticleEvent;
 import com.eceshopping.events.ModifyInvEvent;
-import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
-import com.eceshopping.configs.AppStyles;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.ModifyArticleFormView;
-import com.eceshopping.views.ProductOView;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
-import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
@@ -31,7 +28,6 @@ public class ModifyArticleController implements Controller {
     private Double bulkprice;
     private Image image;
     private int stock;
-    private Integer id;
     ArticleDto article;
 
     public ModifyArticleController(ModifyArticleFormView view) throws IllegalArgumentException {
@@ -46,7 +42,6 @@ public class ModifyArticleController implements Controller {
         this.stock = 0;
         this.image = null;
         this.description = "";
-        this.id = 0;
 
         setupTextFields();
         setupNameChangeListener();
@@ -140,13 +135,10 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateType(type, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -154,13 +146,10 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateMarque(marque, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -168,10 +157,8 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updatePrice(price, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -179,10 +166,8 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateBulkprice(bulkprice, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -190,13 +175,10 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateStock(stock, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -204,13 +186,10 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateDescription(description, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -219,13 +198,10 @@ public class ModifyArticleController implements Controller {
                 try {
                     articleService.updateImage(image, article.getId());
                 } catch (EntityExistsException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (EntityNotFoundException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (SQLException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -241,56 +217,13 @@ public class ModifyArticleController implements Controller {
         this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
     }
 
-    /**
-     * private void hideErrorText() {
-     * this.view.getNameErrorText().setVisible(false);
-     * this.view.getTypeErrorText().setVisible(false);
-     * this.view.getMarqueErrorText().setVisible(false);
-     * this.view.getPriceErrorText().setVisible(false);
-     * this.view.getBulkPriceErrorText().setVisible(false);
-     * this.view.getQuantityErrorText().setVisible(false);
-     * this.view.getImageErrorText().setVisible(false);
-     * }
-     */
-
     public void setupStockChangeListener() {
         this.view.getStockTextField().textProperty().addListener((observable, oldValue, newValue) -> {
             stock = Integer.parseInt(newValue);
             if (stock > 0) {
                 this.view.getStockTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                // this.view.getQuantityErrorText().setVisible(false);
             }
         });
-    }
-
-    private boolean validateForm() {
-        boolean valid = true;
-        if (name.length() == 0) {
-            this.view.getArticleNameTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            // this.view.getNameErrorText().setVisible(true);
-            valid = false;
-        }
-        if (type.length() == 0) {
-            this.view.getTypeTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            // this.view.getTypeErrorText().setVisible(true);
-            valid = false;
-        }
-        if (marque.length() == 0) {
-            this.view.getMarqueTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            // this.view.getMarqueErrorText().setVisible(true);
-            valid = false;
-        }
-        if (price == 0) {
-            this.view.getPriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            // this.view.getPriceErrorText().setVisible(true);
-            valid = false;
-        }
-        if (bulkprice == 0 || bulkprice < 0) {
-            this.view.getBulkpriceTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
-            // this.view.getBulkpriceErrorText().setVisible(true);
-            valid = false;
-        }
-        return valid;
     }
 
     private void setupButton() {
@@ -311,7 +244,6 @@ public class ModifyArticleController implements Controller {
             description = newValue.trim();
             if (description.length() > 0) {
                 this.view.getDescriptionTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
-                // this.view.getMarqueErrorText().setVisible(false);
             }
         });
     }
@@ -322,7 +254,6 @@ public class ModifyArticleController implements Controller {
 
     @Override
     public void bindScene(Scene scene) {
-        // TODO Auto-generated method stub
 
     }
 }

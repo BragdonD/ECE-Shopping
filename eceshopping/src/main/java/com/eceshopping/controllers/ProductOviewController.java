@@ -1,16 +1,11 @@
 package com.eceshopping.controllers;
 
-import java.util.List;
-
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.events.DisplayArticleEvent;
-import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.ModifyArticleFormView;
 import com.eceshopping.views.ProductOView;
 
-import javafx.concurrent.Task;
 import javafx.scene.Scene;
 
 public class ProductOviewController implements Controller {
@@ -47,7 +42,5 @@ public class ProductOviewController implements Controller {
 
     @Override
     public void bindScene(Scene scene) {
-        // TODO Auto-generated method stub
-
     }
 }

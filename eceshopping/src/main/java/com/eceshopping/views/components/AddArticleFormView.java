@@ -1,6 +1,5 @@
 package com.eceshopping.views.components;
 
-import com.eceshopping.configs.AppStyles;
 import com.eceshopping.views.View;
 
 import javafx.geometry.Insets;

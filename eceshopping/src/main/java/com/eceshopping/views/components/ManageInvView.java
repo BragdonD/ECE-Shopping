@@ -11,8 +11,6 @@ import javafx.scene.layout.GridPane;
 public class ManageInvView extends GridPane implements View {
 
     private Hyperlink addArticleButton;
-    private Hyperlink removeArticleButton;
-    private Hyperlink modifyArticleButton;
     private int row = 1;
     private GridPane productsLayout;
     private Label name;

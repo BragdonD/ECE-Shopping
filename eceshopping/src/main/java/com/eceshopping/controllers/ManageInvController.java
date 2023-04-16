@@ -89,7 +89,6 @@ public class ManageInvController implements Controller {
 
     @Override
     public void bindScene(Scene scene) {
-        // TODO Auto-generated method stub
 
     }
 }

@@ -4,16 +4,12 @@ import com.eceshopping.configs.AppStyles;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
-import com.eceshopping.configs.AppStyles;
-import com.eceshopping.utils.validator.*;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.components.AddArticleFormView;
 
 import javafx.concurrent.Task;
 import javafx.scene.Scene;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -28,7 +24,6 @@ public class AddArticleFormController implements Controller {
     private Double bulkprice;
     private Image image;
     private int stock;
-    private GridPane grid;
 
     public AddArticleFormController(AddArticleFormView view) throws IllegalArgumentException {
         this.view = view;

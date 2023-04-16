@@ -1,24 +1,15 @@
 package com.eceshopping.views;
 
-import java.util.List;
-
-import com.eceshopping.dto.ArticleDto;
-import com.eceshopping.services.ArticleService;
 import com.eceshopping.configs.AppStyles;
 
-import javafx.concurrent.Task;
 import javafx.geometry.HPos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
 public class ProductOView extends GridPane {
     private Label title;
-    private int row = 0;
     private Button removeProduct;
     private Button editProduct;
     String nomArticle;
@@ -30,7 +21,6 @@ public class ProductOView extends GridPane {
         this.title = new Label(title);
         this.id = id;
         this.add(this.title, 0, 2);
-        this.row = 0;
         this.editProduct = new Button("Edit");
         this.removeProduct = new Button("Remove");
         this.add(this.editProduct, 0, 0);

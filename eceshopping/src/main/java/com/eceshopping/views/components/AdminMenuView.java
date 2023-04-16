@@ -5,7 +5,6 @@ import com.eceshopping.views.View;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -49,7 +48,6 @@ public class AdminMenuView extends GridPane implements View {
 
     @Override
     public Node getRootNode() {
-        // TODO Auto-generated method stub
         return this;
     }
 

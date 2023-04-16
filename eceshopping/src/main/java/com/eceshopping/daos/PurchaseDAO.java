@@ -2,8 +2,8 @@ package com.eceshopping.daos;
 
 import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
+
 import com.eceshopping.configs.HibernateConfig;
-import com.eceshopping.models.ArticleModel;
 import com.eceshopping.models.PurchaseModel;
 
 import jakarta.persistence.EntityNotFoundException;
