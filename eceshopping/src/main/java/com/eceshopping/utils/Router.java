@@ -99,10 +99,6 @@ public class Router {
         return routes;
     }
 
-    public String getCurrentRoute() {
-        return current;
-    }
-
     /**
      * Get the root pane of the application.
      * @return the root pane of the application.

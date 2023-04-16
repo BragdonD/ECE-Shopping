@@ -1,6 +1,5 @@
 package com.eceshopping.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BasketDto {
@@ -8,8 +7,8 @@ public class BasketDto {
     private UserDto user;
     private List<BasketItemDto> basketItems;
     
+
     public BasketDto() {
-        basketItems = new ArrayList<BasketItemDto>();
     }
 
     public BasketDto(int id, UserDto user, List<BasketItemDto> basketItems) {
@@ -40,14 +39,6 @@ public class BasketDto {
 
     public void setBasketItems(List<BasketItemDto> basketItems) {
         this.basketItems = basketItems;
-    }
-
-    public void addItem(BasketItemDto basketItem) {
-        this.basketItems.add(basketItem);
-    }
-
-    public void removeItem(BasketItemDto basketItem) {
-        this.basketItems.remove(basketItem);
     }
 
     public BasketDto id(int id) {

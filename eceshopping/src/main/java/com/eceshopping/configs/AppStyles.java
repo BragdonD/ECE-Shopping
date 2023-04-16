@@ -366,23 +366,7 @@ public class AppStyles {
 
         public static final int PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS = 5;
 
-        public static final String CART_ITEM_STYLE = "" +
-                        "-fx-background-color: #ffffff;" +
-                        "-fx-border-radius: 15px;" +
-                        "-fx-background-radius: 15px;" +
-                        "-fx-padding: 5px 5px 5px 5px;" +
-                        "-fx-spacing: 10px;" +
-                        "-fx-alignment: center;" +
-                        "-fx-min-width: 200px;" +
-                        "-fx-min-height: 200px;";
         
-        public static final String CART_TOTAL_PRICE_STYLE = "" +
-                        "-fx-padding: 5px 5px 5px 5px;" +
-                        "-fx-alignment: center;" +
-                        "-fx-min-height: 100px;" +
-                        "-fx-font-size: 28px;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-text-fill: #000000;";
 
         /**
          * Sizes for the application
