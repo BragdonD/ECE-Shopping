@@ -12,6 +12,11 @@ public class LinkNavBarView extends HBox {
     String name;
     Text text;
 
+    /**
+     * Constructor of LinkNavBarView
+     * 
+     * @param text
+     */
     public LinkNavBarView(String text) {
         this.name = text;
         this.text = new Text(text);
@@ -19,6 +24,9 @@ public class LinkNavBarView extends HBox {
         this.setStyle(AppStyles.NAVBAR_BUTTON_STYLE);
     }
 
+    /**
+     * @param parent
+     */
     public void bindHeight(HBox parent) {
         this.prefHeightProperty().bind(parent.heightProperty());
     }

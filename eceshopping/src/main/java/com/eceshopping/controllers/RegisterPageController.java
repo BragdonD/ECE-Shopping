@@ -43,23 +43,25 @@ public class RegisterPageController implements Controller {
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(1), new EmailValidator()));
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(2), new PasswordValidator()));
 
-        this.registerFormController = new FormController(this.view.getregisterFormView().getFormView(), inputFieldsControllers); 
-        
+        this.registerFormController = new FormController(this.view.getregisterFormView().getFormView(),
+                inputFieldsControllers);
+
         onSubmit();
         setupRegisterLink();
     }
 
     /**
-     * This method is called when the user click on the submit button of the login form.
+     * This method is called when the user click on the submit button of the login
+     * form.
      **/
     public void onSubmit() {
         this.registerFormController.addIsSubmittingListener((observable, oldValue, newValue) -> {
             System.out.println("Is submitting: " + newValue);
-            if(newValue) {
+            if (newValue) {
                 String name = this.registerFormController.getinputFieldsController().get(0).getValue();
                 String email = this.registerFormController.getinputFieldsController().get(1).getValue();
                 String password = this.registerFormController.getinputFieldsController().get(2).getValue();
-                
+
                 UserDto user = new UserDto();
                 user.setUsername(name);
                 user.setEmail(email);
@@ -72,7 +74,7 @@ public class RegisterPageController implements Controller {
 
                 saveUserTask.setOnSucceeded(event -> {
                     UserDto newUser = saveUserTask.getValue();
-                    if(newUser != null) {
+                    if (newUser != null) {
                         Session.getInstance().setUser(newUser);
                         Router.getInstance().navigateTo("/");
                     } else {
@@ -83,21 +85,24 @@ public class RegisterPageController implements Controller {
                 });
 
                 saveUserTask.setOnFailed(event -> {
-                    if(saveUserTask.getException().getMessage() != null) {
+                    if (saveUserTask.getException().getMessage() != null) {
                         DisplayError(saveUserTask.getException().getMessage());
                         this.registerFormController.reset();
                         return;
-                    }                 
+                    }
                 });
             }
         });
     }
-    
+
+    /**
+     * @param message
+     */
     /*
      * Display the error message
      */
     private void DisplayError(String message) {
-        if(this.view.getregisterFormView().getFormView().getChildren().size() == 4) {
+        if (this.view.getregisterFormView().getFormView().getChildren().size() == 4) {
             this.view.getregisterFormView().getFormView().getChildren().remove(3);
         }
         Text errorText = new Text(message);
@@ -115,6 +120,9 @@ public class RegisterPageController implements Controller {
         });
     }
 
+    /**
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.prefWidthProperty().bind(s.widthProperty());

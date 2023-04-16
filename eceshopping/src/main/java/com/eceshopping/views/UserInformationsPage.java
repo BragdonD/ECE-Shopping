@@ -22,7 +22,7 @@ public class UserInformationsPage extends UserLayoutView implements View {
     private Button saveButton;
     private Button cancelButton;
     private HBox buttonsLayout;
-    private GridPane formLayout; 
+    private GridPane formLayout;
 
     public UserInformationsPage() {
         this.nameInput = new InputFieldView("Name", "Enter your name", "text");
@@ -57,10 +57,16 @@ public class UserInformationsPage extends UserLayoutView implements View {
         this.slot.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * @return InputFieldView
+     */
     public InputFieldView getNameInput() {
         return this.nameInput;
     }
 
+    /**
+     * @return InputFieldView
+     */
     public InputFieldView getPasswordInput() {
         return this.passwordInput;
     }

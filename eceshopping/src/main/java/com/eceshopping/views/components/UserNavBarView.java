@@ -16,9 +16,13 @@ import javafx.scene.layout.HBox;
  * It will also handle the layout of the navigation bar.
  */
 public class UserNavBarView extends HBox {
-    List<LinkNavBarView> links;
+    private List<LinkNavBarView> links;
+    private SearchBarView searchBar;
 
     public UserNavBarView() {
+        this.searchBar = new SearchBarView();
+        this.getChildren().add(searchBar);
+        HBox.setMargin(this.searchBar, new Insets(0, 200, 0, 0));
         this.links = new ArrayList<>();
         this.setStyle(AppStyles.NAVBAR_STYLE);
     }
@@ -27,6 +31,16 @@ public class UserNavBarView extends HBox {
         this.links = links;
     }
 
+    /**
+     * @return SearchBarView
+     */
+    public SearchBarView getSearchBar() {
+        return searchBar;
+    }
+
+    /**
+     * @return List<LinkNavBarView>
+     */
     public List<LinkNavBarView> getLinks() {
         return links;
     }

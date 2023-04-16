@@ -17,13 +17,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 /**
- * ErrorsList class is used to display a list of errors. 
+ * ErrorsList class is used to display a list of errors.
  */
 public class ErrorsList extends StackPane {
     private ListView<String> errors; // The list of errors to display
 
     /**
      * This constructor is used to create a new ErrorsList object.
+     * 
      * @param errors The list of errors to display.
      */
     public ErrorsList(List<String> errors) {
@@ -47,11 +48,13 @@ public class ErrorsList extends StackPane {
         // this.errors.setMouseTransparent(true); // Bad idea to enable it
         this.errors.setStyle(AppStyles.TRANSPARENT_BG);
         this.errors.setPrefHeight(errors.size() * 19);
-        this.errors.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
+        this.errors.setBorder(
+                new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
         this.getChildren().add(this.errors);
         this.setPadding(new Insets(5));
         this.setStyle(AppStyles.TRANSPARENT_BG);
-        this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
+        this.setBorder(
+                new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.NONE, null, new BorderWidths(0))));
         this.setHeight(400);
     }
 }

@@ -1,5 +1,8 @@
 package com.eceshopping.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.eceshopping.converter.UserConverter;
 import com.eceshopping.daos.UserDao;
 import com.eceshopping.dto.UserDto;
@@ -92,7 +95,7 @@ public class UserService {
                 if (!(new PasswordValidator().validate(userDto.getPassword()))) {
                     throw new IllegalArgumentException("Password is not valid.");
                 }
-                
+
                 boolean emailExists = true;
 
                 try {
@@ -107,7 +110,7 @@ public class UserService {
 
                 String hashPassword = encryptPassword(userDto.getPassword());
                 userDto.setPassword(hashPassword);
-        
+
                 UserModel user = UserConverter.convertToModel(userDto);
                 userDao.save(user);
                 return UserConverter.convertToDto(user);
@@ -128,7 +131,8 @@ public class UserService {
      * @throws EntityExistsException   If the email is already in use
      * @throws EntityNotFoundException If the user does not exist
      */
-    public Task<UserDto> updateEmailAsync(String newEmail, int id) throws EntityExistsException, EntityNotFoundException {
+    public Task<UserDto> updateEmailAsync(String newEmail, int id)
+            throws EntityExistsException, EntityNotFoundException {
         Task<UserDto> task = new Task<UserDto>() {
             @Override
             protected UserDto call() throws Exception {
@@ -166,7 +170,7 @@ public class UserService {
     public Task<UserDto> updatePasswordAsync(String newPassword, int id)
             throws EntityNotFoundException, IllegalArgumentException {
         Task<UserDto> task = new Task<UserDto>() {
-           @Override
+            @Override
             protected UserDto call() throws Exception {
                 if (userDao.getById(id) == null) {
                     throw new EntityNotFoundException("User does not exist.");
@@ -183,6 +187,12 @@ public class UserService {
         return task;
     }
 
+    /**
+     * @param newName
+     * @param id
+     * @return Task<UserDto>
+     * @throws EntityNotFoundException
+     */
     public Task<UserDto> updateNameAsync(String newName, int id) throws EntityNotFoundException {
         Task<UserDto> task = new Task<UserDto>() {
             @Override
@@ -232,5 +242,26 @@ public class UserService {
         }
         UserModel user = this.userDao.getById(id);
         this.userDao.delete(user);
+    }
+
+    /**
+     * This method is used to get all users. It returns a list of all users.
+     * 
+     * @param UserDto
+     * @return
+     */
+    public Task<List<UserDto>> getAllUser() {
+        Task<List<UserDto>> task = new Task<List<UserDto>>() {
+            @Override
+            protected List<UserDto> call() throws Exception {
+                List<UserModel> users = userDao.getAll();
+                List<UserDto> userDtos = new ArrayList<>();
+                for (UserModel user : users) {
+                    userDtos.add(UserConverter.convertToDto(user));
+                }
+                return userDtos;
+            }
+        };
+        return task;
     }
 }

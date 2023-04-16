@@ -82,12 +82,13 @@ public abstract class Dao<T, I> implements DaoInterface<T, I> {
      * @throws ConstraintViolationException If the entity is not valid.
      */
     @Override
-    public void save(T t) throws ConstraintViolationException {
+    public Integer save(T t) throws ConstraintViolationException {
         validateModel(t);
         try (Session session = hibernateConfig.getSessionFactory().openSession()) {
             session.beginTransaction();
-            session.merge(t);
+            Integer idSavedObject = (Integer) session.save(t); // Deprecated but still working so seems fine
             session.getTransaction().commit();
+            return idSavedObject;
         }
     }
 

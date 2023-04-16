@@ -17,10 +17,10 @@ import javafx.util.Duration;
 public class LoadingCircle extends Pane {
     public static final double DEFAULT_DIAMETER = 40;
 
-    private final Arc backgroundArc; 
+    private final Arc backgroundArc;
     private final Arc spinnerArc;
-    private final RotateTransition rotateTransition; 
-    
+    private final RotateTransition rotateTransition;
+
     private double diameter;
     private double strokeWidth;
     private double radius;
@@ -99,10 +99,16 @@ public class LoadingCircle extends Pane {
         this.rotateTransition.stop();
     }
 
+    /**
+     * @return double
+     */
     public double getDiameter() {
         return this.diameter;
     }
 
+    /**
+     * @param diameter
+     */
     public void setDiameter(double diameter) {
         this.diameter = diameter;
         this.requestLayout();

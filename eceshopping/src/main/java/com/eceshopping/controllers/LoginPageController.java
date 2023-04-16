@@ -27,6 +27,7 @@ public class LoginPageController implements Controller {
     private LoginPageView view;
     private FormController loginFormController;
     private UserService userService;
+
     /**
      * Constructor of the class.
      * 
@@ -43,19 +44,21 @@ public class LoginPageController implements Controller {
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(0), new EmailValidator()));
         inputFieldsControllers.add(new InputFieldController(inputFieldViews.get(1), new NotEmptyStringValidator()));
 
-        this.loginFormController = new FormController(this.view.getLoginFormView().getFormView(), inputFieldsControllers); 
-        
+        this.loginFormController = new FormController(this.view.getLoginFormView().getFormView(),
+                inputFieldsControllers);
+
         onSubmit();
         setupRegisterLink();
     }
 
     /**
-     * This method is called when the user click on the submit button of the login form.
+     * This method is called when the user click on the submit button of the login
+     * form.
      **/
     public void onSubmit() {
         this.loginFormController.addIsSubmittingListener((observable, oldValue, newValue) -> {
             System.out.println("Is submitting: " + newValue);
-            if(newValue) {
+            if (newValue) {
                 String email = this.loginFormController.getinputFieldsController().get(0).getValue();
                 String password = this.loginFormController.getinputFieldsController().get(1).getValue();
                 Task<UserDto> getUserTask = this.userService.getUserByEmailAsync(email);
@@ -63,17 +66,20 @@ public class LoginPageController implements Controller {
 
                 getUserTask.setOnSucceeded(event -> {
                     UserDto user = getUserTask.getValue();
-                    if(user != null) {
-                        if(!userService.verifyPassword(password, user.getPassword())) {
+                    if (user != null) {
+                        if (!userService.verifyPassword(password, user.getPassword())) {
                             /// Display credential error
                             DisplayError(AppText.NO_USER_FOUND);
                             this.loginFormController.reset();
                         } else {
                             Session.getInstance().setUser(user);
-                            Router.getInstance().navigateTo("/profile");
+                            if (user.getAdmin())
+                                Router.getInstance().navigateTo("/adminMenu");
+                            else
+                                Router.getInstance().navigateTo("/");
                         }
                     } else {
-                        if(getUserTask.getException().getMessage() != null) {
+                        if (getUserTask.getException().getMessage() != null) {
                             DisplayError(getUserTask.getException().getMessage());
                             this.loginFormController.reset();
                             return;
@@ -83,7 +89,7 @@ public class LoginPageController implements Controller {
 
                 getUserTask.setOnFailed(event -> {
                     // Display user not found
-                    if(getUserTask.getException().getMessage() != null) {
+                    if (getUserTask.getException().getMessage() != null) {
                         DisplayError(getUserTask.getException().getMessage());
                         this.loginFormController.reset();
                         return;
@@ -99,14 +105,14 @@ public class LoginPageController implements Controller {
      * @param message the error message
      **/
     private void DisplayError(String message) {
-        if(this.view.getLoginFormView().getFormView().getChildren().size() == 4) {
+        if (this.view.getLoginFormView().getFormView().getChildren().size() == 4) {
             this.view.getLoginFormView().getFormView().getChildren().remove(3);
         }
         Text errorText = new Text(message);
         errorText.setStyle(AppStyles.ERROR_TEXT_STYLE);
         this.view.getLoginFormView().getFormView().add(errorText, 0, 3);
     }
-    
+
     /**
      * This method is called when the user click on the register link.
      **/
@@ -116,6 +122,9 @@ public class LoginPageController implements Controller {
         });
     }
 
+    /**
+     * @param s
+     */
     @Override
     public void bindScene(Scene s) {
         this.view.prefWidthProperty().bind(s.widthProperty());

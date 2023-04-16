@@ -10,7 +10,7 @@ In the context of a JavaFX application, a controller is a class that is responsi
 
 Each controller in the JavaFX application is represented by a Java class. This class contains the logic for the controller and defines how the view and model should interact.
 
-Typically, a controller class implements the ``javafx.fxml.Initializable`` interface, which provides a method called initialize that is called after the view is loaded. In the initialize method, the controller can set up event handlers and initialize the state of the view.
+Typically, a controller class implements the `javafx.fxml.Initializable` interface, which provides a method called initialize that is called after the view is loaded. In the initialize method, the controller can set up event handlers and initialize the state of the view.
 
 The controller may also define methods that are called by the view to perform actions or update the state of the model.
 Organization of the controller folder

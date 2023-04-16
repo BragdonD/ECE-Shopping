@@ -19,7 +19,7 @@ import javafx.scene.text.TextAlignment;
 
 /**
  * RegisterPageView class that creates the register page view for the user.
- * Where the user can register for a new account 
+ * Where the user can register for a new account
  */
 public class RegisterPageView extends StackPane implements View {
     private GridPane gridPane;
@@ -29,7 +29,7 @@ public class RegisterPageView extends StackPane implements View {
     private Button RegisterButton;
     private Label RegisterLabel;
     private Insets margin;
-    
+
     /*
      * registerFormView is the register form view for the user.
      * Where the user can register for a new account
@@ -50,7 +50,7 @@ public class RegisterPageView extends StackPane implements View {
         this.gridPane.add(this.RegisterBoxLayout, 0, 2);
 
         this.margin = new Insets(10, 10, 10, 10);
-        
+
         this.gridPane.setPrefSize(400, 400);
         this.getChildren().add(this.gridPane);
         this.setAlignment(Pos.CENTER);
@@ -58,7 +58,7 @@ public class RegisterPageView extends StackPane implements View {
     }
 
     /*
-     * Set up the register box 
+     * Set up the register box
      * Where the user can register for a new account
      */
     private void setupRegisterBox() {
@@ -82,9 +82,9 @@ public class RegisterPageView extends StackPane implements View {
         this.title = new Text(AppText.REGISTER_PAGE_TITLE);
         this.title.setTextAlignment(TextAlignment.CENTER);
         this.gridPane.add(this.title, 0, 0);
-        this.title.setStyle(AppStyles.TITLE_STYLE); 
+        this.title.setStyle(AppStyles.TITLE_STYLE);
     }
-    
+
     /*
      * Set up the register form for the user.
      * Where the user can register for a new account
@@ -97,7 +97,7 @@ public class RegisterPageView extends StackPane implements View {
         this.registerFormView.getFormView().setPadding(new Insets(10, 10, 10, 10));
         this.registerFormView.getFormView().setVgap(10);
         this.gridPane.add(this.registerFormView.getFormView(), 0, 1);
-        for(InputFieldView input : this.registerFormView.getFormView().getInputFields()) {
+        for (InputFieldView input : this.registerFormView.getFormView().getInputFields()) {
             input.getLabelField().setStyle(AppStyles.LABEL_STYLE);
             input.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
         }
@@ -105,6 +105,9 @@ public class RegisterPageView extends StackPane implements View {
         this.registerFormView.getSubmitButton().setPrefWidth(300);
     }
 
+    /**
+     * @return GridPane
+     */
     /*
      * Getters and setters for the register page view
      */
@@ -112,6 +115,9 @@ public class RegisterPageView extends StackPane implements View {
         return this.gridPane;
     }
 
+    /**
+     * @param gridPane
+     */
     /*
      * Set the grid pane for the register page view
      */
@@ -146,7 +152,7 @@ public class RegisterPageView extends StackPane implements View {
     public void setTitle(Text title) {
         this.title = title;
     }
-    
+
     /*
      * Get the register box layout for the user.
      */
@@ -257,7 +263,7 @@ public class RegisterPageView extends StackPane implements View {
     public RegisterPageView margin(Insets margin) {
         setMargin(margin);
         return this;
-    }    
+    }
 
     @Override
     public Node getRootNode() {

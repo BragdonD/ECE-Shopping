@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 
 /**
- * This class is used to control the form view and its input fields 
+ * This class is used to control the form view and its input fields
  */
 public class FormController {
     private FormView view;
@@ -34,6 +34,9 @@ public class FormController {
         checkSubmit();
     }
 
+    /**
+     * @return List<InputFieldController>
+     */
     /*
      * get the form input fields
      */
@@ -41,6 +44,9 @@ public class FormController {
         return this.inputFieldsController;
     }
 
+    /**
+     * @param inputFieldsController
+     */
     /*
      * set the form input fields
      */
@@ -55,15 +61,17 @@ public class FormController {
         return this.isValid;
     }
 
-    /*
-     * get the form is valid
+    /**
+     * This method is check if the form is valid
      */
     public boolean isValid() {
         return this.isValid.get();
     }
 
-    /*
+    /**
      * set the form is valid
+     * 
+     * @param isValid the form is valid
      */
     public void setValid(boolean isValid) {
         this.isValid.set(isValid);
@@ -73,7 +81,6 @@ public class FormController {
         this.view = view;
         return this;
     }
-
 
     public FormController inputFieldsController(List<InputFieldController> inputFieldsController) {
         this.inputFieldsController = inputFieldsController;
@@ -86,8 +93,8 @@ public class FormController {
     }
 
     /*
-     * This method is used to notify the listeners when the form is valid or not 
-    */
+     * This method is used to notify the listeners when the form is valid or not
+     */
     private void addIsValidListener() {
         for (InputFieldController inputField : this.inputFieldsController) {
             inputField.addIsValidChangeListener((observable, oldValue, newValue) -> {
@@ -101,7 +108,7 @@ public class FormController {
 
     /*
      * This method checks if the form is valid
-     */ 
+     */
 
     private void checkIsValid() {
         Boolean isValid = true;
@@ -124,8 +131,10 @@ public class FormController {
     public void removeIsValidChangeListener(ChangeListener<Boolean> listener) {
         this.isValidListeners.remove(listener);
     }
-    /* This method is used to notify the listeners when the form is valid or not 
-    */
+
+    /*
+     * This method is used to notify the listeners when the form is valid or not
+     */
     public void addIsSubmittingListener(ChangeListener<Boolean> listener) {
         this.isSubmitting.add(listener);
     }
@@ -167,10 +176,10 @@ public class FormController {
     }
 
     /*
-     * This method is used to notify the listeners when the form is valid or not 
-    */
+     * This method is used to notify the listeners when the form is valid or not
+     */
     private void notifyListeners() {
-        for(ChangeListener<Boolean> listener : this.isValidListeners) {
+        for (ChangeListener<Boolean> listener : this.isValidListeners) {
             listener.changed(this.isValid, !this.isValid.get(), this.isValid.get());
         }
     }
