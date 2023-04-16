@@ -9,8 +9,8 @@ import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.ModifyArticleFormView;
-import com.eceshopping.views.ProductOView;
+import com.eceshopping.views.components.ModifyArticleFormView;
+import com.eceshopping.views.components.ProductOView;
 
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;

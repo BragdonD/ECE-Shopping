@@ -6,13 +6,15 @@ import com.eceshopping.controllers.RegisterFormController;
 import com.eceshopping.controllers.AddArticleFormController;
 import com.eceshopping.controllers.AdminMenuController;
 import com.eceshopping.controllers.ManageInvController;
+import com.eceshopping.controllers.ManageUsersController;
 import com.eceshopping.controllers.ModifyArticleController;
 import com.eceshopping.utils.Router;
-import com.eceshopping.views.ModifyArticleFormView;
-import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.components.AddArticleFormView;
 import com.eceshopping.views.components.AdminMenuView;
 import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.ManageUserView;
+import com.eceshopping.views.components.ModifyArticleFormView;
+import com.eceshopping.views.components.ProductOView;
 import com.eceshopping.views.components.LoginFormView;
 import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.views.components.RegisterFormView;
@@ -42,6 +44,7 @@ public class EceShoppingApp extends Application {
         ModifyArticleFormView modifyArticleView = new ModifyArticleFormView();
         LoginFormView loginView = new LoginFormView();
         RegisterFormView registerView = new RegisterFormView();
+        ManageUserView manageUserView = new ManageUserView();
         
         //this.router.addRoute("/register", registerView, new RegisterFormController(registerView));
         //this.router.addRoute("/login", loginView, new LoginFormController(loginView));
@@ -51,8 +54,7 @@ public class EceShoppingApp extends Application {
         
         this.router.addRoute("/adminMenu", adminMenuView, new AdminMenuController(adminMenuView));
         this.router.addRoute("/modifyArticle", modifyArticleView, new ModifyArticleController(modifyArticleView));
-        //this.router.addRoute("/modifyArticle", addArticleView, new AddArticleFormController(addArticleView));
-        
+        this.router.addRoute("/manageUsers", manageUserView, new ManageUsersController(manageUserView));
         
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
         this.router.getRouterController().setScene(scene);

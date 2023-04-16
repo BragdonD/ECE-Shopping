@@ -1,4 +1,4 @@
-package com.eceshopping.views;
+package com.eceshopping.views.components;
 
 
 import java.util.List;

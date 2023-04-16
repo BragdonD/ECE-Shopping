@@ -1,7 +1,7 @@
 package com.eceshopping.controllers;
 
-import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.ProductOView;
 
 import java.util.List;
 

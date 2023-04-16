@@ -2,7 +2,6 @@ package com.eceshopping.views.components;
 
 import java.awt.Label;
 
-import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.View;
 
 import javafx.scene.Node;

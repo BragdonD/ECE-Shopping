@@ -1,4 +1,4 @@
-package com.eceshopping.views;
+package com.eceshopping.views.components;
 
 import com.eceshopping.styles.AppStyles;
 import com.eceshopping.views.View;
