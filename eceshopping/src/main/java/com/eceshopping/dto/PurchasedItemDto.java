@@ -78,4 +78,14 @@ public class PurchasedItemDto {
         return this;
     }
 
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", article='" + getArticle() + "'" +
+            ", quantity='" + getQuantity() + "'" +
+            "}";
+    }
+
 }

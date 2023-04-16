@@ -127,11 +127,11 @@ public class ModifyArticleController implements Controller {
 
         this.view.getModifyArticleButton().setOnAction(event -> {
 
-            if (this.name != null) {
+            if (!this.name.isEmpty()) {
                 this.name = this.view.getArticleNameTextField().getText();
                 articleService.updateName(name, article.getId());
             }
-            if (this.type != null) {
+            if (!this.type.isEmpty()) {
                 try {
                     articleService.updateType(type, article.getId());
                 } catch (EntityExistsException e) {
@@ -142,7 +142,7 @@ public class ModifyArticleController implements Controller {
                     e.printStackTrace();
                 }
             }
-            if (this.marque != null) {
+            if (!this.marque.isEmpty()) {
                 try {
                     articleService.updateMarque(marque, article.getId());
                 } catch (EntityExistsException e) {
@@ -162,7 +162,7 @@ public class ModifyArticleController implements Controller {
                     e.printStackTrace();
                 }
             }
-            if (this.view.getBulkpriceTextField() != null) {
+            if (!this.view.getBulkpriceTextField().getText().isEmpty()) {
                 try {
                     articleService.updateBulkprice(bulkprice, article.getId());
                 } catch (EntityExistsException e) {
@@ -171,7 +171,8 @@ public class ModifyArticleController implements Controller {
                     e.printStackTrace();
                 }
             }
-            if (this.view.getStockTextField() != null) {
+            if (!this.view.getStockTextField().getText().isEmpty()) {
+                System.out.println(stock);
                 try {
                     articleService.updateStock(stock, article.getId());
                 } catch (EntityExistsException e) {
@@ -182,7 +183,7 @@ public class ModifyArticleController implements Controller {
                     e.printStackTrace();
                 }
             }
-            if (this.view.getDescriptionTextField() != null) {
+            if (!this.view.getDescriptionTextField().getText().isEmpty()) {
                 try {
                     articleService.updateDescription(description, article.getId());
                 } catch (EntityExistsException e) {

@@ -11,6 +11,7 @@ import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.events.AddToBasketEvent;
 import com.eceshopping.events.DeleteFromBasketEvent;
 import com.eceshopping.events.PaymentEvent;
+import com.eceshopping.services.ArticleService;
 import com.eceshopping.services.PurchaseService;
 import com.eceshopping.utils.Router;
 import com.eceshopping.utils.Session;
@@ -163,7 +164,19 @@ public class CartPageController implements Controller {
         }
         Task<PurchaseDto> savePurchasetask = this.purchaseService.savePurchaseAsync(purchase);
         savePurchasetask.setOnSucceeded(e -> {
-            System.out.println("Purchase saved");
+            PurchaseDto savePurchase = savePurchasetask.getValue();
+            System.out.println(savePurchase);
+            ArticleService articleService = new ArticleService();
+            for (PurchasedItemDto purchaseitem : savePurchase.getPurchasedItems()) {
+                Task<Void> updateArticleTask = articleService.updateStockAsync(purchaseitem.getArticle().getId(), purchaseitem.getArticle().getStock());
+                updateArticleTask.setOnSucceeded(e1 -> {
+                    System.out.println("Stock updated");
+                });
+                updateArticleTask.setOnFailed(e1 -> {
+                    System.out.println(updateArticleTask.getException().getMessage());
+                });
+                new Thread(updateArticleTask).start();
+            }
         });
         savePurchasetask.setOnFailed(e -> {
             System.out.println(savePurchasetask.getException().getMessage());

@@ -97,4 +97,17 @@ public class PurchaseDto {
         return this;
     }
 
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", date='" + getDate() + "'" +
+            ", user='" + getUser() + "'" +
+            ", amountPayed='" + getAmountPayed() + "'" +
+            ", purchasedItems='" + getPurchasedItems() + "'" +
+            "}";
+    }
+
 }

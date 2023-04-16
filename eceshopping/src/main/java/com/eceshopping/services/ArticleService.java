@@ -72,15 +72,16 @@ public class ArticleService {
      * @throws EntityNotFoundException
      */
     public void updateName(String newname, int id) throws EntityExistsException, EntityNotFoundException {
-        if (this.articleDAO.getArticleByName(newname) != null) {
-            throw new EntityExistsException("Name is already in use.");
+        try {
+            this.articleDAO.getArticleByName(newname);
+        } catch (EntityNotFoundException e) {
+            if (this.articleDAO.getById(id) == null) {
+                throw new EntityNotFoundException("Article does not exist.");
+            }
+            ArticleModel article = this.articleDAO.getById(id);
+            article.setName(newname);
+            this.articleDAO.update(article);
         }
-        if (this.articleDAO.getById(id) == null) {
-            throw new EntityNotFoundException("Article does not exist.");
-        }
-        ArticleModel article = this.articleDAO.getById(id);
-        article.setName(newname);
-        this.articleDAO.update(article);
     }
 
     public void updatePrice(double newprice, int id) throws EntityExistsException, EntityNotFoundException {
@@ -130,13 +131,25 @@ public class ArticleService {
     }
 
     public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
+            this.articleDAO.getById(id);
+            ArticleModel article = this.articleDAO.getById(id);
+            article.setStock(stock);
+            this.articleDAO.update(article);
+    }
 
-        if (this.articleDAO.getById(id) == null) {
-            throw new EntityNotFoundException("Article does not exist.");
-        }
-        ArticleModel article = this.articleDAO.getById(id);
-        article.setStock(stock);
-        this.articleDAO.update(article);
+    public Task<Void> updateStockAsync(int id, Integer stock) {
+        return new Task<Void>() {
+            @Override
+            public Void call() throws EntityExistsException, EntityNotFoundException, SQLException {
+                if (articleDAO.getById(id) == null) {
+                    throw new EntityNotFoundException("Article does not exist.");
+                }
+                ArticleModel article = articleDAO.getById(id);
+                article.setStock(stock);
+                articleDAO.update(article);
+                return null;
+            }
+        };
     }
 
     public void updateDescription(String description, int id)
