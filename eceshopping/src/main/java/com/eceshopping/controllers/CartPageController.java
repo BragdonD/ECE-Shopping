@@ -9,9 +9,11 @@ import com.eceshopping.events.AddToBasketEvent;
 import com.eceshopping.events.DeleteFromBasketEvent;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.CartPageView;
+import com.eceshopping.views.PaymentPageView;
 import com.eceshopping.views.components.CartItemView;
 
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class CartPageController implements Controller {
     private CartPageView view;
@@ -23,6 +25,11 @@ public class CartPageController implements Controller {
         new UserNavBarController(this.view.getNavBar());
         this.totalPrice = 0.0;
         this.cartItemsControllers = new ArrayList<CartItemController>();
+
+        if(this.totalPrice == 0.0)
+            this.deactivatePaymentButton();
+        else
+            this.activatePaymentButton();
 
         Router.getInstance().getRouterController().getMainStage().addEventHandler(AddToBasketEvent.ADD_TO_CART_EVENT,
                 e -> {
@@ -55,6 +62,11 @@ public class CartPageController implements Controller {
 
                     this.totalPrice += cartItemController.getPrice();
                     this.view.setTotalPrice(Double.toString(totalPrice));
+
+                    if(this.totalPrice == 0.0)
+                        this.deactivatePaymentButton();
+                    else
+                        this.activatePaymentButton();
                 });
 
         Router.getInstance().getRouterController().getMainStage()
@@ -92,8 +104,37 @@ public class CartPageController implements Controller {
                             this.totalPrice -= cartItemController.getArticle().getPrice() * quantity;
                     }
 
+                    if(this.totalPrice == 0.0)
+                        this.deactivatePaymentButton();
+                    else
+                        this.activatePaymentButton();
+
                     this.view.setTotalPrice(Double.toString(totalPrice));
                 });
+
+        listenToPaymentButton();
+    }
+
+    private void activatePaymentButton() {
+        this.view.getPaymentButton().setDisable(false);
+    }
+
+    private void deactivatePaymentButton() {
+        this.view.getPaymentButton().setDisable(true);
+    }
+
+    private void listenToPaymentButton() {
+        this.view.getPaymentButton().setOnAction(e -> {
+            Stage paymentStage = new Stage();
+            paymentStage.setTitle("Payment");
+            paymentStage.setResizable(false);
+            paymentStage.setWidth(600);
+            paymentStage.setHeight(400);
+            paymentStage.show();
+            PaymentPageView paymentPageView = new PaymentPageView();
+            new PaymentPageController(paymentPageView);
+            paymentStage.setScene(new Scene(paymentPageView));
+        });
     }
 
     /**
