@@ -5,6 +5,7 @@ import com.eceshopping.views.components.ProductOverviewView;
 import com.eceshopping.views.layouts.UserLayoutView;
 
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
 public class HomePageView extends UserLayoutView implements View {
@@ -15,7 +16,8 @@ public class HomePageView extends UserLayoutView implements View {
         productsLayout = new GridPane();
         this.productsLayout.prefHeightProperty().bind(this.slot.heightProperty());
         this.productsLayout.prefWidthProperty().bind(this.slot.widthProperty());
-        this.slot.getChildren().add(productsLayout);
+        ScrollPane scrollPane = new ScrollPane(productsLayout);
+        this.slot.getChildren().add(scrollPane);
         this.productsLayout.setAlignment(javafx.geometry.Pos.TOP_CENTER);
         this.productsLayout.setPadding(new javafx.geometry.Insets(20.0, 20.0, 20.0, 20.0));
         this.productsLayout.setHgap(20);

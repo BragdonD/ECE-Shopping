@@ -85,9 +85,32 @@ public class ManageInvController implements Controller {
     private void listenToEvents() {
         Router.getInstance().getRouterController().getMainStage().addEventHandler(DisplayArticleEvent.DISPLAY_ARTICLE,
                 e -> {
-                    this.article = e.getArticle();
-                    System.out.println("Article : " + article);
-                    this.view.setName(article.getName());
+                    ArticleDto articleEvent = e.getArticle();
+                    System.out.println("Article : " + articleEvent);
+                    boolean found = false;
+                    int i = 0;
+                    for (ArticleDto a : this.articles) {
+                        if (a.getId() == articleEvent.getId()) {
+                            a.setName(articleEvent.getName());
+                            a.setMarque(articleEvent.getMarque());
+                            a.setPrice(articleEvent.getPrice());
+                            a.setBulkprice(articleEvent.getBulkprice());
+                            a.setStock(articleEvent.getStock());
+                            a.setType(articleEvent.getType());
+                            a.setDescription(articleEvent.getDescription());
+                            a.setImage(articleEvent.getImage());
+                            productOviewControllers.get(i).updateView(articleEvent);
+                            found = true;
+                            break;
+                        }
+                        i++;
+                    }
+                    if (!found) {
+                        this.articles.add(articleEvent);
+                        ProductOView product = new ProductOView(articleEvent.getName(), articleEvent.getId());
+                        productOviewControllers.add(new ProductOviewController(product, articleEvent));
+                        this.view.addProduct(product);
+                    }
 
                 });
 
