@@ -28,7 +28,6 @@ public class PurchasedItemService {
     public PurchasedItemDto getById(Integer id) {
         return PurchaseItemConverter.convertToDto(purchaseItemDAO.getPurchaseItemById(id));
     }
-
     
     /** 
      * @param purchasedItemDto
@@ -63,6 +62,21 @@ public class PurchasedItemService {
                 }
                 System.out.println("PurchasedItemDtos");
                 return PurchasedItemDtos;
+            }
+        };
+        return task;
+    }
+
+    public Task<PurchasedItemDto> save(PurchasedItemDto purchasedItemDto) throws EntityExistsException {
+        Task<PurchasedItemDto> task = new Task<PurchasedItemDto>() {
+            @Override
+            protected PurchasedItemDto call() throws Exception {
+                try {
+                    purchaseItemDAO.save(PurchaseItemConverter.convertToModel(purchasedItemDto));
+                } catch (EntityExistsException e) {
+                    throw e;
+                }
+                return purchasedItemDto;
             }
         };
         return task;

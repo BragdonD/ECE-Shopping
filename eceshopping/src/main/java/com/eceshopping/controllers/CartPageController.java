@@ -7,6 +7,7 @@ import com.eceshopping.controllers.components.CartItemController;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.events.AddToBasketEvent;
 import com.eceshopping.events.DeleteFromBasketEvent;
+import com.eceshopping.events.PaymentEvent;
 import com.eceshopping.utils.Router;
 import com.eceshopping.views.CartPageView;
 import com.eceshopping.views.PaymentPageView;
@@ -134,6 +135,14 @@ public class CartPageController implements Controller {
             PaymentPageView paymentPageView = new PaymentPageView();
             new PaymentPageController(paymentPageView);
             paymentStage.setScene(new Scene(paymentPageView));
+            Router.getInstance().getRouterController().getMainStage().addEventHandler(PaymentEvent.PAYMENT_EVENT, e1 -> {
+                this.cartItemsControllers.clear();
+                this.view.clearCart();
+                this.totalPrice = 0.0;
+                this.view.setTotalPrice(Double.toString(totalPrice));
+                this.deactivatePaymentButton();
+                paymentStage.close();
+            });
         });
     }
 

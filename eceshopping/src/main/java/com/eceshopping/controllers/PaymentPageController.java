@@ -1,5 +1,7 @@
 package com.eceshopping.controllers;
 
+import com.eceshopping.events.PaymentEvent;
+import com.eceshopping.utils.Router;
 import com.eceshopping.views.PaymentPageView;
 
 import javafx.scene.Scene;
@@ -33,6 +35,7 @@ public class PaymentPageController implements Controller {
                 showAlert("Invalid CVV", "Please enter a valid CVV number.");
             } else {
                 showAlert("Payment Successful", "Thank you for your payment!");
+                Router.getInstance().getRouterController().getMainStage().fireEvent(new PaymentEvent(null));
             }
         });
     }

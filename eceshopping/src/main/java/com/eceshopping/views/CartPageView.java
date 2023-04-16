@@ -51,16 +51,30 @@ public class CartPageView extends UserLayoutView implements View {
         this.cartLayout.setVgap(20);
     }
 
-    
-    /** 
+    public void clearCart() {
+        this.cartLayout.getChildren().clear();
+        GridPane priceLayout = new GridPane();
+        this.paymentButton = new Button("Pay");
+        Label price = new Label("Total price: ");
+        this.totalPrice.setText("0");
+        price.setStyle(AppStyles.CART_TOTAL_PRICE_STYLE);
+        this.totalPrice.setStyle(AppStyles.CART_TOTAL_PRICE_STYLE);
+        priceLayout.add(price, 0, 0);
+        priceLayout.add(totalPrice, 1, 0);
+        priceLayout.add(paymentButton, 2, 0);
+        this.cartLayout.add(priceLayout, 0, 0);
+
+        this.item = 1;
+    }
+
+    /**
      * @return GridPane
      */
     public GridPane getCartLayout() {
         return cartLayout;
     }
 
-    
-    /** 
+    /**
      * @param cartItemView
      */
     public void addProductToCart(CartItemView cartItemView) {

@@ -19,7 +19,6 @@ public class PurchaseService {
     public PurchaseService() {
         purchaseDAO = new PurchaseDAO();
     }
-
     
     /** 
      * @param id
@@ -29,7 +28,6 @@ public class PurchaseService {
     public PurchaseModel getPurchaseById(Integer id) throws EntityNotFoundException {
         return purchaseDAO.getPurchaseById(id);
     }
-
     
     /** 
      * @param purchaseDto
@@ -62,6 +60,21 @@ public class PurchaseService {
                 }
                 System.out.println("PurchaseDtos");
                 return PurchaseDtos;
+            }
+        };
+        return task;
+    }
+
+    public Task<PurchaseDto> savePurchaseAsync(PurchaseDto purchaseDto) {
+        Task<PurchaseDto> task = new Task<PurchaseDto>() {
+            @Override
+            protected PurchaseDto call() throws Exception {
+                try {
+                    purchaseDAO.save(PurchaseConverter.convertToModel(purchaseDto));
+                } catch (EntityExistsException e) {
+                    throw e;
+                }
+                return purchaseDto;
             }
         };
         return task;
