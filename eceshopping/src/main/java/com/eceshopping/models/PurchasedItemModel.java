@@ -1,5 +1,6 @@
 package com.eceshopping.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,6 @@ import jakarta.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = "PurchasedItemModel.findById", query = "FROM PurchasedItemModel WHERE id = :id"),
         @NamedQuery(name = "PurchasedItemModel.findAll", query = "FROM PurchasedItemModel"),
-        @NamedQuery(name = "PurchasedItemModel.findByName", query = "FROM PurchasedItemModel WHERE name = :name"),
 })
 
 public class PurchasedItemModel {
@@ -26,16 +26,20 @@ public class PurchasedItemModel {
 
     @ManyToOne
     @JoinColumn(name = "purchase_id")
-    private PurchaseModel idPurchase;
+    private PurchaseModel purchase;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private ArticleModel idArticle;
+    private ArticleModel article;
 
-    public PurchasedItemModel(int id, ArticleModel idArticle, PurchaseModel idPurchase) {
+    @Column(name = "quantity")
+    private int quantity;
+
+    public PurchasedItemModel(int id, ArticleModel article, PurchaseModel purchase, int quantity) {
         this.id = id;
-        this.idArticle = idArticle;
-        this.idPurchase = idPurchase;
+        this.article = article;
+        this.purchase = purchase;
+        this.quantity = quantity;
     }
 
     public PurchasedItemModel() {
@@ -49,6 +53,19 @@ public class PurchasedItemModel {
         return id;
     }
 
+    /** 
+     * @return int
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /** 
+     * @param quantity
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
     
     /** 
      * @param id
@@ -57,24 +74,19 @@ public class PurchasedItemModel {
         this.id = id;
     }
 
-    public PurchaseModel getIdPurchase() {
-        return idPurchase;
+    public PurchaseModel getPurchase() {
+        return purchase;
     }
 
-    public void setIdPurchase(PurchaseModel idPurchase) {
-        this.idPurchase = idPurchase;
+    public void setPurchase(PurchaseModel purchase) {
+        this.purchase = purchase;
     }
 
-    public ArticleModel getIdArticle() {
-        return idArticle;
+    public ArticleModel getArticle() {
+        return article;
     }
 
-    public void setIdArticle(ArticleModel idArticle) {
-        this.idArticle = idArticle;
-    }
-
-    @Override
-    public String toString() {
-        return "ArticleModel [id=" + id + ", idArticle=" + idArticle + ", idPurchase=" + idPurchase + "]";
+    public void setArticle(ArticleModel article) {
+        this.article = article;
     }
 }

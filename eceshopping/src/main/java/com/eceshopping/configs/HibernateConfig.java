@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import com.eceshopping.models.ArticleModel;
+import com.eceshopping.models.PurchaseModel;
+import com.eceshopping.models.PurchasedItemModel;
 import com.eceshopping.models.UserModel;
 
 /**
@@ -35,6 +37,8 @@ public class HibernateConfig {
                 .addProperties(hibernateProperties)
                 .addAnnotatedClass(UserModel.class)
                 .addAnnotatedClass(ArticleModel.class)
+                .addAnnotatedClass(PurchaseModel.class)
+                .addAnnotatedClass(PurchasedItemModel.class)
                 .buildSessionFactory();
     }
 

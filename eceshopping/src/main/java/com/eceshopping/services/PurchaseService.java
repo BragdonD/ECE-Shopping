@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.converter.PurchaseConverter;
+import com.eceshopping.converter.PurchaseItemConverter;
 import com.eceshopping.daos.PurchaseDAO;
+import com.eceshopping.daos.PurchaseItemDAO;
 import com.eceshopping.dto.PurchaseDto;
+import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.models.PurchaseModel;
 
 import jakarta.persistence.EntityExistsException;
@@ -15,9 +18,11 @@ import javafx.concurrent.Task;
 public class PurchaseService {
 
     PurchaseDAO purchaseDAO;
+    PurchaseItemDAO purchaseItemDAO;
 
     public PurchaseService() {
         purchaseDAO = new PurchaseDAO();
+        purchaseItemDAO = new PurchaseItemDAO();
     }
     
     /** 
@@ -70,7 +75,11 @@ public class PurchaseService {
             @Override
             protected PurchaseDto call() throws Exception {
                 try {
-                    purchaseDAO.save(PurchaseConverter.convertToModel(purchaseDto));
+                    Integer purchaseId = purchaseDAO.save(PurchaseConverter.convertToModel(purchaseDto));
+                    for(PurchasedItemDto items : purchaseDto.getPurchasedItems()) {
+                        items.getPurchase().setId(purchaseId);
+                        purchaseItemDAO.save(PurchaseItemConverter.convertToModel(items));
+                    }
                 } catch (EntityExistsException e) {
                     throw e;
                 }

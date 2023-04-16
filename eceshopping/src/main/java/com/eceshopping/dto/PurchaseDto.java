@@ -1,29 +1,43 @@
 package com.eceshopping.dto;
 
 import java.time.LocalDate;
-
-import com.eceshopping.models.UserModel;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PurchaseDto {
     private Integer id;
     private LocalDate date;
-    private UserModel user;
+    private UserDto user;
     private Double amountPayed;
+    private List<PurchasedItemDto> purchasedItems;
 
     public PurchaseDto() {
         this.id = -1;
         this.date = null;
         this.user = null;
         this.amountPayed = 0.0;
+        this.purchasedItems = new ArrayList<PurchasedItemDto>();
     }
 
-    public PurchaseDto(Integer id, LocalDate date, UserModel user, Double amountPayed) {
+    public PurchaseDto(Integer id, LocalDate date, UserDto user, Double amountPayed) {
         this.id = id;
         this.date = date;
         this.user = user;
         this.amountPayed = amountPayed;
+        this.purchasedItems = new ArrayList<PurchasedItemDto>();
     }
 
+    public void addPurchasedItem(PurchasedItemDto purchasedItem) {
+        this.purchasedItems.add(purchasedItem);
+    }
+
+    public void removePurchasedItem(PurchasedItemDto purchasedItem) {
+        this.purchasedItems.remove(purchasedItem);
+    }
+
+    public List<PurchasedItemDto> getPurchasedItems() {
+        return purchasedItems;
+    }
     
     /** 
      * @return Integer
@@ -31,7 +45,6 @@ public class PurchaseDto {
     public Integer getId() {
         return id;
     }
-
     
     /** 
      * @param id
@@ -48,11 +61,11 @@ public class PurchaseDto {
         this.date = date;
     }
 
-    public UserModel getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(UserModel user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
@@ -74,7 +87,7 @@ public class PurchaseDto {
         return this;
     }
 
-    public PurchaseDto user(UserModel user) {
+    public PurchaseDto user(UserDto user) {
         setUser(user);
         return this;
     }

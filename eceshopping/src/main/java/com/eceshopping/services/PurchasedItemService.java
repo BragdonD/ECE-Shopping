@@ -24,8 +24,10 @@ public class PurchasedItemService {
     /** 
      * @param id
      * @return PurchasedItemDto
+     * @throws IOException
+     * @throws EntityNotFoundException
      */
-    public PurchasedItemDto getById(Integer id) {
+    public PurchasedItemDto getById(Integer id) throws EntityNotFoundException, IOException {
         return PurchaseItemConverter.convertToDto(purchaseItemDAO.getPurchaseItemById(id));
     }
     

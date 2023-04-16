@@ -1,5 +1,7 @@
 package com.eceshopping.converter;
 
+import java.io.IOException;
+
 import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.models.PurchasedItemModel;
 
@@ -13,8 +15,9 @@ public class PurchaseItemConverter {
     public static PurchasedItemModel convertToModel(PurchasedItemDto purchaseItemDto) {
         PurchasedItemModel purchaseItemModel = new PurchasedItemModel();
         purchaseItemModel.setId(purchaseItemDto.getId());
-        purchaseItemModel.setIdArticle(purchaseItemDto.getArticle());
-        purchaseItemModel.setIdPurchase(purchaseItemDto.getPurchase());
+        purchaseItemModel.setArticle(ArticleConverter.convertToModel(purchaseItemDto.getArticle()));
+        purchaseItemModel.setPurchase(PurchaseConverter.convertToModel(purchaseItemDto.getPurchase()));
+        purchaseItemModel.setQuantity(purchaseItemDto.getQuantity());
         return purchaseItemModel;
     }
 
@@ -22,12 +25,14 @@ public class PurchaseItemConverter {
     /** 
      * @param purchaseItemModel
      * @return PurchasedItemDto
+     * @throws IOException
      */
-    public static PurchasedItemDto convertToDto(PurchasedItemModel purchaseItemModel) {
+    public static PurchasedItemDto convertToDto(PurchasedItemModel purchaseItemModel) throws IOException {
         PurchasedItemDto purchaseItemDto = new PurchasedItemDto();
         purchaseItemDto.setId(purchaseItemModel.getId());
-        purchaseItemDto.setArticle(purchaseItemModel.getIdArticle());
-        purchaseItemDto.setPurchase(purchaseItemModel.getIdPurchase());
+        purchaseItemDto.setArticle(ArticleConverter.convertToDto(purchaseItemModel.getArticle()));
+        purchaseItemDto.setPurchase(PurchaseConverter.convertToDto(purchaseItemModel.getPurchase()));
+        purchaseItemDto.setQuantity(purchaseItemModel.getQuantity());
         return purchaseItemDto;
     }
 

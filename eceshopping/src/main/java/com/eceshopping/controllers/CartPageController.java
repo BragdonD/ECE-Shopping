@@ -1,18 +1,24 @@
 package com.eceshopping.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.eceshopping.controllers.components.CartItemController;
 import com.eceshopping.dto.ArticleDto;
+import com.eceshopping.dto.PurchaseDto;
+import com.eceshopping.dto.PurchasedItemDto;
 import com.eceshopping.events.AddToBasketEvent;
 import com.eceshopping.events.DeleteFromBasketEvent;
 import com.eceshopping.events.PaymentEvent;
+import com.eceshopping.services.PurchaseService;
 import com.eceshopping.utils.Router;
+import com.eceshopping.utils.Session;
 import com.eceshopping.views.CartPageView;
 import com.eceshopping.views.PaymentPageView;
 import com.eceshopping.views.components.CartItemView;
 
+import javafx.concurrent.Task;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -20,9 +26,11 @@ public class CartPageController implements Controller {
     private CartPageView view;
     private Double totalPrice;
     private List<CartItemController> cartItemsControllers;
+    private PurchaseService purchaseService;
 
     public CartPageController(CartPageView view) {
         this.view = view;
+        this.purchaseService = new PurchaseService();
         new UserNavBarController(this.view.getNavBar());
         this.totalPrice = 0.0;
         this.cartItemsControllers = new ArrayList<CartItemController>();
@@ -136,14 +144,31 @@ public class CartPageController implements Controller {
             new PaymentPageController(paymentPageView);
             paymentStage.setScene(new Scene(paymentPageView));
             Router.getInstance().getRouterController().getMainStage().addEventHandler(PaymentEvent.PAYMENT_EVENT, e1 -> {
-                this.cartItemsControllers.clear();
-                this.view.clearCart();
+                savePurchase();
                 this.totalPrice = 0.0;
                 this.view.setTotalPrice(Double.toString(totalPrice));
                 this.deactivatePaymentButton();
                 paymentStage.close();
+                this.cartItemsControllers.clear();
+                this.view.clearCart();
             });
         });
+    }
+
+    private void savePurchase() {
+        PurchaseDto purchase = new PurchaseDto(-1, LocalDate.now(), Session.getInstance().getUser(), this.totalPrice);
+        for(CartItemController cartItemController : this.cartItemsControllers) {
+            PurchasedItemDto purchasedItem = new PurchasedItemDto(-1, cartItemController.getArticle(), purchase, cartItemController.getQuantity());
+            purchase.addPurchasedItem(purchasedItem);
+        }
+        Task<PurchaseDto> savePurchasetask = this.purchaseService.savePurchaseAsync(purchase);
+        savePurchasetask.setOnSucceeded(e -> {
+            System.out.println("Purchase saved");
+        });
+        savePurchasetask.setOnFailed(e -> {
+            System.out.println(savePurchasetask.getException().getMessage());
+        });
+        new Thread(savePurchasetask).start();
     }
 
     /**

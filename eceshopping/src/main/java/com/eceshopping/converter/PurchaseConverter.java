@@ -15,7 +15,7 @@ public class PurchaseConverter {
         purchaseModel.setId(purchaseDto.getId());
         purchaseModel.setAmountPayed(purchaseDto.getAmountPayed());
         purchaseModel.setDate(purchaseDto.getDate());
-        purchaseModel.setIdUser(purchaseDto.getUser());
+        purchaseModel.setUser(UserConverter.convertToModel(purchaseDto.getUser()));
         return purchaseModel;
     }
 
@@ -29,7 +29,7 @@ public class PurchaseConverter {
         purchaseDto.setId(purchaseModel.getId());
         purchaseDto.setAmountPayed(purchaseModel.getAmountPayed());
         purchaseDto.setDate(purchaseModel.getDate());
-        purchaseDto.setUser(purchaseModel.getIdUser());
+        purchaseDto.setUser(UserConverter.convertToDto(purchaseModel.getUser()));
         return purchaseDto;
     }
 

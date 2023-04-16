@@ -1,6 +1,8 @@
 package com.eceshopping.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,7 +20,6 @@ import jakarta.persistence.NamedQuery;
 @NamedQueries({
         @NamedQuery(name = "PurchaseModel.findById", query = "FROM PurchaseModel WHERE id = :id"),
         @NamedQuery(name = "PurchaseModel.findAll", query = "FROM PurchaseModel"),
-        @NamedQuery(name = "PurchaseModel.findByName", query = "FROM PurchaseModel WHERE name = :name"),
 })
 public class PurchaseModel {
 
@@ -28,19 +29,19 @@ public class PurchaseModel {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserModel idUser;
+    private UserModel user;
 
     @Column(name = "amountPayed")
     private Double amountPayed;
 
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "purchase_date")
+    private LocalDateTime date;
 
-    public PurchaseModel(int id, UserModel idUser, Double amountPayed, LocalDate date) {
+    public PurchaseModel(int id, UserModel user, Double amountPayed, LocalDate date) {
         this.id = id;
-        this.idUser = idUser;
+        this.user = user;
         this.amountPayed = amountPayed;
-        this.date = date;
+        this.date = LocalDateTime.of(date, LocalDateTime.now().toLocalTime());
     }
 
     public PurchaseModel() {
@@ -62,12 +63,12 @@ public class PurchaseModel {
         this.id = id;
     }
 
-    public UserModel getIdUser() {
-        return idUser;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setIdUser(UserModel idUser) {
-        this.idUser = idUser;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
     public Double getAmountPayed() {
@@ -79,18 +80,10 @@ public class PurchaseModel {
     }
 
     public LocalDate getDate() {
-        return date;
+        return date.toLocalDate();
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.date = LocalDateTime.of(date, LocalDateTime.now().toLocalTime());
     }
-
-    @Override
-
-    public String toString() {
-        return "PurchaseModel [amountPayed=" + amountPayed + ", date=" + date + ", id=" + id + ", idUser=" + idUser
-                + "]";
-    }
-
 }

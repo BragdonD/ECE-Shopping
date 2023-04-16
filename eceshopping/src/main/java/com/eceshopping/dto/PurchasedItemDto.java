@@ -1,13 +1,11 @@
 package com.eceshopping.dto;
 
-import com.eceshopping.models.ArticleModel;
-import com.eceshopping.models.PurchaseModel;
-
 public class PurchasedItemDto {
 
     private Integer id;
-    ArticleModel article;
-    PurchaseModel purchase;
+    ArticleDto article;
+    PurchaseDto purchase;
+    Integer quantity;
 
     public PurchasedItemDto() {
         this.id = -1;
@@ -15,12 +13,12 @@ public class PurchasedItemDto {
         this.purchase = null;
     }
 
-    public PurchasedItemDto(Integer id, ArticleModel article, PurchaseModel purchase) {
+    public PurchasedItemDto(Integer id, ArticleDto article, PurchaseDto purchase, Integer quantity) {
         this.id = id;
         this.article = article;
         this.purchase = purchase;
+        this.quantity = quantity;
     }
-
     
     /** 
      * @return Integer
@@ -29,6 +27,13 @@ public class PurchasedItemDto {
         return id;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
     
     /** 
      * @param id
@@ -37,19 +42,19 @@ public class PurchasedItemDto {
         this.id = id;
     }
 
-    public ArticleModel getArticle() {
+    public ArticleDto getArticle() {
         return article;
     }
 
-    public void setArticle(ArticleModel article) {
+    public void setArticle(ArticleDto article) {
         this.article = article;
     }
 
-    public PurchaseModel getPurchase() {
+    public PurchaseDto getPurchase() {
         return purchase;
     }
 
-    public void setPurchase(PurchaseModel purchase) {
+    public void setPurchase(PurchaseDto purchase) {
         this.purchase = purchase;
     }
 
@@ -58,13 +63,18 @@ public class PurchasedItemDto {
         return this;
     }
 
-    public PurchasedItemDto article(ArticleModel article) {
+    public PurchasedItemDto article(ArticleDto article) {
         setArticle(article);
         return this;
     }
 
-    public PurchasedItemDto purchase(PurchaseModel purchase) {
+    public PurchasedItemDto purchase(PurchaseDto purchase) {
         setPurchase(purchase);
+        return this;
+    }
+
+    public PurchasedItemDto quantity(Integer quantity) {
+        setQuantity(quantity);
         return this;
     }
 

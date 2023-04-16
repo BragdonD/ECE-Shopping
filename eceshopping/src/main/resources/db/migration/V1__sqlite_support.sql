@@ -42,7 +42,7 @@ CREATE TABLE Basket_Items (
 CREATE TABLE Purchases (
 	id integer PRIMARY KEY AUTOINCREMENT,
 	user_id integer,
-	purchase_date datetime
+	purchase_date timestamp
 );
 
 CREATE TABLE Purchase_Items (

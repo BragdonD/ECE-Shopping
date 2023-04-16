@@ -13,7 +13,7 @@ import jakarta.validation.ConstraintViolationException;
 public interface DaoInterface<T, I> {
     public T getById(I id) throws EntityNotFoundException;
 
-    public void save(T t) throws ConstraintViolationException;
+    public Integer save(T t) throws ConstraintViolationException;
 
     public void update(T t) throws ConstraintViolationException;
 
