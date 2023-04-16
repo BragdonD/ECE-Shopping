@@ -293,21 +293,19 @@ public class ArticleDto {
         return this;
     }
 
-
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", price='" + getPrice() + "'" +
-            ", bulkprice='" + getBulkprice() + "'" +
-            ", image='" + getImage() + "'" +
-            ", type='" + getType() + "'" +
-            ", marque='" + getMarque() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", stock='" + getStock() + "'" +
-            "}";
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", price='" + getPrice() + "'" +
+                ", bulkprice='" + getBulkprice() + "'" +
+                ", image='" + getImage() + "'" +
+                ", type='" + getType() + "'" +
+                ", marque='" + getMarque() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", stock='" + getStock() + "'" +
+                "}";
     }
-    
 
 }

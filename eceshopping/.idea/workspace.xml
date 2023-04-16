@@ -6,7 +6,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true"
+      nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.eceshopping.MainApp" />
       <module name="eceshopping" />
       <extension name="coverage">

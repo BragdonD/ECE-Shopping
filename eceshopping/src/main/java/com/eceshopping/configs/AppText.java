@@ -53,8 +53,8 @@ public class AppText {
 
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_1 = "View your new and old orders";
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_2 = "You can ask us all your questions";
-    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_3 = "See/Change my informations"; 
-    
+    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_3 = "See/Change my informations";
+
     public static final String PRODUCT_PAGE_TITLE = "Welcome to ECE Shopping";
     public static final String PRODUCT_PAGE_SORT_ALPHA = "Sort by name";
     public static final String PRODUCT_PAGE_SORT_PRICE = "Sort by price";

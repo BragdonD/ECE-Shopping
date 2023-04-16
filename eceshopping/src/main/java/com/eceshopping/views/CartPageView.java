@@ -57,7 +57,8 @@ public class CartPageView extends UserLayoutView implements View {
     }
 
     public void setTotalPrice(String totalPrice) {
-        this.totalPrice.setText(totalPrice + " €");;
+        this.totalPrice.setText(totalPrice + " €");
+        ;
     }
 
     public void removeProductFromCart(CartItemView cartItemView) {

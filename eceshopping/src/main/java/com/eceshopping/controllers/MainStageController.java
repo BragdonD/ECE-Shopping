@@ -17,19 +17,19 @@ public class MainStageController {
         this.stage = s;
 
         this.stage.addEventHandler(AddToBasketEvent.ADD_TO_CART_EVENT, e -> {
-            if(Session.getInstance() != null) {
+            if (Session.getInstance() != null) {
                 BasketItemDto item = new BasketItemDto()
-                    .product(e.getArticle())
-                    .quantity(e.getQuantity());
+                        .product(e.getArticle())
+                        .quantity(e.getQuantity());
                 Session.getInstance().addItemToCart(item);
             }
         });
 
         this.stage.addEventHandler(DeleteFromBasketEvent.DELETE_FROM_CART_EVENT, e -> {
-            if(Session.getInstance() != null) {
-                for(BasketItemDto item : Session.getInstance().getItems()) {
-                    if(item.getProduct().getId() == e.getArticle().getId()) {
-                        if(e.isDeleteAll()) {
+            if (Session.getInstance() != null) {
+                for (BasketItemDto item : Session.getInstance().getItems()) {
+                    if (item.getProduct().getId() == e.getArticle().getId()) {
+                        if (e.isDeleteAll()) {
                             Session.getInstance().removeItemFromCart(item);
                         } else {
                             item.setQuantity(item.getQuantity() - e.getQuantity());

@@ -7,7 +7,6 @@ public class BasketDto {
     private int id;
     private UserDto user;
     private List<BasketItemDto> basketItems;
-    
 
     public BasketDto() {
         basketItems = new ArrayList<BasketItemDto>();
@@ -64,5 +63,5 @@ public class BasketDto {
     public BasketDto basketItems(List<BasketItemDto> basketItems) {
         setBasketItems(basketItems);
         return this;
-    }    
+    }
 }

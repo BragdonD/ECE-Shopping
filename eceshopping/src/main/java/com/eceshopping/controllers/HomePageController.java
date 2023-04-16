@@ -25,15 +25,17 @@ public class HomePageController implements Controller {
         loadArticles();
         setupFilterProducts();
 
-        Router.getInstance().getRouterController().getMainStage().addEventHandler(DeleteFromBasketEvent.DELETE_FROM_CART_EVENT, e -> {
-            ArticleDto article = e.getArticle();
-            Integer quantity = e.getQuantity();
-            if(quantity == 0) return;
-            for (ArticleDto product : this.articles) {
-                if(product.getId() == article.getId())
-                    product.setStock( product.getStock() + quantity);
-            }
-        });
+        Router.getInstance().getRouterController().getMainStage()
+                .addEventHandler(DeleteFromBasketEvent.DELETE_FROM_CART_EVENT, e -> {
+                    ArticleDto article = e.getArticle();
+                    Integer quantity = e.getQuantity();
+                    if (quantity == 0)
+                        return;
+                    for (ArticleDto product : this.articles) {
+                        if (product.getId() == article.getId())
+                            product.setStock(product.getStock() + quantity);
+                    }
+                });
 
     }
 
@@ -42,14 +44,15 @@ public class HomePageController implements Controller {
         getAllArticleTask.setOnSucceeded(e -> {
             this.articles = getAllArticleTask.getValue();
             displayArticles();
-            //this.view.loadArticles(articles);
+            // this.view.loadArticles(articles);
         });
         new Thread(getAllArticleTask).start();
     }
 
     private void displayArticles() {
         for (ArticleDto article : this.articles) {
-            ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(), article.getPrice()); 
+            ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(),
+                    article.getPrice());
             new ProductOverviewController(product, article);
             this.view.addProduct(product);
         }
@@ -64,7 +67,8 @@ public class HomePageController implements Controller {
             clearArticles();
             for (ArticleDto article : this.articles) {
                 if (article.getName().toLowerCase().contains(e.getQuery().toLowerCase())) {
-                    ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(), article.getPrice()); 
+                    ProductOverviewView product = new ProductOverviewView(article.getImage(), article.getName(),
+                            article.getPrice());
                     new ProductOverviewController(product, article);
                     this.view.addProduct(product);
                 }

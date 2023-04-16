@@ -43,4 +43,4 @@ public class ProductOverviewView extends GridPane {
     public Label getPrice() {
         return this.price;
     }
-}   
+}

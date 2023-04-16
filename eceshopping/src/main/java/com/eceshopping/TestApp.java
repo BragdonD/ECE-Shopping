@@ -10,22 +10,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App class for eceshopping project 
+ * JavaFX App class for eceshopping project
  */
 public class TestApp extends Application {
     private Router router;
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
-        s.setTitle("My JavaFX App");       
+        s.setTitle("My JavaFX App");
 
         // Set the main stage inside the router controller
-        this.router = Router.getInstance(); 
+        this.router = Router.getInstance();
         this.router.getRouterController().setMainStage(s);
         AddArticleFormView addArticleView = new AddArticleFormView();
         this.router.addRoute("/addArticle", addArticleView, new AddArticleFormController(addArticleView));
-        
-        
+
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();

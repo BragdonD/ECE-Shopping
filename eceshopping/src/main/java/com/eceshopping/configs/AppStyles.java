@@ -297,7 +297,7 @@ public class AppStyles {
                         "-fx-padding: 5px 5px 5px 5px;" +
                         "-fx-spacing: 10px;" +
                         "-fx-min-width: 300px;";
-        
+
         public static final String SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS = "" +
                         "-fx-background-color: #ffffff;" +
                         "-fx-border-radius: 4px;" +
@@ -318,7 +318,7 @@ public class AppStyles {
                         "-fx-cursor: hand;" +
                         "-fx-padding: 5px 15px 5px 15px;" +
                         "-fx-width: 100%;";
-        
+
         public static final String SEARCH_BAR_BUTTON_STYLE_HOVER = "" +
                         "-fx-background-color: #242e8c;" +
                         "-fx-text-fill: #fff;" +
@@ -351,7 +351,6 @@ public class AppStyles {
                         "-fx-min-height: 200px;" +
                         "-fx-cursor: hand;";
 
-        
         public static final String PRODUCT_OVERVIEW_TITLE_STYLE = "" +
                         "-fx-border-radius: 4px;" +
                         "-fx-background-radius: 4px;" +
@@ -375,7 +374,7 @@ public class AppStyles {
                         "-fx-alignment: center;" +
                         "-fx-min-width: 200px;" +
                         "-fx-min-height: 200px;";
-        
+
         public static final String CART_TOTAL_PRICE_STYLE = "" +
                         "-fx-padding: 5px 5px 5px 5px;" +
                         "-fx-alignment: center;" +

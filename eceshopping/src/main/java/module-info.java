@@ -6,11 +6,11 @@ module com.eceshopping {
     requires jakarta.persistence;
     requires jakarta.validation;
     requires jakarta.el;
-    
+
     requires bcrypt;
     requires org.flywaydb.core;
     requires javafaker;
-    
+
     opens com.eceshopping.models;
     opens db.migration;
     opens images;

@@ -48,7 +48,7 @@ public class ProductPageView extends UserLayoutView implements View {
         this.gridPane.setVgap(20);
         productDetails.setHgap(20);
         productDetails.setVgap(20);
-        this.addToCart = new Button("Add to cart"); 
+        this.addToCart = new Button("Add to cart");
         this.image.setFitHeight(300);
         this.image.setFitWidth(300);
         this.image.setPreserveRatio(true);
@@ -80,7 +80,7 @@ public class ProductPageView extends UserLayoutView implements View {
         productDetails.add(price, 0, 4);
         GridPane.setHalignment(price, HPos.LEFT);
         Label quantity = new Label("Stock:");
-        productDetails.add(quantity, 0, 3);   
+        productDetails.add(quantity, 0, 3);
         Label priceBulk = new Label("Price (Bulk - 10):");
         productDetails.add(priceBulk, 0, 5);
         Label wantedQuantity = new Label("Wanted Quantity:");
@@ -132,7 +132,6 @@ public class ProductPageView extends UserLayoutView implements View {
         productDetails.add(this.stock, 1, 3);
     }
 
-
     public Button getAddToCart() {
         return this.addToCart;
     }
@@ -140,7 +139,6 @@ public class ProductPageView extends UserLayoutView implements View {
     public TextField getQuantity() {
         return this.quantity;
     }
-    
 
     @Override
     public Node getRootNode() {

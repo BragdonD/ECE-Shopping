@@ -1,6 +1,5 @@
 package com.eceshopping.services;
-    
-    
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,13 +33,13 @@ public class ArticleService {
         Task<ArticleDto> task = new Task<ArticleDto>() {
             @Override
             protected ArticleDto call() throws Exception {
-                if(articleDto.getImage() == null) {
+                if (articleDto.getImage() == null) {
                     throw new EntityExistsException("Image is missing.");
                 }
 
                 try {
                     System.out.println(articleDto);
-                    ArticleModel article = ArticleConverter.convertToModel(articleDto); 
+                    ArticleModel article = ArticleConverter.convertToModel(articleDto);
                     articleDAO.save(article);
                 } catch (EntityExistsException e) {
                     System.out.println(e.getMessage());
@@ -52,27 +51,27 @@ public class ArticleService {
         return task;
     }
 
-
     /**
      * This method is used to update the name of an article.
+     * 
      * @param newname
      * @param id
      * @throws EntityExistsException
      * @throws EntityNotFoundException
      */
- public void updateName (String newname, int id) throws EntityExistsException, EntityNotFoundException {
-    if (this.articleDAO.getArticleByName(newname) != null) {
-        throw new EntityExistsException("Name is already in use.");
+    public void updateName(String newname, int id) throws EntityExistsException, EntityNotFoundException {
+        if (this.articleDAO.getArticleByName(newname) != null) {
+            throw new EntityExistsException("Name is already in use.");
+        }
+        if (this.articleDAO.getById(id) == null) {
+            throw new EntityNotFoundException("Article does not exist.");
+        }
+        ArticleModel article = this.articleDAO.getById(id);
+        article.setName(newname);
+        this.articleDAO.update(article);
     }
-    if (this.articleDAO.getById(id) == null) {
-        throw new EntityNotFoundException("Article does not exist.");
-    }
-    ArticleModel article = this.articleDAO.getById(id);
-    article.setName(newname);
-    this.articleDAO.update(article);
-    } 
 
-    public void updatePrice  (double newprice, int id) throws EntityExistsException, EntityNotFoundException{
+    public void updatePrice(double newprice, int id) throws EntityExistsException, EntityNotFoundException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
@@ -81,7 +80,7 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
-    public void updateBulkprice (double newbulkprice, int id) throws EntityExistsException, EntityNotFoundException{
+    public void updateBulkprice(double newbulkprice, int id) throws EntityExistsException, EntityNotFoundException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
@@ -90,16 +89,17 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
-    public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+    public void updateImage(Image image, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
         ArticleModel article = this.articleDAO.getById(id);
         article.setImage(image);
         this.articleDAO.update(article);
-    } 
+    }
 
-    public void updateMarque(String marque, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+    public void updateMarque(String marque, int id)
+            throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
@@ -108,7 +108,7 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
-    public void updateType(String type,int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+    public void updateType(String type, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }
@@ -117,7 +117,7 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
-    public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+    public void updateStock(Integer stock, int id) throws EntityExistsException, EntityNotFoundException, SQLException {
 
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
@@ -127,7 +127,8 @@ public class ArticleService {
         this.articleDAO.update(article);
     }
 
-    public void updateDescription(String description,int id) throws EntityExistsException, EntityNotFoundException, SQLException{
+    public void updateDescription(String description, int id)
+            throws EntityExistsException, EntityNotFoundException, SQLException {
         if (this.articleDAO.getById(id) == null) {
             throw new EntityNotFoundException("Article does not exist.");
         }

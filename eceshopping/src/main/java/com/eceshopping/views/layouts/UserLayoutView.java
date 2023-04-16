@@ -26,7 +26,7 @@ public class UserLayoutView extends GridPane {
         RowConstraints row2 = new RowConstraints();
         row2.setVgrow(Priority.ALWAYS);
         this.getRowConstraints().add(row2);
-        //this.setStyle("-fx-background-color: red;");
+        // this.setStyle("-fx-background-color: red;");
     }
 
     public void bindScene(Scene scene) {

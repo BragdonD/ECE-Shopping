@@ -43,7 +43,7 @@ public class Session {
     public List<BasketItemDto> getItems() {
         return basket.getBasketItems();
     }
-    
+
     /**
      * This method is used to get the current user in the session.
      * 

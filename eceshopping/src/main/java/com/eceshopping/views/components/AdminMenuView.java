@@ -16,7 +16,6 @@ public class AdminMenuView extends GridPane implements View {
     Hyperlink manageUsersButton;
     Hyperlink manageOrdersButton;
 
-
     public AdminMenuView() {
         super();
         this.setAlignment(Pos.CENTER);

@@ -10,7 +10,7 @@ In the context of a JavaFX application, a view is a user interface component tha
 
 Each view in the JavaFX application is represented by a Java class. This class contains the logic for the view and defines how the view should be displayed to the user.
 
-Typically, a view class extends the ``javafx.scene.Parent`` class, which represents a node in the JavaFX scene graph. The view class is responsible for creating the user interface components that make up the view and arranging them in the scene graph.
+Typically, a view class extends the `javafx.scene.Parent` class, which represents a node in the JavaFX scene graph. The view class is responsible for creating the user interface components that make up the view and arranging them in the scene graph.
 
 ## Conclusion
 

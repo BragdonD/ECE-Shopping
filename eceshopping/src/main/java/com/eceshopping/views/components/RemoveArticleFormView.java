@@ -12,7 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-
 public class RemoveArticleFormView extends GridPane implements View {
     private TextField articleNameTextField;
     private Button removeArticleButton;
@@ -24,7 +23,7 @@ public class RemoveArticleFormView extends GridPane implements View {
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(10);
-        
+
         this.scenetitle = new Text("Retirer un article");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         this.articleNameTextField = new TextField();
@@ -36,7 +35,7 @@ public class RemoveArticleFormView extends GridPane implements View {
         this.add(this.articleNameTextField, 1, 4);
         this.add(this.removeArticleButton, 3, 6);
         this.add(this.backButton, 0, 10);
-        
+
     }
 
     public TextField getArticleNameTextField() {
@@ -50,8 +49,6 @@ public class RemoveArticleFormView extends GridPane implements View {
     public Hyperlink getBackButton() {
         return this.backButton;
     }
-
-
 
     @Override
     public Node getRootNode() {

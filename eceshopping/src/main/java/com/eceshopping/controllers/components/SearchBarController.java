@@ -18,6 +18,7 @@ public class SearchBarController {
 
     /**
      * Constructor of the SearchBarController class.
+     * 
      * @param view The view of the search bar
      */
     public SearchBarController(SearchBarView view) {
@@ -38,7 +39,7 @@ public class SearchBarController {
     }
 
     /**
-     * Setup the search button style and action. 
+     * Setup the search button style and action.
      */
     private void setupSearchButton() {
         this.view.getSearchButton().setOnMouseEntered(e -> {
@@ -91,7 +92,7 @@ public class SearchBarController {
         this.view.getSearchBar().requestFocus();
         this.view.getSearchBar().setStyle(AppStyles.SEARCH_BAR_TEXT_FIELD_STYLE_FOCUS);
         isFocused = true;
-        if(!Router.getInstance().getCurrentRoute().equals("/")) {
+        if (!Router.getInstance().getCurrentRoute().equals("/")) {
             Router.getInstance().navigateTo("/");
         }
     }

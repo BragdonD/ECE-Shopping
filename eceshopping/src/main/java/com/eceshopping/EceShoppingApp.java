@@ -53,7 +53,7 @@ public class EceShoppingApp extends Application {
 
         setWindowSize(s);
         s.setTitle(APP_NAME);
-        
+
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
 
         addSceneEventHandler(scene, s);
@@ -87,7 +87,7 @@ public class EceShoppingApp extends Application {
         // Routes for admin
         this.router.addRoute("/manageInv", manaInvView, new ManageInvController(manaInvView));
         this.router.addRoute("/addArticle", addArticleFormView, new AddArticleFormController(addArticleFormView));
-        //this.router.addRoute("/manageUsers", manageUse)
+        // this.router.addRoute("/manageUsers", manageUse)
         this.router.addRoute("/admin", AdminMenuView, new AdminMenuController(AdminMenuView));
 
         this.router.navigateTo("/");

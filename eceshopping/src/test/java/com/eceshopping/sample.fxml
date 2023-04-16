@@ -7,21 +7,30 @@
 <?import javafx.scene.text.Text?>
 
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
+   xmlns:fx="http://javafx.com/fxml/1">
    <items>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button layoutX="266.0" layoutY="293.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="166.0" text="Chercher depuis l'ordinateur " />
+            <Button layoutX="266.0" layoutY="293.0" mnemonicParsing="false" prefHeight="33.0"
+               prefWidth="166.0" text="Chercher depuis l'ordinateur " />
             <TextField layoutX="266.0" layoutY="66.0" />
-            <Text layoutX="161.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de l'article" />
-            <Text layoutX="158.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Photo de l'article" />
-            <Text layoutX="250.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'un article" />
-            <Text layoutX="162.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix " />
+            <Text layoutX="161.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Nom de l'article" />
+            <Text layoutX="158.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Photo de l'article" />
+            <Text layoutX="250.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Ajout d'un article" />
+            <Text layoutX="162.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Prix " />
             <TextField layoutX="266.0" layoutY="102.0" />
-            <Text layoutX="167.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" wrappingWidth="98.69792175292969" />
+            <Text layoutX="167.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Marque" wrappingWidth="98.69792175292969" />
             <TextField layoutX="266.0" layoutY="140.0" />
             <Text layoutX="174.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
-            <Text layoutX="162.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bulkprice" />
+            <Text layoutX="162.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="Bulkprice" />
             <TextField layoutX="266.0" layoutY="186.0" />
             <TextField layoutX="266.0" layoutY="241.0" />
             <Button layoutX="513.0" layoutY="343.0" mnemonicParsing="false" text="Valider" />

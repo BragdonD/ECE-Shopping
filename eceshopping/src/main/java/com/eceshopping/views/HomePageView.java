@@ -11,7 +11,7 @@ public class HomePageView extends UserLayoutView implements View {
     GridPane productsLayout;
     int row;
 
-    public HomePageView()  {
+    public HomePageView() {
         productsLayout = new GridPane();
         this.productsLayout.prefHeightProperty().bind(this.slot.heightProperty());
         this.productsLayout.prefWidthProperty().bind(this.slot.widthProperty());
@@ -30,7 +30,7 @@ public class HomePageView extends UserLayoutView implements View {
     public void addProduct(ProductOverviewView product) {
         int col = row % AppStyles.PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS; // calculate the column index
         int rowIdx = row / AppStyles.PRODUCT_HOME_PAGE_NUMBER_OF_COLUMNS; // calculate the row index
-        
+
         this.productsLayout.add(product, col, rowIdx);
         this.row++;
     }

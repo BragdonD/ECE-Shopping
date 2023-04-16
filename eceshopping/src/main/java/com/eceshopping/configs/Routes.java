@@ -16,8 +16,7 @@ public class Routes {
             new Route("Payment Methods", 2, "/profile/informations"));
 
     public static final List<Route> navBarRoutes = Arrays.asList(
-        new Route("Home", 0, "/"),
-        new Route("Cart", 1, "/cart"),
-        new Route("Profile", 2, "/profile")
-    );
+            new Route("Home", 0, "/"),
+            new Route("Cart", 1, "/cart"),
+            new Route("Profile", 2, "/profile"));
 }

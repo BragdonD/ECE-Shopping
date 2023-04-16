@@ -55,18 +55,21 @@ public class CartItemController {
 
     private void setupDeleteArticle() {
         this.view.getRemoveButton().setOnAction(e -> {
-            if(quantity > 0) {
+            if (quantity > 0) {
                 updateQuantity(quantity - 1);
-                if(quantity == 0) {
-                    Router.getInstance().getRouterController().getMainStage().fireEvent(new DeleteFromBasketEvent(article, 1, true));
+                if (quantity == 0) {
+                    Router.getInstance().getRouterController().getMainStage()
+                            .fireEvent(new DeleteFromBasketEvent(article, 1, true));
                 } else {
-                    Router.getInstance().getRouterController().getMainStage().fireEvent(new DeleteFromBasketEvent(article, 1, false));
+                    Router.getInstance().getRouterController().getMainStage()
+                            .fireEvent(new DeleteFromBasketEvent(article, 1, false));
                 }
             }
         });
 
         this.view.getDeleteButton().setOnAction(e -> {
-            Router.getInstance().getRouterController().getMainStage().fireEvent(new DeleteFromBasketEvent(article, quantity, true));
+            Router.getInstance().getRouterController().getMainStage()
+                    .fireEvent(new DeleteFromBasketEvent(article, quantity, true));
         });
     }
 }

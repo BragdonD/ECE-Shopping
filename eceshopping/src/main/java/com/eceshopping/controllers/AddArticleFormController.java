@@ -219,6 +219,7 @@ public class AddArticleFormController implements Controller {
             }
         });
     }
+
     public Scene getScene() {
         return this.view.getScene();
     }

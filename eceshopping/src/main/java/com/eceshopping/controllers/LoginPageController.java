@@ -73,7 +73,7 @@ public class LoginPageController implements Controller {
                             this.loginFormController.reset();
                         } else {
                             Session.getInstance().setUser(user);
-                            if(user.getAdmin())
+                            if (user.getAdmin())
                                 Router.getInstance().navigateTo("/admin");
                             else
                                 Router.getInstance().navigateTo("/");

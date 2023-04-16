@@ -34,8 +34,7 @@ public class ManageInvController implements Controller {
     }
 
     private void setupHyperlink() {
-        
-        
+
         this.view.getAddArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/addArticle");
         });
