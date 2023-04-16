@@ -2,7 +2,8 @@ package com.eceshopping.utils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.eceshopping.dto.BasketDto;
+import com.eceshopping.dto.BasketItemDto;
 import com.eceshopping.dto.UserDto;
 import com.eceshopping.utils.listeners.UserChangedListener;
 
@@ -13,6 +14,7 @@ import com.eceshopping.utils.listeners.UserChangedListener;
  */
 public class Session {
     private UserDto user;
+    private BasketDto basket;
     private List<UserChangedListener> userChangedListeners;
     private static Session instance;
 
@@ -21,6 +23,7 @@ public class Session {
      */
     private Session() {
         this.user = null;
+        this.basket = new BasketDto();
         this.userChangedListeners = new ArrayList<UserChangedListener>();
     }
 
@@ -35,6 +38,10 @@ public class Session {
         return instance;
     }
 
+    public List<BasketItemDto> getItems() {
+        return basket.getBasketItems();
+    }
+    
     /**
      * This method is used to get the current user in the session.
      * @return The current user in the session
@@ -102,4 +109,11 @@ public class Session {
             "}";
     }
 
+    public void addItemToCart(BasketItemDto basket) {
+        this.basket.addItem(basket);
+    }
+
+    public void removeItemFromCart(BasketItemDto basket) {
+        this.basket.removeItem(basket);
+    }
 }

@@ -4,8 +4,6 @@ import com.eceshopping.views.components.ManageInvView;
 import com.eceshopping.utils.Router;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 
 public class ManageInvController implements Controller{
 

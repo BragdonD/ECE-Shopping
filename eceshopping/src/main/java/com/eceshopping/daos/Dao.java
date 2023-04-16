@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.query.SelectionQuery;
 
 import com.eceshopping.configs.HibernateConfig;
-import com.eceshopping.models.ArticleModel;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;

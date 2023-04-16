@@ -11,11 +11,10 @@ import javafx.scene.Scene;
 public class ProductPageController implements Controller {
     private ProductPageView view;
     private ArticleDto article;
-    private UserNavBarController navBarController;
     
     public ProductPageController(ProductPageView view) {
         this.view = view;
-        this.navBarController = new UserNavBarController(this.view.getNavBar());
+        new UserNavBarController(this.view.getNavBar());
         listenToEvents();
         setupAddToCartButton();
     }
