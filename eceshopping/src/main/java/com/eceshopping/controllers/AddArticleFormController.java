@@ -1,28 +1,19 @@
 package com.eceshopping.controllers;
 
-import java.io.File;
-import java.util.List;
-
+import com.eceshopping.configs.AppStyles;
 import com.eceshopping.dto.ArticleDto;
 import com.eceshopping.factories.ArticleFactory;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.configs.AppStyles;
 import com.eceshopping.utils.validator.*;
 import com.eceshopping.utils.Router;
-import com.eceshopping.utils.StringSanitizer;
 import com.eceshopping.views.components.AddArticleFormView;
-import com.eceshopping.views.components.LoadingCircle;
-import com.eceshopping.views.components.ManageInvView;
-import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.concurrent.Task;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -233,7 +224,6 @@ public class AddArticleFormController implements Controller {
             }
         });
     }
-
     public Scene getScene() {
         return this.view.getScene();
     }

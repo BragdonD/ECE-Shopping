@@ -59,4 +59,8 @@ public class RouterController {
     public Scene getScene() {
         return mainStage.getScene();
     }
+
+    public Stage getStage() {
+        return mainStage;
+    }
 }

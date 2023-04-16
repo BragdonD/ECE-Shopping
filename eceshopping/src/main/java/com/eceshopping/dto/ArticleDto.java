@@ -49,7 +49,6 @@ public class ArticleDto {
         this.marque = marque;
         this.description = description;
         this.stock = stock;
-
     }
 
     /**
@@ -294,12 +293,21 @@ public class ArticleDto {
         return this;
     }
 
-    /**
-     * Returns a string representation of the ArticleDto object.
-     */
+
+    @Override
     public String toString() {
-        return "ArticleDto [id=" + id + ", name=" + name + ", price=" + price + ", bulkprice=" + bulkprice + ", image="
-                + image + "]";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", name='" + getName() + "'" +
+            ", price='" + getPrice() + "'" +
+            ", bulkprice='" + getBulkprice() + "'" +
+            ", image='" + getImage() + "'" +
+            ", type='" + getType() + "'" +
+            ", marque='" + getMarque() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", stock='" + getStock() + "'" +
+            "}";
     }
+    
 
 }

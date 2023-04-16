@@ -1,8 +1,5 @@
 package com.eceshopping.views.components;
 
-import com.eceshopping.daos.ArticleDAO;
-import com.eceshopping.dto.ArticleDto;
-import com.eceshopping.services.ArticleService;
 import com.eceshopping.views.View;
 
 import javafx.geometry.Pos;
@@ -19,8 +16,7 @@ public class AdminMenuView extends GridPane implements View {
     Hyperlink manageInvButton;
     Hyperlink manageUsersButton;
     Hyperlink manageOrdersButton;
-    Label test;
-    ArticleService articleService = new ArticleService();
+
 
     public AdminMenuView() {
         super();
@@ -30,8 +26,8 @@ public class AdminMenuView extends GridPane implements View {
         this.tittle = new Text("Menu Administrateur");
         tittle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         this.manageInvButton = new Hyperlink("Gestion de l'inventaire");
-        this.manageUsersButton = new Hyperlink("Info clients");
-        this.manageOrdersButton = new Hyperlink("info ventes");
+        this.manageUsersButton = new Hyperlink("Gestion des utilisateurs");
+        this.manageOrdersButton = new Hyperlink("Gestion des commandes");
         this.add(this.tittle, 0, 0, 2, 1);
         this.add(this.manageInvButton, 0, 4);
         this.add(this.manageUsersButton, 0, 5);

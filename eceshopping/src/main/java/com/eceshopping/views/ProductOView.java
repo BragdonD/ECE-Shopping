@@ -40,8 +40,8 @@ public class ProductOView extends GridPane {
         columnConstraints.setPercentWidth(50);
         lastRow.getColumnConstraints().add(columnConstraints);
         GridPane.setHalignment(this.title, HPos.CENTER);
-        // this.title.setStyle(AppStyles.PRODUCT_OVERVIEW_TITLE_STYLE);
-        // this.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
+        this.title.setStyle(AppStyles.PRODUCT_OVERVIEW_TITLE_STYLE);
+        this.setStyle(AppStyles.PRODUCT_OVERVIEW_STYLE);
     }
 
     public Integer getProdId() {

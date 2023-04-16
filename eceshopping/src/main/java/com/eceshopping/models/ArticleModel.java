@@ -23,13 +23,13 @@ import javafx.scene.image.Image;
 @Table(name = "Products")
 @NamedQueries({
         @NamedQuery(name = "ArticleModel.findById", query = "FROM ArticleModel WHERE id = :id"),
-        @NamedQuery(name = "ArticleModel.findAll", query = "FROM ArticleModel"),
         @NamedQuery(name = "ArticleModel.findByName", query = "FROM ArticleModel WHERE name = :name"),
+        @NamedQuery(name = "ArticleModel.findAll", query = "FROM ArticleModel"),
 })
 public class ArticleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -55,11 +55,7 @@ public class ArticleModel {
     @Column(name = "marque")
     private String marque;
 
-    @Column(name = "ventes")
-    private Integer ventes;
-
     public ArticleModel() {
-        this.image = new byte[0];
     }
 
     public ArticleModel(int id, String name, String type, double price, double bulkprice, int stock, Image image,

@@ -22,13 +22,12 @@ import javafx.scene.text.Text;
 public class UserInformationsPageController implements Controller {
     private UserInformationsPage view;
     private BooleanProperty editable;
-    private UserNavBarController navBarController;
     private List<InputFieldController> inputFieldsControllers;
     private UserService userService;
 
     public UserInformationsPageController(UserInformationsPage view) {
         this.view = view;
-        this.navBarController = new UserNavBarController(this.view.getNavBar());
+        new UserNavBarController(this.view.getNavBar());
         this.editable = new SimpleBooleanProperty(false);
         this.userService = new UserService();
         this.bindEditable();

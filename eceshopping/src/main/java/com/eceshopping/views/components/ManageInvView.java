@@ -1,12 +1,11 @@
 package com.eceshopping.views.components;
 
-import java.awt.Label;
-
 import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.View;
 
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class ManageInvView extends GridPane implements View {
@@ -15,8 +14,8 @@ public class ManageInvView extends GridPane implements View {
     private Hyperlink removeArticleButton;
     private Hyperlink modifyArticleButton;
     private int row = 1;
-    GridPane productsLayout;
-    Label name;
+    private GridPane productsLayout;
+    private Label name;
 
     public ManageInvView() {
         super();
@@ -30,7 +29,6 @@ public class ManageInvView extends GridPane implements View {
         this.productsLayout.setHgap(20);
         this.productsLayout.setVgap(20);
         this.add(productsLayout, row, row);
-        ;
         this.row++;
     }
 
@@ -62,7 +60,6 @@ public class ManageInvView extends GridPane implements View {
 
     @Override
     public Node getRootNode() {
-        // TODO Auto-generated method stub
         return this;
     }
 

@@ -6,15 +6,14 @@ module com.eceshopping {
     requires jakarta.persistence;
     requires jakarta.validation;
     requires jakarta.el;
-    requires java.sql;
+    
     requires bcrypt;
-    requires java.desktop;
     requires org.flywaydb.core;
     requires javafaker;
-
-    exports com.eceshopping;
-
+    
     opens com.eceshopping.models;
     opens db.migration;
     opens images;
+
+    exports com.eceshopping;
 }

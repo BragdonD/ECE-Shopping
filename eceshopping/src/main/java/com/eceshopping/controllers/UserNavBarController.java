@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.eceshopping.configs.Routes;
 import com.eceshopping.controllers.components.LinkNavBarController;
+import com.eceshopping.controllers.components.SearchBarController;
 import com.eceshopping.views.components.LinkNavBarView;
 import com.eceshopping.views.components.UserNavBarView;
 
@@ -20,5 +21,6 @@ public class UserNavBarController {
             links.add(new LinkNavBarController(menu, Routes.navBarRoutes.get(i).getPath()));
             i++;
         }
+        new SearchBarController(this.view.getSearchBar());
     }
 }

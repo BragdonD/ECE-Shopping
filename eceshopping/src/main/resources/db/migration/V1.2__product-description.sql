@@ -2,4 +2,4 @@ ALTER TABLE Products
 ADD COLUMN description varchar;
 
 ALTER TABLE Products
-ADD COLUMN stock Integer;
+ADD COLUMN stock integer;

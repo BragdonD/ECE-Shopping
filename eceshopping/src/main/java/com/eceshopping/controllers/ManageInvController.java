@@ -3,6 +3,9 @@ package com.eceshopping.controllers;
 import com.eceshopping.views.ProductOView;
 import com.eceshopping.views.components.ManageInvView;
 
+import javafx.concurrent.Task;
+import javafx.scene.Scene;
+
 import java.util.List;
 
 import com.eceshopping.dto.ArticleDto;
@@ -10,11 +13,6 @@ import com.eceshopping.events.DisplayArticleEvent;
 import com.eceshopping.events.ModifyInvEvent;
 import com.eceshopping.services.ArticleService;
 import com.eceshopping.utils.Router;
-
-import javafx.concurrent.Task;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 
 public class ManageInvController implements Controller {
 
@@ -36,6 +34,8 @@ public class ManageInvController implements Controller {
     }
 
     private void setupHyperlink() {
+        
+        
         this.view.getAddArticleButton().setOnAction(e -> {
             Router.getInstance().navigateTo("/addArticle");
         });
@@ -92,5 +92,4 @@ public class ManageInvController implements Controller {
         // TODO Auto-generated method stub
 
     }
-
 }
