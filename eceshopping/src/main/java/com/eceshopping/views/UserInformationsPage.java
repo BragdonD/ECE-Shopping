@@ -22,7 +22,7 @@ public class UserInformationsPage extends UserLayoutView implements View {
     private Button saveButton;
     private Button cancelButton;
     private HBox buttonsLayout;
-    private GridPane formLayout; 
+    private GridPane formLayout;
 
     public UserInformationsPage() {
         this.nameInput = new InputFieldView("Name", "Enter your name", "text");

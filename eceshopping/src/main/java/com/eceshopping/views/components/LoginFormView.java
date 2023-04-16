@@ -20,8 +20,10 @@ public class LoginFormView {
 
     public LoginFormView() {
         this.submitButton = new Button(AppText.LOGIN_FORM_SUBMIT_BUTTON);
-        this.emailInputFieldView = new InputFieldView(AppText.LOGIN_FORM_EMAIL_LABEL, AppText.LOGIN_FORM_EMAIL_PLACEHOLDER, AppText.INPUT_EMAIL);
-        this.passwordInputFieldView = new InputFieldView(AppText.LOGIN_FORM_PASSWORD_LABEL, AppText.LOGIN_FORM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
+        this.emailInputFieldView = new InputFieldView(AppText.LOGIN_FORM_EMAIL_LABEL,
+                AppText.LOGIN_FORM_EMAIL_PLACEHOLDER, AppText.INPUT_EMAIL);
+        this.passwordInputFieldView = new InputFieldView(AppText.LOGIN_FORM_PASSWORD_LABEL,
+                AppText.LOGIN_FORM_PASSWORD_PLACEHOLDER, AppText.INPUT_PASSWORD);
         this.formView = new FormView(List.of(this.emailInputFieldView, this.passwordInputFieldView), this.submitButton);
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setHgrow(Priority.ALWAYS);
@@ -58,7 +60,7 @@ public class LoginFormView {
 
     public void setFormView(FormView formView) {
         this.formView = formView;
-    }   
+    }
 
     public void setEmailInputFieldView(InputFieldView emailInputFieldView) {
         this.emailInputFieldView = emailInputFieldView;

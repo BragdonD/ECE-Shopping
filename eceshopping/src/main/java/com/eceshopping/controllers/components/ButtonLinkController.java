@@ -7,7 +7,7 @@ public class ButtonLinkController {
     protected Router router;
     protected String linkTo;
     protected ButtonLinkView view;
-    
+
     public ButtonLinkController(String to, ButtonLinkView view) {
         this.router = Router.getInstance();
         this.view = view;

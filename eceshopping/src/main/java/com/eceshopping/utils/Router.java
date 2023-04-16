@@ -1,6 +1,5 @@
 package com.eceshopping.utils;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.layout.StackPane;
@@ -10,7 +9,8 @@ import com.eceshopping.controllers.RouterController;
 import com.eceshopping.views.View;
 
 /**
- * Singleton class for the router of the application (used to navigate between views).
+ * Singleton class for the router of the application (used to navigate between
+ * views).
  */
 public class Router {
     RouterController routerController;
@@ -20,7 +20,7 @@ public class Router {
     private HashMap<String, Controller> controllers;
     private StackPane root;
     private String current;
-    
+
     /**
      * Private constructor for the router.
      */
@@ -34,6 +34,7 @@ public class Router {
 
     /**
      * Get the instance of the router.
+     * 
      * @return the instance of the router.
      */
     public static Router getInstance() {
@@ -45,13 +46,14 @@ public class Router {
 
     /**
      * Add a route to the application.
-     * @param route the route to add. 
-     * @param view the view of the route.
+     * 
+     * @param route      the route to add.
+     * @param view       the view of the route.
      * @param controller the controller of the route.
      * @throws IllegalArgumentException if the route already exists.
      */
     public void addRoute(String route, View view, Controller controller) throws IllegalArgumentException {
-        if(routes.contains(route)) {
+        if (routes.contains(route)) {
             throw new IllegalArgumentException("Route already exists");
         }
         routes.add(route);
@@ -62,11 +64,12 @@ public class Router {
 
     /**
      * Remove a route from the application.
+     * 
      * @param route the route to remove.
      * @throws IllegalArgumentException if the route does not exist.
      */
     public void removeRoute(String route) throws IllegalArgumentException {
-        if(!routes.contains(route)) {
+        if (!routes.contains(route)) {
             throw new IllegalArgumentException("Route does not exist");
         }
         routes.remove(route);
@@ -75,16 +78,17 @@ public class Router {
     }
 
     /**
-     * Navigate to a route. 
+     * Navigate to a route.
+     * 
      * @param route the route to navigate to.
      * @throws IllegalArgumentException if the route does not exist.
      */
     public void navigateTo(String route) throws IllegalArgumentException {
-        if(!routes.contains(route)) {
+        if (!routes.contains(route)) {
             throw new IllegalArgumentException("Route : " + route + " does not exist");
         }
         View view = views.get(route);
-        if(current != null) {
+        if (current != null) {
             root.getChildren().remove(views.get(current).getRootNode());
         }
         root.getChildren().add(view.getRootNode());
@@ -92,7 +96,8 @@ public class Router {
     }
 
     /**
-     * Get the routes of the application. 
+     * Get the routes of the application.
+     * 
      * @return the routes of the application.
      */
     public ArrayList<String> getRoutes() {
@@ -101,6 +106,7 @@ public class Router {
 
     /**
      * Get the root pane of the application.
+     * 
      * @return the root pane of the application.
      */
     public StackPane getRootPane() {
@@ -109,6 +115,7 @@ public class Router {
 
     /**
      * Get the router controller of the application (used to set the main stage).
+     * 
      * @return the router controller of the application.
      */
     public RouterController getRouterController() {

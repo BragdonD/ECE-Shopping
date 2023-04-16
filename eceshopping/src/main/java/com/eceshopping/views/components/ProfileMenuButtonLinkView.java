@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 public class ProfileMenuButtonLinkView extends ButtonLinkView {
     private Image icon;
     private String title;
-    private String description;    
+    private String description;
     private GridPane layout;
     GridPane column1;
     GridPane column2;
@@ -33,19 +33,19 @@ public class ProfileMenuButtonLinkView extends ButtonLinkView {
         initLayout();
         this.getChildren().add(layout);
     }
-    
+
     private void initLayout() {
         this.layout = new GridPane();
         this.column1 = new GridPane();
         this.column2 = new GridPane();
-       
+
         final ImageView image = new ImageView(this.icon);
         image.setFitHeight(50);
         image.setFitWidth(50);
         final HBox box = new HBox();
         box.getChildren().add(image);
         final Text titleText = new Text(this.title);
-        final Text descriptionText = new Text(this.description);   
+        final Text descriptionText = new Text(this.description);
         descriptionText.setWrappingWidth(170);
         descriptionText.setStyle(AppStyles.PROFILE_PAGE_BUTTON_DESCRIPTION_STYLE);
         column1.add(image, 0, 0);

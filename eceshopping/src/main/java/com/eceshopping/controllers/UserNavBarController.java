@@ -10,13 +10,13 @@ import com.eceshopping.views.components.UserNavBarView;
 
 public class UserNavBarController {
     private UserNavBarView view;
-    private List<LinkNavBarController> links; 
+    private List<LinkNavBarController> links;
 
     public UserNavBarController(UserNavBarView view) {
         this.view = view;
         this.links = new ArrayList<LinkNavBarController>();
         int i = 0;
-        for(LinkNavBarView menu : this.view.getLinks()) {
+        for (LinkNavBarView menu : this.view.getLinks()) {
             links.add(new LinkNavBarController(menu, Routes.navBarRoutes.get(i).getPath()));
             i++;
         }

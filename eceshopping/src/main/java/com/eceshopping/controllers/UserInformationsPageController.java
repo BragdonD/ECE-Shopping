@@ -49,9 +49,10 @@ public class UserInformationsPageController implements Controller {
                     .password(this.inputFieldsControllers.get(2).getValue());
 
             System.out.println(user);
-            
-            if(!user.getEmail().equals(Session.getInstance().getUser().getEmail())) {
-                Task<UserDto> UpdateEmailTask = userService.updateEmailAsync(user.getEmail(), Session.getInstance().getUser().getId());
+
+            if (!user.getEmail().equals(Session.getInstance().getUser().getEmail())) {
+                Task<UserDto> UpdateEmailTask = userService.updateEmailAsync(user.getEmail(),
+                        Session.getInstance().getUser().getId());
                 new Thread(UpdateEmailTask).start();
 
                 UpdateEmailTask.setOnSucceeded(event -> {
@@ -69,8 +70,9 @@ public class UserInformationsPageController implements Controller {
                 });
             }
 
-            if(!user.getPassword().equals("")) {
-                Task<UserDto> UpdatePasswordTask = userService.updatePasswordAsync(user.getPassword(), Session.getInstance().getUser().getId());
+            if (!user.getPassword().equals("")) {
+                Task<UserDto> UpdatePasswordTask = userService.updatePasswordAsync(user.getPassword(),
+                        Session.getInstance().getUser().getId());
                 new Thread(UpdatePasswordTask).start();
 
                 UpdatePasswordTask.setOnSucceeded(event -> {
@@ -89,8 +91,9 @@ public class UserInformationsPageController implements Controller {
                 });
             }
 
-            if(!user.getUsername().equals(Session.getInstance().getUser().getUsername())) {
-                Task<UserDto> UpdateUsernameTask = userService.updateNameAsync(user.getUsername(), Session.getInstance().getUser().getId());
+            if (!user.getUsername().equals(Session.getInstance().getUser().getUsername())) {
+                Task<UserDto> UpdateUsernameTask = userService.updateNameAsync(user.getUsername(),
+                        Session.getInstance().getUser().getId());
                 new Thread(UpdateUsernameTask).start();
 
                 UpdateUsernameTask.setOnSucceeded(event -> {
@@ -117,7 +120,8 @@ public class UserInformationsPageController implements Controller {
     }
 
     private void eraseError() {
-        this.view.getFormLayout().getChildren().removeIf(node -> node.getStyleClass().contains(AppStyles.ERROR_TEXT_STYLE));
+        this.view.getFormLayout().getChildren()
+                .removeIf(node -> node.getStyleClass().contains(AppStyles.ERROR_TEXT_STYLE));
     }
 
     private void bindEditable() {
@@ -125,7 +129,7 @@ public class UserInformationsPageController implements Controller {
         this.view.getEmailInput().disableProperty().bind(binding);
         this.view.getNameInput().disableProperty().bind(binding);
         this.view.getPasswordInput().disableProperty().bind(binding);
-        
+
         this.view.getEditButton().setOnMouseClicked(e -> {
             this.editable.set(true);
             this.view.getButtonsLayout().getChildren().remove(this.view.getEditButton());
@@ -133,14 +137,14 @@ public class UserInformationsPageController implements Controller {
 
             this.inputFieldsControllers.get(0).validator(new EmailValidator());
             this.inputFieldsControllers.get(1).validator(new NotEmptyStringValidator());
-            this.inputFieldsControllers.get(2).validator(new PasswordValidator()); 
+            this.inputFieldsControllers.get(2).validator(new PasswordValidator());
         });
         this.view.getCancelButton().setOnMouseClicked(e -> {
             this.editable.set(false);
             this.view.getButtonsLayout().getChildren().remove(this.view.getCancelButton());
             this.view.getButtonsLayout().getChildren().remove(this.view.getSaveButton());
             this.view.getButtonsLayout().getChildren().add(this.view.getEditButton());
-            
+
             this.inputFieldsControllers.get(0).validator(null);
             this.inputFieldsControllers.get(1).validator(null);
             this.inputFieldsControllers.get(2).validator(null);
@@ -153,7 +157,8 @@ public class UserInformationsPageController implements Controller {
 
     private void bindToCurrentUser() {
         Session.getInstance().addUserChangedListener((newValue) -> {
-            if(newValue == null) return;
+            if (newValue == null)
+                return;
             this.view.getEmailInput().setValue(newValue.getEmail());
             this.view.getNameInput().setValue(newValue.getUsername());
         });

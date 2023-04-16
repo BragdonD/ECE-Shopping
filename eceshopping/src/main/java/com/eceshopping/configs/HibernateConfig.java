@@ -4,6 +4,7 @@ import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.eceshopping.models.ArticleModel;
 import com.eceshopping.models.UserModel;
 
 /**
@@ -28,12 +29,13 @@ public class HibernateConfig {
         } else if (activeProfile.equals("test")) {
             hibernateProperties = getTestProperties();
         } else {
-            hibernateProperties = getProductionProperties();  
+            hibernateProperties = getProductionProperties();
         }
         sessionFactory = new Configuration()
-            .addProperties(hibernateProperties)
-            .addAnnotatedClass(UserModel.class)
-            .buildSessionFactory();
+                .addProperties(hibernateProperties)
+                .addAnnotatedClass(UserModel.class)
+                .addAnnotatedClass(ArticleModel.class)
+                .buildSessionFactory();
     }
 
     /**

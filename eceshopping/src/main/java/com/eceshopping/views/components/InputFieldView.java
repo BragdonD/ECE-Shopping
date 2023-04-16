@@ -33,7 +33,7 @@ public class InputFieldView extends GridPane {
         ColumnConstraints column2 = new ColumnConstraints();
         column2.setHgrow(Priority.NEVER);
         this.getColumnConstraints().add(column2);
-    } 
+    }
 
     private void initLayout() {
         this.add(this.labelField, 0, 0);
@@ -41,7 +41,7 @@ public class InputFieldView extends GridPane {
     }
 
     private void initTextField(String type, String placeholder) {
-        if(type.equals("password")) {
+        if (type.equals("password")) {
             this.textField = new PasswordField();
         } else {
             this.textField = new TextField();

@@ -16,38 +16,40 @@ public class UserFactory {
         String password = faker.internet().password(8, 16, true, true);
 
         UserDto newUser = new UserDto()
-            .username(userName)
-            .email(email)
-            .password(password)
-            .admin(false);
+                .username(userName)
+                .email(email)
+                .password(password)
+                .admin(false);
 
         return newUser;
     }
 
     /**
      * This method is used to create a random guest user
+     * 
      * @return new user
      */
     public static UserDto createGuestUser(String userName, String email, String password) {
         UserDto newUser = new UserDto()
-            .username(userName)
-            .email(email)
-            .password(password)
-            .admin(false);
+                .username(userName)
+                .email(email)
+                .password(password)
+                .admin(false);
 
         return newUser;
     }
 
     /**
      * This method is used to create a random admin user
+     * 
      * @return new user
      */
     public static UserDto createAdminUser(String userName, String email, String password) {
         UserDto newUser = new UserDto()
-            .username(userName)
-            .email(email)
-            .password(password)
-            .admin(true);
+                .username(userName)
+                .email(email)
+                .password(password)
+                .admin(true);
 
         return newUser;
     }

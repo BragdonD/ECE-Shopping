@@ -47,7 +47,7 @@ public class InputFieldController {
     }
 
     private void notifyListeners() {
-        for(ChangeListener<Boolean> listener : this.listeners) {
+        for (ChangeListener<Boolean> listener : this.listeners) {
             listener.changed(this.isValid, !this.isValid.get(), this.isValid.get());
         }
     }
@@ -62,7 +62,7 @@ public class InputFieldController {
      * This method is used to check if the input field is valid
      */
     private void addValueListener() {
-        if(this.validator == null) {
+        if (this.validator == null) {
             this.isValid.set(true);
             applyStyle();
             notifyListeners();
@@ -72,10 +72,10 @@ public class InputFieldController {
             Boolean isValid = this.validator.validate(newValue);
             this.isValid.set(isValid);
             ErrorsList errorList = checkForErrorList();
-            if(errorList != null) {
+            if (errorList != null) {
                 this.view.getChildren().remove(errorList);
             }
-            if(!isValid) {
+            if (!isValid) {
                 errorList = new ErrorsList(this.validator.getErrors(value.get()));
                 this.view.add(errorList, 0, 3);
             }
@@ -84,14 +84,14 @@ public class InputFieldController {
         });
     }
 
-   /*
-    check if the input field is valid
-   */ 
+    /*
+     * check if the input field is valid
+     */
     private ErrorsList checkForErrorList() {
         ErrorsList errorList = null;
-        for(Node node : this.view.getChildren()) {
-            if(node.getClass() == ErrorsList.class) {
-                errorList = (ErrorsList)node;
+        for (Node node : this.view.getChildren()) {
+            if (node.getClass() == ErrorsList.class) {
+                errorList = (ErrorsList) node;
                 break;
             }
         }
@@ -102,7 +102,7 @@ public class InputFieldController {
      * This method is used to apply the correct style to the input field
      */
     private void applyStyle() {
-        if(this.isValid.get()) {
+        if (this.isValid.get()) {
             this.view.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_CORRECT);
         } else {
             this.view.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE_ERROR);
@@ -129,6 +129,7 @@ public class InputFieldController {
     public Validator getValidator() {
         return this.validator;
     }
+
     /*
      * This method is used to set the validator of the input field
      */
@@ -177,7 +178,6 @@ public class InputFieldController {
     public boolean isValid() {
         return this.isValid.get();
     }
-
 
     /*
      * This method reset the input field

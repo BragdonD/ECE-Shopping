@@ -28,7 +28,7 @@ public class LoginPageView extends StackPane implements View {
     private Button RegisterButton;
     private Label RegisterLabel;
     private Insets margin;
-    
+
     /*
      * loginFormView is the login form view for the user.
      */
@@ -48,7 +48,7 @@ public class LoginPageView extends StackPane implements View {
         this.gridPane.add(this.RegisterBoxLayout, 0, 2);
 
         this.margin = new Insets(10, 10, 10, 10);
-        
+
         this.gridPane.setPrefSize(400, 400);
         this.getChildren().add(this.gridPane);
         this.setAlignment(Pos.CENTER);
@@ -56,7 +56,7 @@ public class LoginPageView extends StackPane implements View {
     }
 
     /*
-     * Set up the register box 
+     * Set up the register box
      * Where the user can register for a new account
      */
     private void setupRegisterBox() {
@@ -80,7 +80,7 @@ public class LoginPageView extends StackPane implements View {
         this.title = new Text(AppText.LOGIN_PAGE_TITLE);
         this.title.setTextAlignment(TextAlignment.CENTER);
         this.gridPane.add(this.title, 0, 0);
-        this.title.setStyle(AppStyles.TITLE_STYLE); 
+        this.title.setStyle(AppStyles.TITLE_STYLE);
     }
 
     /*
@@ -94,14 +94,13 @@ public class LoginPageView extends StackPane implements View {
         this.loginFormView.getFormView().setPadding(new Insets(10, 10, 10, 10));
         this.loginFormView.getFormView().setVgap(10);
         this.gridPane.add(this.loginFormView.getFormView(), 0, 1);
-        for(InputFieldView input : this.loginFormView.getFormView().getInputFields()) {
+        for (InputFieldView input : this.loginFormView.getFormView().getInputFields()) {
             input.getLabelField().setStyle(AppStyles.LABEL_STYLE);
             input.getTextField().setStyle(AppStyles.TEXT_FIELD_STYLE);
         }
         this.loginFormView.getSubmitButton().setStyle(AppStyles.SUBMIT_BUTTON_STYLE);
         this.loginFormView.getSubmitButton().setPrefWidth(300);
     }
-
 
     /*
      * Getters and setters
@@ -221,8 +220,8 @@ public class LoginPageView extends StackPane implements View {
         setTitle(title);
         return this;
     }
-    
-    /* 
+
+    /*
      * Set the register box
      */
     public LoginPageView RegisterBoxLayout(GridPane RegisterBoxLayout) {
@@ -252,7 +251,7 @@ public class LoginPageView extends StackPane implements View {
     public LoginPageView margin(Insets margin) {
         setMargin(margin);
         return this;
-    }    
+    }
 
     /*
      * Get the root node of the login page

@@ -15,7 +15,7 @@ public class MainStageController {
 
         this.stage.setOnCloseRequest(e -> {
             System.out.println("Closing the application");
-            if(Session.getInstance() != null) {
+            if (Session.getInstance() != null) {
                 Session.getInstance().clear();
             }
         });

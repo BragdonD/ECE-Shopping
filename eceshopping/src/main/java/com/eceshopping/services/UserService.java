@@ -92,7 +92,7 @@ public class UserService {
                 if (!(new PasswordValidator().validate(userDto.getPassword()))) {
                     throw new IllegalArgumentException("Password is not valid.");
                 }
-                
+
                 boolean emailExists = true;
 
                 try {
@@ -107,7 +107,7 @@ public class UserService {
 
                 String hashPassword = encryptPassword(userDto.getPassword());
                 userDto.setPassword(hashPassword);
-        
+
                 UserModel user = UserConverter.convertToModel(userDto);
                 userDao.save(user);
                 return UserConverter.convertToDto(user);
@@ -128,7 +128,8 @@ public class UserService {
      * @throws EntityExistsException   If the email is already in use
      * @throws EntityNotFoundException If the user does not exist
      */
-    public Task<UserDto> updateEmailAsync(String newEmail, int id) throws EntityExistsException, EntityNotFoundException {
+    public Task<UserDto> updateEmailAsync(String newEmail, int id)
+            throws EntityExistsException, EntityNotFoundException {
         Task<UserDto> task = new Task<UserDto>() {
             @Override
             protected UserDto call() throws Exception {
@@ -166,7 +167,7 @@ public class UserService {
     public Task<UserDto> updatePasswordAsync(String newPassword, int id)
             throws EntityNotFoundException, IllegalArgumentException {
         Task<UserDto> task = new Task<UserDto>() {
-           @Override
+            @Override
             protected UserDto call() throws Exception {
                 if (userDao.getById(id) == null) {
                     throw new EntityNotFoundException("User does not exist.");

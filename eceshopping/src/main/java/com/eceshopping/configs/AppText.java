@@ -1,13 +1,12 @@
 package com.eceshopping.configs;
 
-
 public class AppText {
     public static final String LOGIN_PAGE_TITLE = "Login";
     public static final String REGISTER_PAGE_TITLE = "Register";
     public static final String USER_INFORMATIONS_PAGE_TITLE = "User Informations";
-    
+
     /*
-     * Login Form Text 
+     * Login Form Text
      */
     public static final String LOGIN_FORM_EMAIL_LABEL = "Email";
     public static final String LOGIN_FORM_EMAIL_PLACEHOLDER = "Enter your email";
@@ -18,7 +17,7 @@ public class AppText {
     public static final String LOGIN_FORM_REGISTER_BUTTON = "Register";
 
     /*
-     * Register Form Text 
+     * Register Form Text
      */
     public static final String REGISTER_FORM_NAME_LABEL = "Name";
     public static final String REGISTER_FORM_NAME_PLACEHOLDER = "Enter your name";
@@ -33,12 +32,12 @@ public class AppText {
     public static final String REGISTER_FORM_REGISTER_BUTTON = "Login";
 
     /*
-     * Input Field Text 
+     * Input Field Text
      */
     public static final String INPUT_EMAIL = "email";
     public static final String INPUT_PASSWORD = "password";
     public static final String INPUT_NAME = "name";
-    
+
     /*
      * Error Messages
      */
@@ -51,8 +50,8 @@ public class AppText {
     public static final String PROFILE_PAGE_TITLE_BUTTON_1 = "My Orders";
     public static final String PROFILE_PAGE_TITLE_BUTTON_2 = "Contact Us";
     public static final String PROFILE_PAGE_TITLE_BUTTON_3 = "My informations";
-    
+
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_1 = "View your new and old orders";
     public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_2 = "You can ask us all your questions";
-    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_3 = "See/Change my informations";    
+    public static final String PROFILE_PAGE_DESCRIPTION_BUTTON_3 = "See/Change my informations";
 }

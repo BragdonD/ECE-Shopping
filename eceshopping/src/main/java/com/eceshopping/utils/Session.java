@@ -8,6 +8,7 @@ import com.eceshopping.utils.listeners.UserChangedListener;
 
 /**
  * Session class is used to store the current user in memory.
+ * 
  * @implNote This class is a singleton.
  * @implNote This class is not in its final state.
  */
@@ -26,6 +27,7 @@ public class Session {
 
     /**
      * This method is used to get the instance of the Session class.
+     * 
      * @return
      */
     public static Session getInstance() {
@@ -37,6 +39,7 @@ public class Session {
 
     /**
      * This method is used to get the current user in the session.
+     * 
      * @return The current user in the session
      */
     public UserDto getUser() {
@@ -45,13 +48,14 @@ public class Session {
 
     /**
      * This method is used to set the current user in the session.
+     * 
      * @param user The current user in the session
      */
     public void setUser(UserDto user) {
         this.user = user;
         notifyUserChangedListeners();
     }
-    
+
     /**
      * This method is used to clear the current session for the future user.
      */
@@ -61,6 +65,7 @@ public class Session {
 
     /**
      * This method is used to register an observer of user changes.
+     * 
      * @param listener The observer to register
      */
     public void addUserChangedListener(UserChangedListener listener) {
@@ -69,6 +74,7 @@ public class Session {
 
     /**
      * This method is used to unregister an observer of user changes.
+     * 
      * @param listener The observer to unregister
      */
     public void removeUserChangedListener(UserChangedListener listener) {
@@ -84,8 +90,9 @@ public class Session {
         }
     }
 
-        /**
+    /**
      * This method is used to set the current user in the session.
+     * 
      * @param user The current user in the session
      * @return The current session
      */
@@ -98,8 +105,8 @@ public class Session {
     @Override
     public String toString() {
         return "{" +
-            " user='" + getUser() + "'" +
-            "}";
+                " user='" + getUser() + "'" +
+                "}";
     }
 
 }

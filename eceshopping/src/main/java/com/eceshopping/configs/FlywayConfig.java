@@ -1,4 +1,5 @@
 package com.eceshopping.configs;
+
 import java.util.Properties;
 import org.flywaydb.core.Flyway;
 
@@ -8,7 +9,7 @@ import org.flywaydb.core.Flyway;
 public class FlywayConfig {
     private static FlywayConfig instance;
     Properties flywayProperties;
- 
+
     /*
      * This method is used to configure the Flyway tool
      */
@@ -17,8 +18,8 @@ public class FlywayConfig {
         this.flywayProperties = new Properties();
         this.flywayProperties.setProperty("flyway.url", properties.getProperty("hibernate.connection.url"));
         Flyway flyway = Flyway.configure()
-            .dataSource(properties.getProperty("hibernate.connection.url"), null, null)
-            .load();
+                .dataSource(properties.getProperty("hibernate.connection.url"), null, null)
+                .load();
         flyway.migrate();
     }
 

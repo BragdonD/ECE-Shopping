@@ -44,7 +44,7 @@ public class ProfilePageView extends UserLayoutView implements View {
     private void initLayout() {
         this.layout = new GridPane();
         int i = 0;
-        for(ProfileMenuButtonLinkView button : this.buttons) {
+        for (ProfileMenuButtonLinkView button : this.buttons) {
             button.setStyle(AppStyles.PROFILE_PAGE_BUTTON_STYLE);
             this.layout.add(button, 0, i);
             i++;

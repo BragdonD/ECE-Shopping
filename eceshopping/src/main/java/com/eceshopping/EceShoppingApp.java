@@ -1,21 +1,20 @@
 package com.eceshopping;
 
-
-
 import com.eceshopping.configs.FlywayConfig;
 
-import com.eceshopping.controllers.LoginPageController;
-import com.eceshopping.controllers.MainStageController;
-import com.eceshopping.controllers.ProfilePageController;
-import com.eceshopping.controllers.RegisterPageController;
-import com.eceshopping.controllers.UserInformationsPageController;
+import com.eceshopping.controllers.AddArticleFormController;
+import com.eceshopping.controllers.AdminMenuController;
+import com.eceshopping.controllers.ManageInvController;
+import com.eceshopping.controllers.ModifyArticleController;
 import com.eceshopping.utils.Router;
-
-
-import com.eceshopping.views.LoginPageView;
-import com.eceshopping.views.ProfilePageView;
-import com.eceshopping.views.RegisterPageView;
-import com.eceshopping.views.UserInformationsPage;
+import com.eceshopping.views.ModifyArticleFormView;
+import com.eceshopping.views.ProductOView;
+import com.eceshopping.views.components.AddArticleFormView;
+import com.eceshopping.views.components.AdminMenuView;
+import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.LoginFormView;
+import com.eceshopping.views.components.ManageInvView;
+import com.eceshopping.views.components.RegisterFormView;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -29,29 +28,38 @@ public class EceShoppingApp extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage s) {
-        new MainStageController(s);
+        s.setTitle("My JavaFX App");
+        // Set the main stage inside the router controller
         this.router = Router.getInstance();
         this.router.getRouterController().setMainStage(s);
+        AdminMenuView adminMenuView = new AdminMenuView();
+        ManageInvView manageInvView = new ManageInvView();
+        AddArticleFormView addArticleView = new AddArticleFormView();
+        ModifyArticleFormView modifyArticleView = new ModifyArticleFormView();
+        LoginFormView loginView = new LoginFormView();
+        RegisterFormView registerView = new RegisterFormView();
+
+        // this.router.addRoute("/register", registerView, new
+        // RegisterFormController(registerView));
+        // this.router.addRoute("/login", loginView, new
+        // LoginFormController(loginView));
+
+        this.router.addRoute("/manageInv", manageInvView, new ManageInvController(manageInvView));
+        this.router.addRoute("/addArticle", addArticleView, new AddArticleFormController(addArticleView));
+
+        this.router.addRoute("/adminMenu", adminMenuView, new AdminMenuController(adminMenuView));
+        this.router.addRoute("/modifyArticle", modifyArticleView, new ModifyArticleController(modifyArticleView));
+        // this.router.addRoute("/modifyArticle", addArticleView, new
+        // AddArticleFormController(addArticleView));
+
         Scene scene = new Scene(this.router.getRootPane(), 400, 400);
         this.router.getRouterController().setScene(scene);
         this.router.getRouterController().show();
-
-        LoginPageView loginPage = new LoginPageView();
-        RegisterPageView registerPage = new RegisterPageView();
-        UserInformationsPage userInformationPage = new UserInformationsPage();
-        ProfilePageView profilePage = new ProfilePageView();
-
-        this.router.addRoute("/register", registerPage, new RegisterPageController(registerPage));
-        this.router.addRoute("/login", loginPage, new LoginPageController(loginPage));
-        this.router.addRoute("/profile", profilePage, new ProfilePageController(profilePage));
-        this.router.addRoute("/profile/informations", userInformationPage,
-                new UserInformationsPageController(userInformationPage));
-
-        this.router.navigateTo("/login");
+        this.router.navigateTo("/adminMenu");
     }
 
     public static void main(String[] args) {
-        //FlywayConfig.getInstance();
+        FlywayConfig.getInstance();
         launch(args);
     }
 

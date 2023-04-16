@@ -29,11 +29,11 @@ public class FormView extends GridPane {
      */
     private void initLayout() {
         int i = 0;
-        for(InputFieldView inputField : this.inputFields) {
+        for (InputFieldView inputField : this.inputFields) {
             this.add(inputField, 0, i);
             i++;
         }
-        if(this.submitButton != null) {
+        if (this.submitButton != null) {
             HBox buttonBox = new HBox();
             buttonBox.getChildren().add(this.submitButton);
             this.add(buttonBox, 0, i);
